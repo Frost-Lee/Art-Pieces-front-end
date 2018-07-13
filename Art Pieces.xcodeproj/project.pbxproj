@@ -12,6 +12,7 @@
 		3A8C93A920F895EC005D5BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93A720F895EC005D5BD1 /* Main.storyboard */; };
 		3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */; };
 		3A8C93AE20F895EE005D5BD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */; };
+		3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C93B520F89658005D5BD1 /* StorageProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3A8C93AD20F895EE005D5BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A8C93AF20F895EE005D5BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3A8C93B520F89658005D5BD1 /* StorageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProperties.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 				3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */,
 				3A8C93A520F895EC005D5BD1 /* ViewController.swift */,
 				3A8C93A720F895EC005D5BD1 /* Main.storyboard */,
+				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
 				3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */,
 				3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */,
 				3A8C93AF20F895EE005D5BD1 /* Info.plist */,
@@ -137,6 +140,7 @@
 			files = (
 				3A8C93A620F895EC005D5BD1 /* ViewController.swift in Sources */,
 				3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */,
+				3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
