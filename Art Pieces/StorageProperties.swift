@@ -13,30 +13,14 @@ import Foundation
 import UIKit
 
 
-enum StrokePhase: Codable {
-    init(from decoder: Decoder) throws {
-        <#code#>
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        <#code#>
-    }
-    
+enum StrokePhase: Int, Codable {
     case begin
     case changed
     case ended
     case cancelled
 }
 
-enum StrokeState: Codable {
-    init(from decoder: Decoder) throws {
-        <#code#>
-    }
-    
-    func encode(to encoder: Encoder) throws {
-        <#code#>
-    }
-    
+enum StrokeState: Int, Codable {
     case active
     case done
     case cancelled
@@ -46,7 +30,7 @@ enum StrokeState: Codable {
  * StrokeSample is a single that records a single point of the user's touch on the screen
  * it contains the location and the time stamp data of a single touch
  */
-struct StrokeSample {
+struct StrokeSample: Codable {
     
     // Must-have properties
     let timeStamp: TimeInterval
@@ -59,7 +43,7 @@ struct StrokeSample {
 }
 
 
-class Stroke: NSObject, Codable {
+class Stroke: Codable {
     
     var samples: [StrokeSample] = []
     var state: StrokeState = .active
@@ -69,3 +53,4 @@ class Stroke: NSObject, Codable {
     }
     
 }
+
