@@ -81,6 +81,7 @@ class SubStep: Codable, Sequence {
     var renderDescription: String = "no render description"
     var relatedOperationLayer: [Int] = []
     var relatedOperationStroke: [Int] = []
+    var renderMechanism: RenderMechanism
     
     func add(layerIndex: Int, strokeIndex: Int) {
         self.relatedOperationLayer.append(layerIndex)
@@ -90,6 +91,10 @@ class SubStep: Codable, Sequence {
     func remove(at index: Int) {
         self.relatedOperationLayer.remove(at: index)
         self.relatedOperationStroke.remove(at: index)
+    }
+    
+    func setRenderMechanism(with mechanism: RenderMechanism) {
+        self.renderMechanism = mechanism
     }
     
     func makeIterator() -> SubStepContentIterator {

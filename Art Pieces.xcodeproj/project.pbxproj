@@ -14,6 +14,7 @@
 		3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */; };
 		3A8C93AE20F895EE005D5BD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */; };
 		3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C93B520F89658005D5BD1 /* StorageProperties.swift */; };
+		3AE220E920FB276200FC80E3 /* CGMathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE220E820FB276200FC80E3 /* CGMathExtension.swift */; };
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
 /* End PBXBuildFile section */
 
@@ -27,6 +28,7 @@
 		3A8C93AD20F895EE005D5BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A8C93AF20F895EE005D5BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8C93B520F89658005D5BD1 /* StorageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProperties.swift; sourceTree = "<group>"; };
+		3AE220E820FB276200FC80E3 /* CGMathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGMathExtension.swift; sourceTree = "<group>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -66,6 +68,7 @@
 				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
 				3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */,
 				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
+				3AE220E820FB276200FC80E3 /* CGMathExtension.swift */,
 				3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */,
 				3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */,
 				3A8C93AF20F895EE005D5BD1 /* Info.plist */,
@@ -147,6 +150,7 @@
 				3A8C93A620F895EC005D5BD1 /* ViewController.swift in Sources */,
 				3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
+				3AE220E920FB276200FC80E3 /* CGMathExtension.swift in Sources */,
 				3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */,
 				3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */,
 			);
