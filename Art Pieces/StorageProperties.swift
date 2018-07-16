@@ -66,10 +66,12 @@ class Stroke: Codable, Sequence {
 class StrokeArc {
     
     var sampleBefore: StrokeSample
+    var sample: StrokeSample
     var sampleAfter: StrokeSample
     
-    init(sampleBefore: StrokeSample, sampleAfter: StrokeSample) {
+    init(sampleBefore: StrokeSample, sample: StrokeSample, sampleAfter: StrokeSample) {
         self.sampleBefore = sampleBefore
+        self.sample = sample
         self.sampleAfter = sampleAfter
     }
     
@@ -193,13 +195,15 @@ class StrokeArcIterator: IteratorProtocol {
     }
     
     func next() -> StrokeArc? {
-        if nextIndex >= stroke.samples.count - 1 {
+        if nextIndex >= stroke.samples.count - 2 {
             return nil
         }
-        let result = StrokeArc(sampleBefore: stroke.samples[nextIndex],
-                               sampleAfter: stroke.samples[nextIndex + 1])
+        let sampleBefore = stroke.samples[nextIndex]
+        let sample = stroke.samples[nextIndex + 1]
+        let sampleAfter = stroke.samples[nextIndex + 2]
+        let strokeArc = StrokeArc(sampleBefore: sampleBefore, sample: sample, sampleAfter: sampleAfter)
         nextIndex += 1
-        return result
+        return strokeArc
     }
     
 }
