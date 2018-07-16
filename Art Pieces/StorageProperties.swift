@@ -48,13 +48,29 @@ struct StrokeSample: Codable {
  * Stroke represents a single stroke on a painting, it's consists of stroke samples, and provides the render
  * information about the stroke
  */
-class Stroke: Codable {
+class Stroke: Codable, Sequence {
     
     var samples: [StrokeSample] = []
     var state: StrokeState = .active
     
     func add(sample: StrokeSample) {
         self.samples.append(sample)
+    }
+    
+    func makeIterator() -> StrokeArcIterator {
+        return StrokeArcIterator(stroke: self)
+    }
+    
+}
+
+class StrokeArc {
+    
+    var sampleBefore: StrokeSample
+    var sampleAfter: StrokeSample
+    
+    init(sampleBefore: StrokeSample, sampleAfter: StrokeSample) {
+        self.sampleBefore = sampleBefore
+        self.sampleAfter = sampleAfter
     }
     
 }
@@ -156,15 +172,32 @@ class SubStepContentIterator: IteratorProtocol {
         self.subStep = subStep
     }
     
-    func sampleAt(_ index: Int) -> (Int, Int) {
-        return (subStep.relatedOperationLayer[index], subStep.relatedOperationStroke[index])
-    }
-    
     func next() -> (Int, Int)? {
         if nextIndex >= subStep.relatedOperationLayer.count {
             return nil
         }
         let result = (subStep.relatedOperationLayer[nextIndex], subStep.relatedOperationStroke[nextIndex])
+        nextIndex += 1
+        return result
+    }
+    
+}
+
+class StrokeArcIterator: IteratorProtocol {
+    
+    private let stroke: Stroke
+    private var nextIndex: Int = 0
+    
+    init(stroke: Stroke) {
+        self.stroke = stroke
+    }
+    
+    func next() -> StrokeArc? {
+        if nextIndex >= stroke.samples.count - 1 {
+            return nil
+        }
+        let result = StrokeArc(sampleBefore: stroke.samples[nextIndex],
+                               sampleAfter: stroke.samples[nextIndex + 1])
         nextIndex += 1
         return result
     }
