@@ -5,6 +5,8 @@
 //  Created by 李灿晨 on 2018/7/14.
 //  Copyright © 2018 李灿晨. All rights reserved.
 //
+//  Abstract:
+//  RenderMechanism contains the method used for rendering the stroke according to its sample points.
 
 import Foundation
 import UIKit
@@ -15,10 +17,13 @@ class RenderMechanism: Codable {
     var width: CGFloat!
     var texture: String?
     
+    var texturedColor: UIColor? = nil
+    
     init(color: UIColor, width: CGFloat, texture: String? = nil) {
         self.color = color
         self.width = width
         self.texture = texture
+        setTexturedColor()
     }
     
     required init(from decoder: Decoder) throws {
@@ -27,6 +32,7 @@ class RenderMechanism: Codable {
         self.color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
         self.width = try container.decode(CGFloat.self, forKey: .width)
         self.texture = try container.decode(String.self, forKey: .texture)
+        setTexturedColor()
     }
     
     func encode(to encoder: Encoder) throws {
@@ -38,10 +44,8 @@ class RenderMechanism: Codable {
     }
     
     func getTexture() -> UIColor {
-        if let consolidateTexture = texture {
-            var textureImage = UIImage(named: consolidateTexture)
-            textureImage = textureImage?.tint(color: color, blendMode: .destinationOver)
-            return UIColor(patternImage: textureImage!)
+        if texturedColor != nil {
+            return texturedColor!
         } else {
             return color
         }
@@ -49,6 +53,14 @@ class RenderMechanism: Codable {
     
     func getWidth() -> CGFloat {
         return width
+    }
+    
+    private func setTexturedColor() {
+        if let texturePath = texture {
+            var textureImage = UIImage(named: texturePath)
+            textureImage = textureImage?.tint(color: color, blendMode: .lighten)
+            texturedColor = UIColor(patternImage: textureImage!)
+        }
     }
     
     enum CodingKeys: String, CodingKey {

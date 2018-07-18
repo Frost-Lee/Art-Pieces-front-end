@@ -49,6 +49,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3A79F4C720FEF2FC00896C0D /* ArtworkView */ = {
+			isa = PBXGroup;
+			children = (
+				3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */,
+				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
+				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
+				3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */,
+				3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */,
+				3AE220E820FB276200FC80E3 /* CGMathExtension.swift */,
+			);
+			path = ArtworkView;
+			sourceTree = "<group>";
+		};
 		3A8C939720F895EC005D5BD1 = {
 			isa = PBXGroup;
 			children = (
@@ -71,13 +84,8 @@
 				3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */,
 				3A8C93A720F895EC005D5BD1 /* Main.storyboard */,
 				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
-				3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */,
-				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
-				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
-				3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */,
+				3A79F4C720FEF2FC00896C0D /* ArtworkView */,
 				3A1EE06420FCC18C00AA315B /* StudioViewController.swift */,
-				3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */,
-				3AE220E820FB276200FC80E3 /* CGMathExtension.swift */,
 				3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */,
 				3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */,
 				3A8C93AF20F895EE005D5BD1 /* Info.plist */,

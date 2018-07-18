@@ -5,6 +5,10 @@
 //  Created by 李灿晨 on 2018/7/17.
 //  Copyright © 2018 李灿晨. All rights reserved.
 //
+//  Abstract:
+//  ActiveLayerView contains the layer which the user is interacting with, after each stroke complete, only
+//  strokes in the active layer would be redrawn. The background color is set to lucency so that it would
+//  go well with the real background
 
 import UIKit
 

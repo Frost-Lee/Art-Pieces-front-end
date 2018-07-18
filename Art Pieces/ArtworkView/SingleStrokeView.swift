@@ -5,6 +5,9 @@
 //  Created by 李灿晨 on 2018/7/15.
 //  Copyright © 2018 李灿晨. All rights reserved.
 //
+//  Abstract:
+//  The SingleStrokeView is used for rendering the stroke that is currently drawing. Each time a new sample is
+//  attached, the view have to be redrawn.
 
 import UIKit
 
