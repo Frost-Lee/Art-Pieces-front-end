@@ -23,9 +23,7 @@ class StrokeGestureRecognizer: UIGestureRecognizer {
     
     var renderMechanism: RenderMechanism! {
         didSet {
-            if stroke != nil {
-                stroke.renderMechanism = renderMechanism
-            }
+            stroke.renderMechanism = renderMechanism
         }
     }
     
@@ -111,7 +109,5 @@ class StrokeGestureRecognizer: UIGestureRecognizer {
         }
         return false
     }
-    
-    
     
 }

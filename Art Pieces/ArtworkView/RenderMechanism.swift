@@ -11,9 +11,13 @@
 import Foundation
 import UIKit
 
-class RenderMechanism: Codable {
+struct RenderMechanism: Codable {
     
-    var color: UIColor!
+    var color: UIColor! {
+        didSet {
+            setTexturedColor()
+        }
+    }
     var width: CGFloat!
     var texture: String?
     
@@ -26,7 +30,7 @@ class RenderMechanism: Codable {
         setTexturedColor()
     }
     
-    required init(from decoder: Decoder) throws {
+    init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let colorData = try container.decode(Data.self, forKey: .color)
         self.color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
@@ -34,7 +38,7 @@ class RenderMechanism: Codable {
         self.texture = try container.decode(String.self, forKey: .texture)
         setTexturedColor()
     }
-    
+
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         let colorData = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: true)
@@ -55,7 +59,7 @@ class RenderMechanism: Codable {
         return width
     }
     
-    private func setTexturedColor() {
+    private mutating func setTexturedColor() {
         if let texturePath = texture {
             var textureImage = UIImage(named: texturePath)
             textureImage = textureImage?.tint(color: color, blendMode: .lighten)

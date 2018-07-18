@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3151465A0BB9EB15F7610CEB /* libPods-Art Pieces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B719522CA2C571FC47262520 /* libPods-Art Pieces.a */; };
 		3A1EE06520FCC18C00AA315B /* StudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1EE06420FCC18C00AA315B /* StudioViewController.swift */; };
 		3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */; };
 		3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */; };
@@ -36,6 +37,9 @@
 		3AE220E820FB276200FC80E3 /* CGMathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGMathExtension.swift; sourceTree = "<group>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLayerView.swift; sourceTree = "<group>"; };
+		9AE3AFB4E4B2C13F65861B46 /* Pods-Art Pieces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.release.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.release.xcconfig"; sourceTree = "<group>"; };
+		B719522CA2C571FC47262520 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		BF4AC9E22F8BA616954FA4A6 /* Pods-Art Pieces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,12 +47,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3151465A0BB9EB15F7610CEB /* libPods-Art Pieces.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01278F311CBEAE66ED82C6A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B719522CA2C571FC47262520 /* libPods-Art Pieces.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		3A79F4C720FEF2FC00896C0D /* ArtworkView */ = {
 			isa = PBXGroup;
 			children = (
@@ -67,6 +80,8 @@
 			children = (
 				3A8C93A220F895EC005D5BD1 /* Art Pieces */,
 				3A8C93A120F895EC005D5BD1 /* Products */,
+				67FE2FFFB501787F516989C7 /* Pods */,
+				01278F311CBEAE66ED82C6A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -83,14 +98,23 @@
 			children = (
 				3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */,
 				3A8C93A720F895EC005D5BD1 /* Main.storyboard */,
+				3A1EE06420FCC18C00AA315B /* StudioViewController.swift */,
 				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
 				3A79F4C720FEF2FC00896C0D /* ArtworkView */,
-				3A1EE06420FCC18C00AA315B /* StudioViewController.swift */,
 				3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */,
 				3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */,
 				3A8C93AF20F895EE005D5BD1 /* Info.plist */,
 			);
 			path = "Art Pieces";
+			sourceTree = "<group>";
+		};
+		67FE2FFFB501787F516989C7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF4AC9E22F8BA616954FA4A6 /* Pods-Art Pieces.debug.xcconfig */,
+				9AE3AFB4E4B2C13F65861B46 /* Pods-Art Pieces.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -100,6 +124,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 3A8C93B220F895EE005D5BD1 /* Build configuration list for PBXNativeTarget "Art Pieces" */;
 			buildPhases = (
+				5B6D65B0DEF51A5AF122B7A3 /* [CP] Check Pods Manifest.lock */,
 				3A8C939C20F895EC005D5BD1 /* Sources */,
 				3A8C939D20F895EC005D5BD1 /* Frameworks */,
 				3A8C939E20F895EC005D5BD1 /* Resources */,
@@ -158,6 +183,27 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		5B6D65B0DEF51A5AF122B7A3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Art Pieces-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		3A8C939C20F895EC005D5BD1 /* Sources */ = {
@@ -316,15 +362,13 @@
 		};
 		3A8C93B320F895EE005D5BD1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF4AC9E22F8BA616954FA4A6 /* Pods-Art Pieces.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -334,15 +378,13 @@
 		};
 		3A8C93B420F895EE005D5BD1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9AE3AFB4E4B2C13F65861B46 /* Pods-Art Pieces.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

@@ -7,8 +7,11 @@
 //
 
 import UIKit
+import ChromaColorPicker
 
 class StudioViewController: UIViewController, UIGestureRecognizerDelegate {
+    
+    @IBOutlet weak var editColorButton: UIBarButtonItem!
     
     var artworkView: ArtworkView!
     var fingerStrokeRecognizer: StrokeGestureRecognizer!
@@ -21,6 +24,23 @@ class StudioViewController: UIViewController, UIGestureRecognizerDelegate {
         artworkView.switchLayer(to: 0)
     }
 
+    @IBAction func colorSelectButtonTapped(_ sender: UIBarButtonItem) {
+        let paletteViewController = UIViewController()
+        paletteViewController.view.backgroundColor = UIColor.lightGray
+        paletteViewController.preferredContentSize = CGSize(width: 300, height: 300)
+        let colorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        colorPicker.hexLabel.isHidden = true
+        colorPicker.delegate = self
+        paletteViewController.view.addSubview(colorPicker)
+        paletteViewController.modalPresentationStyle = .popover
+        let popoverPresentationController = paletteViewController.popoverPresentationController
+        popoverPresentationController?.barButtonItem = editColorButton
+        popoverPresentationController?.permittedArrowDirections = .any
+        self.present(paletteViewController, animated: true, completion: nil)
+    }
+    
+    
+    
     /*
     // MARK: - Navigation
 
@@ -31,4 +51,13 @@ class StudioViewController: UIViewController, UIGestureRecognizerDelegate {
     }
     */
 
+}
+
+
+extension StudioViewController: ChromaColorPickerDelegate {
+    
+    func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
+        artworkView.setCurrentColor(to: color)
+    }
+    
 }

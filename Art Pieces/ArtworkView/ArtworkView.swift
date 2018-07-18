@@ -79,12 +79,6 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    func mergeActiveStroke() {
-        if currentStroke != nil {
-            activeLayerView.mergeActiveStroke()
-        }
-    }
-    
     func switchLayer(to index: Int) {
         if currentLayer == nil {
             addLayer()
@@ -96,6 +90,16 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
                 addLayer()
             }
             loadActiveLayer(index: index)
+        }
+    }
+    
+    func setCurrentColor(to color: UIColor) {
+        currentRenderMechanism.color = color
+    }
+    
+    private func mergeActiveStroke() {
+        if currentStroke != nil {
+            activeLayerView.mergeActiveStroke()
         }
     }
     

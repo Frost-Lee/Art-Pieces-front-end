@@ -1,0 +1,6 @@
+module Pods_Art_Pieces [system] {
+  umbrella header "Pods-Art Pieces-umbrella.h"
+
+  export *
+  module * { export * }
+}
