@@ -52,6 +52,11 @@ class Stroke: Codable, Sequence {
     
     var samples: [StrokeSample] = []
     var state: StrokeState = .active
+    var renderMechanism: RenderMechanism!
+    
+    init(renderMechanism: RenderMechanism) {
+        self.renderMechanism = renderMechanism
+    }
     
     func add(sample: StrokeSample) {
         self.samples.append(sample)

@@ -13,7 +13,7 @@ import UIKit
 
 class StrokeGestureRecognizer: UIGestureRecognizer {
     
-    var stroke = Stroke()
+    var stroke: Stroke!
     var coordinateSpaceView: UIView!
     
     var trackedTouch: UITouch?
@@ -21,7 +21,21 @@ class StrokeGestureRecognizer: UIGestureRecognizer {
     
     var fingerStartTimer: Timer? = nil
     
+    var renderMechanism: RenderMechanism! {
+        didSet {
+            if stroke != nil {
+                stroke.renderMechanism = renderMechanism
+            }
+        }
+    }
+    
     private let cancellationTimeInterval = TimeInterval(0.1)
+    
+    override init(target: Any?, action: Selector?) {
+        super.init(target: target, action: action)
+        stroke = Stroke(renderMechanism: defaultRenderMechanism)
+        renderMechanism = defaultRenderMechanism
+    }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
         if self.trackedTouch == nil {
@@ -57,7 +71,7 @@ class StrokeGestureRecognizer: UIGestureRecognizer {
     }
     
     override func reset() {
-        self.stroke = Stroke()
+        self.stroke = Stroke(renderMechanism: renderMechanism)
         self.trackedTouch = nil
         super.reset()
     }
@@ -66,6 +80,10 @@ class StrokeGestureRecognizer: UIGestureRecognizer {
         if state == .possible {
             state = .began
         }
+    }
+    
+    func setRenderMechanism(with mechanism: RenderMechanism) {
+        renderMechanism = mechanism
     }
     
     @discardableResult

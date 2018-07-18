@@ -16,31 +16,10 @@ class StudioViewController: UIViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         artworkView = ArtworkView(frame: self.view.frame)
-        fingerStrokeRecognizer = StrokeGestureRecognizer(target: self, action: #selector(strokeUpdated(_:)))
-        fingerStrokeRecognizer.delegate = self
-        fingerStrokeRecognizer.cancelsTouchesInView = true
-        artworkView.addGestureRecognizer(fingerStrokeRecognizer)
-        fingerStrokeRecognizer.coordinateSpaceView = artworkView
         self.view.addSubview(artworkView)
-        
-        artworkView.addLayer()
+        artworkView.currentRenderMechanism = RenderMechanism(color: .red, width: 3, texture: "CrayonTexture")
+        artworkView.switchLayer(to: 0)
     }
-    
-    @objc func strokeUpdated(_ strokeGesture: StrokeGestureRecognizer) {
-        var stroke: Stroke?
-        if strokeGesture.state != .cancelled {
-            stroke = strokeGesture.stroke
-        }
-        if let updatedStroke = stroke {
-            if strokeGesture.state == .ended {
-                artworkView.activeStrokeView.stroke = updatedStroke
-                artworkView.mergeActiveStroke()
-            } else {
-                artworkView.activeStrokeView.stroke = updatedStroke
-            }
-        }
-    }
-    
 
     /*
     // MARK: - Navigation
