@@ -11,85 +11,25 @@
 
 import UIKit
 
-class StrokeGestureRecognizer: UIGestureRecognizer {
+class StrokeGestureRecognizer: OnWorkGestureRecognizer {
     
     var stroke: Stroke!
-    var coordinateSpaceView: UIView!
-    
-    var trackedTouch: UITouch?
-    var initialTimestamp: TimeInterval?
-    
-    var fingerStartTimer: Timer? = nil
-    
     var renderMechanism: RenderMechanism! {
         didSet {
             stroke.renderMechanism = renderMechanism
         }
     }
     
-    private let cancellationTimeInterval = TimeInterval(0.1)
-    
-    override init(target: Any?, action: Selector?) {
-        super.init(target: target, action: action)
+    override func onWorkGestureRecognizerDidLoad() {
         stroke = Stroke(renderMechanism: defaultRenderMechanism)
         renderMechanism = defaultRenderMechanism
     }
     
-    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
-        if self.trackedTouch == nil {
-            self.trackedTouch = touches.first
-            self.initialTimestamp = trackedTouch?.timestamp
-            self.fingerStartTimer = Timer.scheduledTimer(timeInterval: cancellationTimeInterval,
-                                        target: self, selector: #selector(beginIfNeeded(_:)),
-                                        userInfo: nil, repeats: false)
-        }
-        append(touches: touches, event: event)
-    }
-    
-    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
-        if append(touches: touches, event: event) {
-            if state == .began {
-                state = .changed
-            }
-        }
-    }
-    
-    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
-        if append(touches: touches, event: event) {
-            stroke.state = .done
-            state = .ended
-        }
-    }
-    
-    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
-        if append(touches: touches, event: event) {
-            stroke.state = .cancelled
-            state = .failed
-        }
-    }
-    
-    override func reset() {
-        self.stroke = Stroke(renderMechanism: renderMechanism)
-        self.trackedTouch = nil
-        super.reset()
-    }
-    
-    @objc func beginIfNeeded(_ timer: Timer) {
-        if state == .possible {
-            state = .began
-        }
-    }
-    
-    func setRenderMechanism(with mechanism: RenderMechanism) {
-        renderMechanism = mechanism
-    }
-    
-    @discardableResult
-    private func append(touches: Set<UITouch>, event: UIEvent?) -> Bool {
-        if let touchToAppend = self.trackedTouch {
+    override func workingGestureMoved(touches: Set<UITouch>, event: UIEvent?) -> Bool {
+        if let touchToAppend = trackedTouch {
             for touch in touches {
-                if touch !== touchToAppend && touch.timestamp - self.initialTimestamp!
-                    < self.cancellationTimeInterval {
+                if touch !== touchToAppend && touch.timestamp - initialTimestamp!
+                    < cancellationTimeInterval {
                     state = (state == .possible) ? .failed : .cancelled
                     return false
                 }
@@ -103,11 +43,24 @@ class StrokeGestureRecognizer: UIGestureRecognizer {
                     }
                 }
                 let sample = StrokeSample(timeStamp: timestamp, location: location)
-                self.stroke.add(sample: sample)
+                stroke.add(sample: sample)
                 return true
             }
         }
         return false
     }
     
+    override func workingGestureFinished(touches: Set<UITouch>, event: UIEvent?) {
+        stroke.state = .done
+    }
+    
+    override func workingGestureCancelled(touches: Set<UITouch>, event: UIEvent?) {
+        stroke.state = .cancelled
+    }
+    
+    override func workingGestureWillReset() {
+        stroke = Stroke(renderMechanism: renderMechanism)
+    }
+    
 }
+

@@ -19,6 +19,8 @@
 		3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */; };
 		3AE220E920FB276200FC80E3 /* CGMathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE220E820FB276200FC80E3 /* CGMathExtension.swift */; };
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
+		3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */; };
+		3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */; };
 		3AEDB3C920FE104500B6C17B /* ActiveLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +38,8 @@
 		3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStrokeView.swift; sourceTree = "<group>"; };
 		3AE220E820FB276200FC80E3 /* CGMathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGMathExtension.swift; sourceTree = "<group>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
+		3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraseGestureRecognizer.swift; sourceTree = "<group>"; };
+		3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnWorkGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLayerView.swift; sourceTree = "<group>"; };
 		9AE3AFB4E4B2C13F65861B46 /* Pods-Art Pieces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.release.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.release.xcconfig"; sourceTree = "<group>"; };
 		B719522CA2C571FC47262520 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -65,6 +69,8 @@
 		3A79F4C720FEF2FC00896C0D /* ArtworkView */ = {
 			isa = PBXGroup;
 			children = (
+				3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */,
+				3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */,
 				3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */,
 				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
 				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
@@ -212,10 +218,12 @@
 			files = (
 				3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
+				3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
 				3A1EE06520FCC18C00AA315B /* StudioViewController.swift in Sources */,
 				3AE220E920FB276200FC80E3 /* CGMathExtension.swift in Sources */,
 				3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */,
+				3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */,
 				3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */,
 				3AEDB3C920FE104500B6C17B /* ActiveLayerView.swift in Sources */,
 				3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */,
@@ -368,7 +376,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -384,7 +395,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

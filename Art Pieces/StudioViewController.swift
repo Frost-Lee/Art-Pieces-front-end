@@ -20,7 +20,7 @@ class StudioViewController: UIViewController, UIGestureRecognizerDelegate {
         super.viewDidLoad()
         artworkView = ArtworkView(frame: self.view.frame)
         self.view.addSubview(artworkView)
-        artworkView.currentRenderMechanism = RenderMechanism(color: .blue, width: 3, texture: "CrayonTexture")
+        artworkView.currentRenderMechanism = RenderMechanism(color: .blue, width: 1)
         artworkView.switchLayer(to: 0)
     }
 
