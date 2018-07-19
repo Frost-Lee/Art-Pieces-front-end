@@ -108,6 +108,11 @@
                         <viewLayoutGuide key="safeArea" id="SMh-LT-pEC"/>
                     </view>
                     <navigationItem key="navigationItem" title="Studio" id="sjC-dJ-0LN">
+                        <barButtonItem key="leftBarButtonItem" title="SwitchErase" id="fCn-gn-Hgn">
+                            <connections>
+                                <action selector="switchEraseButtonTapped:" destination="aVc-FU-9by" id="aSO-Yn-yWe"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Color" id="lxe-ne-nKh">
                             <connections>
                                 <action selector="colorSelectButtonTapped:" destination="aVc-FU-9by" id="OYH-ax-rTa"/>

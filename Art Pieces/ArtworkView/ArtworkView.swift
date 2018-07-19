@@ -16,8 +16,11 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     var activeLayerView: ActiveLayerView!
     var strokeGestureRecognizer: StrokeGestureRecognizer!
+    var eraseGestureRecognizer: EraseGestureRecognizer!
     var layers: [Layer] = []
     var currentLayer: Int? = nil
+    
+    var eraserRadius: CGFloat = 5.0
     
     var currentRenderMechanism: RenderMechanism! {
         get {
@@ -43,7 +46,10 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         super.init(frame: frame)
         strokeGestureRecognizer = setupStrokeGestureRecognizer()
         strokeGestureRecognizer.isEnabled = true
+        eraseGestureRecognizer = setupEraseGestureRecognizer()
+        eraseGestureRecognizer.isEnabled = false
         self.addGestureRecognizer(strokeGestureRecognizer)
+        self.addGestureRecognizer(eraseGestureRecognizer)
         layer.drawsAsynchronously = true
         currentRenderMechanism = defaultRenderMechanism
         activeLayerView = ActiveLayerView(frame: frame)
@@ -97,6 +103,11 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    func switchEraseMode() {
+        eraseGestureRecognizer.isEnabled = !eraseGestureRecognizer.isEnabled
+        strokeGestureRecognizer.isEnabled = !eraseGestureRecognizer.isEnabled
+    }
+    
     func setCurrentColor(to color: UIColor) {
         currentRenderMechanism.color = color
     }
@@ -105,6 +116,15 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         let recognizer = StrokeGestureRecognizer()
         recognizer.addTarget(self, action: #selector(strokeUpdated))
         recognizer.delegate = self
+        recognizer.cancelsTouchesInView = true
+        recognizer.coordinateSpaceView = self
+        return recognizer
+    }
+    
+    private func setupEraseGestureRecognizer() -> EraseGestureRecognizer {
+        let recognizer = EraseGestureRecognizer()
+        recognizer.delegate = self
+        recognizer.eraseDelegate = self
         recognizer.cancelsTouchesInView = true
         recognizer.coordinateSpaceView = self
         return recognizer
@@ -119,7 +139,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     private func mergeActiveLayer() {
         mergeActiveStroke()
         if activeLayerView.strokes.count != 0 {
-            let newLayer = Layer()
+            var newLayer = Layer()
             newLayer.strokes = activeLayerView.strokes
             layers.insert(newLayer, at: currentLayer!)
             activeLayerView.strokes = []
@@ -136,4 +156,12 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         layers.append(Layer())
     }
 
+}
+
+extension ArtworkView: EraseDelegate {
+    
+    func eraseDetected(at sample: StrokeSample) {
+        activeLayerView.handleErase(at: sample, for: eraserRadius)
+    }
+    
 }

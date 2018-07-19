@@ -19,4 +19,10 @@ class EraseGestureRecognizer: OnWorkGestureRecognizer {
     
     var eraseDelegate: EraseDelegate!
     
+    override func workingGestureMoved(trackedTouch: UITouch) {
+        let location = trackedTouch.preciseLocation(in: coordinateSpaceView)
+        let timestamp = trackedTouch.timestamp
+        eraseDelegate.eraseDetected(at: StrokeSample(timeStamp: timestamp, location: location))
+    }
+    
 }

@@ -28,6 +28,10 @@ class ActiveLayerView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func draw(_ rect: CGRect) {
+        rerender()
+    }
+    
     func rerender() {
         for stroke in strokes {
             render(stroke: stroke)
@@ -42,16 +46,34 @@ class ActiveLayerView: UIView {
         setNeedsDisplay()
     }
     
-    override func draw(_ rect: CGRect) {
-        rerender()
+    func handleErase(at sample: StrokeSample, for radius: CGFloat) {
+        var strokeBuffer: [Stroke] = []
+        for stroke in strokes {
+            let splittedStrokes = executeErase(on: stroke, at: sample, for: radius)
+            strokeBuffer += splittedStrokes
+        }
+        strokes = strokeBuffer
+        setNeedsDisplay()
     }
     
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    private func executeErase(on stroke: Stroke, at sample: StrokeSample, for radius: CGFloat) -> [Stroke] {
+        var result: [Stroke] = []
+        var tempStroke: Stroke = Stroke(renderMechanism: stroke.renderMechanism)
+        let eraseLocation = sample.location
+        for sample in stroke.samples {
+            if sample.within(center: eraseLocation, radius: radius) {
+                if tempStroke.samples.count != 0 {
+                    result.append(tempStroke)
+                }
+                tempStroke = Stroke(renderMechanism: stroke.renderMechanism)
+            } else {
+                tempStroke.add(sample: sample)
+            }
+        }
+        if tempStroke.samples.count != 0 {
+            result.append(tempStroke)
+        }
+        return result
     }
-    */
 
 }

@@ -18,6 +18,7 @@ struct RenderMechanism: Codable {
             setTexturedColor()
         }
     }
+    
     var width: CGFloat!
     var texture: String?
     
