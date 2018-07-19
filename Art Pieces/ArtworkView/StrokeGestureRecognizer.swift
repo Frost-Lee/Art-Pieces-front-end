@@ -25,29 +25,16 @@ class StrokeGestureRecognizer: OnWorkGestureRecognizer {
         renderMechanism = defaultRenderMechanism
     }
     
-    override func workingGestureMoved(touches: Set<UITouch>, event: UIEvent?) -> Bool {
-        if let touchToAppend = trackedTouch {
-            for touch in touches {
-                if touch !== touchToAppend && touch.timestamp - initialTimestamp!
-                    < cancellationTimeInterval {
-                    state = (state == .possible) ? .failed : .cancelled
-                    return false
-                }
-            }
-            if touches.contains(touchToAppend) {
-                let location = touchToAppend.preciseLocation(in: self.coordinateSpaceView)
-                let timestamp = touchToAppend.timestamp
-                if let previoudSample = self.stroke.samples.last {
-                    if (previoudSample.location - location).quadrance < 0.003 {
-                        return true
-                    }
-                }
-                let sample = StrokeSample(timeStamp: timestamp, location: location)
-                stroke.add(sample: sample)
-                return true
+    override func workingGestureMoved(trackedTouch: UITouch) {
+        let location = trackedTouch.preciseLocation(in: coordinateSpaceView)
+        let timestamp = trackedTouch.timestamp
+        if let previousSample = stroke.samples.last {
+            if (previousSample.location - location).quadrance < 0.003 {
+                return
             }
         }
-        return false
+        let sample = StrokeSample(timeStamp: timestamp, location: location)
+        stroke.add(sample: sample)
     }
     
     override func workingGestureFinished(touches: Set<UITouch>, event: UIEvent?) {

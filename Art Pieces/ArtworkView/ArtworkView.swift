@@ -41,15 +41,19 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        strokeGestureRecognizer = StrokeGestureRecognizer(target: self, action: #selector(strokeUpdated))
-        strokeGestureRecognizer.delegate = self
-        strokeGestureRecognizer.cancelsTouchesInView = true
-        strokeGestureRecognizer.coordinateSpaceView = self
+        strokeGestureRecognizer = setupStrokeGestureRecognizer()
+        strokeGestureRecognizer.isEnabled = true
         self.addGestureRecognizer(strokeGestureRecognizer)
         layer.drawsAsynchronously = true
         currentRenderMechanism = defaultRenderMechanism
         activeLayerView = ActiveLayerView(frame: frame)
         self.addSubview(activeLayerView)
+    }
+    
+    override func draw(_ rect: CGRect) {
+        UIColor.white.set()
+        UIRectFill(rect)
+        rerender()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -97,6 +101,15 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         currentRenderMechanism.color = color
     }
     
+    private func setupStrokeGestureRecognizer() -> StrokeGestureRecognizer {
+        let recognizer = StrokeGestureRecognizer()
+        recognizer.addTarget(self, action: #selector(strokeUpdated))
+        recognizer.delegate = self
+        recognizer.cancelsTouchesInView = true
+        recognizer.coordinateSpaceView = self
+        return recognizer
+    }
+    
     private func mergeActiveStroke() {
         if currentStroke != nil {
             activeLayerView.mergeActiveStroke()
@@ -121,12 +134,6 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     private func addLayer() {
         layers.append(Layer())
-    }
-    
-    override func draw(_ rect: CGRect) {
-        UIColor.white.set()
-        UIRectFill(rect)
-        rerender()
     }
 
 }

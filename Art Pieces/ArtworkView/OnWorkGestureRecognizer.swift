@@ -67,17 +67,32 @@ class OnWorkGestureRecognizer: UIGestureRecognizer {
         }
     }
     
+    @discardableResult
+    func workingGestureMoved(touches: Set<UITouch>, event: UIEvent) -> Bool {
+        if let touchToAppend = trackedTouch {
+            for touch in touches {
+                if touch !== touchToAppend && touch.timestamp - initialTimestamp!
+                    < cancellationTimeInterval {
+                    state = (state == .possible) ? .failed : .cancelled
+                    return false
+                }
+            }
+            if touches.contains(touchToAppend) {
+                workingGestureMoved(trackedTouch: touchToAppend)
+                return true
+            }
+        }
+        return false
+    }
+    
     func onWorkGestureRecognizerDidLoad() {}
     
-    @discardableResult
-    func workingGestureMoved(touches: Set<UITouch>, event: UIEvent?) -> Bool {return false}
+    func workingGestureMoved(trackedTouch: UITouch) {}
     
     func workingGestureCancelled(touches: Set<UITouch>, event: UIEvent?) {}
     
     func workingGestureFinished(touches: Set<UITouch>, event: UIEvent?) {}
     
     func workingGestureWillReset() {}
-    
-    
     
 }

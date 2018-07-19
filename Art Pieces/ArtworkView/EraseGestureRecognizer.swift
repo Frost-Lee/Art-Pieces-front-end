@@ -11,6 +11,12 @@
 
 import UIKit
 
-class EraseGestureRecognizer: UIGestureRecognizer {
+protocol EraseDelegate {
+    func eraseDetected(at sample: StrokeSample)
+}
+
+class EraseGestureRecognizer: OnWorkGestureRecognizer {
+    
+    var eraseDelegate: EraseDelegate!
     
 }
