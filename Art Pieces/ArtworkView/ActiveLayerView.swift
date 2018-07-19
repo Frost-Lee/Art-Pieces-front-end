@@ -32,6 +32,10 @@ class ActiveLayerView: UIView {
         rerender()
     }
     
+    /**
+     * The method is used for rerendering the strokes in the layer. However, the method shouldn't be called
+     * directly, one should call setNeedsDisplay if need to rerender all strokes
+     */
     func rerender() {
         for stroke in strokes {
             render(stroke: stroke)

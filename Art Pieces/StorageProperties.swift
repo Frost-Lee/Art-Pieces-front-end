@@ -97,6 +97,11 @@ struct Layer: Codable {
     var identifier: String = "new layer"
     var strokes: [Stroke] = []
     
+    init(strokes: [Stroke] = [], identifier: String = "new layer") {
+        self.strokes = strokes
+        self.identifier = identifier
+    }
+    
     mutating func add(stroke: Stroke) {
         strokes.append(stroke)
     }
@@ -165,13 +170,18 @@ struct ArtworkGuide: Codable {
  */
 struct Artwork: Codable {
     
-    var identifier: String = "new artwork"
-    var layers: [Layer] = []
-    var guide: ArtworkGuide? = nil
+    var identifier: String
+    var layers: [Layer]
+    var guide: ArtworkGuide?
+    var initialSize: CGSize
     
-    mutating func add(layer: Layer) {
-        layers.append(layer)
+    init(layers: [Layer], size: CGSize, identifier: String = "new artwork", guide: ArtworkGuide? = nil) {
+        self.layers = layers
+        initialSize = size
+        self.identifier = identifier
+        self.guide = guide
     }
+    
 }
 
 

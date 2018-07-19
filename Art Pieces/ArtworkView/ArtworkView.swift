@@ -56,6 +56,12 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         self.addSubview(activeLayerView)
     }
     
+    convenience init(frame: CGRect, artwork: Artwork) {
+        self.init(frame: frame)
+        layers = artwork.layers
+        switchLayer(to: 0)
+    }
+    
     override func draw(_ rect: CGRect) {
         UIColor.white.set()
         UIRectFill(rect)
@@ -81,6 +87,10 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    /**
+     * The method is used for rerendering the strokes in all layers. However, the method shouldn't be called
+     * directly, one should call setNeedsDisplay if need to rerender all layers
+     */
     func rerender() {
         for layer in layers {
             for stroke in layer.strokes {
@@ -94,7 +104,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
             addLayer()
             currentLayer = 0
             loadActiveLayer(index: currentLayer!)
-        } else if index <= numberOfLayers {
+        } else if index <= numberOfLayers && index != currentLayer! {
             mergeActiveLayer()
             if index == numberOfLayers - 1 {
                 addLayer()
@@ -110,6 +120,16 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     func setCurrentColor(to color: UIColor) {
         currentRenderMechanism.color = color
+    }
+    
+    func export() -> Artwork {
+        withdrawActiveLayer()
+        return Artwork(layers: layers, size: frame.size)
+    }
+    
+    private func withdrawActiveLayer() {
+        let activeLayer = Layer(strokes: activeLayerView.strokes)
+        layers.insert(activeLayer, at: currentLayer!)
     }
     
     private func setupStrokeGestureRecognizer() -> StrokeGestureRecognizer {
