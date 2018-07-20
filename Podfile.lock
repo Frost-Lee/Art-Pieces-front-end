@@ -1,16 +1,20 @@
 PODS:
   - ChromaColorPicker (1.7)
+  - CHTCollectionViewWaterfallLayout/Swift (0.9.7)
 
 DEPENDENCIES:
   - ChromaColorPicker
+  - CHTCollectionViewWaterfallLayout/Swift
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - ChromaColorPicker
+    - CHTCollectionViewWaterfallLayout
 
 SPEC CHECKSUMS:
   ChromaColorPicker: 33efa67b17cca51dd253689d18b83ac7e05642c2
+  CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
 
-PODFILE CHECKSUM: b5aa8e51b78ec010885a2eeed2c12d9dbd49c30d
+PODFILE CHECKSUM: b5c7d34367adc728b6a1ffb3a3fc6fe48e96b10a
 
 COCOAPODS: 1.5.0
