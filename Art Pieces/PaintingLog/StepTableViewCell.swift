@@ -14,6 +14,8 @@ class StepTableViewCell: UITableViewCell {
     
     var step: Step!
     
+    var currentHeight: CGFloat = 0
+    
     init(style: UITableViewCell.CellStyle, step: Step) {
         super.init(style: style, reuseIdentifier: "stepTableViewCell")
         self.step = step
@@ -33,17 +35,20 @@ class StepTableViewCell: UITableViewCell {
     }
     
     func setupTitleInterface() {
-        stepTitleView = StepTitleView()
+        let stepTitleViewNib = UINib(nibName: "StepTitleView", bundle: nil)
+        let stepTitleView = stepTitleViewNib.instantiate(withOwner: self, options: nil).first as! StepTitleView
         stepTitleView.delegate = self
         stepTitleView.stepName = step.description
         stepTitleView.layer.masksToBounds = true
         self.addSubview(stepTitleView)
+        currentHeight = stepTitleView.frame.height
     }
     
     func setupDetailedInterface() {
         setupTitleInterface()
         for subStep in step.subSteps {
-            let newSubStepView = SubStepView()
+            let subStepViewNib = UINib(nibName: "SubStepView", bundle: nil)
+            let newSubStepView = subStepViewNib.instantiate(withOwner: self, options: nil).first as! SubStepView
             newSubStepView.operationDescription = subStep.description()
             newSubStepView.isToolInteractive = true
             newSubStepView.index = subStepViews.count - 1
@@ -51,6 +56,8 @@ class StepTableViewCell: UITableViewCell {
         }
         for subStepView in subStepViews {
             subStepView.layer.masksToBounds = true
+            subStepView.frame = CGRect(x: 0, y: currentHeight, width: subStepView.frame.width, height: subStepView.frame.height)
+            currentHeight += subStepView.frame.height
             self.addSubview(subStepView)
         }
     }

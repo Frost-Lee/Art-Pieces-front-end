@@ -17,9 +17,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wnF-r6-ch1">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnF-r6-ch1">
                                 <rect key="frame" x="0.0" y="70" width="314" height="698"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Records" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heD-eq-8yP">
                                         <rect key="frame" x="34" y="26" width="110" height="36"/>
@@ -39,14 +38,26 @@
                                     </tableView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="314" id="eba-QM-GT4"/>
+                                </constraints>
                             </view>
-                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Qzw-qg-H6Z" customClass="ArtworkView" customModule="Art_Pieces" customModuleProvider="target">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qzw-qg-H6Z" customClass="ArtworkView" customModule="Art_Pieces" customModuleProvider="target">
                                 <rect key="frame" x="314" y="70" width="710" height="648"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="leading" secondItem="wnF-r6-ch1" secondAttribute="trailing" id="2Ce-RC-uR0"/>
+                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="leading" secondItem="wnF-r6-ch1" secondAttribute="trailing" id="4Zd-2S-fgy"/>
+                            <constraint firstItem="wnF-r6-ch1" firstAttribute="leading" secondItem="Csn-qo-NaU" secondAttribute="leading" id="5Rj-Tb-bkh"/>
+                            <constraint firstItem="Csn-qo-NaU" firstAttribute="bottom" secondItem="Qzw-qg-H6Z" secondAttribute="bottom" constant="50" id="5oN-Dy-iBA"/>
+                            <constraint firstItem="wnF-r6-ch1" firstAttribute="top" secondItem="Csn-qo-NaU" secondAttribute="top" id="5pX-T6-8g6"/>
+                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="trailing" secondItem="Csn-qo-NaU" secondAttribute="trailing" id="GhE-dT-kvm"/>
+                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="top" secondItem="Csn-qo-NaU" secondAttribute="top" id="sTD-iO-v0a"/>
+                            <constraint firstItem="wnF-r6-ch1" firstAttribute="bottom" secondItem="Csn-qo-NaU" secondAttribute="bottom" id="y2h-9W-szv"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="Csn-qo-NaU"/>
                     </view>
                     <navigationItem key="navigationItem" id="Rnp-ZG-Qej"/>

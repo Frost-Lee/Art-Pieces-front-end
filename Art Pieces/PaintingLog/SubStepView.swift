@@ -45,23 +45,6 @@ class SubStepView: UIView {
         }
     }
     
-//    init(frame: CGRect, description: String, isInteractive: Bool, subDiscription: String? = nil) {
-//        operationDescription = description
-//        isToolInteractive = isInteractive
-//        operationSubDescription = subDiscription
-//        super.init(frame: frame)
-//    }
-    
-//    required init?(coder aDecoder: NSCoder) {
-//        fatalError("init(coder:) has not been implemented")
-//    }
-    
-    override func awakeFromNib() {
-        descriptionLabel.text = operationDescription
-        subDescriptionLabel.text = operationSubDescription
-        interactionButton.isEnabled = isToolInteractive
-    }
-    
     @IBAction func interactiveButtonTapped(_ sender: UIButton) {
         delegate.subStepInteractionButtonDidTapped()
     }
