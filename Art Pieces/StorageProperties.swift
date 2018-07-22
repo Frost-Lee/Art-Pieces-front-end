@@ -27,6 +27,11 @@ enum StrokeState: Int, Codable {
     case cancelled
 }
 
+enum OperationChange: Int, Codable {
+    case colorChange
+    case toolChange
+}
+
 
 /**
  * StrokeSample is a single that records a single point of the user's touch on the screen
@@ -114,9 +119,16 @@ struct Layer: Codable {
 struct SubStep: Codable, Sequence {
     
     var renderDescription: String = "no render description"
+    var operationType: OperationChange
     var relatedOperationLayer: [Int] = []
     var relatedOperationStroke: [Int] = []
     var renderMechanism: RenderMechanism
+    
+    init(operationType: OperationChange, renderMechanism: RenderMechanism, renderDescription: String) {
+        self.operationType = operationType
+        self.renderMechanism = renderMechanism
+        self.renderDescription = renderDescription
+    }
     
     mutating func add(layerIndex: Int, strokeIndex: Int) {
         relatedOperationLayer.append(layerIndex)
@@ -130,6 +142,15 @@ struct SubStep: Codable, Sequence {
     
     mutating func setRenderMechanism(with mechanism: RenderMechanism) {
         renderMechanism = mechanism
+    }
+    
+    func description() -> String {
+        switch operationType {
+        case .colorChange:
+            return "Change Color:"
+        case .toolChange:
+            return "Use Tool:"
+        }
     }
     
     func makeIterator() -> SubStepContentIterator {

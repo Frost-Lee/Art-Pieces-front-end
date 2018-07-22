@@ -44,16 +44,12 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        strokeGestureRecognizer = setupStrokeGestureRecognizer()
-        strokeGestureRecognizer.isEnabled = true
-        eraseGestureRecognizer = setupEraseGestureRecognizer()
-        eraseGestureRecognizer.isEnabled = false
-        self.addGestureRecognizer(strokeGestureRecognizer)
-        self.addGestureRecognizer(eraseGestureRecognizer)
-        layer.drawsAsynchronously = true
-        currentRenderMechanism = defaultRenderMechanism
-        activeLayerView = ActiveLayerView(frame: frame)
-        self.addSubview(activeLayerView)
+        initialize()
+    }
+    
+    convenience init() {
+        self.init()
+        initialize()
     }
     
     convenience init(frame: CGRect, artwork: Artwork) {
@@ -69,7 +65,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     }
     
     required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: aDecoder)
     }
     
     @objc func strokeUpdated() {
@@ -125,6 +121,19 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     func export() -> Artwork {
         withdrawActiveLayer()
         return Artwork(layers: layers, size: frame.size)
+    }
+    
+    private func initialize() {
+        strokeGestureRecognizer = setupStrokeGestureRecognizer()
+        strokeGestureRecognizer.isEnabled = true
+        eraseGestureRecognizer = setupEraseGestureRecognizer()
+        eraseGestureRecognizer.isEnabled = false
+        self.addGestureRecognizer(strokeGestureRecognizer)
+        self.addGestureRecognizer(eraseGestureRecognizer)
+        layer.drawsAsynchronously = true
+        currentRenderMechanism = defaultRenderMechanism
+        activeLayerView = ActiveLayerView(frame: frame)
+        self.addSubview(activeLayerView)
     }
     
     private func withdrawActiveLayer() {

@@ -27,7 +27,6 @@ extension GalleryViewController: CHTCollectionViewDelegateWaterfallLayout {
         return CGSize.zero
     }
     
-    
 }
 
 

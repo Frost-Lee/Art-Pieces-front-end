@@ -32,6 +32,14 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bgu-XU-W09">
+                                <rect key="frame" x="635" y="309" width="164" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Go to Test Lecture View"/>
+                                <connections>
+                                    <segue destination="FhF-1I-n0L" kind="showDetail" id="6ga-QI-yiB"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="0.070588235289999995" green="0.1176470588" blue="0.17254901959999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="s6d-6W-3D5"/>
@@ -41,6 +49,14 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dc5-fm-ZLb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-471" y="1369"/>
+        </scene>
+        <!--Lecture-->
+        <scene sceneID="oKj-f0-nx9">
+            <objects>
+                <viewControllerPlaceholder storyboardName="Lecture" id="FhF-1I-n0L" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="aLZ-nX-GXG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-471" y="1839"/>
         </scene>
         <!--Gallery-->
         <scene sceneID="e7P-Lx-TZf">
