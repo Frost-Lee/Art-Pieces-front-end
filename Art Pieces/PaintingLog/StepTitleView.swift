@@ -17,6 +17,8 @@ class StepTitleView: UIView {
     @IBOutlet weak var stepNameLabel: UILabel!
     @IBOutlet weak var detailArrowImageView: UIImageView!
     
+    static var height: CGFloat = 35
+    
     var delegate: StepTitleDelegate!
     
     var stepName: String! {

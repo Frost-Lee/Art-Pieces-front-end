@@ -21,6 +21,8 @@ class SubStepView: UIView {
     var delegate: SubStepViewDelegate!
     var index: Int!
     
+    static var height: CGFloat = 72
+    
     var operationDescription: String! {
         didSet {
             if descriptionLabel != nil {

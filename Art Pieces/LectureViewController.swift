@@ -13,7 +13,7 @@ class LectureViewController: UIViewController {
     @IBOutlet weak var stepTableView: UITableView!
     @IBOutlet weak var artworkView: ArtworkView!
     
-    var selectedStep: Int = 1
+    var selectedSteps: Set<Int> = []
     
     var artworkGuide: ArtworkGuide = ArtworkGuide()
     
@@ -27,12 +27,17 @@ class LectureViewController: UIViewController {
                               renderDescription: "Step 1")
         step.add(subStep: subStep)
         step.add(subStep: subStep)
+        step.description = "Step 1"
+        artworkGuide.add(step: step)
+        step.description = "Step 2"
+        artworkGuide.add(step: step)
+        step.description = "Step 3"
         artworkGuide.add(step: step)
         
         // initialize the cell
         stepTableView.register(StepTableViewCell.self, forCellReuseIdentifier: "stepTableViewCell")
         stepTableView.reloadData()
-        stepTableView.separatorStyle = .none
+        
     }
 
 }
@@ -46,17 +51,47 @@ extension LectureViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let stepTableViewCell = StepTableViewCell()
+        stepTableViewCell.selectionStyle = .none
+        stepTableViewCell.delegate = self
+        stepTableViewCell.backgroundColor = UIColor(red: 247/255, green: 246/255, blue: 244/255, alpha: 1)
+        stepTableViewCell.clipsToBounds = true
         stepTableViewCell.step = artworkGuide.steps[indexPath.row]
-        if indexPath.row == selectedStep {
+        stepTableViewCell.index = indexPath.row
+        if selectedSteps.contains(indexPath.row) {
             stepTableViewCell.setupDetailedInterface()
         } else {
-            stepTableViewCell.setupDetailedInterface()
+            stepTableViewCell.setupTitleInterface()
         }
         return stepTableViewCell
     }
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 100
+        if selectedSteps.contains(indexPath.row) {
+            let step = artworkGuide.steps[indexPath.row]
+            let fullHeight = CGFloat(step.subSteps.count) * SubStepView.height + StepTitleView.height
+            return fullHeight
+        } else {
+            let titleHeight = StepTitleView.height
+            return titleHeight
+        }
+    }
+    
+}
+
+extension LectureViewController: StepTableViewCellDelegate {
+    
+    func stepTitleBarDidTapped(at index: Int) {
+        stepTableView.beginUpdates()
+        if selectedSteps.contains(index) {
+            selectedSteps.remove(index)
+        } else {
+            selectedSteps.insert(index)
+        }
+        stepTableView.reloadRows(at: [IndexPath(row: index, section: 0)], with: .automatic)
+        stepTableView.endUpdates()
+    }
+    
+    func subStepInteractionButtonDidTapped(at index: Int) {
     }
     
 }

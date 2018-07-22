@@ -37,7 +37,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go to Test Lecture View"/>
                                 <connections>
-                                    <segue destination="FhF-1I-n0L" kind="showDetail" id="6ga-QI-yiB"/>
+                                    <segue destination="FhF-1I-n0L" kind="show" id="6ga-QI-yiB"/>
                                 </connections>
                             </button>
                         </subviews>
