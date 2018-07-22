@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="rvs-gg-AJx">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="SXT-CY-UmH">
     <device id="ipad9_7" orientation="landscape">
         <adaptation id="fullscreen"/>
     </device>
@@ -9,16 +9,16 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lecture View Controller-->
+        <!--Lecture Presentation View Controller-->
         <scene sceneID="LsV-jb-v1N">
             <objects>
-                <viewController id="SXT-CY-UmH" customClass="LectureViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="SXT-CY-UmH" customClass="LecturePresentationViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Py-8J-1T9">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wnF-r6-ch1">
-                                <rect key="frame" x="0.0" y="70" width="290" height="698"/>
+                                <rect key="frame" x="0.0" y="20" width="290" height="748"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Records" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="heD-eq-8yP">
                                         <rect key="frame" x="24" y="26" width="110" height="36"/>
@@ -27,7 +27,7 @@
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="4Z8-Bt-Xsc">
-                                        <rect key="frame" x="0.0" y="70" width="290" height="558"/>
+                                        <rect key="frame" x="0.0" y="70" width="290" height="608"/>
                                         <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="290" id="HaC-U0-YsC"/>
@@ -38,7 +38,7 @@
                                         </connections>
                                     </tableView>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bWs-hv-7x9">
-                                        <rect key="frame" x="0.0" y="627" width="290" height="71"/>
+                                        <rect key="frame" x="0.0" y="677" width="290" height="71"/>
                                         <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="Eta-Ya-tZz"/>
@@ -60,7 +60,7 @@
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qzw-qg-H6Z" customClass="ArtworkView" customModule="Art_Pieces" customModuleProvider="target">
-                                <rect key="frame" x="290" y="70" width="734" height="629"/>
+                                <rect key="frame" x="290" y="20" width="734" height="679"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAL-hW-zx3">
@@ -96,24 +96,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="suN-BC-iOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="693.75" y="60.9375"/>
-        </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="3D6-am-SlH">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rvs-gg-AJx" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="h78-Dt-zJh">
-                        <rect key="frame" x="0.0" y="20" width="1024" height="50"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="SXT-CY-UmH" kind="relationship" relationship="rootViewController" id="GWe-gS-LQl"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="FQF-Ov-i4A" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="694" y="-720"/>
         </scene>
     </scenes>
 </document>

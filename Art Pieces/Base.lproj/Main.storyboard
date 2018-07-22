@@ -12,7 +12,7 @@
         <!--Lecture-->
         <scene sceneID="OfT-1R-Wjb">
             <objects>
-                <viewController id="bmf-NV-OxF" sceneMemberID="viewController">
+                <viewController id="bmf-NV-OxF" customClass="LectureViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="qtU-bR-cT2">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="648"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -37,7 +37,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Go to Test Lecture View"/>
                                 <connections>
-                                    <segue destination="FhF-1I-n0L" kind="show" id="6ga-QI-yiB"/>
+                                    <action selector="pushButtonTapped:" destination="bmf-NV-OxF" eventType="touchUpInside" id="uH1-YV-CKk"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -45,6 +45,9 @@
                         <viewLayoutGuide key="safeArea" id="s6d-6W-3D5"/>
                     </view>
                     <navigationItem key="navigationItem" title="Lecture" id="Bvo-xV-a7q"/>
+                    <connections>
+                        <segue destination="FhF-1I-n0L" kind="show" identifier="showLecturePresentationViewController" id="dUp-2z-viT"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dc5-fm-ZLb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

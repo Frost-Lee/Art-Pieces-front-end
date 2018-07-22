@@ -15,8 +15,9 @@
 		3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */; };
 		3A8C93AE20F895EE005D5BD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */; };
 		3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C93B520F89658005D5BD1 /* StorageProperties.swift */; };
+		3A8D114D21048E96008E634F /* LectureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D114C21048E96008E634F /* LectureViewController.swift */; };
 		3A9DE80A2100CB1A0076203E /* GalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A9DE8092100CB1A0076203E /* GalleryViewController.swift */; };
-		3AA7BBC221041BE0004E20CE /* LectureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC121041BE0004E20CE /* LectureViewController.swift */; };
+		3AA7BBC221041BE0004E20CE /* LecturePresentationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC121041BE0004E20CE /* LecturePresentationViewController.swift */; };
 		3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */; };
 		3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06ABF20FB670600AA0138 /* ArtworkView.swift */; };
 		3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */; };
@@ -42,8 +43,9 @@
 		3A8C93AD20F895EE005D5BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A8C93AF20F895EE005D5BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8C93B520F89658005D5BD1 /* StorageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProperties.swift; sourceTree = "<group>"; };
+		3A8D114C21048E96008E634F /* LectureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureViewController.swift; sourceTree = "<group>"; };
 		3A9DE8092100CB1A0076203E /* GalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryViewController.swift; sourceTree = "<group>"; };
-		3AA7BBC121041BE0004E20CE /* LectureViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureViewController.swift; sourceTree = "<group>"; };
+		3AA7BBC121041BE0004E20CE /* LecturePresentationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturePresentationViewController.swift; sourceTree = "<group>"; };
 		3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
 		3AC06ABF20FB670600AA0138 /* ArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkView.swift; sourceTree = "<group>"; };
 		3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStrokeView.swift; sourceTree = "<group>"; };
@@ -120,10 +122,11 @@
 			children = (
 				3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */,
 				3A8C93A720F895EC005D5BD1 /* Main.storyboard */,
+				3A8D114C21048E96008E634F /* LectureViewController.swift */,
 				3A9DE8092100CB1A0076203E /* GalleryViewController.swift */,
 				3A1EE06420FCC18C00AA315B /* StudioViewController.swift */,
 				3ADC3C6F21031FA400C31637 /* Lecture.storyboard */,
-				3AA7BBC121041BE0004E20CE /* LectureViewController.swift */,
+				3AA7BBC121041BE0004E20CE /* LecturePresentationViewController.swift */,
 				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
 				3ADC3C6021030E3700C31637 /* PaintingLog */,
 				3A79F4C720FEF2FC00896C0D /* ArtworkView */,
@@ -256,11 +259,12 @@
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
 				3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
+				3A8D114D21048E96008E634F /* LectureViewController.swift in Sources */,
 				3A1EE06520FCC18C00AA315B /* StudioViewController.swift in Sources */,
 				3AE220E920FB276200FC80E3 /* CGMathExtension.swift in Sources */,
 				3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */,
 				3ADC3C6A210312AE00C31637 /* StepTitleView.swift in Sources */,
-				3AA7BBC221041BE0004E20CE /* LectureViewController.swift in Sources */,
+				3AA7BBC221041BE0004E20CE /* LecturePresentationViewController.swift in Sources */,
 				3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */,
 				3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */,
 				3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */,
