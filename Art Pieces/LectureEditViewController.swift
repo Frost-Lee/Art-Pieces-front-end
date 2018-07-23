@@ -15,6 +15,7 @@ class LectureEditViewController: UIViewController {
 
     @IBOutlet weak var stepTableView: UITableView!
     @IBOutlet weak var artworkView: ArtworkView!
+    @IBOutlet weak var toolBarView: ToolBarView!
     
     var selectedSteps: Set<Int> = []
     
@@ -42,6 +43,11 @@ class LectureEditViewController: UIViewController {
 //        step.description = "Step 3"
 //        artworkGuide.add(step: step)
         
+        let toolBarNib = UINib(nibName: "ToolBarView", bundle: nil)
+        toolBarView = toolBarNib.instantiate(withOwner: self, options: nil).first as? ToolBarView
+        toolBarView.frame = CGRect(x: stepTableView.frame.width, y: self.view.frame.height - CGFloat(71),
+                                   width: UIScreen.main.bounds.width - stepTableView.frame.width, height: 71)
+        self.view.addSubview(toolBarView)
         artworkView.currentRenderMechanism = RenderMechanism(color: .blue, width: 1)
         artworkView.switchLayer(to: 0)
         artworkView.delegate = self

@@ -15,10 +15,12 @@ class LectureViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.lightGray
-        let nib = UINib(nibName: "MasterNavigationView", bundle: nil)
-        self.edgesForExtendedLayout = []
-        masterNavigationView = nib.instantiate(withOwner: self, options: nil).first as? MasterNavigationView
-        masterNavigationView.frame = CGRect(x: 0, y: 0, width: 1024, height: 110)
+        let masterNavigationNib = UINib(nibName: "MasterNavigationView", bundle: nil)
+        //self.edgesForExtendedLayout = []
+        masterNavigationView = masterNavigationNib.instantiate(withOwner: self, options: nil).first
+            as? MasterNavigationView
+        let screenWidth = UIScreen.main.bounds.width
+        masterNavigationView.frame = CGRect(x: 0, y: 0, width: screenWidth, height: 110)
         self.view.addSubview(masterNavigationView)
     }
     

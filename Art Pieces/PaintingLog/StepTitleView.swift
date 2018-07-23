@@ -34,6 +34,7 @@ class StepTitleView: UIView {
     }
     
     override func awakeFromNib() {
+        super.awakeFromNib()
         stepNameLabel.text = stepName
     }
     

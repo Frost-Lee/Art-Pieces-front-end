@@ -92,26 +92,26 @@
                                 <rect key="frame" x="290" y="20" width="734" height="679"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DAL-hW-zx3">
-                                <rect key="frame" x="290" y="698" width="734" height="70"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oe9-Uq-6i4" customClass="ToolBarView" customModule="Art_Pieces" customModuleProvider="target">
+                                <rect key="frame" x="290" y="697" width="734" height="71"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="70" id="aIF-iq-4Hv"/>
+                                    <constraint firstAttribute="height" constant="71" id="RNo-oW-fyN"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="leading" secondItem="wnF-r6-ch1" secondAttribute="trailing" id="0Nc-uG-gXX"/>
-                            <constraint firstItem="Csn-qo-NaU" firstAttribute="bottom" secondItem="Qzw-qg-H6Z" secondAttribute="bottom" constant="69" id="1vz-mt-cLf"/>
-                            <constraint firstItem="DAL-hW-zx3" firstAttribute="leading" secondItem="wnF-r6-ch1" secondAttribute="trailing" id="LNi-Ze-Tsy"/>
+                            <constraint firstAttribute="trailing" secondItem="Qzw-qg-H6Z" secondAttribute="trailing" id="8Da-dd-v1n"/>
+                            <constraint firstItem="Csn-qo-NaU" firstAttribute="bottom" secondItem="Qzw-qg-H6Z" secondAttribute="bottom" constant="69" id="8cg-sd-OuL"/>
+                            <constraint firstItem="oe9-Uq-6i4" firstAttribute="bottom" secondItem="Csn-qo-NaU" secondAttribute="bottom" id="Iih-Pc-9Mj"/>
+                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="top" secondItem="wnF-r6-ch1" secondAttribute="top" id="KMG-4v-t8u"/>
                             <constraint firstItem="wnF-r6-ch1" firstAttribute="top" secondItem="Csn-qo-NaU" secondAttribute="top" id="Tgz-P4-TNO"/>
-                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="leading" secondItem="wnF-r6-ch1" secondAttribute="trailing" id="XRO-KJ-bNH"/>
-                            <constraint firstItem="DAL-hW-zx3" firstAttribute="bottom" secondItem="Csn-qo-NaU" secondAttribute="bottom" id="bgo-nJ-rZk"/>
-                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="top" secondItem="Csn-qo-NaU" secondAttribute="top" id="gIY-iy-FSe"/>
-                            <constraint firstItem="DAL-hW-zx3" firstAttribute="trailing" secondItem="Csn-qo-NaU" secondAttribute="trailing" id="mzk-mP-uXu"/>
+                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="leading" secondItem="oe9-Uq-6i4" secondAttribute="leading" id="bJE-4t-G5T"/>
+                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="leading" secondItem="wnF-r6-ch1" secondAttribute="trailing" id="fui-ue-l7k"/>
+                            <constraint firstItem="oe9-Uq-6i4" firstAttribute="trailing" secondItem="Csn-qo-NaU" secondAttribute="trailing" id="mpF-UI-38X"/>
                             <constraint firstItem="wnF-r6-ch1" firstAttribute="leading" secondItem="Csn-qo-NaU" secondAttribute="leading" id="pzA-Lb-seE"/>
-                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="trailing" secondItem="Csn-qo-NaU" secondAttribute="trailing" id="wxr-NC-bmU"/>
+                            <constraint firstItem="Qzw-qg-H6Z" firstAttribute="trailing" secondItem="oe9-Uq-6i4" secondAttribute="trailing" id="vUf-OG-pYu"/>
                             <constraint firstItem="wnF-r6-ch1" firstAttribute="bottom" secondItem="Csn-qo-NaU" secondAttribute="bottom" id="zFa-cd-Eyc"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Csn-qo-NaU"/>
@@ -120,11 +120,12 @@
                     <connections>
                         <outlet property="artworkView" destination="Qzw-qg-H6Z" id="35g-1U-gxW"/>
                         <outlet property="stepTableView" destination="4Z8-Bt-Xsc" id="jMG-lA-ric"/>
+                        <outlet property="toolBarView" destination="oe9-Uq-6i4" id="CTE-cR-FjV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="suN-BC-iOp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="693.75" y="60.937499999999993"/>
+            <point key="canvasLocation" x="693" y="60"/>
         </scene>
     </scenes>
 </document>
