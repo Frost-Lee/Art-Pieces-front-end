@@ -19,7 +19,7 @@ class ActiveLayerView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        activeStrokeView = SingleStrokeView(frame: frame)
+        activeStrokeView = SingleStrokeView(frame: self.bounds)
         self.addSubview(activeStrokeView)
         self.backgroundColor = UIColor(red: 1, green: 1, blue: 1, alpha: 0)
     }

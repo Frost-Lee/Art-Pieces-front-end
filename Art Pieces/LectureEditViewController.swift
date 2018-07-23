@@ -18,24 +18,33 @@ class LectureEditViewController: UIViewController {
     
     var selectedSteps: Set<Int> = []
     
-    var artworkGuide: ArtworkGuide = ArtworkGuide()
+    var artworkGuide: ArtworkGuide = ArtworkGuide() {
+        didSet {
+            stepTableView.beginUpdates()
+            stepTableView.reloadData()
+            stepTableView.endUpdates()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Only for test use
-        var step = Step()
-        let renderMechanism = RenderMechanism(color: .black, width: 1.0)
-        let subStep = SubStep(operationType: .colorChange, renderMechanism: renderMechanism,
-                              renderDescription: "Step 1")
-        step.add(subStep: subStep)
-        step.add(subStep: subStep)
-        step.description = "Step 1"
-        artworkGuide.add(step: step)
-        step.description = "Step 2"
-        artworkGuide.add(step: step)
-        step.description = "Step 3"
-        artworkGuide.add(step: step)
+//        // Only for test use
+//        var step = Step()
+//        let renderMechanism = RenderMechanism(color: .black, width: 1.0)
+//        let subStep = SubStep(operationType: .colorChange, renderMechanism: renderMechanism,
+//                              renderDescription: "Step 1")
+//        step.add(subStep: subStep)
+//        step.add(subStep: subStep)
+//        step.description = "Step 1"
+//        artworkGuide.add(step: step)
+//        step.description = "Step 2"
+//        artworkGuide.add(step: step)
+//        step.description = "Step 3"
+//        artworkGuide.add(step: step)
         
+        artworkView.currentRenderMechanism = RenderMechanism(color: .blue, width: 1)
+        artworkView.switchLayer(to: 0)
+        artworkView.delegate = self
         // initialize the cell
         stepTableView.register(StepTableViewCell.self, forCellReuseIdentifier: "stepTableViewCell")
         stepTableView.reloadData()
@@ -84,6 +93,7 @@ extension LectureEditViewController: UITableViewDelegate, UITableViewDataSource 
     
 }
 
+
 extension LectureEditViewController: StepTableViewCellDelegate {
     
     func stepTitleBarDidTapped(at index: Int) {
@@ -98,6 +108,15 @@ extension LectureEditViewController: StepTableViewCellDelegate {
     }
     
     func subStepInteractionButtonDidTapped(at index: Int) {
+    }
+    
+}
+
+
+extension LectureEditViewController: ArtworkViewDelegate {
+    
+    func artworkGuideDidUpdated(_ guide: ArtworkGuide) {
+        artworkGuide = guide
     }
     
 }

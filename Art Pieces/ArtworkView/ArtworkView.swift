@@ -12,21 +12,27 @@
 
 import UIKit
 
+protocol ArtworkViewDelegate {
+    func artworkGuideDidUpdated(_ guide: ArtworkGuide)
+}
+
 class ArtworkView: UIView, UIGestureRecognizerDelegate {
+    
+    var delegate: ArtworkViewDelegate?
     
     var activeLayerView: ActiveLayerView!
     var strokeGestureRecognizer: StrokeGestureRecognizer!
     var eraseGestureRecognizer: EraseGestureRecognizer!
     
-    var currentStep: Step = Step()
-    var currentLayer: Int? = nil
     var eraserRadius: CGFloat = 5.0
+    var numberOfLayers: Int {
+        return currentLayer == nil ? layers.count : layers.count + 1
+    }
     
     var layers: [Layer] = []
-    var guide: ArtworkGuide?
+    var guide: ArtworkGuide = ArtworkGuide()
     
     var isRecordingForLecture: Bool = false
-    
     var isInteractive: Bool = true {
         didSet {
             if isInteractive == false {
@@ -38,24 +44,23 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    var currentLayer: Int? = nil
     var currentRenderMechanism: RenderMechanism! {
         get {
             return strokeGestureRecognizer.renderMechanism
         } set {
             strokeGestureRecognizer.renderMechanism = newValue
+            if isRecordingForLecture {
+                writeGuideLog(from: currentRenderMechanism, to: newValue)
+            }
         }
     }
-    
     var currentStroke: Stroke? {
         get {
             return self.activeLayerView.activeStrokeView.stroke
         } set {
             self.activeLayerView.activeStrokeView.stroke = newValue
         }
-    }
-    
-    var numberOfLayers: Int {
-        return currentLayer == nil ? layers.count : layers.count + 1
     }
     
     override init(frame: CGRect) {
@@ -82,6 +87,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+        initialize()
     }
     
     @objc func strokeUpdated() {
@@ -140,13 +146,8 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     }
     
     func addAnotherStep() {
-        if isRecordingForLecture && currentStep.subSteps.count != 0 {
-            if guide != nil {
-                guide?.add(step: currentStep)
-            } else {
-                guide = ArtworkGuide()
-                guide?.add(step: currentStep)
-            }
+        if isRecordingForLecture {
+            guide.steps.append(Step())
         }
     }
     
@@ -159,8 +160,23 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         self.addGestureRecognizer(eraseGestureRecognizer)
         layer.drawsAsynchronously = true
         currentRenderMechanism = defaultRenderMechanism
-        activeLayerView = ActiveLayerView(frame: frame)
+        activeLayerView = ActiveLayerView(frame: self.bounds)
         self.addSubview(activeLayerView)
+    }
+    
+    private func writeGuideLog(from old: RenderMechanism, to new: RenderMechanism) {
+        var operationChange: OperationChange? = nil
+        if old.texture != new.texture {
+            operationChange = .toolChange
+        } else if old.color != new.color {
+            operationChange = .colorChange
+        }
+        if let change = operationChange {
+            let newSubStep = SubStep(operationType: change, renderMechanism: new, renderDescription: "")
+            let lastIndex = guide.steps.count - 1
+            guide.steps[lastIndex].add(subStep: newSubStep)
+            delegate?.artworkGuideDidUpdated(guide)
+        }
     }
     
     private func withdrawActiveLayer() {
