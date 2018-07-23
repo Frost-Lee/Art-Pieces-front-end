@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Lecture Presentation View Controller-->
+        <!--Lecture Edit View Controller-->
         <scene sceneID="LsV-jb-v1N">
             <objects>
-                <viewController hidesBottomBarWhenPushed="YES" id="SXT-CY-UmH" customClass="LecturePresentationViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController hidesBottomBarWhenPushed="YES" id="SXT-CY-UmH" customClass="LectureEditViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="0Py-8J-1T9">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

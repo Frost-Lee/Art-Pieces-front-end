@@ -5,10 +5,13 @@
 //  Created by 李灿晨 on 2018/7/22.
 //  Copyright © 2018 李灿晨. All rights reserved.
 //
+//  Abstract:
+//  LecturePresentationViewController is the place where people can watch the lecture and try their ideas by
+//  themselves.
 
 import UIKit
 
-class LecturePresentationViewController: UIViewController {
+class LectureEditViewController: UIViewController {
 
     @IBOutlet weak var stepTableView: UITableView!
     @IBOutlet weak var artworkView: ArtworkView!
@@ -37,11 +40,16 @@ class LecturePresentationViewController: UIViewController {
         stepTableView.register(StepTableViewCell.self, forCellReuseIdentifier: "stepTableViewCell")
         stepTableView.reloadData()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        self.navigationController?.navigationBar.isHidden = false
+    }
 
 }
 
 
-extension LecturePresentationViewController: UITableViewDelegate, UITableViewDataSource {
+extension LectureEditViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return artworkGuide.steps.count
@@ -76,7 +84,7 @@ extension LecturePresentationViewController: UITableViewDelegate, UITableViewDat
     
 }
 
-extension LecturePresentationViewController: StepTableViewCellDelegate {
+extension LectureEditViewController: StepTableViewCellDelegate {
     
     func stepTitleBarDidTapped(at index: Int) {
         stepTableView.beginUpdates()

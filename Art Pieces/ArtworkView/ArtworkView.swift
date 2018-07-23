@@ -22,6 +22,18 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     var eraserRadius: CGFloat = 5.0
     
+    var isRecordingForLecture: Bool = false
+    var isInteractive: Bool = true {
+        didSet {
+            if isInteractive == false {
+                strokeGestureRecognizer.isEnabled = false
+            } else {
+                strokeGestureRecognizer.isEnabled = true
+            }
+            eraseGestureRecognizer.isEnabled = false
+        }
+    }
+    
     var currentRenderMechanism: RenderMechanism! {
         get {
             return strokeGestureRecognizer.renderMechanism
