@@ -18,7 +18,7 @@ class SubStepView: UIView {
     @IBOutlet weak var subDescriptionLabel: UILabel!
     @IBOutlet weak var interactionButton: UIButton!
     
-    var delegate: SubStepViewDelegate!
+    var delegate: SubStepViewDelegate?
     var index: Int!
     
     static var height: CGFloat = 72
@@ -48,7 +48,7 @@ class SubStepView: UIView {
     }
     
     @IBAction func interactiveButtonTapped(_ sender: UIButton) {
-        delegate.subStepInteractionButtonDidTapped()
+        delegate?.subStepInteractionButtonDidTapped()
     }
     
 }

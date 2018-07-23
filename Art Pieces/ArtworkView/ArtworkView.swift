@@ -17,12 +17,16 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     var activeLayerView: ActiveLayerView!
     var strokeGestureRecognizer: StrokeGestureRecognizer!
     var eraseGestureRecognizer: EraseGestureRecognizer!
-    var layers: [Layer] = []
-    var currentLayer: Int? = nil
     
+    var currentStep: Step = Step()
+    var currentLayer: Int? = nil
     var eraserRadius: CGFloat = 5.0
     
+    var layers: [Layer] = []
+    var guide: ArtworkGuide?
+    
     var isRecordingForLecture: Bool = false
+    
     var isInteractive: Bool = true {
         didSet {
             if isInteractive == false {
@@ -133,6 +137,17 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     func export() -> Artwork {
         withdrawActiveLayer()
         return Artwork(layers: layers, size: frame.size)
+    }
+    
+    func addAnotherStep() {
+        if isRecordingForLecture && currentStep.subSteps.count != 0 {
+            if guide != nil {
+                guide?.add(step: currentStep)
+            } else {
+                guide = ArtworkGuide()
+                guide?.add(step: currentStep)
+            }
+        }
     }
     
     private func initialize() {

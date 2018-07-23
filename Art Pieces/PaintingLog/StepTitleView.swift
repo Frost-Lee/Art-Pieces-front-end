@@ -19,7 +19,7 @@ class StepTitleView: UIView {
     
     static var height: CGFloat = 35
     
-    var delegate: StepTitleDelegate!
+    var delegate: StepTitleDelegate?
     
     var stepName: String! {
         didSet {
@@ -30,7 +30,7 @@ class StepTitleView: UIView {
     }
     
     @IBAction func stepTitleTapped(_ sender: UIButton) {
-        delegate.stepTitleBarDidTapped()
+        delegate?.stepTitleBarDidTapped()
     }
     
     override func awakeFromNib() {
