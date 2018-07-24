@@ -10,11 +10,11 @@
 		3151465A0BB9EB15F7610CEB /* libPods-Art Pieces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B719522CA2C571FC47262520 /* libPods-Art Pieces.a */; };
 		3A1EE06520FCC18C00AA315B /* StudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1EE06420FCC18C00AA315B /* StudioViewController.swift */; };
 		3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */; };
+		3A5C3BB321075D9000BBDA70 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */; };
+		3A5C3BB421075D9000BBDA70 /* ToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */; };
 		3A6B32042104BD3A00F2C63E /* MasterNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */; };
 		3A6B32062104BD7500F2C63E /* MasterNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B32052104BD7500F2C63E /* MasterNavigationView.swift */; };
 		3A6B32082105789E00F2C63E /* APTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B32072105789E00F2C63E /* APTheme.swift */; };
-		3A81595121060EFB00F0F640 /* ToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A81595021060EFB00F0F640 /* ToolBarView.xib */; };
-		3A81595321060F3200F0F640 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A81595221060F3200F0F640 /* ToolBarView.swift */; };
 		3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */; };
 		3A8C93A920F895EC005D5BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93A720F895EC005D5BD1 /* Main.storyboard */; };
 		3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */; };
@@ -41,11 +41,11 @@
 /* Begin PBXFileReference section */
 		3A1EE06420FCC18C00AA315B /* StudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioViewController.swift; sourceTree = "<group>"; };
 		3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderMechanism.swift; sourceTree = "<group>"; };
+		3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+		3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolBarView.xib; sourceTree = "<group>"; };
 		3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MasterNavigationView.xib; sourceTree = "<group>"; };
 		3A6B32052104BD7500F2C63E /* MasterNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterNavigationView.swift; sourceTree = "<group>"; };
 		3A6B32072105789E00F2C63E /* APTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APTheme.swift; sourceTree = "<group>"; };
-		3A81595021060EFB00F0F640 /* ToolBarView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ToolBarView.xib; sourceTree = "<group>"; };
-		3A81595221060F3200F0F640 /* ToolBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		3A8C93A020F895EC005D5BD1 /* Art Pieces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Art Pieces.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A8C93A820F895EC005D5BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -114,8 +114,8 @@
 			children = (
 				3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */,
 				3A6B32052104BD7500F2C63E /* MasterNavigationView.swift */,
-				3A81595021060EFB00F0F640 /* ToolBarView.xib */,
-				3A81595221060F3200F0F640 /* ToolBarView.swift */,
+				3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */,
+				3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */,
 			);
 			path = FunctionalNib;
 			sourceTree = "<group>";
@@ -244,9 +244,9 @@
 				3A8C93AE20F895EE005D5BD1 /* LaunchScreen.storyboard in Resources */,
 				3ADC3C6C2103188600C31637 /* SubStepView.xib in Resources */,
 				3A6B32042104BD3A00F2C63E /* MasterNavigationView.xib in Resources */,
-				3A81595121060EFB00F0F640 /* ToolBarView.xib in Resources */,
 				3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */,
 				3A8C93A920F895EC005D5BD1 /* Main.storyboard in Resources */,
+				3A5C3BB421075D9000BBDA70 /* ToolBarView.xib in Resources */,
 				3ADC3C6421030FF800C31637 /* StepTitleView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -281,7 +281,7 @@
 			files = (
 				3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */,
 				3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */,
-				3A81595321060F3200F0F640 /* ToolBarView.swift in Sources */,
+				3A5C3BB321075D9000BBDA70 /* ToolBarView.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
 				3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,

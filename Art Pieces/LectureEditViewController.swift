@@ -10,9 +10,10 @@
 //  themselves.
 
 import UIKit
+import ChromaColorPicker
 
 class LectureEditViewController: UIViewController {
-
+    
     @IBOutlet weak var stepTableView: UITableView!
     @IBOutlet weak var artworkView: ArtworkView!
     @IBOutlet weak var toolBarView: ToolBarView!
@@ -29,25 +30,24 @@ class LectureEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        // Only for test use
-//        var step = Step()
-//        let renderMechanism = RenderMechanism(color: .black, width: 1.0)
-//        let subStep = SubStep(operationType: .colorChange, renderMechanism: renderMechanism,
-//                              renderDescription: "Step 1")
-//        step.add(subStep: subStep)
-//        step.add(subStep: subStep)
-//        step.description = "Step 1"
-//        artworkGuide.add(step: step)
-//        step.description = "Step 2"
-//        artworkGuide.add(step: step)
-//        step.description = "Step 3"
-//        artworkGuide.add(step: step)
+        //        // Only for test use
+        //        var step = Step()
+        //        let renderMechanism = RenderMechanism(color: .black, width: 1.0)
+        //        let subStep = SubStep(operationType: .colorChange, renderMechanism: renderMechanism,
+        //                              renderDescription: "Step 1")
+        //        step.add(subStep: subStep)
+        //        step.add(subStep: subStep)
+        //        step.description = "Step 1"
+        //        artworkGuide.add(step: step)
+        //        step.description = "Step 2"
+        //        artworkGuide.add(step: step)
+        //        step.description = "Step 3"
+        //        artworkGuide.add(step: step)
         
         let toolBarNib = UINib(nibName: "ToolBarView", bundle: nil)
         toolBarView = toolBarNib.instantiate(withOwner: self, options: nil).first as? ToolBarView
-        toolBarView.frame = CGRect(x: stepTableView.frame.width, y: self.view.frame.height - CGFloat(71),
-                                   width: UIScreen.main.bounds.width - stepTableView.frame.width, height: 71)
         self.view.addSubview(toolBarView)
+        toolBarView.delegate = self
         artworkView.currentRenderMechanism = RenderMechanism(color: .blue, width: 1)
         artworkView.switchLayer(to: 0)
         artworkView.delegate = self
@@ -60,7 +60,13 @@ class LectureEditViewController: UIViewController {
         super.viewWillAppear(animated)
         self.navigationController?.navigationBar.isHidden = false
     }
-
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        toolBarView.frame = CGRect(x: stepTableView.frame.width, y: self.view.frame.height - CGFloat(71),
+                                   width: UIScreen.main.bounds.width - stepTableView.frame.width, height: 71)
+    }
+    
 }
 
 
@@ -123,6 +129,55 @@ extension LectureEditViewController: ArtworkViewDelegate {
     
     func artworkGuideDidUpdated(_ guide: ArtworkGuide) {
         artworkGuide = guide
+    }
+    
+}
+
+
+extension LectureEditViewController: ToolBarViewDelegate {
+    
+    func palletButtonDidTapped(_ sender: UIButton) {
+        let paletteViewController = UIViewController()
+        paletteViewController.view.backgroundColor = APTheme.grayBackgroundColor
+        paletteViewController.preferredContentSize = CGSize(width: 300, height: 300)
+        let colorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        colorPicker.hexLabel.isHidden = true
+        colorPicker.delegate = self
+        paletteViewController.view.addSubview(colorPicker)
+        paletteViewController.modalPresentationStyle = .popover
+        let popoverPresentationController = paletteViewController.popoverPresentationController
+        popoverPresentationController?.sourceView = toolBarView.palletButton
+        popoverPresentationController?.permittedArrowDirections = .any
+        self.present(paletteViewController, animated: true, completion: nil)
+    }
+    
+    func layerButtonDidTapped(_ sender: UIButton) {
+        
+    }
+    
+    func thichnessButtonDidTapped(_ sender: UIButton) {
+        
+    }
+    
+    func transparencyButtonDidTapped(_ sender: UIButton) {
+        
+    }
+    
+    func eraserButtonDidTapped(_ sender: UIButton) {
+        
+    }
+    
+    func penButtonDidTapped(_ sender: UIButton) {
+        
+    }
+    
+}
+
+
+extension LectureEditViewController: ChromaColorPickerDelegate {
+    
+    func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
+        artworkView.currentRenderMechanism.color = color
     }
     
 }

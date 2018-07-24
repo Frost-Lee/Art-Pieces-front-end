@@ -10,11 +10,25 @@ import UIKit
 import ChromaColorPicker
 
 protocol ToolBarViewDelegate {
-    func colorDidPicked(color: UIColor)
+    
+    func palletButtonDidTapped(_ sender: UIButton)
+    func layerButtonDidTapped(_ sender: UIButton)
+    func thichnessButtonDidTapped(_ sender: UIButton)
+    func transparencyButtonDidTapped(_ sender: UIButton)
+    func eraserButtonDidTapped(_ sender: UIButton)
+    func penButtonDidTapped(_ sender: UIButton)
+    
 }
 
 class ToolBarView: UIView {
     
+    private var contentView: UIView!
+    
+    @IBOutlet weak var penButton: UIButton!
+    @IBOutlet weak var eraserButton: UIButton!
+    @IBOutlet weak var transparencyButton: UIButton!
+    @IBOutlet weak var thicknessButton: UIButton!
+    @IBOutlet weak var layerButton: UIButton!
     @IBOutlet weak var palletButton: UIButton! {
         didSet {
             if oldValue == nil {
@@ -26,34 +40,27 @@ class ToolBarView: UIView {
     
     var delegate: ToolBarViewDelegate?
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    }
-    
     @IBAction func palletButtonTapped(_ sender: UIButton) {
+        delegate?.palletButtonDidTapped(sender)
     }
     
     @IBAction func layerButtonTapped(_ sender: UIButton) {
+        delegate?.layerButtonDidTapped(sender)
     }
     
     @IBAction func thicknessButtonTapped(_ sender: UIButton) {
+        delegate?.thichnessButtonDidTapped(sender)
     }
     
     @IBAction func transparencyButtonTapped(_ sender: UIButton) {
+        delegate?.transparencyButtonDidTapped(sender)
     }
     
     @IBAction func eraserButtonTapped(_ sender: UIButton) {
+        delegate?.eraserButtonDidTapped(sender)
     }
     
     @IBAction func penButtonTapped(_ sender: UIButton) {
+        delegate?.penButtonDidTapped(sender)
     }
-    
-}
-
-extension ToolBarView: ChromaColorPickerDelegate {
-    
-    func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
-        delegate?.colorDidPicked(color: color)
-    }
-    
 }
