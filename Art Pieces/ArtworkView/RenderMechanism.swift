@@ -18,9 +18,12 @@ struct RenderMechanism: Codable {
             setTexturedColor()
         }
     }
-    
     var width: CGFloat!
-    var texture: String?
+    var texture: String? {
+        didSet {
+            setTexturedColor()
+        }
+    }
     
     var texturedColor: UIColor? = nil
     
@@ -65,6 +68,8 @@ struct RenderMechanism: Codable {
             var textureImage = UIImage(named: texturePath)
             textureImage = textureImage?.tint(color: color, blendMode: .lighten)
             texturedColor = UIColor(patternImage: textureImage!)
+        } else {
+            texturedColor = nil
         }
     }
     

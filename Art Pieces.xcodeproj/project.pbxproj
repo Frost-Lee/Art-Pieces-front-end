@@ -7,12 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */; };
-		3A5C3BB321075D9000BBDA70 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */; };
 		3A5C3BB421075D9000BBDA70 /* ToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */; };
 		3A6B32042104BD3A00F2C63E /* MasterNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */; };
 		3A6B32062104BD7500F2C63E /* MasterNavigationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B32052104BD7500F2C63E /* MasterNavigationView.swift */; };
 		3A6B32082105789E00F2C63E /* APTheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A6B32072105789E00F2C63E /* APTheme.swift */; };
+		3A75172221087F8E00373189 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75172121087F8E00373189 /* ToolBarView.swift */; };
+		3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75172321087FB800373189 /* ToolPickerTableViewController.swift */; };
 		3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */; };
 		3A8C93A920F895EC005D5BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93A720F895EC005D5BD1 /* Main.storyboard */; };
 		3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */; };
@@ -29,7 +31,6 @@
 		3ADC3C6C2103188600C31637 /* SubStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6B2103188600C31637 /* SubStepView.xib */; };
 		3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6D2103189700C31637 /* SubStepView.swift */; };
 		3ADC3C7021031FA400C31637 /* Lecture.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6F21031FA400C31637 /* Lecture.storyboard */; };
-		3AE220E920FB276200FC80E3 /* CGMathExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE220E820FB276200FC80E3 /* CGMathExtension.swift */; };
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
 		3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */; };
 		3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */; };
@@ -39,12 +40,14 @@
 
 /* Begin PBXFileReference section */
 		1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderMechanism.swift; sourceTree = "<group>"; };
-		3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolBarView.xib; sourceTree = "<group>"; };
 		3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MasterNavigationView.xib; sourceTree = "<group>"; };
 		3A6B32052104BD7500F2C63E /* MasterNavigationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MasterNavigationView.swift; sourceTree = "<group>"; };
 		3A6B32072105789E00F2C63E /* APTheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APTheme.swift; sourceTree = "<group>"; };
+		3A75172121087F8E00373189 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
+		3A75172321087FB800373189 /* ToolPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolPickerTableViewController.swift; sourceTree = "<group>"; };
 		3A8C93A020F895EC005D5BD1 /* Art Pieces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Art Pieces.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A8C93A820F895EC005D5BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -63,7 +66,6 @@
 		3ADC3C6B2103188600C31637 /* SubStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubStepView.xib; sourceTree = "<group>"; };
 		3ADC3C6D2103189700C31637 /* SubStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStepView.swift; sourceTree = "<group>"; };
 		3ADC3C6F21031FA400C31637 /* Lecture.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Lecture.storyboard; sourceTree = "<group>"; };
-		3AE220E820FB276200FC80E3 /* CGMathExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CGMathExtension.swift; sourceTree = "<group>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraseGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnWorkGestureRecognizer.swift; sourceTree = "<group>"; };
@@ -92,6 +94,49 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3A75170F21086F1000373189 /* APFoundation */ = {
+			isa = PBXGroup;
+			children = (
+				3A0EFB422108663000547E23 /* Extensions.swift */,
+				3A6B32072105789E00F2C63E /* APTheme.swift */,
+				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
+			);
+			path = APFoundation;
+			sourceTree = "<group>";
+		};
+		3A75171021086F8600373189 /* Lecture */ = {
+			isa = PBXGroup;
+			children = (
+				3ADC3C6F21031FA400C31637 /* Lecture.storyboard */,
+				3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */,
+				3A75171221087BE300373189 /* StepTableView */,
+				3A75171121087BAB00373189 /* ToolBar */,
+			);
+			path = Lecture;
+			sourceTree = "<group>";
+		};
+		3A75171121087BAB00373189 /* ToolBar */ = {
+			isa = PBXGroup;
+			children = (
+				3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */,
+				3A75172121087F8E00373189 /* ToolBarView.swift */,
+				3A75172321087FB800373189 /* ToolPickerTableViewController.swift */,
+			);
+			path = ToolBar;
+			sourceTree = "<group>";
+		};
+		3A75171221087BE300373189 /* StepTableView */ = {
+			isa = PBXGroup;
+			children = (
+				3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */,
+				3ADC3C6321030FF800C31637 /* StepTitleView.xib */,
+				3ADC3C69210312AE00C31637 /* StepTitleView.swift */,
+				3ADC3C6B2103188600C31637 /* SubStepView.xib */,
+				3ADC3C6D2103189700C31637 /* SubStepView.swift */,
+			);
+			path = StepTableView;
+			sourceTree = "<group>";
+		};
 		3A79F4C720FEF2FC00896C0D /* ArtworkView */ = {
 			isa = PBXGroup;
 			children = (
@@ -102,7 +147,6 @@
 				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
 				3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */,
 				3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */,
-				3AE220E820FB276200FC80E3 /* CGMathExtension.swift */,
 			);
 			path = ArtworkView;
 			sourceTree = "<group>";
@@ -112,8 +156,6 @@
 			children = (
 				3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */,
 				3A6B32052104BD7500F2C63E /* MasterNavigationView.swift */,
-				3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */,
-				3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */,
 			);
 			path = FunctionalNib;
 			sourceTree = "<group>";
@@ -140,33 +182,18 @@
 			isa = PBXGroup;
 			children = (
 				3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */,
+				3A8C93AF20F895EE005D5BD1 /* Info.plist */,
 				3A8C93A720F895EC005D5BD1 /* Main.storyboard */,
+				3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */,
+				3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */,
 				3A8D114C21048E96008E634F /* LectureViewController.swift */,
 				3A9DE8092100CB1A0076203E /* GalleryViewController.swift */,
-				3ADC3C6F21031FA400C31637 /* Lecture.storyboard */,
-				3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */,
-				3A6B32072105789E00F2C63E /* APTheme.swift */,
-				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
+				3A75171021086F8600373189 /* Lecture */,
 				3A81594F21060ED100F0F640 /* FunctionalNib */,
-				3ADC3C6021030E3700C31637 /* PaintingLog */,
 				3A79F4C720FEF2FC00896C0D /* ArtworkView */,
-				3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */,
-				3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */,
-				3A8C93AF20F895EE005D5BD1 /* Info.plist */,
+				3A75170F21086F1000373189 /* APFoundation */,
 			);
 			path = "Art Pieces";
-			sourceTree = "<group>";
-		};
-		3ADC3C6021030E3700C31637 /* PaintingLog */ = {
-			isa = PBXGroup;
-			children = (
-				3ADC3C6321030FF800C31637 /* StepTitleView.xib */,
-				3ADC3C69210312AE00C31637 /* StepTitleView.swift */,
-				3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */,
-				3ADC3C6B2103188600C31637 /* SubStepView.xib */,
-				3ADC3C6D2103189700C31637 /* SubStepView.swift */,
-			);
-			path = PaintingLog;
 			sourceTree = "<group>";
 		};
 		67FE2FFFB501787F516989C7 /* Pods */ = {
@@ -278,19 +305,20 @@
 			files = (
 				3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */,
 				3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */,
-				3A5C3BB321075D9000BBDA70 /* ToolBarView.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
 				3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
+				3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */,
 				3A8D114D21048E96008E634F /* LectureViewController.swift in Sources */,
-				3AE220E920FB276200FC80E3 /* CGMathExtension.swift in Sources */,
 				3A6B32062104BD7500F2C63E /* MasterNavigationView.swift in Sources */,
+				3A75172221087F8E00373189 /* ToolBarView.swift in Sources */,
 				3A6B32082105789E00F2C63E /* APTheme.swift in Sources */,
 				3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */,
 				3ADC3C6A210312AE00C31637 /* StepTitleView.swift in Sources */,
 				3AA7BBC221041BE0004E20CE /* LectureEditViewController.swift in Sources */,
 				3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */,
 				3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */,
+				3A0EFB432108663000547E23 /* Extensions.swift in Sources */,
 				3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */,
 				3A9DE80A2100CB1A0076203E /* GalleryViewController.swift in Sources */,
 				3AEDB3C920FE104500B6C17B /* ActiveLayerView.swift in Sources */,

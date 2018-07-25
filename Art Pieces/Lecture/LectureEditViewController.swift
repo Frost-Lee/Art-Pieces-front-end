@@ -29,15 +29,15 @@ class LectureEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let toolBarNib = UINib(nibName: "ToolBarView", bundle: nil)
-        toolBarView = toolBarNib.instantiate(withOwner: self, options: nil).first as? ToolBarView
-        toolBarView.delegate = self
-        self.view.addSubview(toolBarView)
-        artworkView.currentRenderMechanism = RenderMechanism(color: .blue, width: 1)
+        artworkView.currentRenderMechanism = RenderMechanism(color: UIColor.lightGray, width: 2, texture: "PencilTexture")
         artworkView.switchLayer(to: 0)
         artworkView.delegate = self
         artworkView.isRecordingForLecture = true
-        // initialize the cell
+        let toolBarNib = UINib(nibName: "ToolBarView", bundle: nil)
+        toolBarView = toolBarNib.instantiate(withOwner: self, options: nil).first as? ToolBarView
+        toolBarView.delegate = self
+        toolBarView.palletButton.backgroundColor = artworkView.currentRenderMechanism.color
+        self.view.addSubview(toolBarView)
         stepTableView.register(StepTableViewCell.self, forCellReuseIdentifier: "stepTableViewCell")
         stepTableView.reloadData()
     }
@@ -61,7 +61,6 @@ class LectureEditViewController: UIViewController {
 
 
 extension LectureEditViewController: UITableViewDelegate, UITableViewDataSource {
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return artworkGuide.steps.count
     }
@@ -87,7 +86,6 @@ extension LectureEditViewController: UITableViewDelegate, UITableViewDataSource 
             return titleHeight
         }
     }
-    
 }
 
 
@@ -106,34 +104,20 @@ extension LectureEditViewController: StepTableViewCellDelegate {
     func subStepInteractionButtonDidTapped(step: Int, subStep: Int) {
         
     }
-    
 }
 
 
 extension LectureEditViewController: ArtworkViewDelegate {
-    
     func artworkGuideDidUpdated(_ guide: ArtworkGuide) {
         artworkGuide = guide
     }
-    
 }
 
 
 extension LectureEditViewController: ToolBarViewDelegate {
-    
     func palletButtonDidTapped(_ sender: UIButton) {
-        let paletteViewController = UIViewController()
-        paletteViewController.view.backgroundColor = APTheme.grayBackgroundColor
-        paletteViewController.preferredContentSize = CGSize(width: 300, height: 300)
-        let colorPicker = ChromaColorPicker(frame: CGRect(x: 0, y: 0, width: 300, height: 300))
-        colorPicker.hexLabel.isHidden = true
-        colorPicker.delegate = self
-        paletteViewController.view.addSubview(colorPicker)
-        paletteViewController.modalPresentationStyle = .popover
-        let popoverPresentationController = paletteViewController.popoverPresentationController
-        popoverPresentationController?.sourceView = toolBarView.palletButton
-        popoverPresentationController?.permittedArrowDirections = .any
-        self.present(paletteViewController, animated: true, completion: nil)
+        ChromaColorPicker.launch(in: self, sourceView: toolBarView.palletButton, initialColor:
+            artworkView.currentRenderMechanism.color, frame: CGRect(x: 0, y: 0, width: 300, height: 300))
     }
     
     func layerButtonDidTapped(_ sender: UIButton) {
@@ -153,19 +137,30 @@ extension LectureEditViewController: ToolBarViewDelegate {
     }
     
     func penButtonDidTapped(_ sender: UIButton) {
-        
+        let toolPickerController = ToolPickerTableViewController()
+        toolPickerController.selectedTool = ToolPickerTableViewController.textureIndexFor(name:
+            artworkView.currentRenderMechanism.texture)
+        toolPickerController.delegate = self
+        toolPickerController.preferredContentSize = CGSize(width: 150, height: 150)
+        toolPickerController.prepareToLaunchAsPopover(source: toolBarView.penButton)
+        self.present(toolPickerController, animated: true, completion: nil)
     }
-    
 }
 
 
 extension LectureEditViewController: ChromaColorPickerDelegate {
-    
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
-        var mechanism = artworkView.currentRenderMechanism!
-        mechanism.color = color
-        artworkView.currentRenderMechanism = mechanism
+        artworkView.currentRenderMechanism.color = color
         toolBarView.palletButton.backgroundColor = color
     }
-    
+}
+
+
+extension LectureEditViewController: ToolPickerTableViewDelegate {
+    func toolSelected(at index: Int) {
+        let textureName = ToolPickerTableViewController.textureNameFor(index: index)
+        if artworkView.currentRenderMechanism.texture != textureName {
+            artworkView.currentRenderMechanism.texture = textureName
+        }
+    }
 }

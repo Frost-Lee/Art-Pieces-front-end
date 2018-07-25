@@ -16,7 +16,6 @@ class LectureViewController: UIViewController {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = UIColor.lightGray
         let masterNavigationNib = UINib(nibName: "MasterNavigationView", bundle: nil)
-        //self.edgesForExtendedLayout = []
         masterNavigationView = masterNavigationNib.instantiate(withOwner: self, options: nil).first
             as? MasterNavigationView
         let screenWidth = UIScreen.main.bounds.width
