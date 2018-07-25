@@ -182,6 +182,20 @@ struct ArtworkGuide: Codable {
     mutating func add(step: Step) {
         steps.append(step)
     }
+    
+    @discardableResult
+    mutating func recordStroke(at layer: Int, index: Int) -> Bool {
+        let lastStepIndex = steps.count - 1
+        if lastStepIndex >= 0 {
+            let lastSubStepIndex = steps[lastStepIndex].subSteps.count - 1
+            if lastSubStepIndex >= 0 {
+                steps[lastStepIndex].subSteps[lastSubStepIndex].add(layerIndex: layer, strokeIndex: index)
+                return true
+            }
+        }
+        return false
+    }
+    
 }
 
 

@@ -49,10 +49,10 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         get {
             return strokeGestureRecognizer.renderMechanism
         } set {
-            strokeGestureRecognizer.renderMechanism = newValue
             if isRecordingForLecture {
                 writeGuideLog(from: currentRenderMechanism, to: newValue)
             }
+            strokeGestureRecognizer.renderMechanism = newValue
         }
     }
     var currentStroke: Stroke? {
@@ -142,12 +142,17 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     func export() -> Artwork {
         withdrawActiveLayer()
-        return Artwork(layers: layers, size: frame.size)
+        var artwork = Artwork(layers: layers, size: frame.size)
+        if isRecordingForLecture {
+            artwork.guide = guide
+        }
+        return artwork
     }
     
     func addAnotherStep() {
         if isRecordingForLecture {
             guide.steps.append(Step())
+            delegate?.artworkGuideDidUpdated(guide)
         }
     }
     
@@ -164,18 +169,24 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         self.addSubview(activeLayerView)
     }
     
-    private func writeGuideLog(from old: RenderMechanism, to new: RenderMechanism) {
+    private func writeGuideLog(from old: RenderMechanism?, to new: RenderMechanism) {
         var operationChange: OperationChange? = nil
-        if old.texture != new.texture {
+        if old != nil {
+            if old!.texture != new.texture {
+                operationChange = .toolChange
+            } else if old!.color != new.color {
+                operationChange = .colorChange
+            }
+        } else {
             operationChange = .toolChange
-        } else if old.color != new.color {
-            operationChange = .colorChange
         }
         if let change = operationChange {
-            let newSubStep = SubStep(operationType: change, renderMechanism: new, renderDescription: "")
-            let lastIndex = guide.steps.count - 1
-            guide.steps[lastIndex].add(subStep: newSubStep)
-            delegate?.artworkGuideDidUpdated(guide)
+            if guide.steps.count != 0 {
+                let newSubStep = SubStep(operationType: change, renderMechanism: new, renderDescription: "")
+                let lastIndex = guide.steps.count - 1
+                guide.steps[lastIndex].add(subStep: newSubStep)
+                delegate?.artworkGuideDidUpdated(guide)
+            }
         }
     }
     
@@ -205,6 +216,12 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     private func mergeActiveStroke() {
         if currentStroke != nil {
             activeLayerView.mergeActiveStroke()
+            if isRecordingForLecture && guide.steps.count != 0 {
+                if !(guide.recordStroke(at: currentLayer!, index: activeLayerView.strokes.count - 1)) {
+                    writeGuideLog(from: nil, to: currentRenderMechanism)
+                    guide.recordStroke(at: currentLayer!, index: activeLayerView.strokes.count - 1)
+                }
+            }
         }
     }
     

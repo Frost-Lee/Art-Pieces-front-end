@@ -22,27 +22,14 @@ class LectureEditViewController: UIViewController {
     
     var artworkGuide: ArtworkGuide = ArtworkGuide() {
         didSet {
-            stepTableView.beginUpdates()
+            //stepTableView.beginUpdates()
             stepTableView.reloadData()
-            stepTableView.endUpdates()
+            //stepTableView.endUpdates()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        // Only for test use
-        //        var step = Step()
-        //        let renderMechanism = RenderMechanism(color: .black, width: 1.0)
-        //        let subStep = SubStep(operationType: .colorChange, renderMechanism: renderMechanism,
-        //                              renderDescription: "Step 1")
-        //        step.add(subStep: subStep)
-        //        step.add(subStep: subStep)
-        //        step.description = "Step 1"
-        //        artworkGuide.add(step: step)
-        //        step.description = "Step 2"
-        //        artworkGuide.add(step: step)
-        //        step.description = "Step 3"
-        //        artworkGuide.add(step: step)
         
         let toolBarNib = UINib(nibName: "ToolBarView", bundle: nil)
         toolBarView = toolBarNib.instantiate(withOwner: self, options: nil).first as? ToolBarView
@@ -51,6 +38,7 @@ class LectureEditViewController: UIViewController {
         artworkView.currentRenderMechanism = RenderMechanism(color: .blue, width: 1)
         artworkView.switchLayer(to: 0)
         artworkView.delegate = self
+        artworkView.isRecordingForLecture = true
         // initialize the cell
         stepTableView.register(StepTableViewCell.self, forCellReuseIdentifier: "stepTableViewCell")
         stepTableView.reloadData()
@@ -65,6 +53,10 @@ class LectureEditViewController: UIViewController {
         super.viewWillLayoutSubviews()
         toolBarView.frame = CGRect(x: stepTableView.frame.width, y: self.view.frame.height - CGFloat(71),
                                    width: UIScreen.main.bounds.width - stepTableView.frame.width, height: 71)
+    }
+    
+    @IBAction func addStepButtonTapped(_ sender: UIButton) {
+        artworkView.addAnotherStep()
     }
     
 }
@@ -177,7 +169,10 @@ extension LectureEditViewController: ToolBarViewDelegate {
 extension LectureEditViewController: ChromaColorPickerDelegate {
     
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
-        artworkView.currentRenderMechanism.color = color
+        var mechanism = artworkView.currentRenderMechanism!
+        mechanism.color = color
+        artworkView.currentRenderMechanism = mechanism
+        toolBarView.palletButton.backgroundColor = color
     }
     
 }

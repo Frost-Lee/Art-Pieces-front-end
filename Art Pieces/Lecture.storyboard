@@ -56,6 +56,9 @@
                                             </label>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TDa-zE-AGc">
                                                 <rect key="frame" x="0.0" y="0.0" width="290" height="24"/>
+                                                <connections>
+                                                    <action selector="addStepButtonTapped:" destination="SXT-CY-UmH" eventType="touchUpInside" id="I6R-Qj-n2j"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>

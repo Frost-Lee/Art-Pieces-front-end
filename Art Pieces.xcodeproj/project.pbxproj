@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3151465A0BB9EB15F7610CEB /* libPods-Art Pieces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = B719522CA2C571FC47262520 /* libPods-Art Pieces.a */; };
 		3A1EE06520FCC18C00AA315B /* StudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1EE06420FCC18C00AA315B /* StudioViewController.swift */; };
 		3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */; };
 		3A5C3BB321075D9000BBDA70 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */; };
@@ -36,9 +35,11 @@
 		3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */; };
 		3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */; };
 		3AEDB3C920FE104500B6C17B /* ActiveLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */; };
+		48BFC0540826D3CB6F13165E /* libPods-Art Pieces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A1EE06420FCC18C00AA315B /* StudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioViewController.swift; sourceTree = "<group>"; };
 		3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderMechanism.swift; sourceTree = "<group>"; };
 		3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
@@ -70,7 +71,6 @@
 		3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnWorkGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLayerView.swift; sourceTree = "<group>"; };
 		9AE3AFB4E4B2C13F65861B46 /* Pods-Art Pieces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.release.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.release.xcconfig"; sourceTree = "<group>"; };
-		B719522CA2C571FC47262520 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		BF4AC9E22F8BA616954FA4A6 /* Pods-Art Pieces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3151465A0BB9EB15F7610CEB /* libPods-Art Pieces.a in Frameworks */,
+				48BFC0540826D3CB6F13165E /* libPods-Art Pieces.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,7 +89,7 @@
 		01278F311CBEAE66ED82C6A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				B719522CA2C571FC47262520 /* libPods-Art Pieces.a */,
+				1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -448,10 +448,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -467,10 +464,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
