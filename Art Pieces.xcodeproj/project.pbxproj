@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3A1EE06520FCC18C00AA315B /* StudioViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1EE06420FCC18C00AA315B /* StudioViewController.swift */; };
 		3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */; };
 		3A5C3BB321075D9000BBDA70 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */; };
 		3A5C3BB421075D9000BBDA70 /* ToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */; };
@@ -40,7 +39,6 @@
 
 /* Begin PBXFileReference section */
 		1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3A1EE06420FCC18C00AA315B /* StudioViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudioViewController.swift; sourceTree = "<group>"; };
 		3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderMechanism.swift; sourceTree = "<group>"; };
 		3A5C3BB121075D8F00BBDA70 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolBarView.xib; sourceTree = "<group>"; };
@@ -145,7 +143,6 @@
 				3A8C93A720F895EC005D5BD1 /* Main.storyboard */,
 				3A8D114C21048E96008E634F /* LectureViewController.swift */,
 				3A9DE8092100CB1A0076203E /* GalleryViewController.swift */,
-				3A1EE06420FCC18C00AA315B /* StudioViewController.swift */,
 				3ADC3C6F21031FA400C31637 /* Lecture.storyboard */,
 				3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */,
 				3A6B32072105789E00F2C63E /* APTheme.swift */,
@@ -286,7 +283,6 @@
 				3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
 				3A8D114D21048E96008E634F /* LectureViewController.swift in Sources */,
-				3A1EE06520FCC18C00AA315B /* StudioViewController.swift in Sources */,
 				3AE220E920FB276200FC80E3 /* CGMathExtension.swift in Sources */,
 				3A6B32062104BD7500F2C63E /* MasterNavigationView.swift in Sources */,
 				3A6B32082105789E00F2C63E /* APTheme.swift in Sources */,
@@ -448,7 +444,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -464,7 +463,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

@@ -9,7 +9,7 @@ import UIKit
 
 protocol StepTableViewCellDelegate {
     func stepTitleBarDidTapped(at index: Int)
-    func subStepInteractionButtonDidTapped(at index: Int)
+    func subStepInteractionButtonDidTapped(step: Int, subStep: Int)
 }
 
 class StepTableViewCell: UITableViewCell {
@@ -19,15 +19,17 @@ class StepTableViewCell: UITableViewCell {
     
     var step: Step!
     var index: Int!
-    
-    var delegate: StepTableViewCellDelegate!
+    var delegate: StepTableViewCellDelegate?
     
     private var currentHeight: CGFloat = 0
     
-    init(style: UITableViewCell.CellStyle, step: Step, index: Int) {
-        super.init(style: style, reuseIdentifier: "stepTableViewCell")
+    init(step: Step, index: Int) {
+        super.init(style: .default, reuseIdentifier: "stepTableViewCell")
         self.step = step
         self.index = index
+        self.backgroundColor = UIColor(red: 247/255, green: 246/255, blue: 244/255, alpha: 1)
+        self.clipsToBounds = true
+        self.selectionStyle = .none
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -62,8 +64,7 @@ class StepTableViewCell: UITableViewCell {
             let subStepViewNib = UINib(nibName: "SubStepView", bundle: nil)
             let newSubStepView = subStepViewNib.instantiate(withOwner: self, options: nil).first
                 as! SubStepView
-            newSubStepView.operationDescription = subStep.description()
-            newSubStepView.isToolInteractive = true
+            newSubStepView.subStep = subStep
             newSubStepView.index = subStepViews.count
             subStepViews.append(newSubStepView)
         }
@@ -81,12 +82,13 @@ class StepTableViewCell: UITableViewCell {
 
 extension StepTableViewCell: StepTitleDelegate, SubStepViewDelegate {
     
-    func stepTitleBarDidTapped() {
-        delegate.stepTitleBarDidTapped(at: index)
+    func subStepInteractionButtonDidTapped(_ index: Int) {
+        delegate?.subStepInteractionButtonDidTapped(step: self.index, subStep: index)
     }
     
-    func subStepInteractionButtonDidTapped() {
-        delegate.subStepInteractionButtonDidTapped(at: index)
+    
+    func stepTitleBarDidTapped() {
+        delegate?.stepTitleBarDidTapped(at: index)
     }
     
 }

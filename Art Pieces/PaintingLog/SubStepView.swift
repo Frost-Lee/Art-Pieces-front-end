@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SubStepViewDelegate {
-    func subStepInteractionButtonDidTapped()
+    func subStepInteractionButtonDidTapped(_ index: Int)
 }
 
 class SubStepView: UIView {
@@ -21,23 +21,14 @@ class SubStepView: UIView {
     var delegate: SubStepViewDelegate?
     var index: Int!
     
+    var subStep: SubStep! {
+        didSet {
+            descriptionLabel.text = subStep.description()
+            subDescriptionLabel.text = subStep.renderDescription
+        }
+    }
+    
     static var height: CGFloat = 72
-    
-    var operationDescription: String! {
-        didSet {
-            if descriptionLabel != nil {
-                descriptionLabel.text = operationDescription
-            }
-        }
-    }
-    
-    var operationSubDescription: String? {
-        didSet {
-            if subDescriptionLabel != nil {
-                subDescriptionLabel.text = operationSubDescription
-            }
-        }
-    }
     
     var isToolInteractive: Bool! {
         didSet {
@@ -48,7 +39,7 @@ class SubStepView: UIView {
     }
     
     @IBAction func interactiveButtonTapped(_ sender: UIButton) {
-        delegate?.subStepInteractionButtonDidTapped()
+        delegate?.subStepInteractionButtonDidTapped(index)
     }
     
 }

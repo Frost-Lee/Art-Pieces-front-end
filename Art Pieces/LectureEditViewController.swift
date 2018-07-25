@@ -22,9 +22,7 @@ class LectureEditViewController: UIViewController {
     
     var artworkGuide: ArtworkGuide = ArtworkGuide() {
         didSet {
-            //stepTableView.beginUpdates()
             stepTableView.reloadData()
-            //stepTableView.endUpdates()
         }
     }
     
@@ -33,8 +31,8 @@ class LectureEditViewController: UIViewController {
         
         let toolBarNib = UINib(nibName: "ToolBarView", bundle: nil)
         toolBarView = toolBarNib.instantiate(withOwner: self, options: nil).first as? ToolBarView
-        self.view.addSubview(toolBarView)
         toolBarView.delegate = self
+        self.view.addSubview(toolBarView)
         artworkView.currentRenderMechanism = RenderMechanism(color: .blue, width: 1)
         artworkView.switchLayer(to: 0)
         artworkView.delegate = self
@@ -69,13 +67,8 @@ extension LectureEditViewController: UITableViewDelegate, UITableViewDataSource 
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let stepTableViewCell = StepTableViewCell()
-        stepTableViewCell.selectionStyle = .none
+        let stepTableViewCell = StepTableViewCell(step: artworkGuide.steps[indexPath.row], index: indexPath.row)
         stepTableViewCell.delegate = self
-        stepTableViewCell.backgroundColor = UIColor(red: 247/255, green: 246/255, blue: 244/255, alpha: 1)
-        stepTableViewCell.clipsToBounds = true
-        stepTableViewCell.step = artworkGuide.steps[indexPath.row]
-        stepTableViewCell.index = indexPath.row
         if selectedSteps.contains(indexPath.row) {
             stepTableViewCell.setupDetailedInterface()
         } else {
@@ -99,7 +92,6 @@ extension LectureEditViewController: UITableViewDelegate, UITableViewDataSource 
 
 
 extension LectureEditViewController: StepTableViewCellDelegate {
-    
     func stepTitleBarDidTapped(at index: Int) {
         stepTableView.beginUpdates()
         if selectedSteps.contains(index) {
@@ -111,7 +103,8 @@ extension LectureEditViewController: StepTableViewCellDelegate {
         stepTableView.endUpdates()
     }
     
-    func subStepInteractionButtonDidTapped(at index: Int) {
+    func subStepInteractionButtonDidTapped(step: Int, subStep: Int) {
+        
     }
     
 }

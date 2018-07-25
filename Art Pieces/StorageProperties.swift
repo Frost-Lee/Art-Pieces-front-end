@@ -38,7 +38,6 @@ enum OperationChange: Int, Codable {
  * it contains the location and the time stamp data of a single touch
  */
 struct StrokeSample: Codable {
-    
     // Must-have properties
     let timeStamp: TimeInterval
     let location: CGPoint
@@ -61,7 +60,6 @@ struct StrokeSample: Codable {
  * information about the stroke
  */
 struct Stroke: Codable, Sequence {
-    
     var samples: [StrokeSample] = []
     var state: StrokeState = .active
     var renderMechanism: RenderMechanism!
@@ -77,11 +75,9 @@ struct Stroke: Codable, Sequence {
     func makeIterator() -> StrokeArcIterator {
         return StrokeArcIterator(stroke: self)
     }
-    
 }
 
 struct StrokeArc {
-    
     var sampleBefore: StrokeSample
     var sample: StrokeSample
     var sampleAfter: StrokeSample
@@ -91,7 +87,6 @@ struct StrokeArc {
         self.sample = sample
         self.sampleAfter = sampleAfter
     }
-    
 }
 
 
@@ -117,12 +112,15 @@ struct Layer: Codable {
  * texture
  */
 struct SubStep: Codable, Sequence {
-    
-    var renderDescription: String = "no render description"
+    var renderDescription: String
     var operationType: OperationChange
+    var renderMechanism: RenderMechanism
+    var isInteractive: Bool {
+        return true
+    }
+    
     var relatedOperationLayer: [Int] = []
     var relatedOperationStroke: [Int] = []
-    var renderMechanism: RenderMechanism
     
     init(operationType: OperationChange, renderMechanism: RenderMechanism, renderDescription: String) {
         self.operationType = operationType
@@ -156,7 +154,6 @@ struct SubStep: Codable, Sequence {
     func makeIterator() -> SubStepContentIterator {
         return SubStepContentIterator(subStep: self)
     }
-    
 }
 
 /**
@@ -164,7 +161,6 @@ struct SubStep: Codable, Sequence {
  * color and texture of strokes
  */
 struct Step: Codable {
-    
     var description: String = "no description"
     var subSteps: [SubStep] = []
     
@@ -176,7 +172,6 @@ struct Step: Codable {
 
 
 struct ArtworkGuide: Codable {
-    
     var steps: [Step] = []
     
     mutating func add(step: Step) {
@@ -195,7 +190,6 @@ struct ArtworkGuide: Codable {
         }
         return false
     }
-    
 }
 
 
@@ -204,7 +198,6 @@ struct ArtworkGuide: Codable {
  * multiple stroke layers
  */
 struct Artwork: Codable {
-    
     var identifier: String
     var layers: [Layer]
     var guide: ArtworkGuide?
@@ -216,7 +209,6 @@ struct Artwork: Codable {
         self.identifier = identifier
         self.guide = guide
     }
-    
 }
 
 
