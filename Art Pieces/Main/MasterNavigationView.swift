@@ -42,6 +42,7 @@ class MasterNavigationView: UIView {
             }, completion: nil)
             galleryLabel.textColor = APTheme.purpleHighLightColor
             lectureLabel.textColor = UIColor.black
+            delegate?.galleryButtonDidTapped(sender)
         }
     }
     
@@ -54,6 +55,7 @@ class MasterNavigationView: UIView {
             }, completion: nil)
             galleryLabel.textColor = UIColor.black
             lectureLabel.textColor = APTheme.purpleHighLightColor
+            delegate?.lectureButtonDidTapped(sender)
         }
     }
     
