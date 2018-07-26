@@ -28,10 +28,11 @@ class SubStepView: UIView {
             switch subStep.operationType {
             case .colorChange:
                 interactionButton.backgroundColor = subStep.renderMechanism.color
-                interactionButton.titleLabel?.text = ""
+                interactionButton.setTitle("", for: .normal)
             case .toolChange:
-                interactionButton.backgroundColor = UIColor(white: 1, alpha: 0)
-                interactionButton.titleLabel?.text = (Tool.toolOfTexture(subStep.renderMechanism.texture)).toolName()
+                interactionButton.backgroundColor = APTheme.grayBackgroundColor
+                interactionButton.setTitle((Tool.toolOfTexture(subStep.renderMechanism.texture)).toolName(),
+                                           for: .normal)
             }
         }
     }

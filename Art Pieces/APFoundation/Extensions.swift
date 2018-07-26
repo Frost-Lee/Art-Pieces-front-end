@@ -17,7 +17,6 @@ extension CGVector {
     }
 }
 
-
 func -(left: CGPoint, right:CGPoint) -> CGVector {
     return CGVector(dx: left.x - right.x, dy: left.y - right.y)
 }

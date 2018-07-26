@@ -187,7 +187,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         }
         if let change = operationChange {
             if guide.steps.count != 0 {
-                let newSubStep = SubStep(operationType: change, renderMechanism: new, renderDescription: "")
+                let newSubStep = SubStep(operationType: change, renderMechanism: new, renderDescription: "Add description here.")
                 let lastIndex = guide.steps.count - 1
                 guide.steps[lastIndex].add(subStep: newSubStep)
                 delegate?.artworkGuideDidUpdated(guide)
