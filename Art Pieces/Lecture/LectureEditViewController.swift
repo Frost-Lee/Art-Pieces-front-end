@@ -29,7 +29,7 @@ class LectureEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        artworkView.currentRenderMechanism = RenderMechanism(color: UIColor.lightGray, width: 2, texture: "PencilTexture")
+        artworkView.currentRenderMechanism = RenderMechanism(color: UIColor.lightGray, width: 1.5, texture: "PencilTexture")
         artworkView.switchLayer(to: 0)
         artworkView.delegate = self
         artworkView.isRecordingForLecture = true
@@ -125,7 +125,14 @@ extension LectureEditViewController: ToolBarViewDelegate {
     }
     
     func thichnessButtonDidTapped(_ sender: UIButton) {
-        
+        let thicknessSliderController = ThicknessSliderViewController()
+        thicknessSliderController.delegate = self
+        thicknessSliderController.lowerBound = artworkView.currentRenderMechanism.minimumWidth
+        thicknessSliderController.upperBound = artworkView.currentRenderMechanism.maximunWidth
+        thicknessSliderController.slider.value = Float(artworkView.currentRenderMechanism.width)
+        thicknessSliderController.preferredContentSize = CGSize(width: 300, height: 50)
+        thicknessSliderController.prepareToLaunchAsPopover(source: toolBarView.thicknessButton)
+        self.present(thicknessSliderController, animated: true, completion: nil)
     }
     
     func transparencyButtonDidTapped(_ sender: UIButton) {
@@ -161,5 +168,12 @@ extension LectureEditViewController: ToolPickerTableViewDelegate {
         if artworkView.currentRenderMechanism.texture != textureName {
             artworkView.currentRenderMechanism.texture = textureName
         }
+    }
+}
+
+
+extension LectureEditViewController: ThicknessSliderDelegate {
+    func thicknessDidSet(to value: Float) {
+        artworkView.currentRenderMechanism.width = CGFloat(value)
     }
 }

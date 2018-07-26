@@ -24,6 +24,16 @@ struct RenderMechanism: Codable {
             setTexturedColor()
         }
     }
+    var minimumWidth: Float {
+        return 1
+    }
+    var maximunWidth: Float {
+        if Tool.toolOfTexture(texture) == .pencil {
+            return 2
+        } else {
+            return 5
+        }
+    }
     
     var texturedColor: UIColor? = nil
     

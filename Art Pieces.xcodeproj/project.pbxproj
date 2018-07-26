@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
+		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
 		3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */; };
 		3A5C3BB421075D9000BBDA70 /* ToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */; };
 		3A6B32042104BD3A00F2C63E /* MasterNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
 		3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderMechanism.swift; sourceTree = "<group>"; };
 		3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolBarView.xib; sourceTree = "<group>"; };
 		3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MasterNavigationView.xib; sourceTree = "<group>"; };
@@ -97,6 +99,7 @@
 		3A75170F21086F1000373189 /* APFoundation */ = {
 			isa = PBXGroup;
 			children = (
+				3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */,
 				3A0EFB422108663000547E23 /* Extensions.swift */,
 				3A6B32072105789E00F2C63E /* APTheme.swift */,
 				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
@@ -121,6 +124,7 @@
 				3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */,
 				3A75172121087F8E00373189 /* ToolBarView.swift */,
 				3A75172321087FB800373189 /* ToolPickerTableViewController.swift */,
+				3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */,
 			);
 			path = ToolBar;
 			sourceTree = "<group>";
@@ -142,7 +146,6 @@
 			children = (
 				3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */,
 				3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */,
-				3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */,
 				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
 				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
 				3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */,
@@ -321,6 +324,7 @@
 				3A0EFB432108663000547E23 /* Extensions.swift in Sources */,
 				3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */,
 				3A9DE80A2100CB1A0076203E /* GalleryViewController.swift in Sources */,
+				3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */,
 				3AEDB3C920FE104500B6C17B /* ActiveLayerView.swift in Sources */,
 				3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */,
 			);
