@@ -25,6 +25,14 @@ class SubStepView: UIView {
         didSet {
             descriptionLabel.text = subStep.description()
             subDescriptionLabel.text = subStep.renderDescription
+            switch subStep.operationType {
+            case .colorChange:
+                interactionButton.backgroundColor = subStep.renderMechanism.color
+                interactionButton.titleLabel?.text = ""
+            case .toolChange:
+                interactionButton.backgroundColor = UIColor(white: 1, alpha: 0)
+                interactionButton.titleLabel?.text = (Tool.toolOfTexture(subStep.renderMechanism.texture)).toolName()
+            }
         }
     }
     

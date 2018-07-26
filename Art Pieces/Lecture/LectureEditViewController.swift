@@ -138,8 +138,7 @@ extension LectureEditViewController: ToolBarViewDelegate {
     
     func penButtonDidTapped(_ sender: UIButton) {
         let toolPickerController = ToolPickerTableViewController()
-        toolPickerController.selectedTool = ToolPickerTableViewController.textureIndexFor(name:
-            artworkView.currentRenderMechanism.texture)
+        toolPickerController.selectedTool = Tool.toolOfTexture(artworkView.currentRenderMechanism.texture)
         toolPickerController.delegate = self
         toolPickerController.preferredContentSize = CGSize(width: 150, height: 150)
         toolPickerController.prepareToLaunchAsPopover(source: toolBarView.penButton)
@@ -157,8 +156,8 @@ extension LectureEditViewController: ChromaColorPickerDelegate {
 
 
 extension LectureEditViewController: ToolPickerTableViewDelegate {
-    func toolSelected(at index: Int) {
-        let textureName = ToolPickerTableViewController.textureNameFor(index: index)
+    func toolSelected(_ tool: Tool) {
+        let textureName = tool.textureName()
         if artworkView.currentRenderMechanism.texture != textureName {
             artworkView.currentRenderMechanism.texture = textureName
         }

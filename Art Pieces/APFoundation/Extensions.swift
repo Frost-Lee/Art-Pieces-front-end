@@ -50,6 +50,7 @@ extension UIViewController {
         self.modalPresentationStyle = .popover
         let popoverController = self.popoverPresentationController
         popoverController?.sourceView = source
+        popoverController?.sourceRect = source.bounds
         popoverController?.permittedArrowDirections = .any
     }
 }

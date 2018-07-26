@@ -32,6 +32,54 @@ enum OperationChange: Int, Codable {
     case toolChange
 }
 
+enum Tool {
+    case gelPen
+    case pencil
+    case crayon
+    
+    func toolName() -> String {
+        switch self {
+            case .gelPen: return "Gel Pen"
+            case .pencil: return "Pencil"
+            case .crayon: return "Crayon"
+        }
+    }
+    
+    func textureName() -> String? {
+        switch self {
+            case .gelPen:return nil
+            case .pencil:return "PencilTexture"
+            case .crayon:return "CrayonTexture"
+        }
+    }
+    
+    func index() -> Int {
+        switch self {
+            case .gelPen: return 0
+            case .pencil: return 1
+            case .crayon: return 2
+        }
+    }
+    
+    static func toolOfTexture(_ texture: String?) -> Tool {
+        switch texture {
+            case nil: return .gelPen
+            case "PencilTexture": return .pencil
+            case "CrayonTexture": return .crayon
+            default: return .gelPen
+        }
+    }
+    
+    static func toolOfIndex(_ index: Int) -> Tool {
+        switch index {
+            case 0: return .gelPen
+            case 1: return .pencil
+            case 2: return .crayon
+            default: return .gelPen
+        }
+    }
+    
+}
 
 /**
  * StrokeSample is a single that records a single point of the user's touch on the screen

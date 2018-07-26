@@ -30,7 +30,11 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     }
     
     var layers: [Layer] = []
-    var guide: ArtworkGuide = ArtworkGuide()
+    var guide: ArtworkGuide = ArtworkGuide() {
+        didSet {
+            delegate?.artworkGuideDidUpdated(guide)
+        }
+    }
     
     var isRecordingForLecture: Bool = false
     var isInteractive: Bool = true {
@@ -151,8 +155,9 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     func addAnotherStep() {
         if isRecordingForLecture {
-            guide.steps.append(Step())
-            delegate?.artworkGuideDidUpdated(guide)
+            var newStep = Step()
+            newStep.description = "Step " + String(guide.steps.count + 1)
+            guide.add(step: newStep)
         }
     }
     

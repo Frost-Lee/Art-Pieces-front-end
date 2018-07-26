@@ -9,7 +9,7 @@
 import UIKit
 
 protocol ToolPickerTableViewDelegate {
-    func toolSelected(at index: Int)
+    func toolSelected(_ tool: Tool)
 }
 
 
@@ -19,16 +19,17 @@ class ToolPickerTableViewController: UITableViewController {
     
     var delegate: ToolPickerTableViewDelegate?
     
-    var selectedTool: Int = 0 {
+    var selectedTool: Tool = .gelPen {
         didSet {
             tableView.reloadData()
-            delegate?.toolSelected(at: selectedTool)
+            delegate?.toolSelected(selectedTool)
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "toolPickerTableViewCell")
+        tableView.tableFooterView = UIView(frame: CGRect.zero)
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -38,7 +39,7 @@ class ToolPickerTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "toolPickerTableViewCell", for: indexPath)
         cell.textLabel?.text = toolNames[indexPath.row]
-        if indexPath.row == selectedTool {
+        if indexPath.row == selectedTool.index() {
             cell.accessoryType = .checkmark
         } else {
             cell.accessoryType = .none
@@ -48,26 +49,8 @@ class ToolPickerTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if selectedTool != indexPath.row {
-            selectedTool = indexPath.row
-        }
-    }
-    
-    static func textureNameFor(index: Int) -> String? {
-        switch index {
-            case 0: return nil
-            case 1: return "PencilTexture"
-            case 2: return "CrayonTexture"
-            default: return nil
-        }
-    }
-    
-    static func textureIndexFor(name: String?) -> Int {
-        switch name {
-            case nil: return 0
-            case "PencilTexture": return 1
-            case "CrayonTexture": return 2
-            default: return 0
+        if selectedTool.index() != indexPath.row {
+            selectedTool = Tool.toolOfIndex(indexPath.row)
         }
     }
 
