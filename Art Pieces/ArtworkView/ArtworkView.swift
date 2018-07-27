@@ -161,6 +161,16 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    func adjustAccordingTo(step: Int, subStep: Int) {
+        withdrawActiveLayer()
+        let relatedSubStep = guide.steps[step].subSteps[subStep]
+        for (layerIndex, strokeIndex) in relatedSubStep {
+            layers[layerIndex].strokes[strokeIndex].renderMechanism = relatedSubStep.renderMechanism
+        }
+        setNeedsDisplay()
+        loadActiveLayer(index: currentLayer!)
+    }
+    
     private func initialize() {
         strokeGestureRecognizer = setupStrokeGestureRecognizer()
         strokeGestureRecognizer.isEnabled = true
@@ -198,6 +208,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     private func withdrawActiveLayer() {
         let activeLayer = Layer(strokes: activeLayerView.strokes)
         layers.insert(activeLayer, at: currentLayer!)
+        activeLayerView.strokes = []
     }
     
     private func setupStrokeGestureRecognizer() -> StrokeGestureRecognizer {

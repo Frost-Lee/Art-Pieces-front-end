@@ -14,6 +14,7 @@ class MainViewController: UIViewController {
     
     var galleryView: GalleryView!
     var lectureView: LectureView!
+    var addArtworkView: AddArtworkView!
     
     var onSightLockFrame: CGRect!
     var offSightLockFrame: CGRect!
@@ -29,12 +30,11 @@ class MainViewController: UIViewController {
         
         setupGalleryView()
         setupLectureView()
+        setupAddArtworkView()
         let selfFrame = self.view.frame
         onSightLockFrame = CGRect(x: 0, y: 110, width: selfFrame.width, height: selfFrame.height - 110)
         offSightLockFrame = CGRect(x: selfFrame.width, y: 110, width: selfFrame.width, height: selfFrame.height - 110)
         setGalleryOnSight()
-        self.view.addSubview(galleryView)
-        self.view.addSubview(lectureView)
     }
     
     override func viewWillLayoutSubviews() {
@@ -56,11 +56,21 @@ class MainViewController: UIViewController {
     private func setupGalleryView() {
         let nib = UINib(nibName: "Gallery", bundle: nil)
         galleryView = nib.instantiate(withOwner: self, options: nil).first as? GalleryView
+        self.view.addSubview(galleryView)
     }
     
     private func setupLectureView() {
         let nib = UINib(nibName: "Lecture", bundle: nil)
         lectureView = nib.instantiate(withOwner: self, options: nil).first as? LectureView
+        self.view.addSubview(lectureView)
+    }
+    
+    private func setupAddArtworkView() {
+        let nib = UINib(nibName: "AddArtworkView", bundle: nil)
+        addArtworkView = nib.instantiate(withOwner: self, options: nil).first as? AddArtworkView
+        addArtworkView.frame = self.view.frame
+        addArtworkView.delegate = self
+        self.view.addSubview(addArtworkView)
     }
     
     private func setGalleryOnSight() {
@@ -102,6 +112,17 @@ extension MainViewController: MasterNavigationDelegate {
     }
     
     func artworkButtonDidTapped(_ sender: UIButton) {
-        
+        addArtworkView.activate()
+    }
+}
+
+
+extension MainViewController: AddArtworkDelegate {
+    func importButtonDidTapped(_ sender: UIButton) {
+    }
+    
+    func createButtonDidTapped(_ sender: UIButton) {
+        addArtworkView.deactivate()
+        performSegue(withIdentifier: "showLectureEditViewController", sender: nil)
     }
 }

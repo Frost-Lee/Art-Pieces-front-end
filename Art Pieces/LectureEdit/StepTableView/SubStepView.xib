@@ -12,34 +12,37 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="SubStepView" customModule="Art_Pieces" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="228" height="72"/>
+            <rect key="frame" x="0.0" y="0.0" width="250" height="72"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Change Color" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sDf-jY-KET">
                     <rect key="frame" x="16" y="7" width="113.5" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="LeT-Ar-2yq"/>
+                        <constraint firstAttribute="height" constant="21" id="su2-lm-2mp"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
-                    <nil key="textColor"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVI-Bn-IKj">
                     <rect key="frame" x="32" y="40" width="42" height="21"/>
                     <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="R2r-6P-Et1"/>
+                        <constraint firstAttribute="height" constant="21" id="g9d-f2-2Q8"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfD-Os-Wvb">
-                    <rect key="frame" x="145" y="7" width="46" height="21"/>
+                    <rect key="frame" x="155" y="7" width="57" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="height" constant="21" id="Ylr-Dq-Clg"/>
+                        <constraint firstAttribute="width" constant="57" id="EDR-lq-ZMC"/>
+                        <constraint firstAttribute="height" constant="21" id="eAc-wE-dPh"/>
                     </constraints>
-                    <state key="normal" title="Button"/>
+                    <state key="normal" title="Button">
+                        <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
                     <connections>
                         <action selector="interactiveButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="r76-iC-rbm"/>
                     </connections>
@@ -47,12 +50,12 @@
             </subviews>
             <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="sDf-jY-KET" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="4dS-P6-QHA"/>
-                <constraint firstItem="VVI-Bn-IKj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="HI8-yB-Uca"/>
-                <constraint firstItem="jfD-Os-Wvb" firstAttribute="leading" secondItem="sDf-jY-KET" secondAttribute="trailing" constant="15.5" id="O0g-9Q-9wz"/>
-                <constraint firstItem="jfD-Os-Wvb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="mCU-oy-jkr"/>
-                <constraint firstItem="sDf-jY-KET" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="paB-2K-bxx"/>
-                <constraint firstItem="VVI-Bn-IKj" firstAttribute="top" secondItem="sDf-jY-KET" secondAttribute="bottom" constant="12" id="zWO-2V-jFO"/>
+                <constraint firstItem="VVI-Bn-IKj" firstAttribute="top" secondItem="sDf-jY-KET" secondAttribute="bottom" constant="12" id="2yn-mG-QQ2"/>
+                <constraint firstItem="sDf-jY-KET" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="94l-rW-WZ3"/>
+                <constraint firstItem="jfD-Os-Wvb" firstAttribute="leading" secondItem="sDf-jY-KET" secondAttribute="trailing" constant="25.5" id="9JE-Ca-ALt"/>
+                <constraint firstItem="VVI-Bn-IKj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="Hh2-bx-ULi"/>
+                <constraint firstItem="sDf-jY-KET" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="pWN-6a-xBs"/>
+                <constraint firstItem="jfD-Os-Wvb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="rNg-cK-ZU4"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -61,7 +64,7 @@
                 <outlet property="interactionButton" destination="jfD-Os-Wvb" id="u8b-EK-JLV"/>
                 <outlet property="subDescriptionLabel" destination="VVI-Bn-IKj" id="30E-09-YPM"/>
             </connections>
-            <point key="canvasLocation" x="33" y="-248"/>
+            <point key="canvasLocation" x="44" y="-248"/>
         </view>
     </objects>
 </document>

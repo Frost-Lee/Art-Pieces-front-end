@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="AddArtworkView" customModule="Art_Pieces" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZSM-cq-Vm9">
+                    <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="cv1-wX-iFx">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="elK-cg-KNr">
+                                <rect key="frame" x="936" y="40" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="dqo-Xl-MSO"/>
+                                    <constraint firstAttribute="width" constant="48" id="xyt-vD-0q5"/>
+                                </constraints>
+                                <state key="normal" image="CancelAddBoard"/>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="DIF-cj-GQl"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5c2-i6-sMB">
+                                <rect key="frame" x="936" y="113" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="48" id="MNd-gH-npV"/>
+                                    <constraint firstAttribute="height" constant="48" id="rAm-Bd-Sqf"/>
+                                </constraints>
+                                <state key="normal" image="ImportArtwork"/>
+                                <connections>
+                                    <action selector="importButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="vzn-8C-bZN"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Eri-tZ-T63">
+                                <rect key="frame" x="936" y="185" width="48" height="48"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="48" id="vpm-pE-U3M"/>
+                                    <constraint firstAttribute="width" constant="48" id="w4K-Vx-RI9"/>
+                                </constraints>
+                                <state key="normal" image="CreateArtwork"/>
+                                <connections>
+                                    <action selector="createButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="fXD-w4-nwu"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create New Art Board" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mZf-iT-f4k">
+                                <rect key="frame" x="743" y="199" width="168" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="ZBj-eM-Buj"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Import from Album" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oQm-ft-Y4e">
+                                <rect key="frame" x="767" y="127" width="144" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="N14-Hb-633"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <gestureRecognizers/>
+                        <constraints>
+                            <constraint firstItem="elK-cg-KNr" firstAttribute="top" secondItem="cv1-wX-iFx" secondAttribute="top" constant="40" id="36f-93-Qam"/>
+                            <constraint firstItem="5c2-i6-sMB" firstAttribute="top" secondItem="elK-cg-KNr" secondAttribute="bottom" constant="25" id="KwC-jh-0Di"/>
+                            <constraint firstItem="Eri-tZ-T63" firstAttribute="top" secondItem="5c2-i6-sMB" secondAttribute="bottom" constant="24" id="On4-Co-fej"/>
+                            <constraint firstAttribute="trailing" secondItem="Eri-tZ-T63" secondAttribute="trailing" constant="40" id="TgB-3v-zJf"/>
+                            <constraint firstAttribute="trailing" secondItem="elK-cg-KNr" secondAttribute="trailing" constant="40" id="d5w-rp-Hhs"/>
+                            <constraint firstItem="5c2-i6-sMB" firstAttribute="leading" secondItem="oQm-ft-Y4e" secondAttribute="trailing" constant="25" id="nwe-Gg-9gf"/>
+                            <constraint firstAttribute="trailing" secondItem="5c2-i6-sMB" secondAttribute="trailing" constant="40" id="qjC-MC-sOE"/>
+                            <constraint firstItem="mZf-iT-f4k" firstAttribute="top" secondItem="oQm-ft-Y4e" secondAttribute="bottom" constant="51" id="slF-cw-wsG"/>
+                            <constraint firstItem="oQm-ft-Y4e" firstAttribute="top" secondItem="cv1-wX-iFx" secondAttribute="top" constant="127" id="slO-xb-PkK"/>
+                            <constraint firstItem="Eri-tZ-T63" firstAttribute="leading" secondItem="mZf-iT-f4k" secondAttribute="trailing" constant="25" id="wOG-E5-7hB"/>
+                        </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="3Ta-gV-wxC" appends="YES" id="2e6-1N-6iE"/>
+                        </connections>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ZSM-cq-Vm9" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="8Yh-p2-OTR"/>
+                <constraint firstItem="ZSM-cq-Vm9" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="E8j-qu-WJe"/>
+                <constraint firstItem="ZSM-cq-Vm9" firstAttribute="trailing" secondItem="vUN-kp-3ea" secondAttribute="trailing" id="dsq-8z-MnL"/>
+                <constraint firstItem="ZSM-cq-Vm9" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="flO-Oc-Vk8"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="cancelButton" destination="elK-cg-KNr" id="ikI-KW-tLJ"/>
+                <outlet property="createButton" destination="Eri-tZ-T63" id="N90-gG-7CW"/>
+                <outlet property="importButton" destination="5c2-i6-sMB" id="tZX-v2-cfF"/>
+                <outlet property="tapGestureRecognizer" destination="3Ta-gV-wxC" id="rzm-VU-KHi"/>
+            </connections>
+        </view>
+        <tapGestureRecognizer id="3Ta-gV-wxC"/>
+    </objects>
+    <resources>
+        <image name="CancelAddBoard" width="96" height="96"/>
+        <image name="CreateArtwork" width="96" height="96"/>
+        <image name="ImportArtwork" width="96" height="96"/>
+    </resources>
+</document>

@@ -15,7 +15,11 @@ import UIKit
 class ActiveLayerView: UIView {
     
     var activeStrokeView: SingleStrokeView!
-    var strokes: [Stroke] = []
+    var strokes: [Stroke] = [] {
+        didSet {
+            setNeedsDisplay()
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

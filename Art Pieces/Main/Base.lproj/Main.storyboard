@@ -36,11 +36,20 @@
                     <navigationItem key="navigationItem" id="Vqu-hh-f9Y"/>
                     <connections>
                         <outlet property="masterNavigationView" destination="9jb-XI-Tr2" id="407-62-Spi"/>
+                        <segue destination="T9S-AX-Fzz" kind="show" identifier="showLectureEditViewController" id="54u-BJ-MnZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBj-VF-gI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="253.12499999999997" y="1358.59375"/>
+        </scene>
+        <!--LectureEdit-->
+        <scene sceneID="AWW-V3-lsH">
+            <objects>
+                <viewControllerPlaceholder storyboardName="LectureEdit" id="T9S-AX-Fzz" sceneMemberID="viewController"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="YQu-aG-4TQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="253" y="1807"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YlZ-gh-bYi">

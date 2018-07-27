@@ -47,6 +47,14 @@ class SubStepView: UIView {
         }
     }
     
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        interactionButton.layer.cornerRadius = 5
+        interactionButton.layer.masksToBounds = true
+        interactionButton.layer.borderColor = UIColor.gray.cgColor
+        interactionButton.layer.borderWidth = 0.5
+    }
+    
     @IBAction func interactiveButtonTapped(_ sender: UIButton) {
         delegate?.subStepInteractionButtonDidTapped(index)
     }

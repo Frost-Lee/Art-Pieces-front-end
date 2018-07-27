@@ -26,6 +26,10 @@ class LectureEditViewController: UIViewController {
         }
     }
     
+    private var penPickerIdentifier: String = ""
+    private var palletIdentifier: String = ""
+    private var interactingStep: (Int, Int)? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -55,6 +59,22 @@ class LectureEditViewController: UIViewController {
     
     @IBAction func addStepButtonTapped(_ sender: UIButton) {
         artworkView.addAnotherStep()
+    }
+    
+    private func launchPallet(with identifier: String, at view: UIView, initialColor: UIColor) {
+        palletIdentifier = identifier
+        ChromaColorPicker.launch(in: self, sourceView: view, initialColor:
+            initialColor, frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+    }
+    
+    private func launchPenPicker(with identifier: String, at view: UIView, initialTool: Tool) {
+        penPickerIdentifier = identifier
+        let toolPickerController = ToolPickerTableViewController()
+        toolPickerController.selectedTool = initialTool
+        toolPickerController.delegate = self
+        toolPickerController.preferredContentSize = CGSize(width: 150, height: 150)
+        toolPickerController.prepareToLaunchAsPopover(source: view)
+        self.present(toolPickerController, animated: true, completion: nil)
     }
     
 }
@@ -102,7 +122,16 @@ extension LectureEditViewController: StepTableViewCellDelegate {
     }
     
     func subStepInteractionButtonDidTapped(step: Int, subStep: Int) {
-        
+        interactingStep = (step, subStep)
+        let cell = stepTableView.cellForRow(at: IndexPath(row: step, section: 0)) as! StepTableViewCell
+        switch cell.step.subSteps[subStep].operationType {
+        case .colorChange:
+            launchPallet(with: "Record", at: cell.subStepViews[subStep].interactionButton, initialColor:
+                cell.step.subSteps[subStep].renderMechanism.color)
+        case .toolChange:
+            launchPenPicker(with: "Record", at: cell.subStepViews[subStep].interactionButton, initialTool:
+                Tool.toolOfTexture(cell.step.subSteps[subStep].renderMechanism.texture))
+        }
     }
 }
 
@@ -116,8 +145,8 @@ extension LectureEditViewController: ArtworkViewDelegate {
 
 extension LectureEditViewController: ToolBarViewDelegate {
     func palletButtonDidTapped(_ sender: UIButton) {
-        ChromaColorPicker.launch(in: self, sourceView: toolBarView.palletButton, initialColor:
-            artworkView.currentRenderMechanism.color, frame: CGRect(x: 0, y: 0, width: 300, height: 300))
+        launchPallet(with: "ToolBar", at: toolBarView.palletButton, initialColor:
+            artworkView.currentRenderMechanism.color)
     }
     
     func layerButtonDidTapped(_ sender: UIButton) {
@@ -144,20 +173,24 @@ extension LectureEditViewController: ToolBarViewDelegate {
     }
     
     func penButtonDidTapped(_ sender: UIButton) {
-        let toolPickerController = ToolPickerTableViewController()
-        toolPickerController.selectedTool = Tool.toolOfTexture(artworkView.currentRenderMechanism.texture)
-        toolPickerController.delegate = self
-        toolPickerController.preferredContentSize = CGSize(width: 150, height: 150)
-        toolPickerController.prepareToLaunchAsPopover(source: toolBarView.penButton)
-        self.present(toolPickerController, animated: true, completion: nil)
+        launchPenPicker(with: "ToolBar", at: toolBarView.penButton, initialTool:
+            Tool.toolOfTexture(artworkView.currentRenderMechanism.texture))
     }
 }
 
 
 extension LectureEditViewController: ChromaColorPickerDelegate {
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
-        artworkView.currentRenderMechanism.color = color
-        toolBarView.palletButton.backgroundColor = color
+        switch palletIdentifier {
+        case "ToolBar":
+            artworkView.currentRenderMechanism.color = color
+            toolBarView.palletButton.backgroundColor = color
+        case "Record":
+            artworkView.guide.steps[interactingStep!.0].subSteps[interactingStep!.1].renderMechanism.color = color
+            artworkView.adjustAccordingTo(step: interactingStep!.0, subStep: interactingStep!.1)
+        default:
+            break
+        }
     }
 }
 
@@ -165,8 +198,16 @@ extension LectureEditViewController: ChromaColorPickerDelegate {
 extension LectureEditViewController: ToolPickerTableViewDelegate {
     func toolSelected(_ tool: Tool) {
         let textureName = tool.textureName()
-        if artworkView.currentRenderMechanism.texture != textureName {
-            artworkView.currentRenderMechanism.texture = textureName
+        switch penPickerIdentifier {
+        case "ToolBar":
+            if artworkView.currentRenderMechanism.texture != textureName {
+                artworkView.currentRenderMechanism.texture = textureName
+            }
+        case "Record":
+            artworkView.guide.steps[interactingStep!.0].subSteps[interactingStep!.1].renderMechanism.texture = tool.textureName()
+            artworkView.adjustAccordingTo(step: interactingStep!.0, subStep: interactingStep!.1)
+        default:
+            break
         }
     }
 }
