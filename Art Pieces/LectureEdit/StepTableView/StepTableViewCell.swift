@@ -10,6 +10,7 @@ import UIKit
 protocol StepTableViewCellDelegate {
     func stepTitleBarDidTapped(at index: Int)
     func subStepInteractionButtonDidTapped(step: Int, subStep: Int)
+    func subDescriptionTextDieEditted(to text: String, step: Int, subStep: Int)
 }
 
 class StepTableViewCell: UITableViewCell {
@@ -81,14 +82,15 @@ class StepTableViewCell: UITableViewCell {
 }
 
 extension StepTableViewCell: StepTitleDelegate, SubStepViewDelegate {
-    
     func subStepInteractionButtonDidTapped(_ index: Int) {
         delegate?.subStepInteractionButtonDidTapped(step: self.index, subStep: index)
     }
     
+    func subDescriptionTextDidChanged(to text: String, _ index: Int) {
+        delegate?.subDescriptionTextDieEditted(to: text, step: self.index, subStep: index)
+    }
     
     func stepTitleBarDidTapped() {
         delegate?.stepTitleBarDidTapped(at: index)
     }
-    
 }

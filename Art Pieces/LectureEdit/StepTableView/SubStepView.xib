@@ -24,16 +24,6 @@
                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VVI-Bn-IKj">
-                    <rect key="frame" x="32" y="40" width="42" height="21"/>
-                    <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="21" id="g9d-f2-2Q8"/>
-                    </constraints>
-                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <color key="textColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <nil key="highlightedColor"/>
-                </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jfD-Os-Wvb">
                     <rect key="frame" x="155" y="7" width="57" height="21"/>
                     <constraints>
@@ -47,22 +37,36 @@
                         <action selector="interactiveButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="r76-iC-rbm"/>
                     </connections>
                 </button>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="jNd-Bj-BZD">
+                    <rect key="frame" x="16" y="36" width="192" height="30"/>
+                    <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="192" id="JXK-Vf-HJI"/>
+                        <constraint firstAttribute="height" constant="30" id="zRo-qD-kQX"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                    <connections>
+                        <action selector="subDescriptionTextEditted:" destination="iN0-l3-epB" eventType="editingDidEnd" id="Fat-1c-XZE"/>
+                    </connections>
+                </textField>
             </subviews>
             <color key="backgroundColor" red="0.96862745098039216" green="0.96470588235294119" blue="0.95686274509803915" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="VVI-Bn-IKj" firstAttribute="top" secondItem="sDf-jY-KET" secondAttribute="bottom" constant="12" id="2yn-mG-QQ2"/>
                 <constraint firstItem="sDf-jY-KET" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="94l-rW-WZ3"/>
                 <constraint firstItem="jfD-Os-Wvb" firstAttribute="leading" secondItem="sDf-jY-KET" secondAttribute="trailing" constant="25.5" id="9JE-Ca-ALt"/>
-                <constraint firstItem="VVI-Bn-IKj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="32" id="Hh2-bx-ULi"/>
+                <constraint firstItem="jNd-Bj-BZD" firstAttribute="top" secondItem="sDf-jY-KET" secondAttribute="bottom" constant="8" id="OlQ-qA-Ap9"/>
                 <constraint firstItem="sDf-jY-KET" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="pWN-6a-xBs"/>
                 <constraint firstItem="jfD-Os-Wvb" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="7" id="rNg-cK-ZU4"/>
+                <constraint firstItem="jNd-Bj-BZD" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="16" id="ym1-9l-AZO"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
             <connections>
                 <outlet property="descriptionLabel" destination="sDf-jY-KET" id="bQi-Mz-enK"/>
                 <outlet property="interactionButton" destination="jfD-Os-Wvb" id="u8b-EK-JLV"/>
-                <outlet property="subDescriptionLabel" destination="VVI-Bn-IKj" id="30E-09-YPM"/>
+                <outlet property="subDescriptionTextField" destination="jNd-Bj-BZD" id="whr-ze-7Yp"/>
             </connections>
             <point key="canvasLocation" x="44" y="-248"/>
         </view>

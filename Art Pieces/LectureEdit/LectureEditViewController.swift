@@ -133,6 +133,10 @@ extension LectureEditViewController: StepTableViewCellDelegate {
                 Tool.toolOfTexture(cell.step.subSteps[subStep].renderMechanism.texture))
         }
     }
+    
+    func subDescriptionTextDieEditted(to text: String, step: Int, subStep: Int) {
+        artworkView.guide.steps[step].subSteps[subStep].renderDescription = text
+    }
 }
 
 

@@ -10,13 +10,14 @@ import UIKit
 
 protocol SubStepViewDelegate {
     func subStepInteractionButtonDidTapped(_ index: Int)
+    func subDescriptionTextDidChanged(to text: String, _ index: Int)
 }
 
 class SubStepView: UIView {
     
     @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var subDescriptionLabel: UILabel!
     @IBOutlet weak var interactionButton: UIButton!
+    @IBOutlet weak var subDescriptionTextField: UITextField!
     
     var delegate: SubStepViewDelegate?
     var index: Int!
@@ -24,7 +25,7 @@ class SubStepView: UIView {
     var subStep: SubStep! {
         didSet {
             descriptionLabel.text = subStep.description()
-            subDescriptionLabel.text = subStep.renderDescription
+            subDescriptionTextField.text = subStep.renderDescription
             switch subStep.operationType {
             case .colorChange:
                 interactionButton.backgroundColor = subStep.renderMechanism.color
@@ -53,10 +54,24 @@ class SubStepView: UIView {
         interactionButton.layer.masksToBounds = true
         interactionButton.layer.borderColor = UIColor.gray.cgColor
         interactionButton.layer.borderWidth = 0.5
+        subDescriptionTextField.delegate = self
+        
     }
     
     @IBAction func interactiveButtonTapped(_ sender: UIButton) {
         delegate?.subStepInteractionButtonDidTapped(index)
     }
     
+    @IBAction func subDescriptionTextEditted(_ sender: UITextField) {
+        delegate?.subDescriptionTextDidChanged(to: sender.text ?? "", self.index)
+    }
+    
+}
+
+
+extension SubStepView: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        subDescriptionTextField.resignFirstResponder()
+        return false
+    }
 }
