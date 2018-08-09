@@ -14,7 +14,11 @@ class GalleryView: UIView {
     @IBOutlet weak var galleryCollectionView: UICollectionView! {
         didSet {
             let waterfallLayout = CHTCollectionViewWaterfallLayout()
-            waterfallLayout.columnCount = 3
+            if UIScreen.main.bounds.width < 1024 {
+                waterfallLayout.columnCount = 2
+            } else {
+                waterfallLayout.columnCount = 3
+            }
             waterfallLayout.minimumColumnSpacing = 36.0
             waterfallLayout.minimumInteritemSpacing = 60.0
             galleryCollectionView.setCollectionViewLayout(waterfallLayout, animated: false)
@@ -30,7 +34,12 @@ class GalleryView: UIView {
 extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
         UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
-        let width = (collectionView.frame.width - 40) / 3
+        var width: CGFloat = 100
+        if UIScreen.main.bounds.width < 1024 {
+            width = (collectionView.frame.width - 36) / 2
+        } else {
+            width = (collectionView.frame.width - 36 * 2) / 3
+        }
         return CGSize(width: width, height: 400)
     }
     

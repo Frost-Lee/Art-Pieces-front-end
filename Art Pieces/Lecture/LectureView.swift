@@ -13,6 +13,7 @@ class LectureView: UIView {
         didSet {
             lectureTableView.register(UINib(nibName: "LectureTableViewCell", bundle: Bundle.main),
                                       forCellReuseIdentifier: "lectureTableViewCell")
+            lectureTableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
             lectureTableView.reloadData()
         }
     }

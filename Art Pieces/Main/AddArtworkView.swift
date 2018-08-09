@@ -13,20 +13,17 @@ protocol AddArtworkDelegate {
     func createButtonDidTapped(_ sender: UIButton)
 }
 
-class AddArtworkView: UIView, UIGestureRecognizerDelegate {
+class AddArtworkView: UIView {
 
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var importButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
-    @IBOutlet weak var tapGestureRecognizer: UITapGestureRecognizer!
     
     var delegate: AddArtworkDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = .clear
-        tapGestureRecognizer.delegate = self
-        tapGestureRecognizer.addTarget(self, action: #selector(handleTapGestureRecognizer))
     }
     
     required init?(coder aDecoder: NSCoder) {

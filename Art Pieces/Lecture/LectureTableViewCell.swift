@@ -38,8 +38,12 @@ class LectureTableViewCell: UITableViewCell {
     override var frame: CGRect {
         didSet {
             var newFrame = frame
-            newFrame.origin.x += 200
-            newFrame.size.width -= 2 * 200
+            var sideOffset = UIScreen.main.bounds.width * 0.2
+            if UIScreen.main.bounds.width - 2 * sideOffset < 600 {
+                sideOffset = (UIScreen.main.bounds.width - 600) / 2
+            }
+            newFrame.origin.x += sideOffset
+            newFrame.size.width -= 2 * sideOffset
             super.frame = newFrame
         }
     }

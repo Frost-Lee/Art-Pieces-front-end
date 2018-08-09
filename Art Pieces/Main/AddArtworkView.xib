@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -86,9 +87,6 @@
                             <constraint firstItem="oQm-ft-Y4e" firstAttribute="top" secondItem="cv1-wX-iFx" secondAttribute="top" constant="127" id="slO-xb-PkK"/>
                             <constraint firstItem="Eri-tZ-T63" firstAttribute="leading" secondItem="mZf-iT-f4k" secondAttribute="trailing" constant="25" id="wOG-E5-7hB"/>
                         </constraints>
-                        <connections>
-                            <outletCollection property="gestureRecognizers" destination="3Ta-gV-wxC" appends="YES" id="2e6-1N-6iE"/>
-                        </connections>
                     </view>
                     <blurEffect style="light"/>
                 </visualEffectView>
@@ -105,10 +103,8 @@
                 <outlet property="cancelButton" destination="elK-cg-KNr" id="ikI-KW-tLJ"/>
                 <outlet property="createButton" destination="Eri-tZ-T63" id="N90-gG-7CW"/>
                 <outlet property="importButton" destination="5c2-i6-sMB" id="tZX-v2-cfF"/>
-                <outlet property="tapGestureRecognizer" destination="3Ta-gV-wxC" id="rzm-VU-KHi"/>
             </connections>
         </view>
-        <tapGestureRecognizer id="3Ta-gV-wxC"/>
     </objects>
     <resources>
         <image name="CancelAddBoard" width="96" height="96"/>
