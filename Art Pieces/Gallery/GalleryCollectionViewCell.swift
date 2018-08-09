@@ -20,15 +20,20 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     
     var index: Int = 0
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-    
     @IBAction func cellSelectionButtonTapped(_ sender: UIButton) {
     }
     
     @IBAction func starButtonTapped(_ sender: UIButton) {
+        starButton.setImage(UIImage(named: "SelectedStarButton")!, for: UIControl.State.normal)
+    }
+    
+    func setTitleImage(to image: UIImage) {
+        repositoryTitleImageView.image = image
+        let widthHeightRatio = image.size.width / image.size.height
+        let frame = repositoryTitleImageView.frame
+        repositoryTitleImageView.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width,
+                                                height: frame.width / widthHeightRatio)
+        setNeedsLayout()
     }
     
 }

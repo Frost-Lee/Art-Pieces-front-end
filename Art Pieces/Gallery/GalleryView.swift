@@ -13,7 +13,11 @@ class GalleryView: UIView {
     
     @IBOutlet weak var galleryCollectionView: UICollectionView! {
         didSet {
-            galleryCollectionView.setCollectionViewLayout(CHTCollectionViewWaterfallLayout(), animated: false)
+            let waterfallLayout = CHTCollectionViewWaterfallLayout()
+            waterfallLayout.columnCount = 3
+            waterfallLayout.minimumColumnSpacing = 36.0
+            waterfallLayout.minimumInteritemSpacing = 60.0
+            galleryCollectionView.setCollectionViewLayout(waterfallLayout, animated: false)
             galleryCollectionView.register(UINib(nibName: "GalleryCollectionViewCell", bundle: Bundle.main),
                                            forCellWithReuseIdentifier: "galleryCollectionViewCell")
             galleryCollectionView.reloadData()
@@ -27,7 +31,7 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
         UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
         let width = (collectionView.frame.width - 40) / 3
-        return CGSize(width: width, height: 250)
+        return CGSize(width: width, height: 400)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -35,7 +39,13 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "galleryCollectionViewCell", for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "galleryCollectionViewCell",
+                                                      for: indexPath) as! GalleryCollectionViewCell
         return cell
+    }
+    
+    func collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
+                         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+        return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
     }
 }

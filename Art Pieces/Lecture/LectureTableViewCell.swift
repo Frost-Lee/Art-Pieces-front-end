@@ -34,6 +34,15 @@ class LectureTableViewCell: UITableViewCell {
             downloadButton.layer.cornerRadius = 15
         }
     }
+    
+    override var frame: CGRect {
+        didSet {
+            var newFrame = frame
+            newFrame.origin.x += 200
+            newFrame.size.width -= 2 * 200
+            super.frame = newFrame
+        }
+    }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)

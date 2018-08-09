@@ -23,9 +23,10 @@
                         <rect key="frame" x="0.0" y="8" width="603" height="215"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="fed-ng-0Ql">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LecturePlaceHolderImage" translatesAutoresizingMaskIntoConstraints="NO" id="fed-ng-0Ql">
                         <rect key="frame" x="0.0" y="8" width="311.5" height="214.5"/>
                         <constraints>
+                            <constraint firstAttribute="height" constant="214.5" id="fAZ-lk-bSG"/>
                             <constraint firstAttribute="width" secondItem="fed-ng-0Ql" secondAttribute="height" multiplier="311:214" id="gfW-M6-eo9"/>
                         </constraints>
                     </imageView>
@@ -155,6 +156,7 @@
         </tableViewCell>
     </objects>
     <resources>
+        <image name="LecturePlaceHolderImage" width="1000" height="1363"/>
         <image name="StarButton" width="52" height="50"/>
         <image name="Watch" width="48" height="38"/>
     </resources>
