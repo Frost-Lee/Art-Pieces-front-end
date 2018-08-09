@@ -9,13 +9,23 @@
 import UIKit
 
 class LectureView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    @IBOutlet weak var lectureTableView: UITableView! {
+        didSet {
+            lectureTableView.register(UINib(nibName: "LectureTableViewCell", bundle: Bundle.main),
+                                      forCellReuseIdentifier: "lectureTableViewCell")
+            lectureTableView.reloadData()
+        }
     }
-    */
+}
 
+
+extension LectureView: UITableViewDataSource, UITableViewDelegate {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 10
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "lectureTableViewCell", for: indexPath)
+        return cell
+    }
 }

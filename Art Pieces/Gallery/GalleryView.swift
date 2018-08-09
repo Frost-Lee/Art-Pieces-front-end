@@ -7,15 +7,35 @@
 //
 
 import UIKit
+import CHTCollectionViewWaterfallLayout
 
 class GalleryView: UIView {
-
-    /*
-    // Only override draw() if you perform custom drawing.
-    // An empty implementation adversely affects performance during animation.
-    override func draw(_ rect: CGRect) {
-        // Drawing code
+    
+    @IBOutlet weak var galleryCollectionView: UICollectionView! {
+        didSet {
+            galleryCollectionView.setCollectionViewLayout(CHTCollectionViewWaterfallLayout(), animated: false)
+            galleryCollectionView.register(UINib(nibName: "GalleryCollectionViewCell", bundle: Bundle.main),
+                                           forCellWithReuseIdentifier: "galleryCollectionViewCell")
+            galleryCollectionView.reloadData()
+        }
     }
-    */
+    
+}
 
+
+extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout:
+        UICollectionViewLayout, sizeForItemAtIndexPath indexPath: IndexPath) -> CGSize {
+        let width = (collectionView.frame.width - 40) / 3
+        return CGSize(width: width, height: 250)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return 30
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "galleryCollectionViewCell", for: indexPath)
+        return cell
+    }
 }
