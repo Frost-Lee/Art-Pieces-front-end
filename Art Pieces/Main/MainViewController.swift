@@ -62,6 +62,7 @@ class MainViewController: UIViewController {
     private func setupLectureView() {
         let nib = UINib(nibName: "Lecture", bundle: nil)
         lectureView = nib.instantiate(withOwner: self, options: nil).first as? LectureView
+        lectureView.delegate = self
         self.view.addSubview(lectureView)
     }
     
@@ -124,5 +125,12 @@ extension MainViewController: AddArtworkDelegate {
     func createButtonDidTapped(_ sender: UIButton) {
         addArtworkView.deactivate()
         performSegue(withIdentifier: "showLectureEditViewController", sender: nil)
+    }
+}
+
+
+extension MainViewController: LectureDelegate {
+    func lectureItemDidSelected(at index: Int) {
+        self.performSegue(withIdentifier: "showArtworkDetail", sender: nil)
     }
 }

@@ -4,6 +4,7 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -37,11 +38,69 @@
                     <connections>
                         <outlet property="masterNavigationView" destination="9jb-XI-Tr2" id="407-62-Spi"/>
                         <segue destination="T9S-AX-Fzz" kind="show" identifier="showLectureEditViewController" id="54u-BJ-MnZ"/>
+                        <segue destination="vkF-oh-baj" kind="show" identifier="showArtworkDetail" id="FXd-ra-JZp"/>
+                        <segue destination="EBj-KE-MlB" kind="show" identifier="showLectureDetail" id="yh3-3r-mtk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bBj-VF-gI5" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="253.12499999999997" y="1358.59375"/>
+        </scene>
+        <!--Artwork Detail View Controller-->
+        <scene sceneID="5LH-E0-QzW">
+            <objects>
+                <viewController id="vkF-oh-baj" customClass="ArtworkDetailViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Lx0-Sn-mb7">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3kT-qV-cTp">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="200"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="How to draw eyes?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="uxJ-JE-NPd">
+                                        <rect key="frame" x="40" y="100" width="243.5" height="36"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="36" id="yNu-Ky-Qk5"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="30"/>
+                                        <color key="textColor" red="0.19215686274509802" green="0.21568627450980393" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFC-nu-Dwe">
+                                        <rect key="frame" x="938" y="103" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="6BH-uE-2mV"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                    </button>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9Tj-NT-yIk">
+                                        <rect key="frame" x="40" y="167" width="36" height="36"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    </imageView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstItem="uxJ-JE-NPd" firstAttribute="top" secondItem="3kT-qV-cTp" secondAttribute="top" constant="100" id="3Rt-sq-dG2"/>
+                                    <constraint firstItem="uxJ-JE-NPd" firstAttribute="leading" secondItem="3kT-qV-cTp" secondAttribute="leading" constant="40" id="6qV-vX-9G0"/>
+                                    <constraint firstAttribute="trailing" secondItem="tFC-nu-Dwe" secondAttribute="trailing" constant="40" id="Dow-wj-gTT"/>
+                                    <constraint firstItem="tFC-nu-Dwe" firstAttribute="top" secondItem="3kT-qV-cTp" secondAttribute="top" constant="103" id="V1W-Pw-zO4"/>
+                                    <constraint firstAttribute="height" constant="200" id="qNx-p9-4By"/>
+                                    <constraint firstItem="tFC-nu-Dwe" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="uxJ-JE-NPd" secondAttribute="trailing" constant="8" symbolic="YES" id="ztC-w5-neh"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="3kT-qV-cTp" firstAttribute="top" secondItem="Lx0-Sn-mb7" secondAttribute="top" id="j4x-ti-dgP"/>
+                            <constraint firstItem="3kT-qV-cTp" firstAttribute="trailing" secondItem="emk-tb-tef" secondAttribute="trailing" id="rgR-B7-Nf1"/>
+                            <constraint firstItem="3kT-qV-cTp" firstAttribute="leading" secondItem="emk-tb-tef" secondAttribute="leading" id="tya-cW-T0w"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="emk-tb-tef"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yGk-s5-CdW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-128.3203125" y="2381.25"/>
         </scene>
         <!--LectureEdit-->
         <scene sceneID="AWW-V3-lsH">
@@ -49,14 +108,30 @@
                 <viewControllerPlaceholder storyboardName="LectureEdit" id="T9S-AX-Fzz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQu-aG-4TQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="253" y="1807"/>
+            <point key="canvasLocation" x="253" y="1893"/>
+        </scene>
+        <!--Lecture Detail View Controller-->
+        <scene sceneID="E9b-2Y-qBa">
+            <objects>
+                <viewController id="EBj-KE-MlB" customClass="LectureDetailViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="GHD-cV-iwb">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="m0M-St-sik"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cQh-4g-Y0x" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="635" y="2381"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="YlZ-gh-bYi">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Jfn-UG-dMD" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Jfn-UG-dMD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="11G-0e-vTa">
+                        <rect key="frame" x="0.0" y="20" width="1024" height="50"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

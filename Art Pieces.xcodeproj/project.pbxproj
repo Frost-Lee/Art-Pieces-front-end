@@ -13,6 +13,8 @@
 		3A40439C2109D04F00467990 /* Gallery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439B2109D04F00467990 /* Gallery.xib */; };
 		3A40439E2109D06800467990 /* Lecture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439D2109D06800467990 /* Lecture.xib */; };
 		3A4043A02109D07400467990 /* LectureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40439F2109D07400467990 /* LectureView.swift */; };
+		3A48E20D211D865C00B34B24 /* ArtworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */; };
+		3A48E20F211D866A00B34B24 /* LectureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48E20E211D866A00B34B24 /* LectureDetailViewController.swift */; };
 		3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */; };
 		3A5C3BB421075D9000BBDA70 /* ToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */; };
 		3A6B32042104BD3A00F2C63E /* MasterNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */; };
@@ -60,6 +62,8 @@
 		3A40439B2109D04F00467990 /* Gallery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Gallery.xib; sourceTree = "<group>"; };
 		3A40439D2109D06800467990 /* Lecture.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Lecture.xib; sourceTree = "<group>"; };
 		3A40439F2109D07400467990 /* LectureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureView.swift; sourceTree = "<group>"; };
+		3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDetailViewController.swift; sourceTree = "<group>"; };
+		3A48E20E211D866A00B34B24 /* LectureDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailViewController.swift; sourceTree = "<group>"; };
 		3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderMechanism.swift; sourceTree = "<group>"; };
 		3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolBarView.xib; sourceTree = "<group>"; };
 		3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MasterNavigationView.xib; sourceTree = "<group>"; };
@@ -129,6 +133,7 @@
 				3A4043992109D04100467990 /* GalleryView.swift */,
 				3AD10483211BD94B006C1039 /* GalleryCollectionViewCell.xib */,
 				3AD10482211BD94B006C1039 /* GalleryCollectionViewCell.swift */,
+				3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -258,6 +263,7 @@
 				3A40439F2109D07400467990 /* LectureView.swift */,
 				3AD10489211BE086006C1039 /* LectureTableViewCell.xib */,
 				3AD10488211BE086006C1039 /* LectureTableViewCell.swift */,
+				3A48E20E211D866A00B34B24 /* LectureDetailViewController.swift */,
 			);
 			path = Lecture;
 			sourceTree = "<group>";
@@ -380,6 +386,7 @@
 				3AD10484211BD94B006C1039 /* GalleryCollectionViewCell.swift in Sources */,
 				3ACC14AE2109C095002BCDFF /* MainViewController.swift in Sources */,
 				3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */,
+				3A48E20D211D865C00B34B24 /* ArtworkDetailViewController.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
 				3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
@@ -395,6 +402,7 @@
 				3AA7BBC221041BE0004E20CE /* LectureEditViewController.swift in Sources */,
 				3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */,
 				3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */,
+				3A48E20F211D866A00B34B24 /* LectureDetailViewController.swift in Sources */,
 				3A0EFB432108663000547E23 /* Extensions.swift in Sources */,
 				3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */,
 				3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */,

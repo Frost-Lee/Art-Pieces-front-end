@@ -9,7 +9,6 @@
 import UIKit
 
 protocol MasterNavigationDelegate: class {
-    
     func galleryButtonDidTapped(_ sender: UIButton)
     func lectureButtonDidTapped(_ sender: UIButton)
     func searchButtonDidTapped(_ sender: UIButton)
@@ -17,7 +16,6 @@ protocol MasterNavigationDelegate: class {
     func notificationButtonDidTapped(_ sendr: UIButton)
     func meButtonDidTapped(_ sender: UIButton)
     func artworkButtonDidTapped(_ sender: UIButton)
-    
 }
 
 class MasterNavigationView: UIView {
@@ -28,33 +26,31 @@ class MasterNavigationView: UIView {
     
     weak var delegate: MasterNavigationDelegate?
     
+    var isGallerySelected: Bool = true
+    
     private var galleryLockFrame = CGRect(x: 128, y: 102, width: 100, height: 8)
     private var lectureLockFrame = CGRect(x: 251, y: 102, width: 100, height: 8)
     
-    private var isGallerySelected: Bool = true
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        guard selectionIndicator != nil && galleryLabel != nil && lectureLabel != nil else {return}
+        if isGallerySelected {
+            setGallerySelected(animated: true)
+        } else {
+            setLectureSelected(animated: true)
+        }
+    }
     
     @IBAction func galleryButtonTapped(_ sender: UIButton) {
         if !isGallerySelected {
-            isGallerySelected = true
-            UIView.animate(withDuration: 0.2, delay: 0, options:
-                UIView.AnimationOptions.curveEaseInOut, animations: {
-                self.selectionIndicator.frame = self.galleryLockFrame
-            }, completion: nil)
-            galleryLabel.textColor = APTheme.purpleHighLightColor
-            lectureLabel.textColor = UIColor.black
+            setGallerySelected(animated: true)
             delegate?.galleryButtonDidTapped(sender)
         }
     }
     
     @IBAction func lectureButtonTapped(_ sender: UIButton) {
         if isGallerySelected {
-            isGallerySelected = false
-            UIView.animate(withDuration: 0.2, delay: 0, options:
-                UIView.AnimationOptions.curveEaseInOut, animations: {
-                self.selectionIndicator.frame = self.lectureLockFrame
-            }, completion: nil)
-            galleryLabel.textColor = UIColor.black
-            lectureLabel.textColor = APTheme.purpleHighLightColor
+            setLectureSelected(animated: true)
             delegate?.lectureButtonDidTapped(sender)
         }
     }
@@ -73,6 +69,35 @@ class MasterNavigationView: UIView {
     
     @IBAction func addArtworkButtonTapped(_ sender: UIButton) {
         delegate?.artworkButtonDidTapped(sender)
+    }
+    
+    func setGallerySelected(animated: Bool) {
+        isGallerySelected = true
+        if animated {
+            UIView.animate(withDuration: 0.2, delay: 0, options:
+                UIView.AnimationOptions.curveEaseInOut, animations: {
+                    self.selectionIndicator.frame = self.galleryLockFrame
+            }, completion: nil)
+        } else {
+            self.selectionIndicator.frame = self.galleryLockFrame
+        }
+        galleryLabel.textColor = APTheme.purpleHighLightColor
+        lectureLabel.textColor = UIColor.black
+        
+    }
+    
+    func setLectureSelected(animated: Bool) {
+        isGallerySelected = false
+        if animated {
+            UIView.animate(withDuration: 0.2, delay: 0, options:
+                UIView.AnimationOptions.curveEaseInOut, animations: {
+                    self.selectionIndicator.frame = self.lectureLockFrame
+            }, completion: nil)
+        } else {
+            self.selectionIndicator.frame = self.lectureLockFrame
+        }
+        galleryLabel.textColor = UIColor.black
+        lectureLabel.textColor = APTheme.purpleHighLightColor
     }
     
 }

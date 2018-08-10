@@ -8,7 +8,12 @@
 
 import UIKit
 
+protocol LectureDelegate: class {
+    func lectureItemDidSelected(at index: Int)
+}
+
 class LectureView: UIView {
+    
     @IBOutlet weak var lectureTableView: UITableView! {
         didSet {
             lectureTableView.register(UINib(nibName: "LectureTableViewCell", bundle: Bundle.main),
@@ -17,6 +22,9 @@ class LectureView: UIView {
             lectureTableView.reloadData()
         }
     }
+    
+    weak var delegate: LectureDelegate?
+    
 }
 
 
@@ -28,5 +36,10 @@ extension LectureView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "lectureTableViewCell", for: indexPath)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        delegate?.lectureItemDidSelected(at: indexPath.row)
     }
 }
