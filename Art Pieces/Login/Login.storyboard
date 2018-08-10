@@ -28,7 +28,7 @@
                                 <rect key="frame" x="512" y="0.0" width="512" height="768"/>
                             </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUw-3e-U4W" customClass="APTextFieldView" customModule="Art_Pieces" customModuleProvider="target">
-                                <rect key="frame" x="554" y="351" width="365" height="40"/>
+                                <rect key="frame" x="554" y="351.5" width="365" height="40"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="Aa4-5j-aq3"/>
@@ -61,6 +61,8 @@
                         <viewLayoutGuide key="safeArea" id="41J-uV-AzY"/>
                     </view>
                     <connections>
+                        <outlet property="emailTextFieldView" destination="2AG-b2-LdD" id="ESx-Nn-S1h"/>
+                        <outlet property="passwordTextFieldView" destination="gUw-3e-U4W" id="S3G-nn-sbt"/>
                         <outlet property="textFieldPlacingConstraint" destination="Ew1-tX-61T" id="71U-PM-TUZ"/>
                     </connections>
                 </viewController>

@@ -29,10 +29,11 @@
                     </constraints>
                     <nil key="textColor"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                    <textInputTraits key="textInputTraits"/>
+                    <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                     <connections>
                         <action selector="textFieldBeganEditing:" destination="-1" eventType="editingDidBegin" id="Zhj-do-vBg"/>
                         <action selector="textFieldEndEditing:" destination="-1" eventType="editingDidEnd" id="8Ca-gE-rWx"/>
+                        <outlet property="delegate" destination="-1" id="pWc-Sd-lEr"/>
                     </connections>
                 </textField>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="XV3-GS-m9B">
