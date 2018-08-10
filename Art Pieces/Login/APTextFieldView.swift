@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol APTextFieldDelegate {
+protocol APTextFieldDelegate: class {
     func textFieldDidBeganEditing()
     func textFieldDidEndEditing(with text: String)
 }
@@ -19,7 +19,7 @@ class APTextFieldView: UIView {
     @IBOutlet weak var textField: UITextField!
     @IBOutlet weak var editingIndicator: UIView!
     
-    var delegate: APTextFieldDelegate?
+    weak var delegate: APTextFieldDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)

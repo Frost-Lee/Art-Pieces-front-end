@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol StepTableViewCellDelegate {
+protocol StepTableViewCellDelegate: class {
     func stepTitleBarDidTapped(at index: Int)
     func subStepInteractionButtonDidTapped(step: Int, subStep: Int)
     func subDescriptionTextDieEditted(to text: String, step: Int, subStep: Int)
@@ -20,7 +20,8 @@ class StepTableViewCell: UITableViewCell {
     
     var step: Step!
     var index: Int!
-    var delegate: StepTableViewCellDelegate?
+    
+    weak var delegate: StepTableViewCellDelegate?
     
     private var currentHeight: CGFloat = 0
     

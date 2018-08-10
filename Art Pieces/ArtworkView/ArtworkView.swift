@@ -12,13 +12,13 @@
 
 import UIKit
 
-protocol ArtworkViewDelegate {
+protocol ArtworkViewDelegate: class {
     func artworkGuideDidUpdated(_ guide: ArtworkGuide)
 }
 
 class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
-    var delegate: ArtworkViewDelegate?
+    weak var delegate: ArtworkViewDelegate?
     
     var activeLayerView: ActiveLayerView!
     var strokeGestureRecognizer: StrokeGestureRecognizer!

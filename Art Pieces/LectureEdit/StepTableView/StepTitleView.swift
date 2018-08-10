@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol StepTitleDelegate {
+protocol StepTitleDelegate: class {
     func stepTitleBarDidTapped()
 }
 
@@ -19,7 +19,7 @@ class StepTitleView: UIView {
     
     static var height: CGFloat = 35
     
-    var delegate: StepTitleDelegate?
+    weak var delegate: StepTitleDelegate?
     
     var stepName: String! {
         didSet {

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol MasterNavigationDelegate {
+protocol MasterNavigationDelegate: class {
     
     func galleryButtonDidTapped(_ sender: UIButton)
     func lectureButtonDidTapped(_ sender: UIButton)
@@ -26,7 +26,7 @@ class MasterNavigationView: UIView {
     @IBOutlet weak var lectureLabel: UILabel!
     @IBOutlet weak var selectionIndicator: UIView!
     
-    var delegate: MasterNavigationDelegate?
+    weak var delegate: MasterNavigationDelegate?
     
     private var galleryLockFrame = CGRect(x: 128, y: 102, width: 100, height: 8)
     private var lectureLockFrame = CGRect(x: 251, y: 102, width: 100, height: 8)

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol ToolPickerTableViewDelegate {
+protocol ToolPickerTableViewDelegate: class {
     func toolSelected(_ tool: Tool)
 }
 
@@ -17,7 +17,7 @@ class ToolPickerTableViewController: UITableViewController {
     
     private var toolNames: [String] = ["Gel Pen", "Pencil", "Crayon"]
     
-    var delegate: ToolPickerTableViewDelegate?
+    weak var delegate: ToolPickerTableViewDelegate?
     
     var selectedTool: Tool = .gelPen {
         didSet {

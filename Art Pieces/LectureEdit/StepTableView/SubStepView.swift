@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol SubStepViewDelegate {
+protocol SubStepViewDelegate: class {
     func subStepInteractionButtonDidTapped(_ index: Int)
     func subDescriptionTextDidChanged(to text: String, _ index: Int)
 }
@@ -19,7 +19,8 @@ class SubStepView: UIView {
     @IBOutlet weak var interactionButton: UIButton!
     @IBOutlet weak var subDescriptionTextField: UITextField!
     
-    var delegate: SubStepViewDelegate?
+    weak var delegate: SubStepViewDelegate?
+    
     var index: Int!
     
     var subStep: SubStep! {

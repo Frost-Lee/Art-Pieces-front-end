@@ -9,7 +9,7 @@
 import UIKit
 import ChromaColorPicker
 
-protocol ToolBarViewDelegate {
+protocol ToolBarViewDelegate: class {
     
     func palletButtonDidTapped(_ sender: UIButton)
     func layerButtonDidTapped(_ sender: UIButton)
@@ -38,7 +38,7 @@ class ToolBarView: UIView {
         }
     }
     
-    var delegate: ToolBarViewDelegate?
+    weak var delegate: ToolBarViewDelegate?
     
     @IBAction func palletButtonTapped(_ sender: UIButton) {
         delegate?.palletButtonDidTapped(sender)

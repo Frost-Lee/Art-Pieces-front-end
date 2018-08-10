@@ -9,7 +9,7 @@
 import UIKit
 
 
-protocol ThicknessSliderDelegate {
+protocol ThicknessSliderDelegate: class {
     func thicknessDidSet(to value: Float)
 }
 
@@ -17,7 +17,7 @@ class ThicknessSliderViewController: UIViewController {
     
     var slider: UISlider = UISlider()
     
-    var delegate: ThicknessSliderDelegate?
+    weak var delegate: ThicknessSliderDelegate?
     var lowerBound: Float? {
         didSet {
             slider.minimumValue = lowerBound ?? 1

@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol AddArtworkDelegate {
+protocol AddArtworkDelegate: class {
     func importButtonDidTapped(_ sender: UIButton)
     func createButtonDidTapped(_ sender: UIButton)
 }
@@ -19,7 +19,7 @@ class AddArtworkView: UIView {
     @IBOutlet weak var importButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
     
-    var delegate: AddArtworkDelegate?
+    weak var delegate: AddArtworkDelegate?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
