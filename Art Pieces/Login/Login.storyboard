@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="YmX-8O-WNz">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Login View Controller-->
+        <scene sceneID="8Aj-Nf-dia">
+            <objects>
+                <viewController id="YmX-8O-WNz" customClass="LoginViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="md5-Rj-6uk">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginSideDecorationPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="f6E-2Y-mnO">
+                                <rect key="frame" x="0.0" y="0.0" width="512" height="768"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="f6E-2Y-mnO" secondAttribute="height" multiplier="2:3" id="6m3-qE-Wr1"/>
+                                </constraints>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackgroundDecorationPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="hqi-hP-XEn">
+                                <rect key="frame" x="512" y="0.0" width="512" height="768"/>
+                            </imageView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUw-3e-U4W" customClass="APTextFieldView" customModule="Art_Pieces" customModuleProvider="target">
+                                <rect key="frame" x="554" y="351" width="365" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Aa4-5j-aq3"/>
+                                </constraints>
+                            </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2AG-b2-LdD" customClass="APTextFieldView" customModule="Art_Pieces" customModuleProvider="target">
+                                <rect key="frame" x="554" y="287" width="365" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="oRV-Fu-fFj"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="2AG-b2-LdD" firstAttribute="leading" secondItem="f6E-2Y-mnO" secondAttribute="trailing" constant="42" id="7ZI-ps-7Zo"/>
+                            <constraint firstItem="41J-uV-AzY" firstAttribute="trailing" secondItem="gUw-3e-U4W" secondAttribute="trailing" constant="105" id="Ec6-zF-6Da"/>
+                            <constraint firstItem="2AG-b2-LdD" firstAttribute="centerY" secondItem="hqi-hP-XEn" secondAttribute="centerY" multiplier="0.8" id="Ew1-tX-61T"/>
+                            <constraint firstItem="gUw-3e-U4W" firstAttribute="leading" secondItem="f6E-2Y-mnO" secondAttribute="trailing" constant="42" id="M4J-K9-rOo"/>
+                            <constraint firstItem="gUw-3e-U4W" firstAttribute="top" secondItem="2AG-b2-LdD" secondAttribute="bottom" constant="24.5" id="NfR-pN-EyW"/>
+                            <constraint firstItem="hqi-hP-XEn" firstAttribute="bottom" secondItem="41J-uV-AzY" secondAttribute="bottom" id="Qa2-AQ-rIc"/>
+                            <constraint firstItem="hqi-hP-XEn" firstAttribute="leading" secondItem="f6E-2Y-mnO" secondAttribute="trailing" id="Tfa-d7-n3c"/>
+                            <constraint firstItem="f6E-2Y-mnO" firstAttribute="bottom" secondItem="41J-uV-AzY" secondAttribute="bottom" id="WyM-b4-v79"/>
+                            <constraint firstItem="41J-uV-AzY" firstAttribute="trailing" secondItem="2AG-b2-LdD" secondAttribute="trailing" constant="105" id="af4-hg-nAN"/>
+                            <constraint firstItem="f6E-2Y-mnO" firstAttribute="leading" secondItem="41J-uV-AzY" secondAttribute="leading" id="d1J-8w-1Pc"/>
+                            <constraint firstItem="f6E-2Y-mnO" firstAttribute="top" secondItem="md5-Rj-6uk" secondAttribute="top" id="gKU-JG-knf"/>
+                            <constraint firstItem="hqi-hP-XEn" firstAttribute="top" secondItem="md5-Rj-6uk" secondAttribute="top" id="u0N-Gs-814"/>
+                            <constraint firstItem="hqi-hP-XEn" firstAttribute="trailing" secondItem="41J-uV-AzY" secondAttribute="trailing" id="zzZ-Hk-l4q"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="41J-uV-AzY"/>
+                    </view>
+                    <connections>
+                        <outlet property="textFieldPlacingConstraint" destination="Ew1-tX-61T" id="71U-PM-TUZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="lIe-s2-fPs" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="144.7265625" y="126.5625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="LoginBackgroundDecorationPhoto" width="555" height="834"/>
+        <image name="LoginSideDecorationPhoto" width="556" height="834"/>
+    </resources>
+</document>
