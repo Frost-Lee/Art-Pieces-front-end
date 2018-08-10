@@ -15,6 +15,8 @@
 		3A4043A02109D07400467990 /* LectureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A40439F2109D07400467990 /* LectureView.swift */; };
 		3A48E20D211D865C00B34B24 /* ArtworkDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */; };
 		3A48E20F211D866A00B34B24 /* LectureDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A48E20E211D866A00B34B24 /* LectureDetailViewController.swift */; };
+		3A48E211211DD0DC00B34B24 /* LectureDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A48E210211DD0DC00B34B24 /* LectureDetail.storyboard */; };
+		3A48E213211DD1D700B34B24 /* ArtworkDetail.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A48E212211DD1D700B34B24 /* ArtworkDetail.storyboard */; };
 		3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */; };
 		3A5C3BB421075D9000BBDA70 /* ToolBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */; };
 		3A6B32042104BD3A00F2C63E /* MasterNavigationView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */; };
@@ -64,6 +66,8 @@
 		3A40439F2109D07400467990 /* LectureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureView.swift; sourceTree = "<group>"; };
 		3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkDetailViewController.swift; sourceTree = "<group>"; };
 		3A48E20E211D866A00B34B24 /* LectureDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureDetailViewController.swift; sourceTree = "<group>"; };
+		3A48E210211DD0DC00B34B24 /* LectureDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LectureDetail.storyboard; sourceTree = "<group>"; };
+		3A48E212211DD1D700B34B24 /* ArtworkDetail.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtworkDetail.storyboard; sourceTree = "<group>"; };
 		3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RenderMechanism.swift; sourceTree = "<group>"; };
 		3A5C3BB221075D9000BBDA70 /* ToolBarView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ToolBarView.xib; sourceTree = "<group>"; };
 		3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MasterNavigationView.xib; sourceTree = "<group>"; };
@@ -133,6 +137,7 @@
 				3A4043992109D04100467990 /* GalleryView.swift */,
 				3AD10483211BD94B006C1039 /* GalleryCollectionViewCell.xib */,
 				3AD10482211BD94B006C1039 /* GalleryCollectionViewCell.swift */,
+				3A48E212211DD1D700B34B24 /* ArtworkDetail.storyboard */,
 				3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */,
 			);
 			path = Gallery;
@@ -263,6 +268,7 @@
 				3A40439F2109D07400467990 /* LectureView.swift */,
 				3AD10489211BE086006C1039 /* LectureTableViewCell.xib */,
 				3AD10488211BE086006C1039 /* LectureTableViewCell.swift */,
+				3A48E210211DD0DC00B34B24 /* LectureDetail.storyboard */,
 				3A48E20E211D866A00B34B24 /* LectureDetailViewController.swift */,
 			);
 			path = Lecture;
@@ -340,8 +346,10 @@
 				3AD10485211BD94B006C1039 /* GalleryCollectionViewCell.xib in Resources */,
 				3ABF691C211C449300709831 /* Login.storyboard in Resources */,
 				3A8C93AE20F895EE005D5BD1 /* LaunchScreen.storyboard in Resources */,
+				3A48E213211DD1D700B34B24 /* ArtworkDetail.storyboard in Resources */,
 				3A40439C2109D04F00467990 /* Gallery.xib in Resources */,
 				3ADC3C6C2103188600C31637 /* SubStepView.xib in Resources */,
+				3A48E211211DD0DC00B34B24 /* LectureDetail.storyboard in Resources */,
 				3AD1048B211BE086006C1039 /* LectureTableViewCell.xib in Resources */,
 				3A6B32042104BD3A00F2C63E /* MasterNavigationView.xib in Resources */,
 				3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */,

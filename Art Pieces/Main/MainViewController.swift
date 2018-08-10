@@ -21,19 +21,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.navigationBar.tintColor = UIColor.lightGray
-        let masterNavigationNib = UINib(nibName: "MasterNavigationView", bundle: nil)
-        masterNavigationView = masterNavigationNib.instantiate(withOwner: self, options: nil).first
-            as? MasterNavigationView
-        masterNavigationView.delegate = self
-        self.view.addSubview(masterNavigationView)
-        
+        setupMasterNavigationView()
         setupGalleryView()
         setupLectureView()
         setupAddArtworkView()
-        let selfFrame = self.view.frame
-        onSightLockFrame = CGRect(x: 0, y: 110, width: selfFrame.width, height: selfFrame.height - 110)
-        offSightLockFrame = CGRect(x: selfFrame.width, y: 110, width: selfFrame.width, height: selfFrame.height - 110)
+        setupLockFrames()
         setGalleryOnSight()
     }
     
@@ -51,6 +43,17 @@ class MainViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillAppear(true)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
+        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        self.navigationController?.navigationBar.shadowImage = UIImage()
+    }
+    
+    private func setupMasterNavigationView() {
+        self.navigationController?.navigationBar.tintColor = UIColor.lightGray
+        let masterNavigationNib = UINib(nibName: "MasterNavigationView", bundle: nil)
+        masterNavigationView = masterNavigationNib.instantiate(withOwner: self, options: nil).first
+            as? MasterNavigationView
+        masterNavigationView.delegate = self
+        self.view.addSubview(masterNavigationView)
     }
     
     private func setupGalleryView() {
@@ -72,6 +75,13 @@ class MainViewController: UIViewController {
         addArtworkView.frame = self.view.frame
         addArtworkView.delegate = self
         self.view.addSubview(addArtworkView)
+    }
+    
+    private func setupLockFrames() {
+        let selfFrame = self.view.frame
+        onSightLockFrame = CGRect(x: 0, y: 110, width: selfFrame.width, height: selfFrame.height - 110)
+        offSightLockFrame = CGRect(x: selfFrame.width, y: 110, width: selfFrame.width, height:
+            selfFrame.height - 110)
     }
     
     private func setGalleryOnSight() {
@@ -131,6 +141,6 @@ extension MainViewController: AddArtworkDelegate {
 
 extension MainViewController: LectureDelegate {
     func lectureItemDidSelected(at index: Int) {
-        self.performSegue(withIdentifier: "showArtworkDetail", sender: nil)
+        self.performSegue(withIdentifier: "showLectureDetail", sender: nil)
     }
 }
