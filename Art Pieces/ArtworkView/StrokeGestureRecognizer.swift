@@ -11,7 +11,14 @@
 
 import UIKit
 
-class StrokeGestureRecognizer: OnWorkGestureRecognizer {
+class StrokeGestureRecognizer: UIGestureRecognizer {
+    
+    var coordinateSpaceView: UIView!
+    var trackedTouch: UITouch?
+    
+    var initialTimestamp: TimeInterval?
+    var fingerStartTimer: Timer? = nil
+    let cancellationTimeInterval = TimeInterval(0.1)
     
     var stroke: Stroke!
     var renderMechanism: RenderMechanism! {
@@ -20,34 +27,80 @@ class StrokeGestureRecognizer: OnWorkGestureRecognizer {
         }
     }
     
-    override func onWorkGestureRecognizerDidLoad() {
+    override init(target: Any?, action: Selector?) {
+        super.init(target: target, action: action)
         stroke = Stroke(renderMechanism: defaultRenderMechanism)
         renderMechanism = defaultRenderMechanism
     }
     
-    override func workingGestureMoved(trackedTouch: UITouch) {
-        let location = trackedTouch.preciseLocation(in: coordinateSpaceView)
-        let timestamp = trackedTouch.timestamp
-        if let previousSample = stroke.samples.last {
-            if (previousSample.location - location).quadrance < 0.003 {
-                return
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent) {
+        if trackedTouch == nil {
+            trackedTouch = touches.first
+            initialTimestamp = trackedTouch?.timestamp
+            fingerStartTimer = Timer.scheduledTimer(timeInterval: cancellationTimeInterval,
+                                                    target: self, selector: #selector(beginIfNeeded(_:)),
+                                                    userInfo: nil, repeats: false)
+        }
+        workingGestureMoved(touches: touches, event: event)
+    }
+    
+    override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
+        if workingGestureMoved(touches: touches, event: event) {
+            if state == .began {
+                state = .changed
             }
         }
-        let sample = StrokeSample(timeStamp: timestamp, location: location)
-        stroke.add(sample: sample)
     }
     
-    override func workingGestureFinished(touches: Set<UITouch>, event: UIEvent?) {
-        stroke.state = .done
+    override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent) {
+        if workingGestureMoved(touches: touches, event: event) {
+            stroke.state = .done
+            state = .ended
+        }
     }
     
-    override func workingGestureCancelled(touches: Set<UITouch>, event: UIEvent?) {
-        stroke.state = .cancelled
+    override func touchesCancelled(_ touches: Set<UITouch>, with event: UIEvent) {
+        if workingGestureMoved(touches: touches, event: event) {
+            stroke.state = .cancelled
+            state = .failed
+        }
     }
     
-    override func workingGestureWillReset() {
+    override func reset() {
         stroke = Stroke(renderMechanism: renderMechanism)
+        trackedTouch = nil
+        super.reset()
     }
     
+    @objc private func beginIfNeeded(_ timer: Timer) {
+        if state == .possible {
+            state = .began
+        }
+    }
+    
+    @discardableResult
+    func workingGestureMoved(touches: Set<UITouch>, event: UIEvent) -> Bool {
+        if let touchToAppend = trackedTouch {
+            for touch in touches {
+                if touch !== touchToAppend && touch.timestamp - initialTimestamp!
+                    < cancellationTimeInterval {
+                    state = (state == .possible) ? .failed : .cancelled
+                    return false
+                }
+            }
+            if touches.contains(touchToAppend) {
+                let location = touchToAppend.preciseLocation(in: coordinateSpaceView)
+                let timestamp = touchToAppend.timestamp
+                if let previousSample = stroke.samples.last {
+                    if (previousSample.location - location).quadrance < 0.003 {
+                        return true
+                    }
+                }
+                let sample = StrokeSample(timeStamp: timestamp, location: location)
+                stroke.add(sample: sample)
+                return true
+            }
+        }
+        return false
+    }
 }
-

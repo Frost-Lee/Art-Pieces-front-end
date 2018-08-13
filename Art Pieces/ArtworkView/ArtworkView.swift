@@ -9,7 +9,6 @@
 //  The ArtworkView is the view that is used for the user to draw on, StrokeGestureRecognizer is used so that
 //  user's interaction with the screen would be recorded.
 
-
 import UIKit
 
 protocol ArtworkViewDelegate: class {
@@ -74,10 +73,10 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
             stroke = strokeGestureRecognizer.stroke
         }
         if let updatedStroke = stroke {
+            currentStroke = updatedStroke
             if strokeGestureRecognizer.state == .ended {
                 mergeActiveStroke()
             }
-            currentStroke = updatedStroke
         }
     }
     
@@ -166,7 +165,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
                 .artworkLayer.strokes.count - 1)) {
                 writeGuideLog(from: nil, to: currentRenderMechanism)
                 guide.recordStroke(at: activeLayerIndex, index: artworkLayerViews[activeLayerIndex]
-                    .artworkLayer.strokes.count)
+                    .artworkLayer.strokes.count - 1)
             }
         }
     }

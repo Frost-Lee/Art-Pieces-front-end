@@ -51,8 +51,6 @@
 		3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6D2103189700C31637 /* SubStepView.swift */; };
 		3ADC3C7021031FA400C31637 /* LectureEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6F21031FA400C31637 /* LectureEdit.storyboard */; };
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
-		3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */; };
-		3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */; };
 		48BFC0540826D3CB6F13165E /* libPods-Art Pieces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */; };
 /* End PBXBuildFile section */
 
@@ -104,8 +102,6 @@
 		3ADC3C6D2103189700C31637 /* SubStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStepView.swift; sourceTree = "<group>"; };
 		3ADC3C6F21031FA400C31637 /* LectureEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LectureEdit.storyboard; sourceTree = "<group>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
-		3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraseGestureRecognizer.swift; sourceTree = "<group>"; };
-		3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnWorkGestureRecognizer.swift; sourceTree = "<group>"; };
 		9AE3AFB4E4B2C13F65861B46 /* Pods-Art Pieces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.release.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.release.xcconfig"; sourceTree = "<group>"; };
 		BF4AC9E22F8BA616954FA4A6 /* Pods-Art Pieces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -204,8 +200,6 @@
 		3A79F4C720FEF2FC00896C0D /* ArtworkView */ = {
 			isa = PBXGroup;
 			children = (
-				3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */,
-				3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */,
 				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
 				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
 				3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */,
@@ -396,7 +390,6 @@
 				3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */,
 				3A48E20D211D865C00B34B24 /* ArtworkDetailViewController.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
-				3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */,
 				3A18C8952121650E007F63F2 /* ArtworkLayerView.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
 				3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */,
@@ -409,7 +402,6 @@
 				3A94FBE32109F935009BE7E1 /* AddArtworkView.swift in Sources */,
 				3ADC3C6A210312AE00C31637 /* StepTitleView.swift in Sources */,
 				3AA7BBC221041BE0004E20CE /* LectureEditViewController.swift in Sources */,
-				3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */,
 				3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */,
 				3A48E20F211D866A00B34B24 /* LectureDetailViewController.swift in Sources */,
 				3A0EFB432108663000547E23 /* Extensions.swift in Sources */,
