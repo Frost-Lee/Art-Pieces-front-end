@@ -200,8 +200,8 @@
 		3A79F4C720FEF2FC00896C0D /* ArtworkView */ = {
 			isa = PBXGroup;
 			children = (
-				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
 				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
+				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
 				3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */,
 				3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */,
 			);

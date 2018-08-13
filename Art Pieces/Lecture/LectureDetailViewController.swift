@@ -10,15 +10,18 @@ import UIKit
 
 class LectureDetailViewController: UIViewController {
 
+    @IBOutlet weak var stepBackgroundView: UIView!
+    @IBOutlet weak var downloadButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        stepBackgroundView.layer.borderWidth = 1.0
+        stepBackgroundView.layer.borderColor = APTheme.separatorColor.cgColor
+        downloadButton.layer.cornerRadius = 15
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-//        self.navigationController?.navigationBar.shadowImage = UIImage()
-        
     }
 
 }
