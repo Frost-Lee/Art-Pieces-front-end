@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
+		3A18C8952121650E007F63F2 /* ArtworkLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */; };
 		3A40439A2109D04100467990 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4043992109D04100467990 /* GalleryView.swift */; };
 		3A40439C2109D04F00467990 /* Gallery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439B2109D04F00467990 /* Gallery.xib */; };
 		3A40439E2109D06800467990 /* Lecture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439D2109D06800467990 /* Lecture.xib */; };
@@ -52,7 +53,6 @@
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
 		3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */; };
 		3AE5C5C320FF83DE009A6E57 /* OnWorkGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */; };
-		3AEDB3C920FE104500B6C17B /* ActiveLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */; };
 		48BFC0540826D3CB6F13165E /* libPods-Art Pieces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +60,7 @@
 		1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
+		3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLayerView.swift; sourceTree = "<group>"; };
 		3A4043992109D04100467990 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		3A40439B2109D04F00467990 /* Gallery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Gallery.xib; sourceTree = "<group>"; };
 		3A40439D2109D06800467990 /* Lecture.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Lecture.xib; sourceTree = "<group>"; };
@@ -105,7 +106,6 @@
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AE5C5C020FF81BE009A6E57 /* EraseGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EraseGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnWorkGestureRecognizer.swift; sourceTree = "<group>"; };
-		3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveLayerView.swift; sourceTree = "<group>"; };
 		9AE3AFB4E4B2C13F65861B46 /* Pods-Art Pieces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.release.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.release.xcconfig"; sourceTree = "<group>"; };
 		BF4AC9E22F8BA616954FA4A6 /* Pods-Art Pieces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -208,7 +208,7 @@
 				3AE5C5C220FF83DE009A6E57 /* OnWorkGestureRecognizer.swift */,
 				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
 				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
-				3AEDB3C820FE104500B6C17B /* ActiveLayerView.swift */,
+				3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */,
 				3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */,
 			);
 			path = ArtworkView;
@@ -397,6 +397,7 @@
 				3A48E20D211D865C00B34B24 /* ArtworkDetailViewController.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
 				3AE5C5C120FF81BE009A6E57 /* EraseGestureRecognizer.swift in Sources */,
+				3A18C8952121650E007F63F2 /* ArtworkLayerView.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
 				3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */,
 				3A40439A2109D04100467990 /* GalleryView.swift in Sources */,
@@ -416,7 +417,6 @@
 				3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */,
 				3AD1048A211BE086006C1039 /* LectureTableViewCell.swift in Sources */,
 				3ABF6920211C461800709831 /* APTextFieldView.swift in Sources */,
-				3AEDB3C920FE104500B6C17B /* ActiveLayerView.swift in Sources */,
 				3ABF691E211C458C00709831 /* LoginViewController.swift in Sources */,
 				3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */,
 			);

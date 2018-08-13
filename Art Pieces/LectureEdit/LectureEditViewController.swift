@@ -34,7 +34,7 @@ class LectureEditViewController: UIViewController {
         super.viewDidLoad()
         
         artworkView.currentRenderMechanism = RenderMechanism(color: UIColor.lightGray, width: 1.5, texture: "PencilTexture")
-        artworkView.switchLayer(to: 0)
+        artworkView.createLayer()
         artworkView.delegate = self
         artworkView.isRecordingForLecture = true
         let toolBarNib = UINib(nibName: "ToolBarView", bundle: nil)
