@@ -9,6 +9,10 @@
 import UIKit
 import CHTCollectionViewWaterfallLayout
 
+protocol GalleryDelegate: class {
+    func galleryItemDidSelected(at index: Int)
+}
+
 class GalleryView: UIView {
     
     @IBOutlet weak var galleryCollectionView: UICollectionView! {
@@ -27,6 +31,8 @@ class GalleryView: UIView {
             galleryCollectionView.reloadData()
         }
     }
+    
+    weak var delegate: GalleryDelegate?
     
 }
 
@@ -56,5 +62,9 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
     func collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
                          insetForSectionAtIndex section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        delegate?.galleryItemDidSelected(at: indexPath.row)
     }
 }

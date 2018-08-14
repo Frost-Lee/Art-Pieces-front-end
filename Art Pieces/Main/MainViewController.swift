@@ -59,6 +59,7 @@ class MainViewController: UIViewController {
     private func setupGalleryView() {
         let nib = UINib(nibName: "Gallery", bundle: nil)
         galleryView = nib.instantiate(withOwner: self, options: nil).first as? GalleryView
+        galleryView.delegate = self
         self.view.addSubview(galleryView)
     }
     
@@ -135,6 +136,13 @@ extension MainViewController: AddArtworkDelegate {
     func createButtonDidTapped(_ sender: UIButton) {
         addArtworkView.deactivate()
         performSegue(withIdentifier: "showLectureEditViewController", sender: nil)
+    }
+}
+
+
+extension MainViewController: GalleryDelegate {
+    func galleryItemDidSelected(at index: Int) {
+        self.performSegue(withIdentifier: "showArtworkDetail", sender: nil)
     }
 }
 

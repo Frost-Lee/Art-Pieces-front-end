@@ -92,12 +92,6 @@
                                 <color key="textColor" red="0.19215686274509802" green="0.2196078431372549" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="kKm-VN-pmA">
-                                <rect key="frame" x="0.0" y="0.0" width="295" height="363"/>
-                                <connections>
-                                    <action selector="cellSelectionButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="PkK-lH-0Bh"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -118,12 +112,8 @@
                             <constraint firstAttribute="bottom" secondItem="FmY-2Y-QTo" secondAttribute="bottom" constant="5" id="dWB-DF-fWJ"/>
                             <constraint firstAttribute="trailing" secondItem="mNv-qF-LHs" secondAttribute="trailing" constant="8" id="eII-Yg-P0T"/>
                             <constraint firstAttribute="bottom" secondItem="533-Oa-sQb" secondAttribute="bottom" constant="8" id="fww-Gq-d1h"/>
-                            <constraint firstAttribute="trailing" secondItem="kKm-VN-pmA" secondAttribute="trailing" id="h2G-p3-2AF"/>
-                            <constraint firstItem="kKm-VN-pmA" firstAttribute="top" secondItem="kw8-mA-O4l" secondAttribute="top" id="lZO-4b-VnU"/>
                             <constraint firstAttribute="trailing" secondItem="Fgb-Ul-VS8" secondAttribute="trailing" id="liF-fn-Q8P"/>
                             <constraint firstItem="mNv-qF-LHs" firstAttribute="leading" secondItem="FmY-2Y-QTo" secondAttribute="trailing" constant="8" id="x9P-fy-A9T"/>
-                            <constraint firstItem="huo-cW-9qL" firstAttribute="top" secondItem="kKm-VN-pmA" secondAttribute="bottom" id="xDX-HV-X0h"/>
-                            <constraint firstItem="kKm-VN-pmA" firstAttribute="leading" secondItem="kw8-mA-O4l" secondAttribute="leading" id="yVe-Zo-NVn"/>
                         </constraints>
                     </view>
                 </subviews>

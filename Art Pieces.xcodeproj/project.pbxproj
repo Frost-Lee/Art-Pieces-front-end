@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */; };
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
 		3A18C8952121650E007F63F2 /* ArtworkLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */; };
@@ -56,6 +57,7 @@
 
 /* Begin PBXFileReference section */
 		1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
 		3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLayerView.swift; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 				3AD10482211BD94B006C1039 /* GalleryCollectionViewCell.swift */,
 				3A48E212211DD1D700B34B24 /* ArtworkDetail.storyboard */,
 				3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */,
+				3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -390,6 +393,7 @@
 				3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */,
 				3A48E20D211D865C00B34B24 /* ArtworkDetailViewController.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
+				3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */,
 				3A18C8952121650E007F63F2 /* ArtworkLayerView.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
 				3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */,
