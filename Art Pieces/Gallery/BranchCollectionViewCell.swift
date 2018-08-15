@@ -9,5 +9,9 @@
 import UIKit
 
 class BranchCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var branchKeyPhoto: UIImageView!
+    @IBOutlet weak var branchKeyPhoto: UIImageView! {
+        didSet {
+            branchKeyPhoto.clipsToBounds = true
+        }
+    }
 }

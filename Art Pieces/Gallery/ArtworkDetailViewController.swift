@@ -31,10 +31,16 @@ extension ArtworkDetailViewController: UICollectionViewDataSource, UICollectionV
         return 10
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt
+        indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "branchCollectionViewCell",
                                                       for: indexPath) as! BranchCollectionViewCell
         cell.branchKeyPhoto.image = UIImage(named: "LecturePlaceHolderImage")
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: collectionView.frame.width / 2.0, height: collectionView.frame.height / 2.0)
     }
 }
