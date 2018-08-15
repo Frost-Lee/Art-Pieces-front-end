@@ -10,6 +10,9 @@ import Foundation
 import CoreGraphics
 import ChromaColorPicker
 
+func delay(for seconds: Double, block: @escaping ()->()) {
+    DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds, execute: block)
+}
 
 extension CGVector {
     var quadrance: CGFloat {

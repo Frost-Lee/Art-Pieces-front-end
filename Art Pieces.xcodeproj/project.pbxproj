@@ -11,6 +11,7 @@
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
 		3A18C8952121650E007F63F2 /* ArtworkLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */; };
+		3A39EEE22123CE5D00E8F881 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */; };
 		3A40439A2109D04100467990 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4043992109D04100467990 /* GalleryView.swift */; };
 		3A40439C2109D04F00467990 /* Gallery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439B2109D04F00467990 /* Gallery.xib */; };
 		3A40439E2109D06800467990 /* Lecture.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439D2109D06800467990 /* Lecture.xib */; };
@@ -61,6 +62,7 @@
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
 		3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLayerView.swift; sourceTree = "<group>"; };
+		3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
 		3A4043992109D04100467990 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		3A40439B2109D04F00467990 /* Gallery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Gallery.xib; sourceTree = "<group>"; };
 		3A40439D2109D06800467990 /* Lecture.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Lecture.xib; sourceTree = "<group>"; };
@@ -126,6 +128,15 @@
 				1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		3A39EEE32123CE7D00E8F881 /* Launch&Walk */ = {
+			isa = PBXGroup;
+			children = (
+				3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */,
+				3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */,
+			);
+			path = "Launch&Walk";
 			sourceTree = "<group>";
 		};
 		3A4043982109CCB900467990 /* Gallery */ = {
@@ -234,8 +245,8 @@
 			children = (
 				3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */,
 				3A8C93AF20F895EE005D5BD1 /* Info.plist */,
-				3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */,
 				3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */,
+				3A39EEE32123CE7D00E8F881 /* Launch&Walk */,
 				3A4043A12109D75000467990 /* Main */,
 				3ABF691A211C447900709831 /* Login */,
 				3A4043982109CCB900467990 /* Gallery */,
@@ -356,6 +367,7 @@
 				3A5C3BB421075D9000BBDA70 /* ToolBarView.xib in Resources */,
 				3ADC3C6421030FF800C31637 /* StepTitleView.xib in Resources */,
 				3ABF6922211C462900709831 /* APTextFieldView.xib in Resources */,
+				3A39EEE22123CE5D00E8F881 /* WalkThrough.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

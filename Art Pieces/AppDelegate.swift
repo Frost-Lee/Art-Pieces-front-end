@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BWWalkthrough
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -14,8 +15,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
 
-    func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+    func application(_ application: UIApplication, didFinishLaunchingWithOptions
+        launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        if  UserDefaults.standard.bool(forKey: "everLaunched") == false {
+            UserDefaults.standard.set(true, forKey: "everLaunched")
+            UserDefaults.standard.set(true, forKey: "firstLaunch")
+        } else {
+            UserDefaults.standard.set(false, forKey: "firstLaunch")
+        }
+        if isFirstLaunch() {
+            introduceMyself()
+        }
         return true
     }
 
@@ -40,7 +50,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
-
+    
+    private func isFirstLaunch() -> Bool {
+        return UserDefaults.standard.bool(forKey: "firstLaunch")
+    }
 
 }
 
+
+extension AppDelegate: BWWalkthroughViewControllerDelegate {
+    func walkthroughCloseButtonPressed() {
+        window?.rootViewController?.dismiss(animated: true, completion: nil)
+    }
+    
+    private func introduceMyself() {
+        let walkThroughStoryboard = UIStoryboard(name: "WalkThrough", bundle: Bundle.main)
+        let walkThrough = walkThroughStoryboard.instantiateInitialViewController()
+            as! BWWalkthroughViewController
+        let page_1 = walkThroughStoryboard.instantiateViewController(withIdentifier: "IntroducePage1")
+        let page_2 = walkThroughStoryboard.instantiateViewController(withIdentifier: "IntroducePage2")
+        let page_3 = walkThroughStoryboard.instantiateViewController(withIdentifier: "IntroducePage3")
+        walkThrough.delegate = self
+        walkThrough.add(viewController: page_1)
+        walkThrough.add(viewController: page_2)
+        walkThrough.add(viewController: page_3)
+        delay(for: 1) { self.window?.rootViewController?.present(walkThrough, animated: true) }
+    }
+}

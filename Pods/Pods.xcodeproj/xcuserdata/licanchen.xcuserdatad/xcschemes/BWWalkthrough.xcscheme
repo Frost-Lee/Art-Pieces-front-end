@@ -14,9 +14,9 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "15A0C5BCEDDD0601B07A04070C223008"
-               BuildableName = "libPods-Art Pieces.a"
-               BlueprintName = "Pods-Art Pieces"
+               BlueprintIdentifier = "6D0CD4DD28E17606574EBAD1B91AE1E7"
+               BuildableName = "libBWWalkthrough.a"
+               BlueprintName = "BWWalkthrough"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -45,9 +45,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "15A0C5BCEDDD0601B07A04070C223008"
-            BuildableName = "libPods-Art Pieces.a"
-            BlueprintName = "Pods-Art Pieces"
+            BlueprintIdentifier = "6D0CD4DD28E17606574EBAD1B91AE1E7"
+            BuildableName = "libBWWalkthrough.a"
+            BlueprintName = "BWWalkthrough"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

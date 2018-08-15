@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="Z5y-5a-0AM">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Walkthrough View Controller-->
+        <scene sceneID="WqB-pP-Z3h">
+            <objects>
+                <viewController id="Z5y-5a-0AM" customClass="BWWalkthroughViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="YG3-nf-rGJ">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-2B-8UJ">
+                                <rect key="frame" x="524.5" y="418.5" width="77" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="77" id="f7I-A4-hHP"/>
+                                    <constraint firstAttribute="height" constant="30" id="rKO-Xh-eD0"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <state key="normal" title="Skip">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="close:" destination="Z5y-5a-0AM" eventType="touchUpInside" id="uXe-r7-9WO"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Xtl-2B-8UJ" firstAttribute="centerY" secondItem="BOj-3H-bMy" secondAttribute="centerY" multiplier="1.1" id="Jjx-ZY-yRs"/>
+                            <constraint firstItem="Xtl-2B-8UJ" firstAttribute="centerX" secondItem="BOj-3H-bMy" secondAttribute="centerX" multiplier="1.1" id="SHp-L8-cW2"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="BOj-3H-bMy"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="Xtl-2B-8UJ" id="z9H-rh-a4i"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="pgB-nO-9x2" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="165.8203125" y="162.5"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="apq-hT-D9t">
+            <objects>
+                <viewController storyboardIdentifier="IntroducePage1" id="uJ5-Gg-zql" customClass="BWWalkthroughPageViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="VTr-wo-Kgd">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroducePage1" translatesAutoresizingMaskIntoConstraints="NO" id="OYu-Y4-IDz">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="OYu-Y4-IDz" firstAttribute="trailing" secondItem="UxA-Zq-ixB" secondAttribute="trailing" id="6N2-lK-heV"/>
+                            <constraint firstItem="OYu-Y4-IDz" firstAttribute="bottom" secondItem="UxA-Zq-ixB" secondAttribute="bottom" id="Bnj-ND-PrL"/>
+                            <constraint firstItem="OYu-Y4-IDz" firstAttribute="top" secondItem="VTr-wo-Kgd" secondAttribute="top" id="EKq-tN-EHm"/>
+                            <constraint firstItem="OYu-Y4-IDz" firstAttribute="leading" secondItem="UxA-Zq-ixB" secondAttribute="leading" id="FLI-oF-xG7"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="UxA-Zq-ixB"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hVM-Cc-mzf" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868" y="163"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="gwz-fb-Wry">
+            <objects>
+                <viewController storyboardIdentifier="IntroducePage2" id="HkT-Yk-sjd" customClass="BWWalkthroughPageViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="88R-L1-X5G">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroducePage2" translatesAutoresizingMaskIntoConstraints="NO" id="7Cu-Yv-NZm">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="7Cu-Yv-NZm" firstAttribute="top" secondItem="88R-L1-X5G" secondAttribute="top" id="AMT-lS-yKy"/>
+                            <constraint firstItem="7Cu-Yv-NZm" firstAttribute="leading" secondItem="4mG-iy-gE1" secondAttribute="leading" id="Sz4-s8-iTB"/>
+                            <constraint firstItem="7Cu-Yv-NZm" firstAttribute="trailing" secondItem="4mG-iy-gE1" secondAttribute="trailing" id="VLZ-aa-odX"/>
+                            <constraint firstItem="7Cu-Yv-NZm" firstAttribute="bottom" secondItem="4mG-iy-gE1" secondAttribute="bottom" id="dLP-EZ-Dwc"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="4mG-iy-gE1"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="gTP-vs-AWS" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="166" y="886"/>
+        </scene>
+        <!--Walkthrough Page View Controller-->
+        <scene sceneID="8p6-VT-kwN">
+            <objects>
+                <viewController storyboardIdentifier="IntroducePage3" id="mbh-Wc-jVu" customClass="BWWalkthroughPageViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="i6g-b5-dDf">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroducePage3" translatesAutoresizingMaskIntoConstraints="NO" id="YWD-1Q-MNT">
+                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            </imageView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="YWD-1Q-MNT" firstAttribute="leading" secondItem="grx-4p-AGJ" secondAttribute="leading" id="419-Ji-9pc"/>
+                            <constraint firstItem="YWD-1Q-MNT" firstAttribute="trailing" secondItem="grx-4p-AGJ" secondAttribute="trailing" id="62f-Fn-bKL"/>
+                            <constraint firstItem="YWD-1Q-MNT" firstAttribute="top" secondItem="i6g-b5-dDf" secondAttribute="top" id="6yz-T3-Hhs"/>
+                            <constraint firstItem="YWD-1Q-MNT" firstAttribute="bottom" secondItem="grx-4p-AGJ" secondAttribute="bottom" id="mVo-az-cqF"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="grx-4p-AGJ"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IsI-rg-3Wq" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="868" y="886"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="IntroducePage1" width="1112" height="834"/>
+        <image name="IntroducePage2" width="1112" height="834"/>
+        <image name="IntroducePage3" width="1112" height="834"/>
+    </resources>
+</document>
