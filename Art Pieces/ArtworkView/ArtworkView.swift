@@ -73,9 +73,17 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
             stroke = strokeGestureRecognizer.stroke
         }
         if let updatedStroke = stroke {
-            currentStroke = updatedStroke
-            if strokeGestureRecognizer.state == .ended {
-                mergeActiveStroke()
+            if !updatedStroke.renderMechanism.isEraseMode {
+                currentStroke = updatedStroke
+                if strokeGestureRecognizer.state == .ended {
+                    mergeActiveStroke()
+                }
+            } else {
+                artworkLayerViews[activeLayerIndex].eraseBufferStroke = updatedStroke
+                if strokeGestureRecognizer.state == .ended {
+                    artworkLayerViews[activeLayerIndex].mergeEraseStroke()
+                }
+                setNeedsDisplay()
             }
         }
     }

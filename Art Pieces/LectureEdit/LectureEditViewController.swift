@@ -26,6 +26,9 @@ class LectureEditViewController: UIViewController {
         }
     }
     
+    private var isEraserSelected: Bool = false
+    private var previousRenderMechanism: RenderMechanism?
+    
     private var penPickerIdentifier: String = ""
     private var palletIdentifier: String = ""
     private var interactingStep: (Int, Int)? = nil
@@ -36,7 +39,7 @@ class LectureEditViewController: UIViewController {
         artworkView.currentRenderMechanism = RenderMechanism(color: UIColor.lightGray, width: 1.5, texture: "PencilTexture")
         artworkView.createLayer()
         artworkView.delegate = self
-        artworkView.isRecordingForLecture = true
+        artworkView.isRecordingForLecture = false
         let toolBarNib = UINib(nibName: "ToolBarView", bundle: nil)
         toolBarView = toolBarNib.instantiate(withOwner: self, options: nil).first as? ToolBarView
         toolBarView.delegate = self
@@ -173,7 +176,14 @@ extension LectureEditViewController: ToolBarViewDelegate {
     }
     
     func eraserButtonDidTapped(_ sender: UIButton) {
-        
+        if isEraserSelected {
+            artworkView.currentRenderMechanism = previousRenderMechanism
+            isEraserSelected = false
+        } else {
+            isEraserSelected = true
+            previousRenderMechanism = artworkView.currentRenderMechanism
+            artworkView.currentRenderMechanism = getEraser(with: 5.0)
+        }
     }
     
     func penButtonDidTapped(_ sender: UIButton) {

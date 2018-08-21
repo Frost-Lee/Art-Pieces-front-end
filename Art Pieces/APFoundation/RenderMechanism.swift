@@ -34,6 +34,7 @@ struct RenderMechanism: Codable {
             return 5
         }
     }
+    var isEraseMode: Bool = false
     
     var texturedColor: UIColor? = nil
     
@@ -93,15 +94,28 @@ struct RenderMechanism: Codable {
 
 var defaultRenderMechanism = RenderMechanism(color: .black, width: 1)
 
+func getEraser(with size: CGFloat) -> RenderMechanism {
+    var eraser = defaultRenderMechanism
+    eraser.color = UIColor.clear
+    eraser.isEraseMode = true
+    eraser.width = size
+    return eraser
+}
+
 func render(stroke: Stroke?) {
-    if stroke == nil {return}
+    guard let stroke = stroke else {return}
     guard let context = UIGraphicsGetCurrentContext() else {return}
-    let color = stroke!.renderMechanism.getTexture()
-    context.setLineWidth(stroke!.renderMechanism.width)
+    let color = stroke.renderMechanism.getTexture()
+    if stroke.renderMechanism.isEraseMode {
+        context.setBlendMode(.clear)
+    } else {
+        context.setBlendMode(CGBlendMode.color)
+    }
+    context.setLineWidth(stroke.renderMechanism.width)
     context.setStrokeColor(color.cgColor)
     context.setLineCap(.round)
     context.setLineJoin(.round)
-    for arc in stroke! {
+    for arc in stroke {
         let midPoint_1 = getMidPoint(between: arc.sampleBefore.location, and: arc.sample.location)
         let midPoint_2 = getMidPoint(between: arc.sample.location, and: arc.sampleAfter.location)
         context.move(to: midPoint_1)

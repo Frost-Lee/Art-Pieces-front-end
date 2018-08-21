@@ -11,6 +11,7 @@ import UIKit
 class ArtworkLayerView: UIView {
     
     var artworkLayer: Layer!
+    var eraseBufferStroke: Stroke?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -27,6 +28,14 @@ class ArtworkLayerView: UIView {
     override func draw(_ rect: CGRect) {
         for stroke in artworkLayer.strokes {
             render(stroke: stroke)
+        }
+        render(stroke: eraseBufferStroke)
+    }
+    
+    func mergeEraseStroke() {
+        if let eraseStroke = eraseBufferStroke {
+            artworkLayer.add(stroke: eraseStroke)
+            eraseBufferStroke = nil
         }
     }
     

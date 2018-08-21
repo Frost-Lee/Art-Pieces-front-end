@@ -10,14 +10,12 @@ import UIKit
 import ChromaColorPicker
 
 protocol ToolBarViewDelegate: class {
-    
     func palletButtonDidTapped(_ sender: UIButton)
     func layerButtonDidTapped(_ sender: UIButton)
     func thichnessButtonDidTapped(_ sender: UIButton)
     func transparencyButtonDidTapped(_ sender: UIButton)
     func eraserButtonDidTapped(_ sender: UIButton)
     func penButtonDidTapped(_ sender: UIButton)
-    
 }
 
 class ToolBarView: UIView {
@@ -63,4 +61,5 @@ class ToolBarView: UIView {
     @IBAction func penButtonTapped(_ sender: UIButton) {
         delegate?.penButtonDidTapped(sender)
     }
+    
 }
