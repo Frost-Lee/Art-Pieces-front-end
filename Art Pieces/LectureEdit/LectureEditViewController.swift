@@ -202,6 +202,7 @@ extension LectureEditViewController: ChromaColorPickerDelegate {
         case "Record":
             artworkView.guide.steps[interactingStep!.0].subSteps[interactingStep!.1].renderMechanism.color = color
             artworkView.adjustAccordingTo(step: interactingStep!.0, subStep: interactingStep!.1)
+            break
         default:
             break
         }
