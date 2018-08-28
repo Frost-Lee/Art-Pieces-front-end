@@ -10,7 +10,7 @@
 		3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */; };
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
-		3A18C8952121650E007F63F2 /* ArtworkLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */; };
+		3A18C8952121650E007F63F2 /* LectureLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* LectureLayerView.swift */; };
 		3A39EEE22123CE5D00E8F881 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */; };
 		3A40439A2109D04100467990 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4043992109D04100467990 /* GalleryView.swift */; };
 		3A40439C2109D04F00467990 /* Gallery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439B2109D04F00467990 /* Gallery.xib */; };
@@ -40,6 +40,9 @@
 		3ABF691E211C458C00709831 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF691D211C458C00709831 /* LoginViewController.swift */; };
 		3ABF6920211C461800709831 /* APTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ABF691F211C461800709831 /* APTextFieldView.swift */; };
 		3ABF6922211C462900709831 /* APTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABF6921211C462900709831 /* APTextFieldView.xib */; };
+		3AC000D22135631500020952 /* APWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC000D12135631500020952 /* APWebService.swift */; };
+		3AC000D421357E3300020952 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC000D321357E3300020952 /* AccountManager.swift */; };
+		3AC000D62135819D00020952 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC000D52135819D00020952 /* API.swift */; };
 		3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06ABF20FB670600AA0138 /* ArtworkView.swift */; };
 		3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */; };
 		3ACC14AE2109C095002BCDFF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC14AD2109C095002BCDFF /* MainViewController.swift */; };
@@ -61,7 +64,7 @@
 		3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
-		3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkLayerView.swift; sourceTree = "<group>"; };
+		3A18C8942121650E007F63F2 /* LectureLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureLayerView.swift; sourceTree = "<group>"; };
 		3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
 		3A4043992109D04100467990 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		3A40439B2109D04F00467990 /* Gallery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Gallery.xib; sourceTree = "<group>"; };
@@ -93,6 +96,9 @@
 		3ABF691D211C458C00709831 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		3ABF691F211C461800709831 /* APTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APTextFieldView.swift; sourceTree = "<group>"; };
 		3ABF6921211C462900709831 /* APTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APTextFieldView.xib; sourceTree = "<group>"; };
+		3AC000D12135631500020952 /* APWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APWebService.swift; sourceTree = "<group>"; };
+		3AC000D321357E3300020952 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
+		3AC000D52135819D00020952 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		3AC06ABF20FB670600AA0138 /* ArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkView.swift; sourceTree = "<group>"; };
 		3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStrokeView.swift; sourceTree = "<group>"; };
 		3ACC14AD2109C095002BCDFF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -170,6 +176,9 @@
 			isa = PBXGroup;
 			children = (
 				3A6B32072105789E00F2C63E /* APTheme.swift */,
+				3AC000D12135631500020952 /* APWebService.swift */,
+				3AC000D321357E3300020952 /* AccountManager.swift */,
+				3AC000D52135819D00020952 /* API.swift */,
 				3A56CA8620F9F0B10076FD51 /* RenderMechanism.swift */,
 				3A0EFB422108663000547E23 /* Extensions.swift */,
 				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
@@ -216,7 +225,7 @@
 			children = (
 				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
 				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
-				3A18C8942121650E007F63F2 /* ArtworkLayerView.swift */,
+				3A18C8942121650E007F63F2 /* LectureLayerView.swift */,
 				3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */,
 			);
 			path = ArtworkView;
@@ -404,9 +413,10 @@
 				3ACC14AE2109C095002BCDFF /* MainViewController.swift in Sources */,
 				3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */,
 				3A48E20D211D865C00B34B24 /* ArtworkDetailViewController.swift in Sources */,
+				3AC000D421357E3300020952 /* AccountManager.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
 				3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */,
-				3A18C8952121650E007F63F2 /* ArtworkLayerView.swift in Sources */,
+				3A18C8952121650E007F63F2 /* LectureLayerView.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
 				3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */,
 				3A40439A2109D04100467990 /* GalleryView.swift in Sources */,
@@ -421,9 +431,11 @@
 				3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */,
 				3A48E20F211D866A00B34B24 /* LectureDetailViewController.swift in Sources */,
 				3A0EFB432108663000547E23 /* Extensions.swift in Sources */,
+				3AC000D62135819D00020952 /* API.swift in Sources */,
 				3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */,
 				3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */,
 				3AD1048A211BE086006C1039 /* LectureTableViewCell.swift in Sources */,
+				3AC000D22135631500020952 /* APWebService.swift in Sources */,
 				3ABF6920211C461800709831 /* APTextFieldView.swift in Sources */,
 				3ABF691E211C458C00709831 /* LoginViewController.swift in Sources */,
 				3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */,

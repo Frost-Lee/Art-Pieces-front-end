@@ -15,12 +15,12 @@ import ChromaColorPicker
 class LectureEditViewController: UIViewController {
     
     @IBOutlet weak var stepTableView: UITableView!
-    @IBOutlet weak var artworkView: ArtworkView!
+    @IBOutlet weak var lectureEditView: LectureEditView!
     @IBOutlet weak var toolBarView: ToolBarView!
     
     var selectedSteps: Set<Int> = []
     
-    var artworkGuide: ArtworkGuide = ArtworkGuide() {
+    var artworkGuide: LectureGuide = LectureGuide() {
         didSet {
             stepTableView.reloadData()
         }
@@ -36,14 +36,14 @@ class LectureEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        artworkView.currentRenderMechanism = RenderMechanism(color: UIColor.lightGray, width: 1.5, texture: "PencilTexture")
-        artworkView.createLayer()
-        artworkView.delegate = self
-        artworkView.isRecordingForLecture = false
+        lectureEditView.currentRenderMechanism = RenderMechanism(color: UIColor.lightGray, width: 1.5, texture: "PencilTexture")
+        lectureEditView.createLayer()
+        lectureEditView.delegate = self
+        lectureEditView.isRecordingForLecture = true
         let toolBarNib = UINib(nibName: "ToolBarView", bundle: nil)
         toolBarView = toolBarNib.instantiate(withOwner: self, options: nil).first as? ToolBarView
         toolBarView.delegate = self
-        toolBarView.palletButton.backgroundColor = artworkView.currentRenderMechanism.color
+        toolBarView.palletButton.backgroundColor = lectureEditView.currentRenderMechanism.color
         self.view.addSubview(toolBarView)
         stepTableView.register(StepTableViewCell.self, forCellReuseIdentifier: "stepTableViewCell")
         stepTableView.reloadData()
@@ -61,7 +61,7 @@ class LectureEditViewController: UIViewController {
     }
     
     @IBAction func addStepButtonTapped(_ sender: UIButton) {
-        artworkView.addAnotherStep()
+        lectureEditView.addAnotherStep()
     }
     
     private func launchPallet(with identifier: String, at view: UIView, initialColor: UIColor) {
@@ -138,13 +138,13 @@ extension LectureEditViewController: StepTableViewCellDelegate {
     }
     
     func subDescriptionTextDieEditted(to text: String, step: Int, subStep: Int) {
-        artworkView.guide.steps[step].subSteps[subStep].renderDescription = text
+        lectureEditView.guide.steps[step].subSteps[subStep].renderDescription = text
     }
 }
 
 
-extension LectureEditViewController: ArtworkViewDelegate {
-    func artworkGuideDidUpdated(_ guide: ArtworkGuide) {
+extension LectureEditViewController: LectureEditViewDelegate {
+    func artworkGuideDidUpdated(_ guide: LectureGuide) {
         artworkGuide = guide
     }
 }
@@ -153,7 +153,7 @@ extension LectureEditViewController: ArtworkViewDelegate {
 extension LectureEditViewController: ToolBarViewDelegate {
     func palletButtonDidTapped(_ sender: UIButton) {
         launchPallet(with: "ToolBar", at: toolBarView.palletButton, initialColor:
-            artworkView.currentRenderMechanism.color)
+            lectureEditView.currentRenderMechanism.color)
     }
     
     func layerButtonDidTapped(_ sender: UIButton) {
@@ -163,9 +163,9 @@ extension LectureEditViewController: ToolBarViewDelegate {
     func thichnessButtonDidTapped(_ sender: UIButton) {
         let thicknessSliderController = ThicknessSliderViewController()
         thicknessSliderController.delegate = self
-        thicknessSliderController.lowerBound = artworkView.currentRenderMechanism.minimumWidth
-        thicknessSliderController.upperBound = artworkView.currentRenderMechanism.maximunWidth
-        thicknessSliderController.slider.value = Float(artworkView.currentRenderMechanism.width)
+        thicknessSliderController.lowerBound = lectureEditView.currentRenderMechanism.minimumWidth
+        thicknessSliderController.upperBound = lectureEditView.currentRenderMechanism.maximunWidth
+        thicknessSliderController.slider.value = Float(lectureEditView.currentRenderMechanism.width)
         thicknessSliderController.preferredContentSize = CGSize(width: 300, height: 50)
         thicknessSliderController.prepareToLaunchAsPopover(source: toolBarView.thicknessButton)
         self.present(thicknessSliderController, animated: true, completion: nil)
@@ -177,18 +177,18 @@ extension LectureEditViewController: ToolBarViewDelegate {
     
     func eraserButtonDidTapped(_ sender: UIButton) {
         if isEraserSelected {
-            artworkView.currentRenderMechanism = previousRenderMechanism
+            lectureEditView.currentRenderMechanism = previousRenderMechanism
             isEraserSelected = false
         } else {
             isEraserSelected = true
-            previousRenderMechanism = artworkView.currentRenderMechanism
-            artworkView.currentRenderMechanism = getEraser(with: 5.0)
+            previousRenderMechanism = lectureEditView.currentRenderMechanism
+            lectureEditView.currentRenderMechanism = getEraser(with: 5.0)
         }
     }
     
     func penButtonDidTapped(_ sender: UIButton) {
         launchPenPicker(with: "ToolBar", at: toolBarView.penButton, initialTool:
-            Tool.toolOfTexture(artworkView.currentRenderMechanism.texture))
+            Tool.toolOfTexture(lectureEditView.currentRenderMechanism.texture))
     }
 }
 
@@ -197,11 +197,11 @@ extension LectureEditViewController: ChromaColorPickerDelegate {
     func colorPickerDidChooseColor(_ colorPicker: ChromaColorPicker, color: UIColor) {
         switch palletIdentifier {
         case "ToolBar":
-            artworkView.currentRenderMechanism.color = color
+            lectureEditView.currentRenderMechanism.color = color
             toolBarView.palletButton.backgroundColor = color
         case "Record":
-            artworkView.guide.steps[interactingStep!.0].subSteps[interactingStep!.1].renderMechanism.color = color
-            artworkView.adjustAccordingTo(step: interactingStep!.0, subStep: interactingStep!.1)
+            lectureEditView.guide.steps[interactingStep!.0].subSteps[interactingStep!.1].renderMechanism.color = color
+            lectureEditView.adjustAccordingTo(step: interactingStep!.0, subStep: interactingStep!.1)
             break
         default:
             break
@@ -215,12 +215,12 @@ extension LectureEditViewController: ToolPickerTableViewDelegate {
         let textureName = tool.textureName()
         switch penPickerIdentifier {
         case "ToolBar":
-            if artworkView.currentRenderMechanism.texture != textureName {
-                artworkView.currentRenderMechanism.texture = textureName
+            if lectureEditView.currentRenderMechanism.texture != textureName {
+                lectureEditView.currentRenderMechanism.texture = textureName
             }
         case "Record":
-            artworkView.guide.steps[interactingStep!.0].subSteps[interactingStep!.1].renderMechanism.texture = tool.textureName()
-            artworkView.adjustAccordingTo(step: interactingStep!.0, subStep: interactingStep!.1)
+            lectureEditView.guide.steps[interactingStep!.0].subSteps[interactingStep!.1].renderMechanism.texture = tool.textureName()
+            lectureEditView.adjustAccordingTo(step: interactingStep!.0, subStep: interactingStep!.1)
         default:
             break
         }
@@ -230,6 +230,6 @@ extension LectureEditViewController: ToolPickerTableViewDelegate {
 
 extension LectureEditViewController: ThicknessSliderDelegate {
     func thicknessDidSet(to value: Float) {
-        artworkView.currentRenderMechanism.width = CGFloat(value)
+        lectureEditView.currentRenderMechanism.width = CGFloat(value)
     }
 }

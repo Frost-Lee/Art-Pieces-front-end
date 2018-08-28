@@ -17,15 +17,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions
         launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if  UserDefaults.standard.bool(forKey: "everLaunched") == false {
-            UserDefaults.standard.set(true, forKey: "everLaunched")
-            UserDefaults.standard.set(true, forKey: "firstLaunch")
-        } else {
-            UserDefaults.standard.set(false, forKey: "firstLaunch")
-        }
         if isFirstLaunch() {
             introduceMyself()
         }
+        
         return true
     }
 
@@ -52,6 +47,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func isFirstLaunch() -> Bool {
+        if  UserDefaults.standard.bool(forKey: "everLaunched") == false {
+            UserDefaults.standard.set(true, forKey: "everLaunched")
+            UserDefaults.standard.set(true, forKey: "firstLaunch")
+        } else {
+            UserDefaults.standard.set(false, forKey: "firstLaunch")
+        }
         return UserDefaults.standard.bool(forKey: "firstLaunch")
     }
 

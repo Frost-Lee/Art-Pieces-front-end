@@ -11,17 +11,17 @@
 
 import UIKit
 
-protocol ArtworkViewDelegate: class {
-    func artworkGuideDidUpdated(_ guide: ArtworkGuide)
+protocol LectureEditViewDelegate: class {
+    func artworkGuideDidUpdated(_ guide: LectureGuide)
 }
 
-class ArtworkView: UIView, UIGestureRecognizerDelegate {
+class LectureEditView: UIView, UIGestureRecognizerDelegate {
     
-    weak var delegate: ArtworkViewDelegate?
+    weak var delegate: LectureEditViewDelegate?
     
     var strokeGestureRecognizer: StrokeGestureRecognizer!
     var singleStrokeView: SingleStrokeView!
-    var artworkLayerViews: [ArtworkLayerView] = []
+    var artworkLayerViews: [LectureLayerView] = []
     var currentStroke: Stroke? {
         get {
             return singleStrokeView.stroke
@@ -30,7 +30,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    var guide: ArtworkGuide = ArtworkGuide() {
+    var guide: LectureGuide = LectureGuide() {
         didSet {
             delegate?.artworkGuideDidUpdated(guide)
         }
@@ -89,7 +89,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     }
     
     func createLayer() {
-        let newLayerView = ArtworkLayerView(frame: self.bounds)
+        let newLayerView = LectureLayerView(frame: self.bounds)
         artworkLayerViews.append(newLayerView)
         switchLayer(to: artworkLayerViews.count - 1)
         self.addSubview(newLayerView)
@@ -113,7 +113,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     func adjustAccordingTo(step: Int, subStep: Int) {
         let relatedSubStep = guide.steps[step].subSteps[subStep]
         for (layerIndex, strokeIndex) in relatedSubStep {
-            artworkLayerViews[layerIndex].artworkLayer.strokes[strokeIndex].renderMechanism = relatedSubStep.renderMechanism
+            artworkLayerViews[layerIndex].lectureLayer.strokes[strokeIndex].renderMechanism = relatedSubStep.renderMechanism
         }
         setNeedsDisplay()
     }
@@ -138,7 +138,7 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     private func mergeActiveStroke() {
         if let newStroke = singleStrokeView.stroke {
-            artworkLayerViews[activeLayerIndex].artworkLayer.add(stroke: newStroke)
+            artworkLayerViews[activeLayerIndex].lectureLayer.add(stroke: newStroke)
             singleStrokeView.stroke = nil
         }
         setNeedsDisplay()
@@ -147,6 +147,9 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     
     private func writeGuideLog(from old: RenderMechanism?, to new: RenderMechanism) {
         guard isRecordingForLecture else {return}
+        if old?.color == .clear || new.color == .clear {
+            return
+        }
         var operationChange: OperationChange? = nil
         if old != nil {
             if old!.texture != new.texture {
@@ -170,10 +173,10 @@ class ArtworkView: UIView, UIGestureRecognizerDelegate {
     private func appendStrokeChangeToGuideLog() {
         if isRecordingForLecture && guide.steps.count != 0 {
             if !(guide.recordStroke(at: activeLayerIndex, index: artworkLayerViews[activeLayerIndex]
-                .artworkLayer.strokes.count - 1)) {
+                .lectureLayer.strokes.count - 1)) {
                 writeGuideLog(from: nil, to: currentRenderMechanism)
                 guide.recordStroke(at: activeLayerIndex, index: artworkLayerViews[activeLayerIndex]
-                    .artworkLayer.strokes.count - 1)
+                    .lectureLayer.strokes.count - 1)
             }
         }
     }
