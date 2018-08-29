@@ -35,6 +35,7 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
             delegate?.artworkGuideDidUpdated(guide)
         }
     }
+    var stepPreviewPhotoArray: [UIImage] = []
     
     var isRecordingForLecture: Bool = false
     var numberOfLayers: Int = 0
@@ -107,6 +108,7 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
             var newStep = Step()
             newStep.description = "Step " + String(guide.steps.count + 1)
             guide.add(step: newStep)
+            stepPreviewPhotoArray.append(getStepPreviewPhoto())
         }
     }
     
@@ -134,6 +136,10 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
         recognizer.cancelsTouchesInView = true
         recognizer.coordinateSpaceView = self
         return recognizer
+    }
+    
+    private func getStepPreviewPhoto() -> UIImage {
+        return self.viewImage(for: self.frame.size)!
     }
     
     private func mergeActiveStroke() {

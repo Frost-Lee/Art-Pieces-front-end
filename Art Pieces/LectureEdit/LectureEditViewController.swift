@@ -60,6 +60,11 @@ class LectureEditViewController: UIViewController {
                                    width: UIScreen.main.bounds.width - stepTableView.frame.width, height: 71)
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        lectureEditView.stepPreviewPhotoArray.append(lectureEditView.viewImage(for: lectureEditView.frame.size)!)
+    }
+    
     @IBAction func addStepButtonTapped(_ sender: UIButton) {
         lectureEditView.addAnotherStep()
     }

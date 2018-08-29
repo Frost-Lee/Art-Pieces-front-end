@@ -7,12 +7,24 @@
 //
 
 import UIKit
+import BWWalkthrough
 
-class LoginViewController: UIViewController {
+class LoginViewController: BWWalkthroughPageViewController {
 
     @IBOutlet weak var emailTextFieldView: APTextFieldView!
     @IBOutlet weak var passwordTextFieldView: APTextFieldView!
-    @IBOutlet weak var textFieldPlacingConstraint: NSLayoutConstraint!
+    @IBOutlet weak var confirmPasswordTextFieldView: APTextFieldView!
+    @IBOutlet weak var signUpButton: UIButton!
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var textFieldPlacingConstraint_1: NSLayoutConstraint!
+    @IBOutlet weak var textFieldPlacingConstraint_2: NSLayoutConstraint!
+    @IBOutlet weak var textFieldPlacingConstraint_3: NSLayoutConstraint!
+    
+    var isSignUpStatus: Bool = true {
+        didSet {
+            confirmPasswordTextFieldView.isHidden = !isSignUpStatus
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,9 +33,22 @@ class LoginViewController: UIViewController {
                 .keyboardWillChangeFrameNotification, object: nil)
         emailTextFieldView.textField.placeholder = "Email Address"
         passwordTextFieldView.textField.placeholder = "Password"
+        confirmPasswordTextFieldView.textField.placeholder = "Confirm Password"
         emailTextFieldView.textField.keyboardType = .emailAddress
         passwordTextFieldView.textField.keyboardType = .asciiCapable
         passwordTextFieldView.textField.isSecureTextEntry = true
+    }
+    
+    @IBAction func signUpButtonTapped(_ sender: UIButton) {
+        signUpButton.setTitleColor(APTheme.darkGreyColor, for: .normal)
+        loginButton.setTitleColor(UIColor.lightGray, for: .normal)
+        isSignUpStatus = true
+    }
+    
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
+        signUpButton.setTitleColor(UIColor.lightGray, for: .normal)
+        loginButton.setTitleColor(APTheme.darkGreyColor, for: .normal)
+        isSignUpStatus = false
     }
     
     @objc func keyboardPositionWillChange(notification: Notification) {
@@ -35,11 +60,20 @@ class LoginViewController: UIViewController {
             let intersect = frame.intersects(passwordTextFieldView.frame)
             UIView.animate(withDuration: duration, delay: 0.0, options: UIView.AnimationOptions(rawValue: curve), animations: {
                 if intersect {
-                    self.textFieldPlacingConstraint = self.textFieldPlacingConstraint
-                        .setMultiplier(multiplier: 0.6)
+                    let multiplierConstant: CGFloat = self.isSignUpStatus ? 0.3 : 0.35
+                    self.textFieldPlacingConstraint_1 = self.textFieldPlacingConstraint_1
+                        .setMultiplier(multiplier: multiplierConstant)
+                    self.textFieldPlacingConstraint_2 = self.textFieldPlacingConstraint_2
+                        .setMultiplier(multiplier: multiplierConstant)
+                    if self.isSignUpStatus {
+                        self.textFieldPlacingConstraint_3.constant = 24
+                    }
                 } else {
-                    self.textFieldPlacingConstraint = self.textFieldPlacingConstraint
-                        .setMultiplier(multiplier: 0.8)
+                    self.textFieldPlacingConstraint_1 = self.textFieldPlacingConstraint_1
+                        .setMultiplier(multiplier: 0.55)
+                    self.textFieldPlacingConstraint_2 = self.textFieldPlacingConstraint_2
+                        .setMultiplier(multiplier: 0.55)
+                    self.textFieldPlacingConstraint_3.constant = 48
                 }
                 self.view.layoutIfNeeded()
             }, completion: nil)
