@@ -19,12 +19,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Xtl-2B-8UJ">
-                                <rect key="frame" x="524.5" y="418.5" width="77" height="30"/>
+                                <rect key="frame" x="883" y="44" width="77" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="77" id="f7I-A4-hHP"/>
                                     <constraint firstAttribute="height" constant="30" id="rKO-Xh-eD0"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="16"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
                                 <state key="normal" title="Skip">
                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -35,8 +35,8 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="Xtl-2B-8UJ" firstAttribute="centerY" secondItem="BOj-3H-bMy" secondAttribute="centerY" multiplier="1.1" id="Jjx-ZY-yRs"/>
-                            <constraint firstItem="Xtl-2B-8UJ" firstAttribute="centerX" secondItem="BOj-3H-bMy" secondAttribute="centerX" multiplier="1.1" id="SHp-L8-cW2"/>
+                            <constraint firstItem="Xtl-2B-8UJ" firstAttribute="centerY" secondItem="BOj-3H-bMy" secondAttribute="centerY" multiplier="0.15" id="Jjx-ZY-yRs"/>
+                            <constraint firstItem="Xtl-2B-8UJ" firstAttribute="centerX" secondItem="BOj-3H-bMy" secondAttribute="centerX" multiplier="1.8" id="SHp-L8-cW2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BOj-3H-bMy"/>
                     </view>
@@ -48,31 +48,80 @@
             </objects>
             <point key="canvasLocation" x="165.8203125" y="162.5"/>
         </scene>
-        <!--Walkthrough Page View Controller-->
+        <!--Head Walk Through View Controller-->
         <scene sceneID="apq-hT-D9t">
             <objects>
-                <viewController storyboardIdentifier="IntroducePage1" id="uJ5-Gg-zql" customClass="BWWalkthroughPageViewController" customModule="BWWalkthrough" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IntroducePage1" id="uJ5-Gg-zql" customClass="HeadWalkThroughViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="VTr-wo-Kgd">
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="IntroducePage1" translatesAutoresizingMaskIntoConstraints="NO" id="OYu-Y4-IDz">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LoginBackgroundDecorationPhoto" translatesAutoresizingMaskIntoConstraints="NO" id="Ii2-3v-zga">
+                                <rect key="frame" x="512" y="0.0" width="512" height="768"/>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to ArtPieces." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qCY-Fh-Yp8">
+                                <rect key="frame" x="544" y="246.5" width="448" height="45"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="45" id="Thx-0q-tQg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="36"/>
+                                <color key="textColor" red="0.19215686274509802" green="0.2196078431372549" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A painting tool with step editor," textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cU3-8g-JdM">
+                                <rect key="frame" x="544" y="307.5" width="448" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="RJX-67-tfm"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.60784313725490191" green="0.60784313725490191" blue="0.60784313725490191" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A distributed painting community." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HtO-57-tvV">
+                                <rect key="frame" x="544" y="328.5" width="448" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="YMe-Vm-9OZ"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="S9P-uH-XVt">
+                                <rect key="frame" x="0.0" y="0.0" width="512" height="768"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="S9P-uH-XVt" secondAttribute="height" multiplier="2:3" id="ZYT-Wj-FQl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="OYu-Y4-IDz" firstAttribute="trailing" secondItem="UxA-Zq-ixB" secondAttribute="trailing" id="6N2-lK-heV"/>
-                            <constraint firstItem="OYu-Y4-IDz" firstAttribute="bottom" secondItem="UxA-Zq-ixB" secondAttribute="bottom" id="Bnj-ND-PrL"/>
-                            <constraint firstItem="OYu-Y4-IDz" firstAttribute="top" secondItem="VTr-wo-Kgd" secondAttribute="top" id="EKq-tN-EHm"/>
-                            <constraint firstItem="OYu-Y4-IDz" firstAttribute="leading" secondItem="UxA-Zq-ixB" secondAttribute="leading" id="FLI-oF-xG7"/>
+                            <constraint firstItem="Ii2-3v-zga" firstAttribute="trailing" secondItem="UxA-Zq-ixB" secondAttribute="trailing" id="DD5-ea-QJf"/>
+                            <constraint firstItem="S9P-uH-XVt" firstAttribute="leading" secondItem="UxA-Zq-ixB" secondAttribute="leading" id="FIt-lx-SHW"/>
+                            <constraint firstItem="cU3-8g-JdM" firstAttribute="leading" secondItem="S9P-uH-XVt" secondAttribute="trailing" constant="32" id="GDt-9g-kMB"/>
+                            <constraint firstItem="qCY-Fh-Yp8" firstAttribute="leading" secondItem="S9P-uH-XVt" secondAttribute="trailing" constant="32" id="K3J-oA-diN"/>
+                            <constraint firstItem="S9P-uH-XVt" firstAttribute="top" secondItem="VTr-wo-Kgd" secondAttribute="top" id="Kea-4I-9JI"/>
+                            <constraint firstItem="UxA-Zq-ixB" firstAttribute="trailing" secondItem="HtO-57-tvV" secondAttribute="trailing" constant="32" id="NFi-vx-nO2"/>
+                            <constraint firstItem="HtO-57-tvV" firstAttribute="leading" secondItem="S9P-uH-XVt" secondAttribute="trailing" constant="32" id="Rvu-nT-9D8"/>
+                            <constraint firstItem="HtO-57-tvV" firstAttribute="top" secondItem="cU3-8g-JdM" secondAttribute="bottom" id="XoO-dj-3mW"/>
+                            <constraint firstItem="S9P-uH-XVt" firstAttribute="bottom" secondItem="UxA-Zq-ixB" secondAttribute="bottom" id="YxU-tM-3Z3"/>
+                            <constraint firstItem="UxA-Zq-ixB" firstAttribute="trailing" secondItem="qCY-Fh-Yp8" secondAttribute="trailing" constant="32" id="ZHv-2J-7me"/>
+                            <constraint firstItem="qCY-Fh-Yp8" firstAttribute="centerY" secondItem="Ii2-3v-zga" secondAttribute="centerY" multiplier="0.7" id="bOA-TO-FzM"/>
+                            <constraint firstItem="Ii2-3v-zga" firstAttribute="top" secondItem="VTr-wo-Kgd" secondAttribute="top" id="bnN-SU-B0x"/>
+                            <constraint firstItem="Ii2-3v-zga" firstAttribute="leading" secondItem="S9P-uH-XVt" secondAttribute="trailing" id="jxb-AB-i9K"/>
+                            <constraint firstItem="UxA-Zq-ixB" firstAttribute="trailing" secondItem="cU3-8g-JdM" secondAttribute="trailing" constant="32" id="pWi-zH-alL"/>
+                            <constraint firstItem="cU3-8g-JdM" firstAttribute="top" secondItem="qCY-Fh-Yp8" secondAttribute="bottom" constant="16" id="w6z-Z4-CkW"/>
+                            <constraint firstItem="Ii2-3v-zga" firstAttribute="bottom" secondItem="UxA-Zq-ixB" secondAttribute="bottom" id="xUl-3j-0Ho"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="UxA-Zq-ixB"/>
                     </view>
+                    <connections>
+                        <outlet property="scrollAnimationContainerView" destination="S9P-uH-XVt" id="f7R-z5-X4N"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hVM-Cc-mzf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="868" y="163"/>
+            <point key="canvasLocation" x="867.7734375" y="162.5"/>
         </scene>
         <!--Walkthrough Page View Controller-->
         <scene sceneID="gwz-fb-Wry">
@@ -128,8 +177,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IntroducePage1" width="1112" height="834"/>
         <image name="IntroducePage2" width="1112" height="834"/>
         <image name="IntroducePage3" width="1112" height="834"/>
+        <image name="LoginBackgroundDecorationPhoto" width="1112" height="1668"/>
     </resources>
 </document>

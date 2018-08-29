@@ -15,6 +15,8 @@ class DataManager {
     static let cachedFileHomeDirectory = NSHomeDirectory() + "/Documents/CachedFiles"
     static let localFileHomeDirectory = NSHomeDirectory() + "/Documents/LocalFiles"
     
+    static let defaultManager = DataManager()
+    
     func storeArtwork(title: String, description: String?, keyPhoto: UIImage) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -46,6 +48,10 @@ class DataManager {
             DataManager.localFileHomeDirectory + photoIdentifier
         try! photoData.write(to: URL(fileURLWithPath: urlPath))
         return urlPath
+    }
+    
+    func removeItem(path: String?) {
+        try? FileManager.default.removeItem(atPath: path ?? "")
     }
     
     private func initializeDirectory() {

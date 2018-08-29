@@ -46,6 +46,7 @@
 		3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C93B520F89658005D5BD1 /* StorageProperties.swift */; };
 		3A94FBE12109F8F1009BE7E1 /* AddArtworkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A94FBE02109F8F1009BE7E1 /* AddArtworkView.xib */; };
 		3A94FBE32109F935009BE7E1 /* AddArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94FBE22109F935009BE7E1 /* AddArtworkView.swift */; };
+		3AA2BAA12136C02900C8AB4C /* HeadWalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2BAA02136C02900C8AB4C /* HeadWalkThroughViewController.swift */; };
 		3AA7BBC221041BE0004E20CE /* LectureEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */; };
 		3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */; };
 		3ABF691C211C449300709831 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ABF691B211C449300709831 /* Login.storyboard */; };
@@ -54,7 +55,6 @@
 		3ABF6922211C462900709831 /* APTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABF6921211C462900709831 /* APTextFieldView.xib */; };
 		3AC000D22135631500020952 /* APWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC000D12135631500020952 /* APWebService.swift */; };
 		3AC000D421357E3300020952 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC000D321357E3300020952 /* AccountManager.swift */; };
-		3AC000D62135819D00020952 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC000D52135819D00020952 /* API.swift */; };
 		3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06ABF20FB670600AA0138 /* ArtworkView.swift */; };
 		3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */; };
 		3ACC14AE2109C095002BCDFF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC14AD2109C095002BCDFF /* MainViewController.swift */; };
@@ -114,6 +114,7 @@
 		3A8C93B520F89658005D5BD1 /* StorageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProperties.swift; sourceTree = "<group>"; };
 		3A94FBE02109F8F1009BE7E1 /* AddArtworkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddArtworkView.xib; sourceTree = "<group>"; };
 		3A94FBE22109F935009BE7E1 /* AddArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArtworkView.swift; sourceTree = "<group>"; };
+		3AA2BAA02136C02900C8AB4C /* HeadWalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadWalkThroughViewController.swift; sourceTree = "<group>"; };
 		3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureEditViewController.swift; sourceTree = "<group>"; };
 		3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
 		3ABF691B211C449300709831 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -122,7 +123,6 @@
 		3ABF6921211C462900709831 /* APTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APTextFieldView.xib; sourceTree = "<group>"; };
 		3AC000D12135631500020952 /* APWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APWebService.swift; sourceTree = "<group>"; };
 		3AC000D321357E3300020952 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
-		3AC000D52135819D00020952 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		3AC06ABF20FB670600AA0138 /* ArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkView.swift; sourceTree = "<group>"; };
 		3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStrokeView.swift; sourceTree = "<group>"; };
 		3ACC14AD2109C095002BCDFF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -165,6 +165,7 @@
 			children = (
 				3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */,
 				3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */,
+				3AA2BAA02136C02900C8AB4C /* HeadWalkThroughViewController.swift */,
 			);
 			path = "Launch&Walk";
 			sourceTree = "<group>";
@@ -199,7 +200,6 @@
 		3A64AA5A213599B9000B36E0 /* DataStorage */ = {
 			isa = PBXGroup;
 			children = (
-				3AC000D52135819D00020952 /* API.swift */,
 				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
 				3A64AA5721359984000B36E0 /* LocalDataModel.xcdatamodeld */,
 				3A0DDF3D2136662F005DEE82 /* CachedRepo+CoreDataClass.swift */,
@@ -480,10 +480,10 @@
 				3A0DDF412136662F005DEE82 /* CachedRepo+CoreDataProperties.swift in Sources */,
 				3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */,
 				3A0DDF4421366630005DEE82 /* CachedLecture+CoreDataProperties.swift in Sources */,
+				3AA2BAA12136C02900C8AB4C /* HeadWalkThroughViewController.swift in Sources */,
 				3A48E20F211D866A00B34B24 /* LectureDetailViewController.swift in Sources */,
 				3A0EFB432108663000547E23 /* Extensions.swift in Sources */,
 				3A7D060E213659A900890926 /* DataManager.swift in Sources */,
-				3AC000D62135819D00020952 /* API.swift in Sources */,
 				3A0DDF4A21366630005DEE82 /* MyLecture+CoreDataClass.swift in Sources */,
 				3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */,
 				3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */,
