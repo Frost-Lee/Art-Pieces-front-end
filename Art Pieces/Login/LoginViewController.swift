@@ -42,6 +42,9 @@ class LoginViewController: BWWalkthroughPageViewController {
         emailTextFieldView.textField.keyboardType = .emailAddress
         passwordTextFieldView.textField.keyboardType = .asciiCapable
         passwordTextFieldView.textField.isSecureTextEntry = true
+        emailTextFieldView.delegate = self
+        passwordTextFieldView.delegate = self
+        confirmPasswordTextFieldView.delegate = self
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -50,35 +53,37 @@ class LoginViewController: BWWalkthroughPageViewController {
     }
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {
-        signUpButton.setTitleColor(APTheme.darkGreyColor, for: .normal)
-        loginButton.setTitleColor(UIColor.lightGray, for: .normal)
-        isSignUpStatus = true
+        if !isSignUpStatus {
+            clearTextFields()
+            signUpButton.setTitleColor(APTheme.darkGreyColor, for: .normal)
+            loginButton.setTitleColor(UIColor.lightGray, for: .normal)
+            isSignUpStatus = true
+        }
     }
     
     @IBAction func loginButtonTapped(_ sender: UIButton) {
-        signUpButton.setTitleColor(UIColor.lightGray, for: .normal)
-        loginButton.setTitleColor(APTheme.darkGreyColor, for: .normal)
-        isSignUpStatus = false
+        if isSignUpStatus {
+            clearTextFields()
+            signUpButton.setTitleColor(UIColor.lightGray, for: .normal)
+            loginButton.setTitleColor(APTheme.darkGreyColor, for: .normal)
+            isSignUpStatus = false
+        }
     }
     
     @IBAction func beginLoginProcedure(_ sender: UIButton) {
         beginLoginButton.isHidden = true
         loginSpinner.startAnimating()
-        APWebService.defaultManager.checkForLogin(email: emailTextFieldView.text,
-                                                  password: passwordTextFieldView.text) { errorMessage in
-            if let message = errorMessage {
-                let alertController = UIAlertController(title: "Ooooops!", message:
-                    message, preferredStyle: .alert)
-                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
-                alertController.addAction(action)
-                self.present(alertController, animated: true) {
-                    self.beginLoginButton.isHidden = false
-                    self.loginSpinner.stopAnimating()
-                }
-            } else {
-                self.dismiss(animated: true, completion: nil)
-            }
+        if isSignUpStatus {
+            beginSigningUp()
+        } else {
+            beginLogingin()
         }
+    }
+    
+    @IBAction func forgotPasswordButtonTapped(_ sender: UIButton) {
+        let alertController = UIAlertController.prepareController(title: "Don't panic!",
+            message: "Contact us at feetback@artpieces.cn")
+        self.present(alertController, animated: true, completion: nil)
     }
     
     @objc func keyboardPositionWillChange(notification: Notification) {
@@ -110,6 +115,54 @@ class LoginViewController: BWWalkthroughPageViewController {
         }
     }
     
+    private func beginLogingin() {
+        APWebService.defaultManager.checkForLogin(email: emailTextFieldView.text,
+                                                  password: passwordTextFieldView.text) { errorMessage in
+            if let message = errorMessage {
+                let alertController = UIAlertController.prepareController(title: "Oooooops!", message: message)
+                self.present(alertController, animated: true) {
+                    self.stopRequesting()
+                }
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+    }
+    
+    private func beginSigningUp() {
+        if passwordTextFieldView.text == confirmPasswordTextFieldView.text
+            && passwordTextFieldView.text != "" {
+            APWebService.defaultManager.registerUser(email: emailTextFieldView.text,
+                                                     password: passwordTextFieldView.text) { errorMessage in
+                if let message = errorMessage {
+                    let alertController = UIAlertController.prepareController(title: "Oooooops!", message: message)
+                    self.present(alertController, animated: true) {
+                        self.stopRequesting()
+                    }
+                } else {
+                    self.dismiss(animated: true, completion: nil)
+                }
+            }
+        } else {
+            let alertController = UIAlertController.prepareController(title: "Oooooops!",
+                message: "The passwords you entered is not the same.")
+            self.present(alertController, animated: true) {
+                self.stopRequesting()
+            }
+        }
+    }
+    
+    private func clearTextFields() {
+        emailTextFieldView.clear()
+        passwordTextFieldView.clear()
+        confirmPasswordTextFieldView.clear()
+    }
+    
+    private func stopRequesting() {
+        self.beginLoginButton.isHidden = false
+        self.loginSpinner.stopAnimating()
+    }
+    
     private func beginAnimateAlbums(_ whatHell: Bool = true) {
         if albumImageView == nil {
             let albumImage = UIImage(named: "ScrollAnimationBackground")!
@@ -133,4 +186,16 @@ class LoginViewController: BWWalkthroughPageViewController {
 }
 
 
-
+extension LoginViewController: APTextFieldDelegate {
+    func textFieldDidChangedEditing() {
+        if !emailTextFieldView.isEmpty && !passwordTextFieldView.isEmpty {
+            if isSignUpStatus && confirmPasswordTextFieldView.isEmpty {
+                beginLoginButton.isEnabled = false
+            } else {
+                beginLoginButton.isEnabled = true
+            }
+        } else {
+            beginLoginButton.isEnabled = false
+        }
+    }
+}

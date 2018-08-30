@@ -56,7 +56,7 @@
                                     <constraint firstAttribute="height" constant="40" id="FLL-V1-FU6"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0Z-bA-lK0">
+                            <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="u0Z-bA-lK0">
                                 <rect key="frame" x="824" y="534" width="54" height="20"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="20" id="SP7-g9-R2y"/>
@@ -77,6 +77,9 @@
                                 <state key="normal" title="Forgot Password ?">
                                     <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <action selector="forgotPasswordButtonTapped:" destination="YmX-8O-WNz" eventType="touchUpInside" id="9Z8-F7-eCy"/>
+                                </connections>
                             </button>
                             <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="UBo-1M-kmE">
                                 <rect key="frame" x="834" y="527" width="37" height="37"/>
@@ -159,7 +162,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="LoginBackgroundDecorationPhoto" width="556" height="834"/>
+        <image name="LoginBackgroundDecorationPhoto" width="1112" height="1668"/>
         <image name="LoginButton" width="550" height="200"/>
     </resources>
 </document>

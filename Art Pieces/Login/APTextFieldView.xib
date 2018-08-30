@@ -32,6 +32,7 @@
                     <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done"/>
                     <connections>
                         <action selector="textFieldBeganEditing:" destination="-1" eventType="editingDidBegin" id="Zhj-do-vBg"/>
+                        <action selector="textFieldChangedEditting:" destination="-1" eventType="editingChanged" id="1p1-q4-zpQ"/>
                         <action selector="textFieldEndEditing:" destination="-1" eventType="editingDidEnd" id="8Ca-gE-rWx"/>
                         <outlet property="delegate" destination="-1" id="pWc-Sd-lEr"/>
                     </connections>

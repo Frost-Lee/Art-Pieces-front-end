@@ -22,8 +22,7 @@ class APWebService {
     
     static let defaultManager = APWebService()
     
-    func registerUser(email: String, password: String,
-                      completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
+    func registerUser(email: String, password: String, completion: ((String?) -> Void)?) {
         var request = getRequest(httpMethod: "POST")
         let query = """
             mutation InsertUser {
@@ -32,12 +31,16 @@ class APWebService {
         """
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            completionHandler(data, response, error)
+            if let data = data {
+                let json = try! JSON(data: data)
+                let statusCode = json["data"]["insertUser"]["status"].int
+                completion?(self.translateStatusCode(status: statusCode!))
+            }
         }
         task.resume()
     }
     
-    func checkForLogin(email: String, password: String, completion: @escaping (String?) -> Void) {
+    func checkForLogin(email: String, password: String, completion: ((String?) -> Void)?) {
         var request = getRequest(httpMethod: "POST")
         let query = """
             query CheckLogin {
@@ -49,7 +52,7 @@ class APWebService {
             if let data = data {
                 let json = try! JSON(data: data)
                 let statusCode = json["data"]["login"]["status"].int
-                completion(self.translateStatusCode(status: statusCode!))
+                completion?(self.translateStatusCode(status: statusCode!))
             }
         }
         task.resume()

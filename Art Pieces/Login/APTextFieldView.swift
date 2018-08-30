@@ -8,9 +8,10 @@
 
 import UIKit
 
-protocol APTextFieldDelegate: class {
-    func textFieldDidBeganEditing()
-    func textFieldDidEndEditing(with text: String)
+@objc protocol APTextFieldDelegate: class {
+    @objc optional func textFieldDidBeganEditing()
+    @objc optional func textFieldDidEndEditing(with text: String)
+    @objc optional func textFieldDidChangedEditing()
 }
 
 class APTextFieldView: UIView {
@@ -23,6 +24,16 @@ class APTextFieldView: UIView {
     
     var text: String {
         return textField.text ?? ""
+    }
+    
+    var isEmpty: Bool {
+        if textField.text == nil {
+            return true
+        } else if textField.text! == "" {
+            return true
+        } else {
+            return false
+        }
     }
     
     override init(frame: CGRect) {
@@ -40,13 +51,21 @@ class APTextFieldView: UIView {
     @IBAction func textFieldBeganEditing(_ sender: UITextField) {
         UIView.transition(with: editingIndicator, duration: 0.1, options: .transitionCrossDissolve,
                           animations: {self.editingIndicator.backgroundColor = .black}, completion: nil)
-        delegate?.textFieldDidBeganEditing()
+        delegate?.textFieldDidBeganEditing?()
     }
     
     @IBAction func textFieldEndEditing(_ sender: UITextField) {
         UIView.transition(with: editingIndicator, duration: 0.1, options: .transitionCrossDissolve,
                           animations: {self.editingIndicator.backgroundColor = .lightGray}, completion: nil)
-        delegate?.textFieldDidEndEditing(with: textField.text!)
+        delegate?.textFieldDidEndEditing?(with: textField.text!)
+    }
+    
+    @IBAction func textFieldChangedEditting(_ sender: UITextField) {
+        delegate?.textFieldDidChangedEditing?()
+    }
+    
+    func clear() {
+        textField.text = ""
     }
     
 }
