@@ -6,8 +6,8 @@
 //  Copyright © 2018 李灿晨. All rights reserved.
 //
 
-import Foundation
 import UIKit
+import SwiftyJSON
 
 struct RequestBody: Codable {
     var operationName: String?
@@ -20,12 +20,14 @@ class APWebService {
     
     static let backEndURL = URL(string: "https://artpieces.cn/api")!
     
+    static let defaultManager = APWebService()
+    
     func registerUser(email: String, password: String,
                       completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        var request = getPostRequest()
+        var request = getRequest(httpMethod: "POST")
         let query = """
             mutation InsertUser {
-                insertUser(email: \(email), name: \(email), password: \(password))
+                insertUser(email: "\(email)", name: "\(email)", password: "\(password)")
             }
         """
         request.httpBody = constructRequestBody(with: query)
@@ -33,6 +35,43 @@ class APWebService {
             completionHandler(data, response, error)
         }
         task.resume()
+    }
+    
+    func checkForLogin(email: String, password: String, completion: @escaping (String?) -> Void) {
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            query CheckLogin {
+                login(email: "\(email)", password: "\(password)")
+            }
+        """
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                let json = try! JSON(data: data)
+                let statusCode = json["data"]["login"]["status"].int
+                completion(self.translateStatusCode(status: statusCode!))
+            }
+        }
+        task.resume()
+    }
+    
+    private func translateStatusCode(status: Int) -> String? {
+        switch status {
+        case 0:
+            return nil
+        case -1:
+            return "Wrong password."
+        case -2:
+            return "Illegal identity."
+        case -3:
+            return "User not exist."
+        case -4:
+            return "User already existed."
+        case 1:
+            return "Unknown error, please try later."
+        default:
+            return "Unknown error, please try later."
+        }
     }
     
     private func sendFile(urlPath: String, fileName: String, data: Data,
@@ -83,9 +122,9 @@ class APWebService {
         return data
     }
     
-    private func getPostRequest() -> URLRequest {
+    private func getRequest(httpMethod: String) -> URLRequest {
         var request = URLRequest(url: APWebService.backEndURL)
-        request.httpMethod = "POST"
+        request.httpMethod = httpMethod
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         return request
     }

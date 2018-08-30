@@ -2,23 +2,27 @@ PODS:
   - BWWalkthrough (2.1.2)
   - ChromaColorPicker (1.7)
   - CHTCollectionViewWaterfallLayout/Swift (0.9.7)
+  - SwiftyJSON (4.1.0)
 
 DEPENDENCIES:
   - BWWalkthrough
   - ChromaColorPicker
   - CHTCollectionViewWaterfallLayout/Swift
+  - SwiftyJSON
 
 SPEC REPOS:
   https://github.com/CocoaPods/Specs.git:
     - BWWalkthrough
     - ChromaColorPicker
     - CHTCollectionViewWaterfallLayout
+    - SwiftyJSON
 
 SPEC CHECKSUMS:
   BWWalkthrough: 6b18dc688ff6b7168383fee07fe199ccaad7e9f7
   ChromaColorPicker: 33efa67b17cca51dd253689d18b83ac7e05642c2
   CHTCollectionViewWaterfallLayout: 9d11068fafecac106695bb5a5d6d0f738483b598
+  SwiftyJSON: c29297daf073d2aa016295d5809cdd68045c39b3
 
-PODFILE CHECKSUM: 8e495f1fcb547d3a1b4d210aa5982f7c47cdfcdb
+PODFILE CHECKSUM: 7d9fa4789eff70ac7a40420fc683c37ce6aa21f7
 
 COCOAPODS: 1.5.0

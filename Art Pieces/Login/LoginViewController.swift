@@ -64,7 +64,21 @@ class LoginViewController: BWWalkthroughPageViewController {
     @IBAction func beginLoginProcedure(_ sender: UIButton) {
         beginLoginButton.isHidden = true
         loginSpinner.startAnimating()
-        
+        APWebService.defaultManager.checkForLogin(email: emailTextFieldView.text,
+                                                  password: passwordTextFieldView.text) { errorMessage in
+            if let message = errorMessage {
+                let alertController = UIAlertController(title: "Ooooops!", message:
+                    message, preferredStyle: .alert)
+                let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
+                alertController.addAction(action)
+                self.present(alertController, animated: true) {
+                    self.beginLoginButton.isHidden = false
+                    self.loginSpinner.stopAnimating()
+                }
+            } else {
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
     }
     
     @objc func keyboardPositionWillChange(notification: Notification) {

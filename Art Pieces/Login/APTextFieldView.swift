@@ -21,6 +21,10 @@ class APTextFieldView: UIView {
     
     weak var delegate: APTextFieldDelegate?
     
+    var text: String {
+        return textField.text ?? ""
+    }
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         Bundle.main.loadNibNamed("APTextFieldView", owner: self, options: nil)
