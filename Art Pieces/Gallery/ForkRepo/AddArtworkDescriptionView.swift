@@ -1,5 +1,5 @@
 //
-//  ArtworkForkViewController.swift
+//  AddArtworkDescriptionView.swift
 //  Art Pieces
 //
 //  Created by 李灿晨 on 2018/8/30.
@@ -8,6 +8,6 @@
 
 import UIKit
 
-class ArtworkForkViewController: NSObject {
+class AddArtworkDescriptionView: UIView {
 
 }

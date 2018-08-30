@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="3Yo-v3-Oq5">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Artwork Fork View Controller-->
+        <scene sceneID="Vpt-ik-71D">
+            <objects>
+                <viewController id="3Yo-v3-Oq5" customClass="ArtworkForkViewController" customModule="Art_Pieces" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n8k-xR-KPT">
+                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hys-dQ-UUA">
+                                <rect key="frame" x="980" y="40" width="24" height="24"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="24" id="Io1-gM-t2l"/>
+                                    <constraint firstAttribute="width" constant="24" id="ovp-bt-OQ3"/>
+                                </constraints>
+                                <state key="normal" image="CloseButton"/>
+                                <connections>
+                                    <action selector="closeButtonTapped:" destination="3Yo-v3-Oq5" eventType="touchUpInside" id="qr4-Cj-2fU"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Hys-dQ-UUA" firstAttribute="top" secondItem="8E9-g6-0IP" secondAttribute="top" constant="20" id="KeO-hD-58n"/>
+                            <constraint firstItem="8E9-g6-0IP" firstAttribute="trailing" secondItem="Hys-dQ-UUA" secondAttribute="trailing" constant="20" id="vUe-78-V0W"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="8E9-g6-0IP"/>
+                    </view>
+                    <connections>
+                        <outlet property="closeButton" destination="Hys-dQ-UUA" id="O32-v7-sdZ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="HFu-v5-eq4" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-150" y="-164.0625"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="CloseButton" width="36" height="36"/>
+    </resources>
+</document>

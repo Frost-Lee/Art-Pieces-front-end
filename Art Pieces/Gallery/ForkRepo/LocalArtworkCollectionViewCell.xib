@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="LocalArtworkCollectionViewCell" customModule="Art_Pieces" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="248" height="216"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="248" height="216"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dTT-P4-KYV">
+                        <rect key="frame" x="0.0" y="0.0" width="248" height="216"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-qu-ZLY">
+                        <rect key="frame" x="0.0" y="0.0" width="248" height="181"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="iOI-qu-ZLY" secondAttribute="height" multiplier="248:181" id="FUv-R7-NnG"/>
+                        </constraints>
+                    </imageView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="SelectIndicator" translatesAutoresizingMaskIntoConstraints="NO" id="t5z-d2-wcL">
+                        <rect key="frame" x="8" y="188" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="pXu-A6-utr"/>
+                            <constraint firstAttribute="height" constant="20" id="rb0-GA-RcX"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monalisa" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9i6-J5-pWN">
+                        <rect key="frame" x="40" y="187" width="190" height="21"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="wSd-Re-sT5"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.19215686274509802" green="0.2196078431372549" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                </subviews>
+            </view>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="t5z-d2-wcL" secondAttribute="bottom" constant="8" id="16B-fn-POt"/>
+                <constraint firstAttribute="bottom" secondItem="9i6-J5-pWN" secondAttribute="bottom" constant="8" id="3DM-UC-gNU"/>
+                <constraint firstAttribute="trailing" secondItem="iOI-qu-ZLY" secondAttribute="trailing" id="NqC-ZK-76c"/>
+                <constraint firstItem="iOI-qu-ZLY" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="OZ1-yz-Awo"/>
+                <constraint firstAttribute="bottom" secondItem="dTT-P4-KYV" secondAttribute="bottom" id="P3h-vZ-2QA"/>
+                <constraint firstItem="dTT-P4-KYV" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="PLj-C4-b8x"/>
+                <constraint firstAttribute="trailing" secondItem="9i6-J5-pWN" secondAttribute="trailing" constant="18" id="UJg-3V-mKw"/>
+                <constraint firstAttribute="trailing" secondItem="dTT-P4-KYV" secondAttribute="trailing" id="Ygk-Me-rte"/>
+                <constraint firstItem="dTT-P4-KYV" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="cHk-FI-d3Z"/>
+                <constraint firstItem="iOI-qu-ZLY" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="dYF-Il-WeU"/>
+                <constraint firstItem="9i6-J5-pWN" firstAttribute="leading" secondItem="t5z-d2-wcL" secondAttribute="trailing" constant="12" id="qeM-fa-J2J"/>
+                <constraint firstItem="t5z-d2-wcL" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="wW6-ts-9uk"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <size key="customSize" width="211" height="50"/>
+            <connections>
+                <outlet property="artworkTitleLabel" destination="9i6-J5-pWN" id="i8x-ey-P0s"/>
+                <outlet property="localArtworkImageView" destination="iOI-qu-ZLY" id="Oay-93-Btq"/>
+                <outlet property="selectIndicatorImageView" destination="t5z-d2-wcL" id="YbT-aW-yKz"/>
+            </connections>
+            <point key="canvasLocation" x="114" y="54"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <image name="SelectIndicator" width="44" height="44"/>
+    </resources>
+</document>

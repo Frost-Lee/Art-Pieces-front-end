@@ -28,7 +28,6 @@
     </entity>
     <entity name="MyArtwork" representedClassName="MyArtwork" syncable="YES">
         <attribute name="artworkDescription" optional="YES" attributeType="String" syncable="YES"/>
-        <attribute name="content" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="keyPhotoPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
@@ -45,7 +44,7 @@
         <element name="CachedArtwork" positionX="-18" positionY="36" width="128" height="120"/>
         <element name="CachedLecture" positionX="-36" positionY="27" width="128" height="150"/>
         <element name="CachedRepo" positionX="0" positionY="63" width="128" height="165"/>
-        <element name="MyArtwork" positionX="-54" positionY="18" width="128" height="120"/>
+        <element name="MyArtwork" positionX="-54" positionY="18" width="128" height="105"/>
         <element name="MyLecture" positionX="-63" positionY="-18" width="128" height="135"/>
     </elements>
 </model>
