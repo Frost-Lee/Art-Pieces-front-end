@@ -8,7 +8,6 @@
 //  Abstract:
 //  RenderMechanism contains the method used for rendering the stroke according to its sample points.
 
-import Foundation
 import UIKit
 
 struct RenderMechanism: Codable {

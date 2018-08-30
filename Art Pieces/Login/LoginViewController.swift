@@ -93,7 +93,8 @@ class LoginViewController: BWWalkthroughPageViewController {
             let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt {
             let frame = value.cgRectValue
             let intersect = frame.intersects(passwordTextFieldView.frame)
-            UIView.animate(withDuration: duration, delay: 0.0, options: UIView.AnimationOptions(rawValue: curve), animations: {
+            UIView.animate(withDuration: duration, delay: 0.0, options:
+                UIView.AnimationOptions(rawValue: curve), animations: {
                 if intersect {
                     let multiplierConstant: CGFloat = self.isSignUpStatus ? 0.3 : 0.35
                     self.textFieldPlacingConstraint_1 = self.textFieldPlacingConstraint_1
@@ -116,14 +117,19 @@ class LoginViewController: BWWalkthroughPageViewController {
     }
     
     private func beginLogingin() {
-        APWebService.defaultManager.checkForLogin(email: emailTextFieldView.text,
-                                                  password: passwordTextFieldView.text) { errorMessage in
+        let email = emailTextFieldView.text
+        let password = passwordTextFieldView.text
+        APWebService.defaultManager.checkForLogin(email: email,
+            password: password) { errorMessage in
             if let message = errorMessage {
                 let alertController = UIAlertController.prepareController(title: "Oooooops!", message: message)
                 self.present(alertController, animated: true) {
                     self.stopRequesting()
                 }
             } else {
+                AccountManager.defaultManager.login(email: email, password: password) {
+                    // Refresh Home Page Code Here
+                }
                 self.dismiss(animated: true, completion: nil)
             }
         }
@@ -133,7 +139,7 @@ class LoginViewController: BWWalkthroughPageViewController {
         if passwordTextFieldView.text == confirmPasswordTextFieldView.text
             && passwordTextFieldView.text != "" {
             APWebService.defaultManager.registerUser(email: emailTextFieldView.text,
-                                                     password: passwordTextFieldView.text) { errorMessage in
+                password: passwordTextFieldView.text) { errorMessage in
                 if let message = errorMessage {
                     let alertController = UIAlertController.prepareController(title: "Oooooops!", message: message)
                     self.present(alertController, animated: true) {
@@ -177,7 +183,8 @@ class LoginViewController: BWWalkthroughPageViewController {
         UIView.animate(withDuration: 50, delay: 0, options:
             UIView.AnimationOptions.curveLinear, animations: {
                 let yAxisHeight = self.positiveScroll ? -deltaHeight : 0
-                self.albumImageView!.frame = CGRect(x: 0, y: yAxisHeight, width: self.scrollAnimationContainerView.frame.width,
+                self.albumImageView!.frame = CGRect(x: 0, y: yAxisHeight,
+                                                    width: self.scrollAnimationContainerView.frame.width,
                                                     height: self.albumImageView!.frame.height)
                 self.positiveScroll = !self.positiveScroll
         }, completion: beginAnimateAlbums)

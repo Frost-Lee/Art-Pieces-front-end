@@ -68,6 +68,8 @@
 		3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6D2103189700C31637 /* SubStepView.swift */; };
 		3ADC3C7021031FA400C31637 /* LectureEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6F21031FA400C31637 /* LectureEdit.storyboard */; };
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
+		3AF62DCC21380830005104CA /* ArtworkUploViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF62DCB21380830005104CA /* ArtworkUploViewController.storyboard */; };
+		3AF62DCE213813FD005104CA /* ArtworkForkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DCD213813FD005104CA /* ArtworkForkViewController.swift */; };
 		48BFC0540826D3CB6F13165E /* libPods-Art Pieces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */; };
 /* End PBXBuildFile section */
 
@@ -136,6 +138,8 @@
 		3ADC3C6D2103189700C31637 /* SubStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStepView.swift; sourceTree = "<group>"; };
 		3ADC3C6F21031FA400C31637 /* LectureEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LectureEdit.storyboard; sourceTree = "<group>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
+		3AF62DCB21380830005104CA /* ArtworkUploViewController.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtworkUploViewController.storyboard; sourceTree = "<group>"; };
+		3AF62DCD213813FD005104CA /* ArtworkForkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkForkViewController.swift; sourceTree = "<group>"; };
 		9AE3AFB4E4B2C13F65861B46 /* Pods-Art Pieces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.release.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.release.xcconfig"; sourceTree = "<group>"; };
 		BF4AC9E22F8BA616954FA4A6 /* Pods-Art Pieces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,6 +184,8 @@
 				3A48E212211DD1D700B34B24 /* ArtworkDetail.storyboard */,
 				3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */,
 				3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */,
+				3AF62DCB21380830005104CA /* ArtworkUploViewController.storyboard */,
+				3AF62DCD213813FD005104CA /* ArtworkForkViewController.swift */,
 			);
 			path = Gallery;
 			sourceTree = "<group>";
@@ -264,7 +270,7 @@
 			path = StepTableView;
 			sourceTree = "<group>";
 		};
-		3A79F4C720FEF2FC00896C0D /* ArtworkView */ = {
+		3A79F4C720FEF2FC00896C0D /* LectureEditView */ = {
 			isa = PBXGroup;
 			children = (
 				3AC06ABF20FB670600AA0138 /* ArtworkView.swift */,
@@ -272,7 +278,7 @@
 				3A18C8942121650E007F63F2 /* LectureLayerView.swift */,
 				3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */,
 			);
-			path = ArtworkView;
+			path = LectureEditView;
 			sourceTree = "<group>";
 		};
 		3A8C939720F895EC005D5BD1 = {
@@ -305,7 +311,7 @@
 				3A4043982109CCB900467990 /* Gallery */,
 				3ACC14B52109CB92002BCDFF /* Lecture */,
 				3A75171021086F8600373189 /* LectureEdit */,
-				3A79F4C720FEF2FC00896C0D /* ArtworkView */,
+				3A79F4C720FEF2FC00896C0D /* LectureEditView */,
 				3A75170F21086F1000373189 /* APFoundation */,
 			);
 			path = "Art Pieces";
@@ -409,6 +415,7 @@
 				3A8C93AE20F895EE005D5BD1 /* LaunchScreen.storyboard in Resources */,
 				3A48E213211DD1D700B34B24 /* ArtworkDetail.storyboard in Resources */,
 				3A40439C2109D04F00467990 /* Gallery.xib in Resources */,
+				3AF62DCC21380830005104CA /* ArtworkUploViewController.storyboard in Resources */,
 				3ADC3C6C2103188600C31637 /* SubStepView.xib in Resources */,
 				3A48E211211DD0DC00B34B24 /* LectureDetail.storyboard in Resources */,
 				3AD1048B211BE086006C1039 /* LectureTableViewCell.xib in Resources */,
@@ -461,6 +468,7 @@
 				3A48E20D211D865C00B34B24 /* ArtworkDetailViewController.swift in Sources */,
 				3A0DDF4521366630005DEE82 /* MyArtwork+CoreDataClass.swift in Sources */,
 				3AC000D421357E3300020952 /* AccountManager.swift in Sources */,
+				3AF62DCE213813FD005104CA /* ArtworkForkViewController.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtworkView.swift in Sources */,
 				3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */,
 				3A18C8952121650E007F63F2 /* LectureLayerView.swift in Sources */,

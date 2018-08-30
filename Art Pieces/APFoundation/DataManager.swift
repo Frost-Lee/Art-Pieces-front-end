@@ -50,6 +50,11 @@ class DataManager {
         return urlPath
     }
     
+    func getPhoto(path: String) -> UIImage {
+        let data = try! Data(contentsOf: URL(fileURLWithPath: path))
+        return UIImage(data: data)!
+    }
+    
     func removeItem(path: String?) {
         try? FileManager.default.removeItem(atPath: path ?? "")
     }

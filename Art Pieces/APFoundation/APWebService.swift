@@ -58,6 +58,43 @@ class APWebService {
         task.resume()
     }
     
+    func getUserInfo(email: String, completion: (((String, UIImage?, UIImage?) -> Void)?)) {
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            query GetUserInfo {
+                getUser(email: "\(email)") {
+                    name
+                    compressedPortrait
+                    portrait
+                }
+            }
+        """
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let data = data {
+                let json = try! JSON(data: data)
+                let name = json["data"]["getUser"]["name"].string!
+                let portraitPath = json["data"]["getUser"]["portrait"].string
+                let compressedPortraitPath = json["data"]["getUser"]["compressedPortrait"].string
+                var portrait: UIImage? = nil
+                var compressedPortrait: UIImage? = nil
+                if let portraitPath = portraitPath {
+                    portrait = self.fetchPhoto(url: URL(string: portraitPath)!)
+                }
+                if let compressedPortraitPath = compressedPortraitPath {
+                    compressedPortrait = self.fetchPhoto(url: URL(string: compressedPortraitPath)!)
+                }
+                completion?(name, portrait, compressedPortrait)
+            }
+        }
+        task.resume()
+    }
+    
+    func fetchPhoto(url: URL) -> UIImage {
+        let data = try! Data(contentsOf: url)
+        return UIImage(data: data)!
+    }
+    
     private func translateStatusCode(status: Int) -> String? {
         switch status {
         case 0:
