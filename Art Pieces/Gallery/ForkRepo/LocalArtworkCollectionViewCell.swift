@@ -22,7 +22,7 @@ class LocalArtworkCollectionViewCell: UICollectionViewCell {
         didSet {
             artworkTitleLabel.text = artwork?.title
             localArtworkImageView.image = DataManager.defaultManager
-                .getPhoto(path: artwork!.keyPhotoPath!)
+                .getImage(path: artwork!.keyPhotoPath!)
         }
     }
     

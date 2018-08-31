@@ -23,6 +23,14 @@ class ArtworkDetailViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
+    @IBAction func newButtonTapped(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "ArtworkFork", bundle: Bundle.main)
+        let viewController = storyboard.instantiateInitialViewController() as! ArtworkForkViewController
+        viewController.modalPresentationStyle = .formSheet
+        viewController.delegate = self
+        self.present(viewController, animated: true, completion: nil)
+    }
+    
 }
 
 
@@ -42,5 +50,12 @@ extension ArtworkDetailViewController: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, layout
         collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: collectionView.frame.width / 2.0, height: collectionView.frame.height / 2.0)
+    }
+}
+
+
+extension ArtworkDetailViewController: ArtworkForkDelegate {
+    func controllerDismissedWithSelectedArtwork(with uuid: UUID) {
+        // Get the artwork and load it to the backend
     }
 }

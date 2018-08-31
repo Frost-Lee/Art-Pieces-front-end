@@ -35,7 +35,6 @@ class LectureEditViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         lectureEditView.currentRenderMechanism = RenderMechanism(color: UIColor.lightGray, width: 1.5, texture: "PencilTexture")
         lectureEditView.createLayer()
         lectureEditView.delegate = self
@@ -63,10 +62,19 @@ class LectureEditViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         lectureEditView.stepPreviewPhotoArray.append(lectureEditView.viewImage(for: lectureEditView.frame.size)!)
+        saveLecture()
     }
     
     @IBAction func addStepButtonTapped(_ sender: UIButton) {
         lectureEditView.addAnotherStep()
+    }
+    
+    private func saveLecture() {
+        if lectureEditView.artworkLayerViews.first?.lectureLayer.strokes.count != 0 {
+            DataManager.defaultManager.saveLecture(title: "New Artboard", description: nil, content: lectureEditView.export(),
+                previewPhoto: lectureEditView.viewImage(for: CGSize(width: 1112, height: 834))!,
+                stepPreviewPhotos: lectureEditView.stepPreviewPhotoArray)
+        }
     }
     
     private func launchPallet(with identifier: String, at view: UIView, initialColor: UIColor) {

@@ -53,6 +53,9 @@
                     <state key="normal" title="Share">
                         <color key="titleColor" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </state>
+                    <connections>
+                        <action selector="shareButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="6vn-s4-Gqy"/>
+                    </connections>
                 </button>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Say something about your work ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xWA-Rw-3tb">
                     <rect key="frame" x="28" y="105" width="526" height="21"/>

@@ -17,7 +17,7 @@ class DataManager {
     
     static let defaultManager = DataManager()
     
-    func storeArtwork(title: String, description: String?, keyPhoto: UIImage) {
+    func saveArtwork(title: String, description: String?, keyPhoto: UIImage) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "MyArtwork", in: context)
@@ -25,22 +25,57 @@ class DataManager {
         newArtwork.title = title
         newArtwork.artworkDescription = description
         newArtwork.timestamp = Date() as NSDate
-        newArtwork.keyPhotoPath = savePhoto(photo: keyPhoto, isCachedPhoto: false)
+        newArtwork.keyPhotoPath = saveImage(photo: keyPhoto, isCachedPhoto: false)
         try! context.save()
     }
     
-    func storeLecture(title: String, description: String?, content: Data, stepPreviewPhotos: [UIImage]) {
+    func saveLecture(title: String, description: String?, content: Data, previewPhoto: UIImage, stepPreviewPhotos: [UIImage]) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "MyLecture", in: context)
         let newLecture = MyLecture(entity: entity!, insertInto: context)
         newLecture.title = title
-        newLecture.lectureDescription = description
+        newLecture.lectureDescription = description ?? ""
         newLecture.content = content as NSData
-        
+        newLecture.numberOfSteps = Int32(stepPreviewPhotos.count)
+        newLecture.uuid = UUID()
+        newLecture.timestamp = Date() as NSDate
+        newLecture.previewPhotoPath = saveImage(photo: previewPhoto, isCachedPhoto: false)
+        var stepPreviewPhotoPath: String = ""
+        for photo in stepPreviewPhotos {
+            stepPreviewPhotoPath += saveImage(photo: photo, isCachedPhoto: false) + ";"
+        }
+        newLecture.stepPreviewPhotoPathArray = stepPreviewPhotoPath
+        try! context.save()
     }
     
-    func savePhoto(photo: UIImage, isCachedPhoto: Bool) -> String {
+    func getAllArtworks() -> [MyArtwork] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtwork")
+        let fetchedArtworks = try! context.fetch(fetchRequest) as! [MyArtwork]
+        return fetchedArtworks
+    }
+    
+    func getArtwork(uuid: UUID) -> MyArtwork? {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtwork")
+        fetchRequest.predicate = NSPredicate(format: "uuid=\(uuid)")
+        let fetchedArtworks = try! context.fetch(fetchRequest) as! [MyArtwork]
+        return fetchedArtworks.first
+    }
+    
+    func getLecture(uuid: UUID) -> MyLecture? {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchedRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyLecture")
+        fetchedRequest.predicate = NSPredicate(format: "uuid=\(uuid)")
+        let fetchedLectures = try! context.fetch(fetchedRequest) as! [MyLecture]
+        return fetchedLectures.first
+    }
+    
+    func saveImage(photo: UIImage, isCachedPhoto: Bool) -> String {
         initializeDirectory()
         let photoIdentifier = UUID().uuidString + ".png"
         let photoData = photo.pngData()!
@@ -50,13 +85,14 @@ class DataManager {
         return urlPath
     }
     
-    func getPhoto(path: String) -> UIImage {
+    func getImage(path: String) -> UIImage {
         let data = try! Data(contentsOf: URL(fileURLWithPath: path))
         return UIImage(data: data)!
     }
     
     func removeItem(path: String?) {
-        try? FileManager.default.removeItem(atPath: path ?? "")
+        guard path != nil && path?.count != 0 else {return}
+        try? FileManager.default.removeItem(atPath: path!)
     }
     
     private func initializeDirectory() {

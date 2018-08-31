@@ -8,9 +8,15 @@
 
 import UIKit
 
+protocol ArtworkForkDelegate: class {
+    func controllerDismissedWithSelectedArtwork(with uuid: UUID)
+}
+
 class ArtworkForkViewController: UIViewController {
     
     @IBOutlet weak var closeButton: UIButton!
+    
+    weak var delegate: ArtworkForkDelegate?
     
     var pickArtworkView: PickArtworkView!
     var addArtworkDescriptionView: AddArtworkDescriptionView!
@@ -56,6 +62,7 @@ class ArtworkForkViewController: UIViewController {
         addArtworkDescriptionView = nib.instantiate(withOwner: self,
             options: nil).first as? AddArtworkDescriptionView
         self.view.insertSubview(addArtworkDescriptionView, belowSubview: closeButton)
+        addArtworkDescriptionView.delegate = self
     }
     
 }
@@ -71,5 +78,13 @@ extension ArtworkForkViewController: PickArtworkDelegate {
     }
     
     func artworkSelectionDidChanged() {
+    }
+}
+
+
+extension ArtworkForkViewController: AddArtworkDescriptionDelegate {
+    func shareButtonTapped(artworkUUID: UUID) {
+        delegate?.controllerDismissedWithSelectedArtwork(with: artworkUUID)
+        dismiss(animated: true, completion: nil)
     }
 }

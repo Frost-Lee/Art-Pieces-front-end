@@ -120,6 +120,19 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
         setNeedsDisplay()
     }
     
+    func export() -> Data {
+        var layers: [Layer] = []
+        for view in artworkLayerViews {
+            layers.append(view.lectureLayer)
+        }
+        var newLecture = Lecture(layers: layers, size: self.frame.size)
+        if guide.steps.count != 0 {
+            newLecture.guide = guide
+        }
+        let data = try! JSONEncoder().encode(newLecture)
+        return data
+    }
+    
     private func initialize() {
         strokeGestureRecognizer = setupStrokeGestureRecognizer()
         self.addGestureRecognizer(strokeGestureRecognizer)

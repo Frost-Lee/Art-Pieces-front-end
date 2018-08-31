@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     // MARK: - Core Data stack
     lazy var persistentContainer: NSPersistentContainer = {
 
-        let container = NSPersistentContainer(name: "ALDataModel")
+        let container = NSPersistentContainer(name: "LocalDataModel")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 fatalError("Unresolved error \(error), \(error.userInfo)")
@@ -81,10 +81,6 @@ extension AppDelegate: BWWalkthroughViewControllerDelegate {
         walkThrough.add(viewController: page_login!)
         delay(for: 1) {
             self.window?.rootViewController?.present(walkThrough, animated: true)
-//            let storyboard = UIStoryboard(name: "ArtworkFork", bundle: Bundle.main)
-//            let viewController = storyboard.instantiateInitialViewController()
-//            viewController?.modalPresentationStyle = .formSheet
-//            self.window?.rootViewController?.present(viewController!, animated: true, completion: nil)
         }
     }
 }

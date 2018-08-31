@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol AddArtworkDescriptionDelegate: class {
+    func shareButtonTapped(artworkUUID: UUID)
+}
+
 class AddArtworkDescriptionView: UIView {
 
     @IBOutlet weak var artworkKeyPhotoImageView: UIImageView!
@@ -17,6 +21,14 @@ class AddArtworkDescriptionView: UIView {
         }
     }
     @IBOutlet weak var placeholderLabel: UILabel!
+    
+    weak var delegate: AddArtworkDescriptionDelegate?
+    
+    var selectArtwork: MyArtwork!
+    
+    @IBAction func shareButtonTapped(_ sender: UIButton) {
+        delegate?.shareButtonTapped(artworkUUID: selectArtwork.uuid!)
+    }
     
 }
 

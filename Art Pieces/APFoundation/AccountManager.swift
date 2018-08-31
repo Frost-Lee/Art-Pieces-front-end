@@ -49,11 +49,11 @@ class AccountManager {
         UserDefaults.standard.set(password, forKey: "password")
         if let portrait = portrait {
             UserDefaults.standard.set(DataManager.defaultManager
-                .savePhoto(photo: portrait, isCachedPhoto: false), forKey: "portrait")
+                .saveImage(photo: portrait, isCachedPhoto: false), forKey: "portrait")
         }
         if let compressedPortrait = compressedPortrait {
             UserDefaults.standard.set(DataManager.defaultManager
-                .savePhoto(photo: compressedPortrait, isCachedPhoto: false), forKey: "compressedPortrait")
+                .saveImage(photo: compressedPortrait, isCachedPhoto: false), forKey: "compressedPortrait")
         }
     }
     

@@ -136,7 +136,6 @@ class APWebService {
             using: String.Encoding.utf8,
             allowLossyConversion: false)!)
         let lineTwo = "Content-Disposition: form-data; name=\"image\"; filename=\"" + fileName + "\"\r\n"
-        NSLog(lineTwo)
         fullData.append(lineTwo.data(
             using: String.Encoding.utf8,
             allowLossyConversion: false)!)

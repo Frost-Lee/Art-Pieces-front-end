@@ -31,20 +31,23 @@
         <attribute name="keyPhotoPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <entity name="MyLecture" representedClassName="MyLecture" syncable="YES">
         <attribute name="content" optional="YES" attributeType="Binary" syncable="YES"/>
         <attribute name="lectureDescription" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numberOfSteps" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="previewPhotoPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="stepPreviewPhotoPathArray" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
     </entity>
     <elements>
         <element name="CachedArtwork" positionX="-18" positionY="36" width="128" height="120"/>
         <element name="CachedLecture" positionX="-36" positionY="27" width="128" height="150"/>
         <element name="CachedRepo" positionX="0" positionY="63" width="128" height="165"/>
-        <element name="MyArtwork" positionX="-54" positionY="18" width="128" height="105"/>
-        <element name="MyLecture" positionX="-63" positionY="-18" width="128" height="135"/>
+        <element name="MyArtwork" positionX="-54" positionY="18" width="128" height="120"/>
+        <element name="MyLecture" positionX="-63" positionY="-18" width="128" height="165"/>
     </elements>
 </model>

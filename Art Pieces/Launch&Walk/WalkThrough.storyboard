@@ -32,16 +32,28 @@
                                     <action selector="close:" destination="Z5y-5a-0AM" eventType="touchUpInside" id="uXe-r7-9WO"/>
                                 </connections>
                             </button>
+                            <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="4" translatesAutoresizingMaskIntoConstraints="NO" id="SqF-rE-Ics">
+                                <rect key="frame" x="748.5" y="651.5" width="39" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="39" id="Fma-GB-SBe"/>
+                                    <constraint firstAttribute="height" constant="37" id="ziM-eh-glE"/>
+                                </constraints>
+                                <color key="pageIndicatorTintColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="currentPageIndicatorTintColor" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                            </pageControl>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="SqF-rE-Ics" firstAttribute="centerX" secondItem="BOj-3H-bMy" secondAttribute="centerX" multiplier="1.5" id="2Mj-G8-9wB"/>
                             <constraint firstItem="Xtl-2B-8UJ" firstAttribute="centerY" secondItem="BOj-3H-bMy" secondAttribute="centerY" multiplier="0.15" id="Jjx-ZY-yRs"/>
+                            <constraint firstItem="SqF-rE-Ics" firstAttribute="centerY" secondItem="BOj-3H-bMy" secondAttribute="centerY" multiplier="1.7" id="MFF-Nl-z7w"/>
                             <constraint firstItem="Xtl-2B-8UJ" firstAttribute="centerX" secondItem="BOj-3H-bMy" secondAttribute="centerX" multiplier="1.8" id="SHp-L8-cW2"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="BOj-3H-bMy"/>
                     </view>
                     <connections>
                         <outlet property="closeButton" destination="Xtl-2B-8UJ" id="z9H-rh-a4i"/>
+                        <outlet property="pageControl" destination="SqF-rE-Ics" id="ytR-Je-lmh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="pgB-nO-9x2" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -177,8 +189,8 @@
         </scene>
     </scenes>
     <resources>
-        <image name="IntroducePage2" width="1112" height="834"/>
-        <image name="IntroducePage3" width="1112" height="834"/>
+        <image name="IntroducePage2" width="4448" height="3336"/>
+        <image name="IntroducePage3" width="4448" height="3336"/>
         <image name="LoginBackgroundDecorationPhoto" width="1112" height="1668"/>
     </resources>
 </document>

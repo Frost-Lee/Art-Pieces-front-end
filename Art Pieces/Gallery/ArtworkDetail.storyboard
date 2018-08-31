@@ -40,6 +40,9 @@
                                         <state key="normal" title="+  New">
                                             <color key="titleColor" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="newButtonTapped:" destination="Lwl-HZ-Nzq" eventType="touchUpInside" id="BSA-8o-EFH"/>
+                                        </connections>
                                     </button>
                                     <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="nQs-E3-BY3">
                                         <rect key="frame" x="40" y="124" width="432" height="545"/>

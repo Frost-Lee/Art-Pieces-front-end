@@ -20,5 +20,6 @@ extension MyArtwork {
     @NSManaged public var keyPhotoPath: String?
     @NSManaged public var timestamp: NSDate?
     @NSManaged public var title: String?
+    @NSManaged public var uuid: UUID?
 
 }
