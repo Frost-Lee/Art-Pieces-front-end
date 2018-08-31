@@ -80,11 +80,11 @@ extension AppDelegate: BWWalkthroughViewControllerDelegate {
         walkThrough.add(viewController: page_3)
         walkThrough.add(viewController: page_login!)
         delay(for: 1) {
-//            self.window?.rootViewController?.present(walkThrough, animated: true)
-            let storyboard = UIStoryboard(name: "ArtworkFork", bundle: Bundle.main)
-            let viewController = storyboard.instantiateInitialViewController()
-            viewController?.modalPresentationStyle = .formSheet
-            self.window?.rootViewController?.present(viewController!, animated: true, completion: nil)
+            self.window?.rootViewController?.present(walkThrough, animated: true)
+//            let storyboard = UIStoryboard(name: "ArtworkFork", bundle: Bundle.main)
+//            let viewController = storyboard.instantiateInitialViewController()
+//            viewController?.modalPresentationStyle = .formSheet
+//            self.window?.rootViewController?.present(viewController!, animated: true, completion: nil)
         }
     }
 }

@@ -10,4 +10,23 @@ import UIKit
 
 class AddArtworkDescriptionView: UIView {
 
+    @IBOutlet weak var artworkKeyPhotoImageView: UIImageView!
+    @IBOutlet weak var artworkDescriptionTextField: UITextView! {
+        didSet {
+            artworkDescriptionTextField.layer.cornerRadius = 5
+        }
+    }
+    @IBOutlet weak var placeholderLabel: UILabel!
+    
+}
+
+
+extension AddArtworkDescriptionView: UITextViewDelegate {
+    func textViewDidChange(_ textView: UITextView) {
+        if textView.text.count > 0 {
+            placeholderLabel.isHidden = true
+        } else {
+            placeholderLabel.isHidden = false
+        }
+    }
 }
