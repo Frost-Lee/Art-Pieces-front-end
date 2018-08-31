@@ -23,7 +23,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="248" height="216"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-qu-ZLY">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GalleryPlaceHolderImage" translatesAutoresizingMaskIntoConstraints="NO" id="iOI-qu-ZLY">
                         <rect key="frame" x="0.0" y="0.0" width="248" height="181"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="iOI-qu-ZLY" secondAttribute="height" multiplier="248:181" id="FUv-R7-NnG"/>
@@ -72,6 +72,7 @@
         </collectionViewCell>
     </objects>
     <resources>
+        <image name="GalleryPlaceHolderImage" width="960" height="540"/>
         <image name="SelectIndicator" width="44" height="44"/>
     </resources>
 </document>

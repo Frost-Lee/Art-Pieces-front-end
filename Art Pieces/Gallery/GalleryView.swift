@@ -53,7 +53,8 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
         return 30
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt
+        indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "galleryCollectionViewCell",
                                                       for: indexPath) as! GalleryCollectionViewCell
         return cell

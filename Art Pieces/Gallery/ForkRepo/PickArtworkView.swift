@@ -10,7 +10,7 @@ import UIKit
 
 protocol PickArtworkDelegate: class {
     func nextButtonDidTapped()
-    func artworkDidSelected(at index: Int)
+    func artworkSelectionDidChanged()
 }
 
 class PickArtworkView: UIView {
@@ -20,7 +20,7 @@ class PickArtworkView: UIView {
             localArtworkCollectionView.register(UINib(nibName:
                 "LocalArtworkCollectionViewCell", bundle: Bundle.main),
                 forCellWithReuseIdentifier: "localArtworkCollectionViewCell")
-            localArtworkCollectionView.delegate = self
+            localArtworkCollectionView.reloadData()
         }
     }
     
@@ -34,7 +34,7 @@ class PickArtworkView: UIView {
     
 }
 
-extension PickArtworkView: UICollectionViewDelegate, UICollectionViewDataSource {
+extension PickArtworkView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
         return 10
@@ -44,17 +44,34 @@ extension PickArtworkView: UICollectionViewDelegate, UICollectionViewDataSource 
         indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
             "localArtworkCollectionViewCell", for: indexPath) as! LocalArtworkCollectionViewCell
+        if indexPath.row == selectedIndex {
+            cell.setSelected()
+        }
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let frame = collectionView.frame
+        let width = (frame.width - 10) / 2.0
+        return CGSize(width: width, height: width * 0.87)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if let selectedIndex = selectedIndex {
-            let oldCell = collectionView.cellForItem(at: IndexPath(row: selectedIndex, section: 0))
-                as! LocalArtworkCollectionViewCell
-            oldCell.setDeselected()
+            if let oldCell = collectionView.cellForItem(at: IndexPath(row: selectedIndex, section: 0))
+                as? LocalArtworkCollectionViewCell {
+                oldCell.setDeselected()
+            }
         }
         let cell = collectionView.cellForItem(at: indexPath) as! LocalArtworkCollectionViewCell
-        selectedIndex = indexPath.row
-        cell.setSelected()
+        if indexPath.row == selectedIndex {
+            selectedIndex = nil
+            cell.setDeselected()
+        } else {
+            selectedIndex = indexPath.row
+            cell.setSelected()
+        }
+        delegate?.artworkSelectionDidChanged()
     }
 }

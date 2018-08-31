@@ -10,7 +10,11 @@ import UIKit
 
 class LocalArtworkCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var localArtworkImageView: UIImageView!
+    @IBOutlet weak var localArtworkImageView: UIImageView! {
+        didSet {
+            localArtworkImageView.clipsToBounds = true
+        }
+    }
     @IBOutlet weak var selectIndicatorImageView: UIImageView!
     @IBOutlet weak var artworkTitleLabel: UILabel!
     
