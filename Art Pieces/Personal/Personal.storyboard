@@ -146,25 +146,20 @@
                                     <action selector="favoritesButtonTapped:" destination="5Jn-Ze-lDu" eventType="touchUpInside" id="Uxp-cc-nML"/>
                                 </connections>
                             </button>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eFi-1Q-uY2">
-                                <rect key="frame" x="0.0" y="254" width="1024" height="514"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="eFi-1Q-uY2">
+                                <rect key="frame" x="20" y="254" width="984" height="514"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="63Q-vO-oxT">
+                                <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="36" minimumInteritemSpacing="36" id="63Q-vO-oxT">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
-                                <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="personalCollectionViewCell" id="FRW-Je-shY">
-                                        <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
-                                            <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                        </view>
-                                    </collectionViewCell>
-                                </cells>
+                                <cells/>
+                                <connections>
+                                    <outlet property="dataSource" destination="5Jn-Ze-lDu" id="FHF-hw-f9Y"/>
+                                    <outlet property="delegate" destination="5Jn-Ze-lDu" id="QnH-YD-jwf"/>
+                                </connections>
                             </collectionView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -179,7 +174,7 @@
                             <constraint firstItem="zFZ-k8-Zfo" firstAttribute="leading" secondItem="8JK-Pb-weg" secondAttribute="leading" constant="20" id="A7u-bT-f6j"/>
                             <constraint firstItem="sS6-Do-MED" firstAttribute="leading" secondItem="dfe-fE-Mcr" secondAttribute="trailing" constant="52" id="CIq-ad-BV8"/>
                             <constraint firstItem="nXh-ga-vhE" firstAttribute="leading" secondItem="8JK-Pb-weg" secondAttribute="leading" id="FnR-Gv-l58"/>
-                            <constraint firstItem="eFi-1Q-uY2" firstAttribute="leading" secondItem="8JK-Pb-weg" secondAttribute="leading" id="GxJ-t9-XyO"/>
+                            <constraint firstItem="eFi-1Q-uY2" firstAttribute="leading" secondItem="8JK-Pb-weg" secondAttribute="leading" constant="20" id="GxJ-t9-XyO"/>
                             <constraint firstItem="r3E-hZ-AUx" firstAttribute="top" secondItem="8JK-Pb-weg" secondAttribute="top" id="JhI-UX-Yt9"/>
                             <constraint firstItem="Vs7-uv-YIy" firstAttribute="top" secondItem="lsX-kR-sa8" secondAttribute="bottom" constant="16" id="K5n-G2-fll"/>
                             <constraint firstItem="r3E-hZ-AUx" firstAttribute="leading" secondItem="sS6-Do-MED" secondAttribute="trailing" constant="40" id="K74-ga-p2z"/>
@@ -195,7 +190,7 @@
                             <constraint firstItem="JzA-Y9-5kY" firstAttribute="leading" secondItem="8JK-Pb-weg" secondAttribute="leading" constant="20" id="k3U-8U-ddJ"/>
                             <constraint firstItem="OQG-WB-Lyb" firstAttribute="top" secondItem="8JK-Pb-weg" secondAttribute="top" constant="10" id="kz0-p6-NxV"/>
                             <constraint firstItem="JzA-Y9-5kY" firstAttribute="top" secondItem="lsX-kR-sa8" secondAttribute="bottom" constant="16" id="lNv-k5-0Hv"/>
-                            <constraint firstItem="eFi-1Q-uY2" firstAttribute="trailing" secondItem="8JK-Pb-weg" secondAttribute="trailing" id="mIe-UT-iZp"/>
+                            <constraint firstItem="eFi-1Q-uY2" firstAttribute="trailing" secondItem="8JK-Pb-weg" secondAttribute="trailing" constant="-20" id="mIe-UT-iZp"/>
                             <constraint firstItem="dfe-fE-Mcr" firstAttribute="top" secondItem="8JK-Pb-weg" secondAttribute="top" constant="12" id="mLO-Ay-7SN"/>
                             <constraint firstItem="No4-ri-gqH" firstAttribute="top" secondItem="8JK-Pb-weg" secondAttribute="top" constant="12" id="mud-F0-ShA"/>
                             <constraint firstItem="OQG-WB-Lyb" firstAttribute="leading" secondItem="8JK-Pb-weg" secondAttribute="leading" constant="20" id="qD5-d9-Wcc"/>
@@ -207,6 +202,7 @@
                     </view>
                     <connections>
                         <outlet property="largePortraitImageView" destination="zFZ-k8-Zfo" id="uHj-te-APd"/>
+                        <outlet property="personalCollectionView" destination="eFi-1Q-uY2" id="XO6-MX-Zx0"/>
                         <outlet property="smallPortraitButton" destination="sS6-Do-MED" id="c0g-Jy-UCe"/>
                         <outlet property="starNumberLabel" destination="Did-hC-Sj0" id="90H-ri-GXa"/>
                         <outlet property="userDescriptionLabel" destination="5k2-bM-gNB" id="run-Fi-YEq"/>

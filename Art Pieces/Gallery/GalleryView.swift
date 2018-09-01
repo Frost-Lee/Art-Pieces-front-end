@@ -46,7 +46,7 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
         } else {
             width = (collectionView.frame.width - 36 * 2) / 3
         }
-        return CGSize(width: width, height: 400)
+        return CGSize(width: width, height: width / 0.967)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {

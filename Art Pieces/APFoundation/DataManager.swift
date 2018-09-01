@@ -29,7 +29,8 @@ class DataManager {
         try! context.save()
     }
     
-    func saveLecture(title: String, description: String?, content: Data, previewPhoto: UIImage, stepPreviewPhotos: [UIImage]) {
+    func saveLecture(title: String, description: String?, content: Data,
+                     previewPhoto: UIImage, stepPreviewPhotos: [UIImage]) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "MyLecture", in: context)
@@ -55,6 +56,14 @@ class DataManager {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtwork")
         let fetchedArtworks = try! context.fetch(fetchRequest) as! [MyArtwork]
         return fetchedArtworks
+    }
+    
+    func getAllLectures() -> [MyLecture] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyLecture")
+        let fetchedLectures = try! context.fetch(fetchRequest) as! [MyLecture]
+        return fetchedLectures
     }
     
     func getArtwork(uuid: UUID) -> MyArtwork? {
