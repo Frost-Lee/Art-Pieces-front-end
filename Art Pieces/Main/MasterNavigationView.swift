@@ -65,6 +65,7 @@ class MasterNavigationView: UIView {
     }
     
     @IBAction func meButtonTapped(_ sender: UIButton) {
+        delegate?.meButtonDidTapped(sender)
     }
     
     @IBAction func addArtworkButtonTapped(_ sender: UIButton) {

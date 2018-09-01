@@ -120,7 +120,7 @@ extension MainViewController: MasterNavigationDelegate {
     }
     
     func meButtonDidTapped(_ sender: UIButton) {
-        
+        performSegue(withIdentifier: "showPersonal", sender: nil)
     }
     
     func artworkButtonDidTapped(_ sender: UIButton) {
