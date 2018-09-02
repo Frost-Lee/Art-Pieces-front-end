@@ -22,6 +22,11 @@ class LoginViewController: BWWalkthroughPageViewController {
     @IBOutlet weak var beginLoginButton: UIButton!
     @IBOutlet weak var loginSpinner: UIActivityIndicatorView!
     @IBOutlet weak var scrollAnimationContainerView: UIView!
+    @IBOutlet weak var cancelButton: UIButton! {
+        didSet {
+            cancelButton.isHidden = !showCancelButton
+        }
+    }
     
     var albumImageView: UIImageView? = nil
     var positiveScroll: Bool = true
@@ -30,6 +35,15 @@ class LoginViewController: BWWalkthroughPageViewController {
             confirmPasswordTextFieldView.isHidden = !isSignUpStatus
         }
     }
+    var showCancelButton: Bool = true {
+        didSet {
+            if cancelButton != nil {
+                cancelButton.isHidden = !showCancelButton
+            }
+        }
+    }
+    
+    private var isKeyboardOpen: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,6 +56,7 @@ class LoginViewController: BWWalkthroughPageViewController {
         emailTextFieldView.textField.keyboardType = .emailAddress
         passwordTextFieldView.textField.keyboardType = .asciiCapable
         passwordTextFieldView.textField.isSecureTextEntry = true
+        confirmPasswordTextFieldView.textField.isSecureTextEntry = true
         emailTextFieldView.delegate = self
         passwordTextFieldView.delegate = self
         confirmPasswordTextFieldView.delegate = self
@@ -86,6 +101,10 @@ class LoginViewController: BWWalkthroughPageViewController {
         self.present(alertController, animated: true, completion: nil)
     }
     
+    @IBAction func cancelButtonTapped(_ sender: UIButton) {
+        dismiss(animated: true, completion: nil)
+    }
+    
     @objc func keyboardPositionWillChange(notification: Notification) {
         if let userInfo = notification.userInfo,
             let value = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
@@ -96,15 +115,12 @@ class LoginViewController: BWWalkthroughPageViewController {
             UIView.animate(withDuration: duration, delay: 0.0, options:
                 UIView.AnimationOptions(rawValue: curve), animations: {
                 if intersect {
-                    let multiplierConstant: CGFloat = self.isSignUpStatus ? 0.3 : 0.35
                     self.textFieldPlacingConstraint_1 = self.textFieldPlacingConstraint_1
-                        .setMultiplier(multiplier: multiplierConstant)
+                        .setMultiplier(multiplier: 0.33)
                     self.textFieldPlacingConstraint_2 = self.textFieldPlacingConstraint_2
-                        .setMultiplier(multiplier: multiplierConstant)
-                    if self.isSignUpStatus {
-                        self.textFieldPlacingConstraint_3.constant = 24
-                    }
-                } else {
+                        .setMultiplier(multiplier: 0.33)
+                    self.textFieldPlacingConstraint_3.constant = 24
+                } else if duration > 0.005 {
                     self.textFieldPlacingConstraint_1 = self.textFieldPlacingConstraint_1
                         .setMultiplier(multiplier: 0.55)
                     self.textFieldPlacingConstraint_2 = self.textFieldPlacingConstraint_2

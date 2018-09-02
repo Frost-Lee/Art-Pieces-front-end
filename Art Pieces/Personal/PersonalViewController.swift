@@ -10,14 +10,7 @@ import UIKit
 
 class PersonalViewController: UIViewController {
     
-    struct Project {
-        var keyPhoto: UIImage
-        var title: String
-        var creatorName: String
-        var creatorPortrait: UIImage?
-        var numberOfForks: Int
-        var numberOfStars: Int
-    }
+
     
     @IBOutlet weak var smallPortraitButton: UIButton!
     @IBOutlet weak var largePortraitImageView: UIImageView!
@@ -31,11 +24,13 @@ class PersonalViewController: UIViewController {
         }
     }
     
-    private var projects: [Project] = []
+    private var projects: [ProjectPreview] = []
+    private var localUser: User!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.view.sendSubviewToBack((self.navigationController?.navigationBar)!)
+        loadLocalUser()
         loadProjects()
         personalCollectionView.reloadData()
     }
@@ -60,13 +55,17 @@ class PersonalViewController: UIViewController {
     @IBAction func favoritesButtonTapped(_ sender: UIButton) {
     }
     
+    private func loadLocalUser() {
+        localUser = AccountManager.defaultManager.currentUser!
+        userNameLabel.text = localUser.name
+    }
+    
     private func loadProjects() {
         let lectures = DataManager.defaultManager.getAllLectures()
-        let localUser = AccountManager.defaultManager.currentUser!
         // let creatorPortrait = DataManager.defaultManager.getImage(path: localUser.portraitPath!)
         for lecture in lectures {
             let lectureKeyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
-            let project = Project(keyPhoto: lectureKeyPhoto, title: lecture.title!,
+            let project = ProjectPreview(keyPhoto: lectureKeyPhoto, title: lecture.title!,
                                   creatorName: localUser.name, creatorPortrait: nil,
                                   numberOfForks: 0, numberOfStars: 0)
             projects.append(project)
@@ -85,12 +84,8 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout, UICollecti
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
             "personalCollectionViewCell", for: indexPath) as! GalleryCollectionViewCell
-        let relatedProject = projects[indexPath.row]
-        cell.repositoryTitleImageView.image = relatedProject.keyPhoto
-        cell.repositoryTitleLabel.text = relatedProject.title
-        cell.repositoryStarterNameLabel.text = relatedProject.creatorName
-        cell.branchNumberLabel.text = String(relatedProject.numberOfForks)
-        cell.starNumberLabel.text = String(relatedProject.numberOfStars)
+        cell.project = projects[indexPath.row]
+        cell.index = indexPath.row
         return cell
     }
     

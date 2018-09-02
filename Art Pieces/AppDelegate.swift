@@ -73,12 +73,14 @@ extension AppDelegate: BWWalkthroughViewControllerDelegate {
         let page_1 = walkThroughStoryboard.instantiateViewController(withIdentifier: "IntroducePage1")
         let page_2 = walkThroughStoryboard.instantiateViewController(withIdentifier: "IntroducePage2")
         let page_3 = walkThroughStoryboard.instantiateViewController(withIdentifier: "IntroducePage3")
-        let page_login = UIStoryboard(name: "Login", bundle: Bundle.main).instantiateInitialViewController()
+        let page_login = UIStoryboard(name: "Login", bundle: Bundle.main)
+            .instantiateInitialViewController() as! LoginViewController
+        page_login.showCancelButton = false
         walkThrough.delegate = self
         walkThrough.add(viewController: page_1)
         walkThrough.add(viewController: page_2)
         walkThrough.add(viewController: page_3)
-        walkThrough.add(viewController: page_login!)
+        walkThrough.add(viewController: page_login)
         delay(for: 1) {
             self.window?.rootViewController?.present(walkThrough, animated: true)
         }

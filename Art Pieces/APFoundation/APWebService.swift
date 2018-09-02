@@ -19,25 +19,28 @@ struct RequestBody: Codable {
 class APWebService {
     
     static let backEndURL = URL(string: "https://artpieces.cn/api")!
+    static let resourceServerURL = URL(string: "http://95.179.143.156:4001/upload")!
     
     static let defaultManager = APWebService()
     
     func registerUser(email: String, password: String, completion: ((String?) -> Void)?) {
-        var request = getRequest(httpMethod: "POST")
-        let query = """
+        sendFile(url: APWebService.resourceServerURL, fileName: "UserPortrait.jpeg", data: UIImage(named: "User")!.jpegData(compressionQuality: 0.5)!) { data, response, error in
+            var request = self.getRequest(httpMethod: "POST")
+            let query = """
             mutation InsertUser {
-                insertUser(email: "\(email)", name: "\(email)", password: "\(password)")
+            insertUser(email: "\(email)", name: "\(email)", password: "\(password)")
             }
-        """
-        request.httpBody = constructRequestBody(with: query)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                let json = try! JSON(data: data)
-                let statusCode = json["data"]["insertUser"]["status"].int
-                completion?(self.translateStatusCode(status: statusCode!))
+            """
+            request.httpBody = self.constructRequestBody(with: query)
+            let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                if let data = data {
+                    let json = try! JSON(data: data)
+                    let statusCode = json["data"]["insertUser"]["status"].int
+                    completion?(self.translateStatusCode(status: statusCode!))
+                }
             }
+            task.resume()
         }
-        task.resume()
     }
     
     func checkForLogin(email: String, password: String, completion: ((String?) -> Void)?) {
@@ -114,9 +117,8 @@ class APWebService {
         }
     }
     
-    private func sendFile(urlPath: String, fileName: String, data: Data,
-        completionHandler: @escaping (Data?, URLResponse?, Error?) -> Void) {
-        let url = URL(string: urlPath)!
+    private func sendFile(url: URL, fileName: String, data: Data,
+        completion: ((Data?, URLResponse?, Error?) -> Void)?) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let boundary = "FuckEmperorXi"
@@ -126,7 +128,10 @@ class APWebService {
         request.setValue(String(fullData.count), forHTTPHeaderField: "Content-Length")
         request.httpBody = fullData
         request.httpShouldHandleCookies = false
-        URLSession.shared.dataTask(with: request, completionHandler: completionHandler)
+        URLSession.shared.dataTask(with: request) { data, response, error in
+            print(String(data: data!, encoding: .utf8) ?? "No Data")
+            print(response ?? "No Response")
+        }
     }
     
     private func photoDataToFormData(data: Data,boundary: String,fileName: String) -> Data {

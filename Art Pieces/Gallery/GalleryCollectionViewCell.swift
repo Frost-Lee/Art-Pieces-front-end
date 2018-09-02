@@ -8,6 +8,15 @@
 
 import UIKit
 
+struct ProjectPreview {
+    var keyPhoto: UIImage
+    var title: String
+    var creatorName: String
+    var creatorPortrait: UIImage?
+    var numberOfForks: Int
+    var numberOfStars: Int
+}
+
 class GalleryCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var repositoryTitleImageView: UIImageView! {
@@ -23,6 +32,17 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var starButton: UIButton!
     
     var index: Int = 0
+    
+    var project: ProjectPreview! {
+        didSet {
+            repositoryTitleImageView.image = project.keyPhoto
+            repositoryTitleLabel.text = project.title
+            // repositoryStarterPortraitImageView.image = project.creatorPortrait
+            repositoryStarterNameLabel.text = project.creatorName
+            branchNumberLabel.text = String(project.numberOfForks)
+            starNumberLabel.text = String(project.numberOfStars)
+        }
+    }
     
     @IBAction func cellSelectionButtonTapped(_ sender: UIButton) {
     }

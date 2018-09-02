@@ -35,6 +35,9 @@ class APTextFieldView: UIView {
             return false
         }
     }
+    var isEditing: Bool {
+        return textField.isEditing
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)

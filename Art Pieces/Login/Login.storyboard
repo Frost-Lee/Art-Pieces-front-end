@@ -110,6 +110,20 @@
                                     <action selector="signUpButtonTapped:" destination="YmX-8O-WNz" eventType="touchUpInside" id="y31-Or-qEQ"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OVg-IL-AHb">
+                                <rect key="frame" x="860" y="42.5" width="77" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="RMS-mE-OJb"/>
+                                    <constraint firstAttribute="width" constant="77" id="xjQ-ZD-PCR"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Cancel">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="cancelButtonTapped:" destination="YmX-8O-WNz" eventType="touchUpInside" id="j4U-8z-ff3"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -122,6 +136,7 @@
                             <constraint firstItem="o7S-rI-3LK" firstAttribute="bottom" secondItem="41J-uV-AzY" secondAttribute="bottom" id="AUz-fX-pOe"/>
                             <constraint firstItem="ecy-Gy-U1h" firstAttribute="leading" secondItem="6UN-5J-EHC" secondAttribute="trailing" constant="24" id="IlV-ee-6Q1"/>
                             <constraint firstItem="hqi-hP-XEn" firstAttribute="leading" secondItem="o7S-rI-3LK" secondAttribute="trailing" id="OAD-Zn-B4g"/>
+                            <constraint firstItem="OVg-IL-AHb" firstAttribute="centerY" secondItem="hqi-hP-XEn" secondAttribute="centerY" multiplier="0.15" id="P0j-wK-Bxq"/>
                             <constraint firstItem="xLS-Mh-1GK" firstAttribute="top" secondItem="gUw-3e-U4W" secondAttribute="bottom" constant="25" id="RZJ-UV-rt4"/>
                             <constraint firstItem="hqi-hP-XEn" firstAttribute="trailing" secondItem="41J-uV-AzY" secondAttribute="trailing" id="S4j-kk-Www"/>
                             <constraint firstItem="6UN-5J-EHC" firstAttribute="leading" secondItem="o7S-rI-3LK" secondAttribute="trailing" constant="42" id="SNM-iM-gOF"/>
@@ -139,11 +154,13 @@
                             <constraint firstItem="41J-uV-AzY" firstAttribute="trailing" secondItem="UBo-1M-kmE" secondAttribute="trailing" constant="153" id="rXp-v7-M7x"/>
                             <constraint firstItem="o7S-rI-3LK" firstAttribute="top" secondItem="md5-Rj-6uk" secondAttribute="top" id="uW5-8W-MOf"/>
                             <constraint firstItem="ecy-Gy-U1h" firstAttribute="centerY" secondItem="hqi-hP-XEn" secondAttribute="centerY" multiplier="0.55" id="x8n-Qe-QXe"/>
+                            <constraint firstItem="OVg-IL-AHb" firstAttribute="centerX" secondItem="hqi-hP-XEn" secondAttribute="centerX" multiplier="1.17" id="yac-CG-dXt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="41J-uV-AzY"/>
                     </view>
                     <connections>
                         <outlet property="beginLoginButton" destination="u0Z-bA-lK0" id="irP-2A-4y6"/>
+                        <outlet property="cancelButton" destination="OVg-IL-AHb" id="uur-7D-ORr"/>
                         <outlet property="confirmPasswordTextFieldView" destination="xLS-Mh-1GK" id="f2Z-dD-D7M"/>
                         <outlet property="emailTextFieldView" destination="2AG-b2-LdD" id="GI2-fe-3Cd"/>
                         <outlet property="loginButton" destination="ecy-Gy-U1h" id="z1t-kI-T7A"/>
