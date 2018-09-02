@@ -31,6 +31,7 @@ class APWebService {
             insertUser(email: "\(email)", name: "\(email)", password: "\(password)")
             }
             """
+     
             request.httpBody = self.constructRequestBody(with: query)
             let task = URLSession.shared.dataTask(with: request) { data, response, error in
                 if let data = data {

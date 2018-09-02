@@ -23,6 +23,13 @@ class PersonalViewController: UIViewController {
                 bundle: Bundle.main), forCellWithReuseIdentifier: "personalCollectionViewCell")
         }
     }
+    @IBOutlet weak var userBackgroundImageView: UIImageView! {
+        didSet {
+            userBackgroundImageView.clipsToBounds = true
+        }
+    }
+    
+    var addArtworkView: AddArtworkView!
     
     private var projects: [ProjectPreview] = []
     private var localUser: User!
@@ -30,6 +37,8 @@ class PersonalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.view.sendSubviewToBack((self.navigationController?.navigationBar)!)
+        self.navigationController?.navigationBar.tintColor = .white
+        setupAddArtworkView()
         loadLocalUser()
         loadProjects()
         personalCollectionView.reloadData()
@@ -41,6 +50,7 @@ class PersonalViewController: UIViewController {
     }
 
     @IBAction func addButtonTapped(_ sender: UIButton) {
+        addArtworkView.activate()
     }
     
     @IBAction func notificationButtonTapped(_ sender: UIButton) {
@@ -53,6 +63,12 @@ class PersonalViewController: UIViewController {
     }
     
     @IBAction func favoritesButtonTapped(_ sender: UIButton) {
+    }
+    
+    private func setupAddArtworkView() {
+        let nib = UINib(nibName: "AddArtworkView", bundle: Bundle.main)
+        addArtworkView = nib.instantiate(withOwner: self, options: nil).first as? AddArtworkView
+        self.view.addSubview(addArtworkView)
     }
     
     private func loadLocalUser() {

@@ -77,9 +77,9 @@ extension NSLayoutConstraint {
 }
 
 extension UIView {
-    func viewImage(for size: CGSize) -> UIImage? {
+    func viewImage() -> UIImage? {
         if self.frame.width != 0 && self.frame.height != 0 {
-            UIGraphicsBeginImageContextWithOptions(size, false, 0)
+            UIGraphicsBeginImageContextWithOptions(self.bounds.size, true, 0)
             self.layer.render(in: UIGraphicsGetCurrentContext()!)
             let image = UIGraphicsGetImageFromCurrentImageContext()
             return image

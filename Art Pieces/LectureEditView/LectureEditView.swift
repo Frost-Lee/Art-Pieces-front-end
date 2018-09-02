@@ -152,7 +152,7 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
     }
     
     private func getStepPreviewPhoto() -> UIImage {
-        return self.viewImage(for: self.frame.size)!
+        return self.viewImage()!
     }
     
     private func mergeActiveStroke() {

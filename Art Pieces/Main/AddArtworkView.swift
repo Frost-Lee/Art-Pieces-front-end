@@ -18,8 +18,23 @@ class AddArtworkView: UIView {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var importButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
+    @IBOutlet weak var topConstraint: NSLayoutConstraint! {
+        didSet {
+            if useNavigationBarIncludedLayout {
+                topConstraint.constant = 80
+            }
+        }
+    }
     
     weak var delegate: AddArtworkDelegate?
+    
+    var useNavigationBarIncludedLayout: Bool = false {
+        didSet {
+            if topConstraint != nil {
+                topConstraint.constant = 80
+            }
+        }
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
