@@ -72,7 +72,7 @@ class LectureEditViewController: UIViewController {
     private func saveLecture() {
         if lectureEditView.artworkLayerViews.first?.lectureLayer.strokes.count != 0 {
             DataManager.defaultManager.saveLecture(title: "New Artboard", description: nil, content: lectureEditView.export(),
-                previewPhoto: lectureEditView.viewImage(for: CGSize(width: 1112, height: 834))!,
+                previewPhoto: lectureEditView.viewImage(for: lectureEditView.frame.size)!,
                 stepPreviewPhotos: lectureEditView.stepPreviewPhotoArray)
         }
     }

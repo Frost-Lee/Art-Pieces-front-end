@@ -14,7 +14,7 @@ class PersonalViewController: UIViewController {
         var keyPhoto: UIImage
         var title: String
         var creatorName: String
-        var creatorPortrait: UIImage
+        var creatorPortrait: UIImage?
         var numberOfForks: Int
         var numberOfStars: Int
     }
@@ -36,16 +36,8 @@ class PersonalViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.view.sendSubviewToBack((self.navigationController?.navigationBar)!)
-        let lectures = DataManager.defaultManager.getAllLectures()
-        let localUser = AccountManager.defaultManager.currentUser!
-        let creatorPortrait = DataManager.defaultManager.getImage(path: localUser.portraitPath!)
-        for lecture in lectures {
-            let lectureKeyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
-            let project = Project(keyPhoto: lectureKeyPhoto, title: lecture.title!,
-                                  creatorName: localUser.name, creatorPortrait: creatorPortrait,
-                                  numberOfForks: 0, numberOfStars: 0)
-            projects.append(project)
-        }
+        loadProjects()
+        personalCollectionView.reloadData()
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -68,18 +60,37 @@ class PersonalViewController: UIViewController {
     @IBAction func favoritesButtonTapped(_ sender: UIButton) {
     }
     
+    private func loadProjects() {
+        let lectures = DataManager.defaultManager.getAllLectures()
+        let localUser = AccountManager.defaultManager.currentUser!
+        // let creatorPortrait = DataManager.defaultManager.getImage(path: localUser.portraitPath!)
+        for lecture in lectures {
+            let lectureKeyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
+            let project = Project(keyPhoto: lectureKeyPhoto, title: lecture.title!,
+                                  creatorName: localUser.name, creatorPortrait: nil,
+                                  numberOfForks: 0, numberOfStars: 0)
+            projects.append(project)
+        }
+    }
+    
 }
 
 
 extension PersonalViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return projects.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-            "personalCollectionViewCell", for: indexPath)
+            "personalCollectionViewCell", for: indexPath) as! GalleryCollectionViewCell
+        let relatedProject = projects[indexPath.row]
+        cell.repositoryTitleImageView.image = relatedProject.keyPhoto
+        cell.repositoryTitleLabel.text = relatedProject.title
+        cell.repositoryStarterNameLabel.text = relatedProject.creatorName
+        cell.branchNumberLabel.text = String(relatedProject.numberOfForks)
+        cell.starNumberLabel.text = String(relatedProject.numberOfStars)
         return cell
     }
     

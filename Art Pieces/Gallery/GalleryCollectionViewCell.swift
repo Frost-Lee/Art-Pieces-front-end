@@ -10,7 +10,11 @@ import UIKit
 
 class GalleryCollectionViewCell: UICollectionViewCell {
 
-    @IBOutlet weak var repositoryTitleImageView: UIImageView!
+    @IBOutlet weak var repositoryTitleImageView: UIImageView! {
+        didSet {
+            repositoryTitleImageView.clipsToBounds = true
+        }
+    }
     @IBOutlet weak var repositoryTitleLabel: UILabel!
     @IBOutlet weak var repositoryStarterPortraitImageView: UIImageView!
     @IBOutlet weak var repositoryStarterNameLabel: UILabel!

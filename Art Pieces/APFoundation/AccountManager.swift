@@ -24,13 +24,14 @@ class AccountManager {
     var currentUser: User? = nil
     
     init() {
-        if let userEmail = UserDefaults.standard.string(forKey: "email") {
-            let userName = UserDefaults.standard.string(forKey: "name")
-            let userPortraitPath = UserDefaults.standard.string(forKey: "portrait")
-            let userPassword = UserDefaults.standard.string(forKey: "password")
-            let userCompressedPortraitPath = UserDefaults.standard.string(forKey: "compressedPortrait")
-            currentUser = User(name: userName!, email: userEmail, password: userPassword!,
-                portraitPath: userPortraitPath, compressedPortraitPath: userCompressedPortraitPath)
+        updateCurrentUser()
+    }
+    
+    func isUserExist() -> Bool {
+        if let _ = UserDefaults.standard.string(forKey: "email") {
+            return true
+        } else {
+            return false
         }
     }
     
@@ -38,7 +39,19 @@ class AccountManager {
         APWebService.defaultManager.getUserInfo(email: email) { name, portrait, compressedPortrait in
             self.login(email: email, name: name, password: password,
                        portrait: portrait, compressedPortrait: compressedPortrait)
+            self.updateCurrentUser()
             completion?()
+        }
+    }
+    
+    private func updateCurrentUser() {
+        if let userEmail = UserDefaults.standard.string(forKey: "email") {
+            let userName = UserDefaults.standard.string(forKey: "name")
+            let userPortraitPath = UserDefaults.standard.string(forKey: "portrait")
+            let userPassword = UserDefaults.standard.string(forKey: "password")
+            let userCompressedPortraitPath = UserDefaults.standard.string(forKey: "compressedPortrait")
+            currentUser = User(name: userName!, email: userEmail, password: userPassword!,
+                               portraitPath: userPortraitPath, compressedPortraitPath: userCompressedPortraitPath)
         }
     }
     
