@@ -23,6 +23,13 @@ class MasterNavigationView: UIView {
     @IBOutlet weak var galleryLabel: UILabel!
     @IBOutlet weak var lectureLabel: UILabel!
     @IBOutlet weak var selectionIndicator: UIView!
+    @IBOutlet weak var meButton: UIButton! {
+        didSet {
+            meButton.imageView?.tintColor = .lightGray
+            meButton.layer.cornerRadius = meButton.frame.width / 2
+            meButton.clipsToBounds = true
+        }
+    }
     
     weak var delegate: MasterNavigationDelegate?
     
@@ -38,6 +45,20 @@ class MasterNavigationView: UIView {
             setGallerySelected(animated: true)
         } else {
             setLectureSelected(animated: true)
+        }
+    }
+    
+    func loadUserPortrait() {
+        if AccountManager.defaultManager.isUserExist() {
+            if AccountManager.defaultManager.currentUser?.portraitPath != nil {
+                let path = AccountManager.defaultManager.currentUser!.portraitPath
+                let portrait = APWebService.defaultManager.fetchPhoto(url: URL(string: path!)!)
+                meButton.setImage(portrait, for: .normal)
+            } else {
+                meButton.setImage(UIImage(named: "User"), for: .normal)
+            }
+        } else {
+            meButton.setImage(UIImage(named: "QuestionMark"), for: .normal)
         }
     }
     
@@ -84,7 +105,6 @@ class MasterNavigationView: UIView {
         }
         galleryLabel.textColor = APTheme.purpleHighLightColor
         lectureLabel.textColor = UIColor.black
-        
     }
     
     func setLectureSelected(animated: Bool) {

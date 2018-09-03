@@ -12,10 +12,9 @@ struct User {
     var name: String
     var email: String
     var password: String
+    var signature: String
     var portraitPath: String?
-    var compressedPortraitPath: String?
 }
-
 
 class AccountManager {
     
@@ -28,20 +27,29 @@ class AccountManager {
     }
     
     func isUserExist() -> Bool {
-        if let _ = UserDefaults.standard.string(forKey: "email") {
-            return true
-        } else {
-            return false
-        }
+        return currentUser == nil ? false : true
     }
     
     func login(email: String, password: String, completion: ((() -> ())?)) {
-        APWebService.defaultManager.getUserInfo(email: email) { name, portrait, compressedPortrait in
-            self.login(email: email, name: name, password: password,
-                       portrait: portrait, compressedPortrait: compressedPortrait)
-            self.updateCurrentUser()
+        APWebService.defaultManager.getUserInfo(email: email) { name, signature, portrait in
+            self.login(email: email, name: name, password: password, signature: signature,
+                       portrait: portrait)
             completion?()
         }
+    }
+    
+    private func login(email: String, name: String, password: String,
+                       signature: String, portrait: UIImage?) {
+        DataManager.defaultManager.removeItem(path: currentUser?.portraitPath)
+        UserDefaults.standard.set(email, forKey: "email")
+        UserDefaults.standard.set(name, forKey: "name")
+        UserDefaults.standard.set(password, forKey: "password")
+        UserDefaults.standard.set(signature, forKey: "signature")
+        if let portrait = portrait {
+            UserDefaults.standard.set(DataManager.defaultManager
+                .saveImage(photo: portrait, isCachedPhoto: false), forKey: "portrait")
+        }
+        updateCurrentUser()
     }
     
     private func updateCurrentUser() {
@@ -49,25 +57,9 @@ class AccountManager {
             let userName = UserDefaults.standard.string(forKey: "name")
             let userPortraitPath = UserDefaults.standard.string(forKey: "portrait")
             let userPassword = UserDefaults.standard.string(forKey: "password")
-            let userCompressedPortraitPath = UserDefaults.standard.string(forKey: "compressedPortrait")
+            let signature = UserDefaults.standard.string(forKey: "signature")
             currentUser = User(name: userName!, email: userEmail, password: userPassword!,
-                               portraitPath: userPortraitPath, compressedPortraitPath: userCompressedPortraitPath)
+                               signature: signature!, portraitPath: userPortraitPath)
         }
     }
-    
-    private func login(email: String, name: String, password: String, portrait: UIImage?, compressedPortrait: UIImage?) {
-        DataManager.defaultManager.removeItem(path: currentUser?.portraitPath)
-        UserDefaults.standard.set(email, forKey: "email")
-        UserDefaults.standard.set(name, forKey: "name")
-        UserDefaults.standard.set(password, forKey: "password")
-        if let portrait = portrait {
-            UserDefaults.standard.set(DataManager.defaultManager
-                .saveImage(photo: portrait, isCachedPhoto: false), forKey: "portrait")
-        }
-        if let compressedPortrait = compressedPortrait {
-            UserDefaults.standard.set(DataManager.defaultManager
-                .saveImage(photo: compressedPortrait, isCachedPhoto: false), forKey: "compressedPortrait")
-        }
-    }
-    
 }

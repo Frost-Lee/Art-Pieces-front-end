@@ -138,30 +138,36 @@ class LoginViewController: BWWalkthroughPageViewController {
         APWebService.defaultManager.checkForLogin(email: email,
             password: password) { errorMessage in
             if let message = errorMessage {
-                let alertController = UIAlertController.prepareController(title: "Oooooops!", message: message)
+                let alertController = UIAlertController
+                    .prepareController(title: "Oooooops!", message: message)
                 self.present(alertController, animated: true) {
                     self.stopRequesting()
                 }
             } else {
                 AccountManager.defaultManager.login(email: email, password: password) {
-                    // Refresh Home Page Code Here
+                    self.dismiss(animated: true, completion: nil)
                 }
-                self.dismiss(animated: true, completion: nil)
             }
         }
     }
     
     private func beginSigningUp() {
-        if passwordTextFieldView.text == confirmPasswordTextFieldView.text
-            && passwordTextFieldView.text != "" {
-            APWebService.defaultManager.registerUser(email: emailTextFieldView.text,
-                password: passwordTextFieldView.text) { errorMessage in
+        let emailAddress = emailTextFieldView.text
+        let passwordText = passwordTextFieldView.text
+        let confirmPasswordText = confirmPasswordTextFieldView.text
+        if passwordText == confirmPasswordText
+            && passwordText != "" {
+            APWebService.defaultManager.registerUser(email: emailAddress,
+                password: passwordText) { errorMessage in
                 if let message = errorMessage {
-                    let alertController = UIAlertController.prepareController(title: "Oooooops!", message: message)
+                    let alertController = UIAlertController.prepareController(title:
+                        "Oooooops!", message: message)
                     self.present(alertController, animated: true) {
                         self.stopRequesting()
                     }
                 } else {
+                    AccountManager.defaultManager.login(email: emailAddress, password:
+                        passwordText, completion: nil)
                     self.dismiss(animated: true, completion: nil)
                 }
             }

@@ -37,6 +37,7 @@ class MainViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        masterNavigationView.loadUserPortrait()
         self.navigationController?.setNavigationBarHidden(true, animated: true)
     }
     
