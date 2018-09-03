@@ -18,11 +18,14 @@ class AddArtworkView: UIView {
     @IBOutlet weak var cancelButton: UIButton!
     @IBOutlet weak var importButton: UIButton!
     @IBOutlet weak var createButton: UIButton!
-    @IBOutlet weak var topConstraint: NSLayoutConstraint! {
+    @IBOutlet weak var topConstraint_1: NSLayoutConstraint! {
         didSet {
-            if useNavigationBarIncludedLayout {
-                topConstraint.constant = 80
-            }
+            resetTopConstraints()
+        }
+    }
+    @IBOutlet weak var topConstraint_2: NSLayoutConstraint! {
+        didSet {
+            resetTopConstraints()
         }
     }
     
@@ -30,9 +33,7 @@ class AddArtworkView: UIView {
     
     var useNavigationBarIncludedLayout: Bool = false {
         didSet {
-            if topConstraint != nil {
-                topConstraint.constant = 80
-            }
+            resetTopConstraints()
         }
     }
     
@@ -90,6 +91,16 @@ class AddArtworkView: UIView {
             }
         } else {
             self.alpha = 0
+        }
+    }
+    
+    private func resetTopConstraints() {
+        if topConstraint_1 != nil && topConstraint_2 != nil {
+            if useNavigationBarIncludedLayout {
+                topConstraint_1.constant = 50
+                topConstraint_2.constant = 137
+                layoutIfNeeded()
+            }
         }
     }
     

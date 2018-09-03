@@ -19,8 +19,7 @@ class ArtworkDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.tintColor = .lightGray
     }
 
     @IBAction func newButtonTapped(_ sender: UIButton) {

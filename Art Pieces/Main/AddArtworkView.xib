@@ -103,7 +103,8 @@
                 <outlet property="cancelButton" destination="elK-cg-KNr" id="ikI-KW-tLJ"/>
                 <outlet property="createButton" destination="Eri-tZ-T63" id="N90-gG-7CW"/>
                 <outlet property="importButton" destination="5c2-i6-sMB" id="tZX-v2-cfF"/>
-                <outlet property="topConstraint" destination="36f-93-Qam" id="pLY-zx-GrQ"/>
+                <outlet property="topConstraint_1" destination="36f-93-Qam" id="9eP-fu-Fqp"/>
+                <outlet property="topConstraint_2" destination="slO-xb-PkK" id="TbE-sv-2I5"/>
             </connections>
         </view>
     </objects>

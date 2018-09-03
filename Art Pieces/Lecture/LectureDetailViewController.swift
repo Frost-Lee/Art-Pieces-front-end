@@ -15,6 +15,7 @@ class LectureDetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.tintColor = .lightGray
         stepBackgroundView.layer.borderWidth = 1.0
         stepBackgroundView.layer.borderColor = APTheme.separatorColor.cgColor
         downloadButton.layer.cornerRadius = 15

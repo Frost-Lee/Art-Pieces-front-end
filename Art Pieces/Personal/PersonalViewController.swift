@@ -10,8 +10,6 @@ import UIKit
 
 class PersonalViewController: UIViewController {
     
-
-    
     @IBOutlet weak var smallPortraitButton: UIButton!
     @IBOutlet weak var largePortraitImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
@@ -68,6 +66,7 @@ class PersonalViewController: UIViewController {
     private func setupAddArtworkView() {
         let nib = UINib(nibName: "AddArtworkView", bundle: Bundle.main)
         addArtworkView = nib.instantiate(withOwner: self, options: nil).first as? AddArtworkView
+        addArtworkView.useNavigationBarIncludedLayout = true
         self.view.addSubview(addArtworkView)
     }
     
