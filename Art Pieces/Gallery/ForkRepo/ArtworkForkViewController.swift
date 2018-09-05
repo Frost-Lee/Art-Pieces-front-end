@@ -33,14 +33,14 @@ class ArtworkForkViewController: UIViewController {
         super.viewWillLayoutSubviews()
         let viewFrame = self.view.frame
         if isAddingDescriptions {
-            pickArtworkView.frame = CGRect(x: -self.view.frame.width, y: 20, width:
+            pickArtworkView.frame = CGRect(x: -viewFrame.width, y: 20, width:
                 viewFrame.width, height: viewFrame.height - 20)
             addArtworkDescriptionView.frame = CGRect(x: 0, y:
                 20, width: viewFrame.width, height: viewFrame.height - 20)
         } else {
             pickArtworkView.frame = CGRect(x: 0, y: 20, width:
                 viewFrame.width, height: viewFrame.height - 20)
-            addArtworkDescriptionView.frame = CGRect(x: self.view.frame.width, y:
+            addArtworkDescriptionView.frame = CGRect(x: viewFrame.width, y:
                 20, width: viewFrame.width, height: viewFrame.height - 20)
         }
     }

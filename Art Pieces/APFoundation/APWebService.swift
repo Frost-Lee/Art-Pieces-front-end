@@ -40,6 +40,30 @@ class APWebService {
         task.resume()
     }
     
+    func uploadArtwork(creatorEmail: String, creatorPassword: String, title: String,
+                       description: String?, keyPhoto: URL, belongingRepo: UUID?, timestamp: Date,
+                       completion: ((() -> Void)?)) -> UUID {
+        let descriptionClaim = (description != nil) ? "description: \"\(description!)\"," : ""
+        let belongingRepoClaim = (belongingRepo != nil) ? "belongingRepo: \(belongingRepo!)," : ""
+        let newWorkUUID = UUID()
+        let currentTimestamp = Date()
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            mutation UploadArtwork {
+                insertWork(id: \(newWorkUUID), creator: "\(creatorEmail)",
+                           password: "\(creatorPassword)", title: "\(title)",
+                           \(descriptionClaim) keyPhoto: \(keyPhoto),
+                           \(belongingRepoClaim) timestamp: \(currentTimestamp)
+            }
+        """
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            completion?()
+        }
+        task.resume()
+        return newWorkUUID
+    }
+    
     func checkForLogin(email: String, password: String, completion: ((String?) -> Void)?) {
         var request = getRequest(httpMethod: "POST")
         let query = """

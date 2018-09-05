@@ -17,6 +17,8 @@
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
 		3A18C8952121650E007F63F2 /* LectureLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* LectureLayerView.swift */; };
+		3A192A77213E7DA10079D1BF /* NewRepo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A192A76213E7DA10079D1BF /* NewRepo.storyboard */; };
+		3A192A79213E7DAE0079D1BF /* NewRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A192A78213E7DAE0079D1BF /* NewRepoViewController.swift */; };
 		3A39EEE22123CE5D00E8F881 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */; };
 		3A40439A2109D04100467990 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4043992109D04100467990 /* GalleryView.swift */; };
 		3A40439C2109D04F00467990 /* Gallery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439B2109D04F00467990 /* Gallery.xib */; };
@@ -45,6 +47,8 @@
 		3AA2BAA12136C02900C8AB4C /* HeadWalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2BAA02136C02900C8AB4C /* HeadWalkThroughViewController.swift */; };
 		3AA7BBC221041BE0004E20CE /* LectureEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */; };
 		3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */; };
+		3AAE8861213E80F50065FD24 /* NewRepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE8860213E80F50065FD24 /* NewRepoView.swift */; };
+		3AAE8863213E81010065FD24 /* NewRepoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAE8862213E81010065FD24 /* NewRepoView.xib */; };
 		3AB2F8DA213849E400152093 /* LocalArtworkCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AB2F8D8213849E400152093 /* LocalArtworkCollectionViewCell.swift */; };
 		3AB2F8DB213849E400152093 /* LocalArtworkCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AB2F8D9213849E400152093 /* LocalArtworkCollectionViewCell.xib */; };
 		3ABF691C211C449300709831 /* Login.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ABF691B211C449300709831 /* Login.storyboard */; };
@@ -93,6 +97,8 @@
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
 		3A18C8942121650E007F63F2 /* LectureLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureLayerView.swift; sourceTree = "<group>"; };
+		3A192A76213E7DA10079D1BF /* NewRepo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewRepo.storyboard; sourceTree = "<group>"; };
+		3A192A78213E7DAE0079D1BF /* NewRepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRepoViewController.swift; sourceTree = "<group>"; };
 		3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
 		3A4043992109D04100467990 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		3A40439B2109D04F00467990 /* Gallery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Gallery.xib; sourceTree = "<group>"; };
@@ -123,6 +129,8 @@
 		3AA2BAA02136C02900C8AB4C /* HeadWalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadWalkThroughViewController.swift; sourceTree = "<group>"; };
 		3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureEditViewController.swift; sourceTree = "<group>"; };
 		3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
+		3AAE8860213E80F50065FD24 /* NewRepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRepoView.swift; sourceTree = "<group>"; };
+		3AAE8862213E81010065FD24 /* NewRepoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewRepoView.xib; sourceTree = "<group>"; };
 		3AB2F8D8213849E400152093 /* LocalArtworkCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalArtworkCollectionViewCell.swift; sourceTree = "<group>"; };
 		3AB2F8D9213849E400152093 /* LocalArtworkCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LocalArtworkCollectionViewCell.xib; sourceTree = "<group>"; };
 		3ABF691B211C449300709831 /* Login.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Login.storyboard; sourceTree = "<group>"; };
@@ -180,6 +188,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3A192A7A213E7DB60079D1BF /* NewRepo */ = {
+			isa = PBXGroup;
+			children = (
+				3A192A76213E7DA10079D1BF /* NewRepo.storyboard */,
+				3A192A78213E7DAE0079D1BF /* NewRepoViewController.swift */,
+				3AAE8862213E81010065FD24 /* NewRepoView.xib */,
+				3AAE8860213E80F50065FD24 /* NewRepoView.swift */,
+			);
+			path = NewRepo;
+			sourceTree = "<group>";
+		};
 		3A39EEE32123CE7D00E8F881 /* Launch&Walk */ = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +233,7 @@
 				3A94FBE22109F935009BE7E1 /* AddArtworkView.swift */,
 				3A6B32032104BD3A00F2C63E /* MasterNavigationView.xib */,
 				3A6B32052104BD7500F2C63E /* MasterNavigationView.swift */,
+				3A192A7A213E7DB60079D1BF /* NewRepo */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -450,6 +470,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				3AF62DD521381601005104CA /* PickArtworkView.xib in Resources */,
+				3AAE8863213E81010065FD24 /* NewRepoView.xib in Resources */,
+				3A192A77213E7DA10079D1BF /* NewRepo.storyboard in Resources */,
 				3ADC3C7021031FA400C31637 /* LectureEdit.storyboard in Resources */,
 				3AD10485211BD94B006C1039 /* GalleryCollectionViewCell.xib in Resources */,
 				3ABF691C211C449300709831 /* Login.storyboard in Resources */,
@@ -528,7 +550,9 @@
 				3A6B32062104BD7500F2C63E /* MasterNavigationView.swift in Sources */,
 				3A75172221087F8E00373189 /* ToolBarView.swift in Sources */,
 				3A6B32082105789E00F2C63E /* APTheme.swift in Sources */,
+				3A192A79213E7DAE0079D1BF /* NewRepoViewController.swift in Sources */,
 				3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */,
+				3AAE8861213E80F50065FD24 /* NewRepoView.swift in Sources */,
 				3A94FBE32109F935009BE7E1 /* AddArtworkView.swift in Sources */,
 				3ADC3C6A210312AE00C31637 /* StepTitleView.swift in Sources */,
 				3AA7BBC221041BE0004E20CE /* LectureEditViewController.swift in Sources */,

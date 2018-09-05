@@ -30,7 +30,7 @@ class PersonalViewController: UIViewController {
     var addArtworkView: AddArtworkView!
     
     private var projects: [ProjectPreview] = []
-    private var localUser: User!
+    private var localUser: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -71,8 +71,12 @@ class PersonalViewController: UIViewController {
     }
     
     private func loadLocalUser() {
-        localUser = AccountManager.defaultManager.currentUser!
-        userNameLabel.text = localUser.name
+        if AccountManager.defaultManager.isUserExist() {
+            localUser = AccountManager.defaultManager.currentUser
+            userNameLabel.text = localUser!.name
+        } else {
+            userNameLabel.text = "Login / Register"
+        }
     }
     
     private func loadProjects() {
@@ -81,7 +85,7 @@ class PersonalViewController: UIViewController {
         for lecture in lectures {
             let lectureKeyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
             let project = ProjectPreview(keyPhoto: lectureKeyPhoto, title: lecture.title!,
-                                  creatorName: localUser.name, creatorPortrait: nil,
+                                  creatorName: localUser?.name ?? "Login", creatorPortrait: nil,
                                   numberOfForks: 0, numberOfStars: 0)
             projects.append(project)
         }
