@@ -8,6 +8,12 @@
 
 import UIKit
 
+struct ForkPreview {
+    var uuid: UUID
+    var title: String
+    var keyPhoto: UIImage
+}
+
 class LocalArtworkCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet weak var localArtworkImageView: UIImageView! {
@@ -18,11 +24,10 @@ class LocalArtworkCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var selectIndicatorImageView: UIImageView!
     @IBOutlet weak var artworkTitleLabel: UILabel!
     
-    var artwork: MyArtwork? {
+    var forkPreview: ForkPreview? {
         didSet {
-            artworkTitleLabel.text = artwork?.title
-            localArtworkImageView.image = DataManager.defaultManager
-                .getImage(path: artwork!.keyPhotoPath!)
+            artworkTitleLabel.text = forkPreview?.title
+            localArtworkImageView.image = forkPreview?.keyPhoto
         }
     }
     

@@ -174,7 +174,7 @@ class LoginViewController: BWWalkthroughPageViewController {
                     }
                 } else {
                     AccountManager.defaultManager.login(email: emailAddress, password:
-                        passwordText, completion: nil)
+                        passwordText, isFirstLogin: true, completion: nil)
                     self.dismiss(animated: true, completion: nil)
                 }
             }

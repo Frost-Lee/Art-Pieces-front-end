@@ -26,6 +26,8 @@ class PickArtworkView: UIView {
     
     weak var delegate: PickArtworkDelegate?
     
+    var forkPreviews: [ForkPreview] = []
+    
     var selectedIndex: Int?
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
@@ -37,13 +39,14 @@ class PickArtworkView: UIView {
 extension PickArtworkView: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView,
                         numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return forkPreviews.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt
         indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
             "localArtworkCollectionViewCell", for: indexPath) as! LocalArtworkCollectionViewCell
+        cell.forkPreview = forkPreviews[indexPath.row]
         if indexPath.row == selectedIndex {
             cell.setSelected()
         }

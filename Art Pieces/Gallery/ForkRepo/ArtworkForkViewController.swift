@@ -55,6 +55,12 @@ class ArtworkForkViewController: UIViewController {
             options: nil).first as? PickArtworkView
         self.view.insertSubview(pickArtworkView, belowSubview: closeButton)
         pickArtworkView.delegate = self
+        let lectures = DataManager.defaultManager.getAllLectures()
+        for lecture in lectures {
+            let keyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
+            let forkPreview = ForkPreview(uuid: lecture.uuid!, title: lecture.title!, keyPhoto: keyPhoto)
+            pickArtworkView.forkPreviews.append(forkPreview)
+        }
     }
     
     private func setupAddArtworkDescriptionView() {

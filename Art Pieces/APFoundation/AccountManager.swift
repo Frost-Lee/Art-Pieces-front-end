@@ -30,10 +30,15 @@ class AccountManager {
         return currentUser == nil ? false : true
     }
     
-    func login(email: String, password: String, completion: ((() -> ())?)) {
-        APWebService.defaultManager.getUserInfo(email: email) { name, signature, portrait in
-            self.login(email: email, name: name, password: password, signature: signature,
-                       portrait: portrait)
+    func login(email: String, password: String, isFirstLogin: Bool = false, completion: ((() -> ())?)) {
+        if !isFirstLogin {
+            APWebService.defaultManager.getUserInfo(email: email) { name, signature, portrait in
+                self.login(email: email, name: name, password: password, signature: signature,
+                           portrait: portrait)
+                completion?()
+            }
+        } else {
+            login(email: email, name: email, password: password, signature: "", portrait: nil)
             completion?()
         }
     }
