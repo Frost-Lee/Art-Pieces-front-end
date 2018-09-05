@@ -41,27 +41,29 @@ class APWebService {
     }
     
     func uploadArtwork(creatorEmail: String, creatorPassword: String, title: String,
-                       description: String?, keyPhoto: URL, belongingRepo: UUID?, timestamp: Date,
-                       completion: ((() -> Void)?)) -> UUID {
-        let descriptionClaim = (description != nil) ? "description: \"\(description!)\"," : ""
-        let belongingRepoClaim = (belongingRepo != nil) ? "belongingRepo: \(belongingRepo!)," : ""
-        let newWorkUUID = UUID()
+                       description: String?, keyPhoto: UIImage, belongingRepo: UUID?, selfID: UUID,
+                       completion: ((() -> Void)?)) {
+        let descriptionParameter = getOptionalParameter(field: "description", value: description,
+                                                        quotation: true)
+        let belongingRepoParameter = getOptionalParameter(field: "belongingRepo", value: belongingRepo)
         let currentTimestamp = Date()
-        var request = getRequest(httpMethod: "POST")
-        let query = """
-            mutation UploadArtwork {
-                insertWork(id: \(newWorkUUID), creator: "\(creatorEmail)",
-                           password: "\(creatorPassword)", title: "\(title)",
-                           \(descriptionClaim) keyPhoto: \(keyPhoto),
-                           \(belongingRepoClaim) timestamp: \(currentTimestamp)
-            }
-        """
-        request.httpBody = constructRequestBody(with: query)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            completion?()
+        sendFile(url: APWebService.resourceServerURL, fileName: "NewRepo.jpeg", data:
+            keyPhoto.jpegData(compressionQuality: 0.2)!) { urlPath, compressedURLPath in
+                var request = self.getRequest(httpMethod: "POST")
+                let query = """
+                mutation UploadArtwork {
+                    insertWork(id: \(selfID), creator: "\(creatorEmail)",
+                        password: "\(creatorPassword)", title: "\(title)",
+                        \(descriptionParameter) keyPhoto: \(keyPhoto),
+                        \(belongingRepoParameter) timestamp: \(currentTimestamp.timeIntervalSince1970 * 1000)
+                }
+                """
+                request.httpBody = self.constructRequestBody(with: query)
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    completion?()
+                }
+                task.resume()
         }
-        task.resume()
-        return newWorkUUID
     }
     
     func checkForLogin(email: String, password: String, completion: ((String?) -> Void)?) {
@@ -109,44 +111,23 @@ class APWebService {
         task.resume()
     }
     
-    func updateUser(email: String, password: String, name: String, signature:
-        String = "Tell something about you.", completion: ((() -> Void)?)) {
-        var request = getRequest(httpMethod: "POST")
-        let query = """
-            mutation UpdateUser {
-                updateUser(email: "\(email)", password: "\(password)", name:
-                    "\(name)", signature: "\(signature)"
-            }
-        """
-        request.httpBody = constructRequestBody(with: query)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            completion?()
-        }
-        task.resume()
-    }
-    
-    func updateUser(email: String, password: String, portrait: UIImage, completion: ((() -> Void)?)) {
-        sendFile(url: APWebService.resourceServerURL, fileName: "NewPortrait.jpeg", data:
-            portrait.jpegData(compressionQuality: 0.4)!) { jsonData in
-                let json = try! JSON(data: jsonData)
-                let compressedPath = json["compressedURL"].string!
-                var request = self.getRequest(httpMethod: "POST")
-                let query = """
-                    mutation UpdateUser {
-                        updateUser(email: "\(email)", password: "\(password)", portrait: "\(compressedPath)"
-                    }
-                """
-                request.httpBody = self.constructRequestBody(with: query)
-                let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    completion?()
-                }
-                task.resume()
-        }
-    }
-    
     func fetchPhoto(url: URL) -> UIImage {
         let data = try! Data(contentsOf: url)
         return UIImage(data: data)!
+    }
+    
+    private func getOptionalParameter(field: String, value: Any?,
+                                             quotation: Bool = false, comma: Bool = true) -> String {
+        let tailing = comma ? "," : ""
+        if value != nil {
+            if quotation {
+                return "\(field): \"\(value!)\"" + tailing
+            } else {
+                return "\(field): \(value!)" + tailing
+            }
+        } else {
+            return ""
+        }
     }
     
     private func translateStatusCode(status: Int) -> String? {
@@ -169,7 +150,7 @@ class APWebService {
     }
     
     private func sendFile(url: URL, fileName: String, data: Data,
-        completion: ((Data) -> Void)?) {
+        completion: ((String, String) -> Void)?) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
         let boundary = "FuckEmperorXi"
@@ -180,7 +161,10 @@ class APWebService {
         request.httpBody = fullData
         request.httpShouldHandleCookies = false
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            completion?(data!)
+            let json = try! JSON(data: data!)
+            let url = json["url"].string!
+            let compressedURL = json["compressedURL"].string!
+            completion?(url, compressedURL)
         }
         task.resume()
     }

@@ -65,6 +65,15 @@ extension NewRepoViewController: UIImagePickerControllerDelegate, UINavigationCo
 extension NewRepoViewController: NewRepoDelegate {
     func shareButtonDidTapped() {
         newRepoView.beginAnimatingSpinner()
-        dismiss(animated: true, completion: nil)
+        let user = AccountManager.defaultManager.currentUser!
+        let newArtworkID = UUID()
+        APWebService.defaultManager.uploadArtwork(creatorEmail: user.email, creatorPassword:
+        user.password, title: newRepoView.title, description: newRepoView.description, keyPhoto:
+            newRepoView.keyPhoto!, belongingRepo: nil, selfID: newArtworkID) {
+                DataManager.defaultManager.saveArtwork(title: self.newRepoView.title, description:
+                    self.newRepoView.description, keyPhoto: self.newRepoView.keyPhoto!, uuid: newArtworkID)
+                self.dismiss(animated: true, completion: nil)
+        }
+        
     }
 }

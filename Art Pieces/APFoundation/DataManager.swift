@@ -17,7 +17,11 @@ class DataManager {
     
     static let defaultManager = DataManager()
     
-    func saveArtwork(title: String, description: String?, keyPhoto: UIImage) {
+    func generateUUID() -> UUID {
+        return UUID()
+    }
+    
+    func saveArtwork(title: String, description: String?, keyPhoto: UIImage, uuid: UUID) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
         let entity = NSEntityDescription.entity(forEntityName: "MyArtwork", in: context)
@@ -26,6 +30,7 @@ class DataManager {
         newArtwork.artworkDescription = description
         newArtwork.timestamp = Date() as NSDate
         newArtwork.keyPhotoPath = saveImage(photo: keyPhoto, isCachedPhoto: false)
+        newArtwork.uuid = uuid
         try! context.save()
     }
     
