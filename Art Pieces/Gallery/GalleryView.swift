@@ -10,6 +10,15 @@ import UIKit
 import CHTCollectionViewWaterfallLayout
 import MJRefresh
 
+struct ArtworkPreview {
+    var title: String
+    var keyPhoto: UIImage
+    var creatorName: String
+    var creatorPortrait: UIImage?
+    var numberOfForks: Int
+    var numberOfStars: Int
+}
+
 protocol GalleryDelegate: class {
     func galleryItemDidSelected(at index: Int)
 }

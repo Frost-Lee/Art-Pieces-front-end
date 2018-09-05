@@ -121,12 +121,7 @@ extension MainViewController: MasterNavigationDelegate {
     }
     
     func meButtonDidTapped(_ sender: UIButton) {
-        if AccountManager.defaultManager.isUserExist() {
-            performSegue(withIdentifier: "showPersonal", sender: nil)
-        } else {
-            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-            present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
-        }
+        performSegue(withIdentifier: "showPersonal", sender: nil)
     }
     
     func artworkButtonDidTapped(_ sender: UIButton) {

@@ -10,7 +10,6 @@ import UIKit
 
 class PersonalViewController: UIViewController {
     
-    @IBOutlet weak var smallPortraitButton: UIButton!
     @IBOutlet weak var largePortraitImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userDescriptionLabel: UILabel!
@@ -51,6 +50,15 @@ class PersonalViewController: UIViewController {
         addArtworkView.activate()
     }
     
+    @IBAction func modifyUserButtonTapped(_ sender: UIButton) {
+        if localUser == nil {
+            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+            let viewController = storyboard.instantiateInitialViewController() as! LoginViewController
+            viewController.dismissBlock = {self.loadLocalUser()}
+            present(viewController, animated: true)
+        }
+    }
+    
     @IBAction func notificationButtonTapped(_ sender: UIButton) {
     }
     
@@ -71,24 +79,39 @@ class PersonalViewController: UIViewController {
     }
     
     private func loadLocalUser() {
+        let portrait = getPersonalPortrait()
         if AccountManager.defaultManager.isUserExist() {
             localUser = AccountManager.defaultManager.currentUser
             userNameLabel.text = localUser!.name
+            largePortraitImageView.image = portrait
         } else {
             userNameLabel.text = "Login / Register"
+            largePortraitImageView.image = portrait
         }
     }
     
     private func loadProjects() {
         let lectures = DataManager.defaultManager.getAllLectures()
-        // let creatorPortrait = DataManager.defaultManager.getImage(path: localUser.portraitPath!)
+        let creatorPortrait = getPersonalPortrait()
         for lecture in lectures {
             let lectureKeyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
             let project = ProjectPreview(keyPhoto: lectureKeyPhoto, title: lecture.title!,
-                                  creatorName: localUser?.name ?? "Login", creatorPortrait: nil,
+                                  creatorName: localUser?.name ?? "Login", creatorPortrait: creatorPortrait,
                                   numberOfForks: 0, numberOfStars: 0)
             projects.append(project)
         }
+    }
+    
+    private func getPersonalPortrait() -> UIImage {
+        var portrait: UIImage!
+        if localUser == nil {
+            portrait = UIImage(named: "WhiteQuestionMark")
+        } else if localUser!.portraitPath != nil && localUser!.portraitPath?.count != 0 {
+            portrait = DataManager.defaultManager.getImage(path: localUser!.portraitPath!)
+        } else {
+            portrait = UIImage(named: "WhiteUser")
+        }
+        return portrait
     }
     
 }

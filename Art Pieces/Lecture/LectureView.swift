@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import MJRefresh
 
 protocol LectureDelegate: class {
     func lectureItemDidSelected(at index: Int)
@@ -19,11 +20,38 @@ class LectureView: UIView {
             lectureTableView.register(UINib(nibName: "LectureTableViewCell", bundle: Bundle.main),
                                       forCellReuseIdentifier: "lectureTableViewCell")
             lectureTableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
+            setupRefreshProperties()
             lectureTableView.reloadData()
         }
     }
     
     weak var delegate: LectureDelegate?
+    
+    private func setupRefreshProperties() {
+        let header = MJRefreshNormalHeader() {
+            self.reloadTableViewData()
+        }
+        header?.lastUpdatedTimeLabel.isHidden = true
+        header?.setTitle("Pull down to refresh", for: .idle)
+        header?.setTitle("Release to refresh", for: .pulling)
+        header?.setTitle("Loading", for: .refreshing)
+        lectureTableView.mj_header = header
+        let footer = MJRefreshAutoNormalFooter() {
+            self.keepLoadTableViewData()
+        }
+        footer?.setTitle("Tap or pull up to load more", for: .idle)
+        footer?.setTitle("Release to load more", for: .pulling)
+        footer?.setTitle("Loading", for: .refreshing)
+        lectureTableView.mj_footer = footer
+    }
+    
+    private func reloadTableViewData() {
+        lectureTableView.mj_header.endRefreshing()
+    }
+    
+    private func keepLoadTableViewData() {
+        lectureTableView.mj_footer.endRefreshing()
+    }
     
 }
 

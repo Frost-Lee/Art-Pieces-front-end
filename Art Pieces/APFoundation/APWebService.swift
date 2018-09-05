@@ -26,7 +26,7 @@ class APWebService {
         var request = self.getRequest(httpMethod: "POST")
         let query = """
         mutation InsertUser {
-        insertUser(email: "\(email)", name: "\(email)", password: "\(password)")
+            insertUser(email: "\(email)", name: "\(email)", password: "\(password)")
         }
         """
         request.httpBody = self.constructRequestBody(with: query)
@@ -85,6 +85,14 @@ class APWebService {
             completion?()
         }
         task.resume()
+    }
+    
+    func getArtworkFeed(email: String, timestamp: Date, completion: () -> Void) {
+        
+    }
+    
+    func extendArtworkFeed(email: String, timestamp: Date, completion: () -> Void) {
+        
     }
     
     func createRepo(creatorEmail: String, creatorPassword: String, title: String,

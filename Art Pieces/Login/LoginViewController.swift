@@ -43,6 +43,8 @@ class LoginViewController: BWWalkthroughPageViewController {
         }
     }
     
+    var dismissBlock: (() -> Void)?
+    
     private var isKeyboardOpen: Bool = false
     
     override func viewDidLoad() {
@@ -65,6 +67,11 @@ class LoginViewController: BWWalkthroughPageViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         beginAnimateAlbums()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        dismissBlock?()
     }
     
     @IBAction func signUpButtonTapped(_ sender: UIButton) {

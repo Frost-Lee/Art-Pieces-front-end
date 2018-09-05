@@ -33,6 +33,7 @@ class NewRepoViewController: UIViewController {
     private func launchImagePicker() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
+        imagePicker.navigationBar.tintColor = APTheme.purpleHighLightColor
         imagePicker.modalPresentationStyle = .overCurrentContext
         present(imagePicker, animated: true, completion: nil)
     }
