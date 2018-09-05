@@ -46,24 +46,47 @@ class APWebService {
         let descriptionParameter = getOptionalParameter(field: "description", value: description,
                                                         quotation: true)
         let belongingRepoParameter = getOptionalParameter(field: "belongingRepo", value: belongingRepo)
-        let currentTimestamp = Date()
         sendFile(url: APWebService.resourceServerURL, fileName: "NewRepo.jpeg", data:
             keyPhoto.jpegData(compressionQuality: 0.2)!) { urlPath, compressedURLPath in
                 var request = self.getRequest(httpMethod: "POST")
                 let query = """
                 mutation UploadArtwork {
-                    insertWork(id: \(selfID), creator: "\(creatorEmail)",
+                    insertWork(id: "\(selfID)", creator: "\(creatorEmail)",
                         password: "\(creatorPassword)", title: "\(title)",
-                        \(descriptionParameter) keyPhoto: \(keyPhoto),
-                        \(belongingRepoParameter) timestamp: \(currentTimestamp.timeIntervalSince1970 * 1000)
+                        \(descriptionParameter) keyPhoto: "\(urlPath)",
+                        \(belongingRepoParameter) timestamp: \(Date().timeIntervalSince1970 * 1000))
                 }
                 """
+                print(query)
                 request.httpBody = self.constructRequestBody(with: query)
                 let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    print(String(data: data!, encoding: .utf8) ?? "No Response")
                     completion?()
                 }
                 task.resume()
         }
+    }
+    
+    func createRepo(creatorEmail: String, creatorPassword: String, title: String,
+                    description: String?, selfID: UUID, keyArtworkID: UUID,
+                    completion: ((() -> Void)?)) {
+        let descriptionParameter = getOptionalParameter(field: "description", value: description,
+                                                        quotation: true)
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+        mutation InsertRepo {
+            insertRepo(id: "\(selfID)", title: "\(title)", \(descriptionParameter)
+                       keyArtwork: "\(keyArtworkID)", starter: "\(creatorEmail)",
+                       password: "\(creatorPassword)", timestamp: \(Date().timeIntervalSince1970 * 1000))
+        }
+        """
+        request.httpBody = constructRequestBody(with: query)
+        print(query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            print(String(data: data!, encoding: .utf8) ?? "No Response")
+            completion?()
+        }
+        task.resume()
     }
     
     func checkForLogin(email: String, password: String, completion: ((String?) -> Void)?) {

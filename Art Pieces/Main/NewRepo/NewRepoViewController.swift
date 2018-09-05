@@ -67,13 +67,20 @@ extension NewRepoViewController: NewRepoDelegate {
         newRepoView.beginAnimatingSpinner()
         let user = AccountManager.defaultManager.currentUser!
         let newArtworkID = UUID()
+        let newRepoID = UUID()
+        let title = newRepoView.title
+        let description = newRepoView.repoDescription
+        let keyPhoto = newRepoView.keyPhoto!
         APWebService.defaultManager.uploadArtwork(creatorEmail: user.email, creatorPassword:
-        user.password, title: newRepoView.title, description: newRepoView.description, keyPhoto:
-            newRepoView.keyPhoto!, belongingRepo: nil, selfID: newArtworkID) {
-                DataManager.defaultManager.saveArtwork(title: self.newRepoView.title, description:
-                    self.newRepoView.description, keyPhoto: self.newRepoView.keyPhoto!, uuid: newArtworkID)
-                self.dismiss(animated: true, completion: nil)
+            user.password, title: title, description: description, keyPhoto:
+            keyPhoto, belongingRepo: nil, selfID: newArtworkID) {
+                APWebService.defaultManager.createRepo(creatorEmail: user.email, creatorPassword:
+                    user.password, title: title, description: description, selfID: newRepoID,
+                                   keyArtworkID: newArtworkID) {
+                    DataManager.defaultManager.saveArtwork(title: title, description:
+                        description, keyPhoto: keyPhoto, uuid: newArtworkID)
+                    self.dismiss(animated: true, completion: nil)
+                }
         }
-        
     }
 }
