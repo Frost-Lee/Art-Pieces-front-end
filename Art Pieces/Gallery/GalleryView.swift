@@ -8,6 +8,7 @@
 
 import UIKit
 import CHTCollectionViewWaterfallLayout
+import MJRefresh
 
 protocol GalleryDelegate: class {
     func galleryItemDidSelected(at index: Int)
@@ -17,22 +18,53 @@ class GalleryView: UIView {
     
     @IBOutlet weak var galleryCollectionView: UICollectionView! {
         didSet {
-            let waterfallLayout = CHTCollectionViewWaterfallLayout()
-            if UIScreen.main.bounds.width < 1024 {
-                waterfallLayout.columnCount = 2
-            } else {
-                waterfallLayout.columnCount = 3
-            }
-            waterfallLayout.minimumColumnSpacing = 36.0
-            waterfallLayout.minimumInteritemSpacing = 60.0
-            galleryCollectionView.setCollectionViewLayout(waterfallLayout, animated: false)
-            galleryCollectionView.register(UINib(nibName: "GalleryCollectionViewCell", bundle: Bundle.main),
-                                           forCellWithReuseIdentifier: "galleryCollectionViewCell")
-            galleryCollectionView.reloadData()
+            setupRefreshProperties()
+            setupFlowLayoutProperties()
         }
     }
     
     weak var delegate: GalleryDelegate?
+    
+    private func setupFlowLayoutProperties() {
+        let waterfallLayout = CHTCollectionViewWaterfallLayout()
+        if UIScreen.main.bounds.width < 1024 {
+            waterfallLayout.columnCount = 2
+        } else {
+            waterfallLayout.columnCount = 3
+        }
+        waterfallLayout.minimumColumnSpacing = 36.0
+        waterfallLayout.minimumInteritemSpacing = 60.0
+        galleryCollectionView.setCollectionViewLayout(waterfallLayout, animated: false)
+        galleryCollectionView.register(UINib(nibName: "GalleryCollectionViewCell", bundle: Bundle.main),
+                                       forCellWithReuseIdentifier: "galleryCollectionViewCell")
+        galleryCollectionView.reloadData()
+    }
+    
+    private func setupRefreshProperties() {
+        let header = MJRefreshNormalHeader() {
+            self.reloadCollectionViewData()
+        }
+        header?.lastUpdatedTimeLabel.isHidden = true
+        header?.setTitle("Pull down to refresh", for: .idle)
+        header?.setTitle("Release to refresh", for: .pulling)
+        header?.setTitle("Loading", for: .refreshing)
+        galleryCollectionView.mj_header = header
+        let footer = MJRefreshAutoNormalFooter() {
+            self.keepLoadCollectionViewData()
+        }
+        footer?.setTitle("Tap or pull up to load more", for: .idle)
+        footer?.setTitle("Release to load more", for: .pulling)
+        footer?.setTitle("Loading", for: .refreshing)
+        galleryCollectionView.mj_footer = footer
+    }
+    
+    private func reloadCollectionViewData() {
+        galleryCollectionView.mj_header.endRefreshing()
+    }
+    
+    private func keepLoadCollectionViewData() {
+        galleryCollectionView.mj_footer.endRefreshing()
+    }
     
 }
 

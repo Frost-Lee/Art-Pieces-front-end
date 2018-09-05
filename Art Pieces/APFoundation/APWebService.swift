@@ -67,6 +67,26 @@ class APWebService {
         }
     }
     
+    func uploadLecture(creatorEmail: String, creatorPassword: String, title: String,
+                       description: String, content: String, selfID: UUID,
+                       completion: ((() -> Void)?)) {
+        let descriptionParameter = getOptionalParameter(field: "description", value: description,
+                                                        quotation: true)
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            mutation InsertLect {
+                insertLect(id: "\(selfID)", title: "\(title)", \(descriptionParameter)
+                           steps: "\(content)", selfID: "\(selfID)"
+            }
+        """
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            print(String(data: data!, encoding: .utf8) ?? "No Response")
+            completion?()
+        }
+        task.resume()
+    }
+    
     func createRepo(creatorEmail: String, creatorPassword: String, title: String,
                     description: String?, selfID: UUID, keyArtworkID: UUID,
                     completion: ((() -> Void)?)) {

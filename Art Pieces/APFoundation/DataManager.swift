@@ -22,16 +22,18 @@ class DataManager {
     }
     
     func saveArtwork(title: String, description: String?, keyPhoto: UIImage, uuid: UUID) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "MyArtwork", in: context)
-        let newArtwork = MyArtwork(entity: entity!, insertInto: context)
-        newArtwork.title = title
-        newArtwork.artworkDescription = description
-        newArtwork.timestamp = Date() as NSDate
-        newArtwork.keyPhotoPath = saveImage(photo: keyPhoto, isCachedPhoto: false)
-        newArtwork.uuid = uuid
-        try! context.save()
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "MyArtwork", in: context)
+            let newArtwork = MyArtwork(entity: entity!, insertInto: context)
+            newArtwork.title = title
+            newArtwork.artworkDescription = description
+            newArtwork.timestamp = Date() as NSDate
+            newArtwork.keyPhotoPath = self.saveImage(photo: keyPhoto, isCachedPhoto: false)
+            newArtwork.uuid = uuid
+            try! context.save()
+        }
     }
     
     func saveLecture(title: String, description: String?, content: Data,
