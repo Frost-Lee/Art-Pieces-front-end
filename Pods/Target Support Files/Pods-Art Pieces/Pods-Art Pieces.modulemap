@@ -1,4 +1,4 @@
-module Pods_Art_Pieces [system] {
+framework module Pods_Art_Pieces {
   umbrella header "Pods-Art Pieces-umbrella.h"
 
   export *

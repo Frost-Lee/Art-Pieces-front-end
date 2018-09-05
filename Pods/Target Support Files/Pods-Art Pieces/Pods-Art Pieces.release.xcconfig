@@ -1,12 +1,11 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BWWalkthrough" "${PODS_CONFIGURATION_BUILD_DIR}/CHTCollectionViewWaterfallLayout" "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker" "${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_ROOT}/Headers/Public" "${PODS_ROOT}/Headers/Public/ChromaColorPicker"
-LIBRARY_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BWWalkthrough" "${PODS_CONFIGURATION_BUILD_DIR}/CHTCollectionViewWaterfallLayout" "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON"
-OTHER_CFLAGS = $(inherited) -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/BWWalkthrough/BWWalkthrough.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker/ChromaColorPicker.modulemap" -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.modulemap" -isystem "${PODS_ROOT}/Headers/Public" -isystem "${PODS_ROOT}/Headers/Public/ChromaColorPicker"
-OTHER_LDFLAGS = $(inherited) -ObjC -l"BWWalkthrough" -l"CHTCollectionViewWaterfallLayout" -l"ChromaColorPicker" -l"SwiftyJSON"
-OTHER_SWIFT_FLAGS = $(inherited) -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/BWWalkthrough/BWWalkthrough.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker/ChromaColorPicker.modulemap" -Xcc -fmodule-map-file="${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.modulemap" $(inherited) "-D" "COCOAPODS"
+LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
+OTHER_CFLAGS = $(inherited) -iquote "${PODS_CONFIGURATION_BUILD_DIR}/BWWalkthrough/BWWalkthrough.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker/ChromaColorPicker.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/MJRefresh/MJRefresh.framework/Headers" -iquote "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON/SwiftyJSON.framework/Headers"
+OTHER_LDFLAGS = $(inherited) -framework "BWWalkthrough" -framework "CHTCollectionViewWaterfallLayout" -framework "ChromaColorPicker" -framework "MJRefresh" -framework "SwiftyJSON"
+OTHER_SWIFT_FLAGS = $(inherited) "-D" "COCOAPODS"
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)
 PODS_PODFILE_DIR_PATH = ${SRCROOT}/.
 PODS_ROOT = ${SRCROOT}/Pods
-SWIFT_INCLUDE_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/BWWalkthrough" "${PODS_CONFIGURATION_BUILD_DIR}/CHTCollectionViewWaterfallLayout" "${PODS_CONFIGURATION_BUILD_DIR}/ChromaColorPicker" "${PODS_CONFIGURATION_BUILD_DIR}/SwiftyJSON"

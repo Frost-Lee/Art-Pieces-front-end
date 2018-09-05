@@ -1,1 +1,0 @@
-../../../ChromaColorPicker/ChromaColorPicker/ChromaColorPicker.h

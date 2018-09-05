@@ -1,6 +1,0 @@
-module BWWalkthrough [system] {
-  umbrella header "BWWalkthrough-umbrella.h"
-
-  export *
-  module * { export * }
-}

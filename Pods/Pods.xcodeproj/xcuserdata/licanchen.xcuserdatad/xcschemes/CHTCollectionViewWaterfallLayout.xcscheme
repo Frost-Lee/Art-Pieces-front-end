@@ -14,8 +14,8 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "F1C138FE74A890767B6425535A2BF7A0"
-               BuildableName = "libCHTCollectionViewWaterfallLayout.a"
+               BlueprintIdentifier = "83DBBCE523C3F780DFE1B689B272DDE8"
+               BuildableName = "CHTCollectionViewWaterfallLayout.framework"
                BlueprintName = "CHTCollectionViewWaterfallLayout"
                ReferencedContainer = "container:Pods.xcodeproj">
             </BuildableReference>
@@ -45,8 +45,8 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "F1C138FE74A890767B6425535A2BF7A0"
-            BuildableName = "libCHTCollectionViewWaterfallLayout.a"
+            BlueprintIdentifier = "83DBBCE523C3F780DFE1B689B272DDE8"
+            BuildableName = "CHTCollectionViewWaterfallLayout.framework"
             BlueprintName = "CHTCollectionViewWaterfallLayout"
             ReferencedContainer = "container:Pods.xcodeproj">
          </BuildableReference>

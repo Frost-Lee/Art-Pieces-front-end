@@ -1,6 +1,0 @@
-module SwiftyJSON [system] {
-  umbrella header "SwiftyJSON-umbrella.h"
-
-  export *
-  module * { export * }
-}

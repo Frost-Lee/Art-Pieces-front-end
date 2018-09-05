@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		14706C28FE337856C9FFD0F3 /* Pods_Art_Pieces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08116606DD1E7DF354C012A /* Pods_Art_Pieces.framework */; };
 		3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */; };
 		3A0DDF412136662F005DEE82 /* CachedRepo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF372136662E005DEE82 /* CachedRepo+CoreDataProperties.swift */; };
 		3A0DDF422136662F005DEE82 /* CachedLecture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */; };
@@ -82,11 +83,9 @@
 		3AF62DD221381522005104CA /* AddArtworkDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DD121381522005104CA /* AddArtworkDescriptionView.swift */; };
 		3AF62DD521381601005104CA /* PickArtworkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF62DD421381601005104CA /* PickArtworkView.xib */; };
 		3AF62DD721381A6F005104CA /* AddArtworkDescriptionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF62DD621381A6F005104CA /* AddArtworkDescriptionView.xib */; };
-		48BFC0540826D3CB6F13165E /* libPods-Art Pieces.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Art Pieces.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A0DDF372136662E005DEE82 /* CachedRepo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedRepo+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedRepo+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedLecture+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedLecture+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -166,6 +165,7 @@
 		3AF62DD621381A6F005104CA /* AddArtworkDescriptionView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddArtworkDescriptionView.xib; sourceTree = "<group>"; };
 		9AE3AFB4E4B2C13F65861B46 /* Pods-Art Pieces.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.release.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.release.xcconfig"; sourceTree = "<group>"; };
 		BF4AC9E22F8BA616954FA4A6 /* Pods-Art Pieces.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Art Pieces.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces.debug.xcconfig"; sourceTree = "<group>"; };
+		F08116606DD1E7DF354C012A /* Pods_Art_Pieces.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Art_Pieces.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -173,7 +173,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				48BFC0540826D3CB6F13165E /* libPods-Art Pieces.a in Frameworks */,
+				14706C28FE337856C9FFD0F3 /* Pods_Art_Pieces.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +183,7 @@
 		01278F311CBEAE66ED82C6A1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1E1BA637855ED55EB9ACC0B7 /* libPods-Art Pieces.a */,
+				F08116606DD1E7DF354C012A /* Pods_Art_Pieces.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -421,6 +421,7 @@
 				3A8C939C20F895EC005D5BD1 /* Sources */,
 				3A8C939D20F895EC005D5BD1 /* Frameworks */,
 				3A8C939E20F895EC005D5BD1 /* Resources */,
+				8F61E63571A324096060DE7B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -516,6 +517,32 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		8F61E63571A324096060DE7B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BWWalkthrough/BWWalkthrough.framework",
+				"${BUILT_PRODUCTS_DIR}/CHTCollectionViewWaterfallLayout/CHTCollectionViewWaterfallLayout.framework",
+				"${BUILT_PRODUCTS_DIR}/ChromaColorPicker/ChromaColorPicker.framework",
+				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
+				"${BUILT_PRODUCTS_DIR}/SwiftyJSON/SwiftyJSON.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BWWalkthrough.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CHTCollectionViewWaterfallLayout.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ChromaColorPicker.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SwiftyJSON.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Art Pieces/Pods-Art Pieces-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -725,10 +752,7 @@
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -745,10 +769,7 @@
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
