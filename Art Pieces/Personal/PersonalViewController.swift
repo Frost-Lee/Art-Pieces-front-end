@@ -91,11 +91,19 @@ class PersonalViewController: UIViewController {
     }
     
     private func loadProjects() {
-        let lectures = DataManager.defaultManager.getAllLectures()
         let creatorPortrait = getPersonalPortrait()
+        let lectures = DataManager.defaultManager.getAllLectures()
+        let artworks = DataManager.defaultManager.getAllArtworks()
         for lecture in lectures {
             let lectureKeyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
             let project = ProjectPreview(keyPhoto: lectureKeyPhoto, title: lecture.title!,
+                                  creatorName: localUser?.name ?? "Login", creatorPortrait: creatorPortrait,
+                                  numberOfForks: 0, numberOfStars: 0)
+            projects.append(project)
+        }
+        for artwork in artworks {
+            let artworkKeyPhoto = DataManager.defaultManager.getImage(path: artwork.keyPhotoPath!)
+            let project = ProjectPreview(keyPhoto: artworkKeyPhoto, title: artwork.title!,
                                   creatorName: localUser?.name ?? "Login", creatorPortrait: creatorPortrait,
                                   numberOfForks: 0, numberOfStars: 0)
             projects.append(project)
