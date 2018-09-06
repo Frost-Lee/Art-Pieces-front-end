@@ -11,6 +11,7 @@ import UIKit
 protocol PickArtworkDelegate: class {
     func nextButtonDidTapped()
     func artworkSelectionDidChanged()
+    func shouldLaunch(viewController: UIViewController)
 }
 
 class PickArtworkView: UIView {
@@ -23,15 +24,33 @@ class PickArtworkView: UIView {
             localArtworkCollectionView.reloadData()
         }
     }
+    @IBOutlet weak var nextButton: UIButton!
     
     weak var delegate: PickArtworkDelegate?
     
     var forkPreviews: [ForkPreview] = []
     
     var selectedIndex: Int?
+    var selectedProject: (Bool, UUID)? {
+        didSet {
+            if selectedProject != nil {
+                nextButton.isEnabled = true
+            } else {
+                nextButton.isEnabled = false
+            }
+        }
+    }
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         delegate?.nextButtonDidTapped()
+    }
+    
+    @IBAction func addPhotoButtonTapped(_ sender: UIButton) {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.navigationBar.tintColor = APTheme.purpleHighLightColor
+        imagePicker.modalPresentationStyle = .overCurrentContext
+        delegate?.shouldLaunch(viewController: imagePicker)
     }
     
 }
@@ -71,10 +90,29 @@ extension PickArtworkView: UICollectionViewDelegateFlowLayout, UICollectionViewD
         if indexPath.row == selectedIndex {
             selectedIndex = nil
             cell.setDeselected()
+            selectedProject = nil
         } else {
             selectedIndex = indexPath.row
             cell.setSelected()
+            selectedProject = (true, forkPreviews[indexPath.row].uuid)
         }
         delegate?.artworkSelectionDidChanged()
+    }
+}
+
+
+extension PickArtworkView: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
+        info: [UIImagePickerController.InfoKey : Any]) {
+        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        let newArtworkID = UUID()
+        DataManager.defaultManager.saveArtwork(title: "New Artwork", description: nil, keyPhoto:
+            selectedImage!, uuid: newArtworkID)
+        selectedProject = (false, newArtworkID)
+        nextButtonTapped(nextButton)
     }
 }

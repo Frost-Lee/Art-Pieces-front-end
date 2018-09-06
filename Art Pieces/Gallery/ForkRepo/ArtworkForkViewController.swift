@@ -8,20 +8,16 @@
 
 import UIKit
 
-protocol ArtworkForkDelegate: class {
-    func controllerDismissedWithSelectedArtwork(with uuid: UUID)
-}
-
 class ArtworkForkViewController: UIViewController {
     
     @IBOutlet weak var closeButton: UIButton!
-    
-    weak var delegate: ArtworkForkDelegate?
     
     var pickArtworkView: PickArtworkView!
     var addArtworkDescriptionView: AddArtworkDescriptionView!
     
     var isAddingDescriptions: Bool = false
+    
+    var currentRepoID: UUID!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -85,12 +81,31 @@ extension ArtworkForkViewController: PickArtworkDelegate {
     
     func artworkSelectionDidChanged() {
     }
+    
+    func shouldLaunch(viewController: UIViewController) {
+        present(viewController, animated: true, completion: nil)
+    }
 }
 
 
 extension ArtworkForkViewController: AddArtworkDescriptionDelegate {
-    func shareButtonTapped(artworkUUID: UUID) {
-        delegate?.controllerDismissedWithSelectedArtwork(with: artworkUUID)
+    func shareButtonTapped() {
+        let user = AccountManager.defaultManager.currentUser!
+        var keyPhotoPath: String
+        var title: String
+        let id = pickArtworkView.selectedProject!.1
+        if pickArtworkView.selectedProject!.0 {
+            let lecture = DataManager.defaultManager.getLecture(uuid: id)!
+            keyPhotoPath = lecture.previewPhotoPath!
+            title = lecture.title!
+        } else {
+            keyPhotoPath = DataManager.defaultManager.getArtwork(uuid: id)!.keyPhotoPath!
+            title = "New Artwork"
+        }
+        APWebService.defaultManager.uploadArtwork(creatorEmail: user.email, creatorPassword:
+            user.password, title: title, description: addArtworkDescriptionView.artworkDescription,
+                           keyPhoto: DataManager.defaultManager.getImage(path: keyPhotoPath),
+                           belongingRepo: currentRepoID, selfID: id, completion: nil)
         dismiss(animated: true, completion: nil)
     }
 }

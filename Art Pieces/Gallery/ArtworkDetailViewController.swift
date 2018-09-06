@@ -26,7 +26,6 @@ class ArtworkDetailViewController: UIViewController {
         let storyboard = UIStoryboard(name: "ArtworkFork", bundle: Bundle.main)
         let viewController = storyboard.instantiateInitialViewController() as! ArtworkForkViewController
         viewController.modalPresentationStyle = .formSheet
-        viewController.delegate = self
         self.present(viewController, animated: true, completion: nil)
     }
     
@@ -52,9 +51,3 @@ extension ArtworkDetailViewController: UICollectionViewDataSource, UICollectionV
     }
 }
 
-
-extension ArtworkDetailViewController: ArtworkForkDelegate {
-    func controllerDismissedWithSelectedArtwork(with uuid: UUID) {
-        // Get the artwork and load it to the backend
-    }
-}

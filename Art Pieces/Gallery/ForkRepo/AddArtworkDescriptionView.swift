@@ -9,7 +9,7 @@
 import UIKit
 
 protocol AddArtworkDescriptionDelegate: class {
-    func shareButtonTapped(artworkUUID: UUID)
+    func shareButtonTapped()
 }
 
 class AddArtworkDescriptionView: UIView {
@@ -24,10 +24,12 @@ class AddArtworkDescriptionView: UIView {
     
     weak var delegate: AddArtworkDescriptionDelegate?
     
-    var selectArtwork: MyArtwork!
+    var artworkDescription: String {
+        return artworkDescriptionTextField.text
+    }
     
     @IBAction func shareButtonTapped(_ sender: UIButton) {
-        delegate?.shareButtonTapped(artworkUUID: selectArtwork.uuid!)
+        delegate?.shareButtonTapped()
     }
     
 }
