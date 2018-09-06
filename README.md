@@ -36,11 +36,14 @@ struct Repository {
 Since Art Pieces give users the chance of creating an entire artwork within quitting the app, as well as recording the step of finishing the artwork in order to help new comers to learn painting, `Artboard` is the structure that records an painting and its step records. `Artboard` can be stored locally, or published as an `Artwork` or a `Lecture`.
 ``` Swift 
 struct Artboard {
-	var id: UUID
-	var keyPhoto: UIImage
-	var creatorEmail: String
-	var content: Data
+	var uuid: UUID
 	var timestamp: Date
+	var creatorEmail: String
+	var title: String
+	var boardDescription: String
+	var keyPhotoPath: String
+	var stepPreviewPhotoPath: String
+	var content: Data
 }
 ```
 
@@ -75,7 +78,7 @@ struct User {
 - [ ] Popover redesign of tool bar
 
 #### Data Structure Redesign
-- [ ] Only use `Artboard` in local storage
+- [x] Only use `Artboard` in local storage
 - [ ] PersonalViewController should present online Artworks instead of local ones
 - [ ] Create another space for local `Artboard`
 - [ ] Maybe .xib files could be used in a more elegant way
