@@ -6,7 +6,7 @@
 //  Copyright © 2018 李灿晨. All rights reserved.
 //
 //  Abstract:
-//  The ArtworkView is the view that is used for the user to draw on, StrokeGestureRecognizer is used so that
+//  The LectureEditView is the view that is used for the user to draw on, StrokeGestureRecognizer is used so that
 //  user's interaction with the screen would be recorded.
 
 import UIKit
@@ -115,7 +115,8 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
     func adjustAccordingTo(step: Int, subStep: Int) {
         let relatedSubStep = guide.steps[step].subSteps[subStep]
         for (layerIndex, strokeIndex) in relatedSubStep {
-            artworkLayerViews[layerIndex].lectureLayer.strokes[strokeIndex].renderMechanism = relatedSubStep.renderMechanism
+            artworkLayerViews[layerIndex].lectureLayer.strokes[strokeIndex].renderMechanism =
+                relatedSubStep.renderMechanism
         }
         setNeedsDisplay()
     }

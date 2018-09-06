@@ -42,7 +42,7 @@ class APWebService {
     
     func uploadArtwork(creatorEmail: String, creatorPassword: String, title: String,
                        description: String?, keyPhoto: UIImage, belongingRepo: UUID?, selfID: UUID,
-                       completion: ((() -> Void)?)) {
+                       completion: (() -> Void)?) {
         let descriptionParameter = getOptionalParameter(field: "description", value: description,
                                                         quotation: true)
         let belongingRepoParameter = getOptionalParameter(field: "belongingRepo", value: belongingRepo)
@@ -69,7 +69,7 @@ class APWebService {
     
     func uploadLecture(creatorEmail: String, creatorPassword: String, title: String,
                        description: String, content: String, selfID: UUID,
-                       completion: ((() -> Void)?)) {
+                       completion: (() -> Void)?) {
         let descriptionParameter = getOptionalParameter(field: "description", value: description,
                                                         quotation: true)
         var request = getRequest(httpMethod: "POST")
@@ -97,7 +97,7 @@ class APWebService {
     
     func createRepo(creatorEmail: String, creatorPassword: String, title: String,
                     description: String?, selfID: UUID, keyArtworkID: UUID,
-                    completion: ((() -> Void)?)) {
+                    completion: (() -> Void)?) {
         let descriptionParameter = getOptionalParameter(field: "description", value: description,
                                                         quotation: true)
         var request = getRequest(httpMethod: "POST")
@@ -135,7 +135,7 @@ class APWebService {
         task.resume()
     }
     
-    func getUserInfo(email: String, completion: (((String, String, UIImage?) -> Void)?)) {
+    func getUserInfo(email: String, completion: ((String, String, UIImage?) -> Void)?) {
         var request = getRequest(httpMethod: "POST")
         let query = """
             query GetUserInfo {

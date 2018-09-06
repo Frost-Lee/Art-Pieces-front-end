@@ -37,7 +37,7 @@ class GalleryCollectionViewCell: UICollectionViewCell {
         didSet {
             repositoryTitleImageView.image = project.keyPhoto
             repositoryTitleLabel.text = project.title
-            // repositoryStarterPortraitImageView.image = project.creatorPortrait
+            repositoryStarterPortraitImageView.image = project.creatorPortrait
             repositoryStarterNameLabel.text = project.creatorName
             branchNumberLabel.text = String(project.numberOfForks)
             starNumberLabel.text = String(project.numberOfStars)

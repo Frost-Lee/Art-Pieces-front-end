@@ -6,7 +6,7 @@
 //  Copyright © 2018 李灿晨. All rights reserved.
 //
 //  Abstract:
-//  LecturePresentationViewController is the place where people can watch the lecture and try their ideas by
+//  LectureEditViewController is the place where people can watch the lecture and try their ideas by
 //  themselves.
 
 import UIKit
@@ -36,7 +36,8 @@ class LectureEditViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = .lightGray
-        lectureEditView.currentRenderMechanism = RenderMechanism(color: UIColor.lightGray, width: 1.5, texture: "PencilTexture")
+        lectureEditView.currentRenderMechanism = RenderMechanism(color:
+            .lightGray, width: 1.5, texture: "PencilTexture")
         lectureEditView.createLayer()
         lectureEditView.delegate = self
         lectureEditView.isRecordingForLecture = true
@@ -191,9 +192,11 @@ extension LectureEditViewController: ToolBarViewDelegate {
     
     func eraserButtonDidTapped(_ sender: UIButton) {
         if isEraserSelected {
+            toolBarView.dehighlightEraserButton()
             lectureEditView.currentRenderMechanism = previousRenderMechanism
             isEraserSelected = false
         } else {
+            toolBarView.highLightEraserButton()
             isEraserSelected = true
             previousRenderMechanism = lectureEditView.currentRenderMechanism
             lectureEditView.currentRenderMechanism = getEraser(with: 5.0)

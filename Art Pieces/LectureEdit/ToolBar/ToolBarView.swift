@@ -62,4 +62,12 @@ class ToolBarView: UIView {
         delegate?.penButtonDidTapped(sender)
     }
     
+    func highLightEraserButton() {
+        eraserButton.setImage(UIImage(named: "SelectedEraserButton"), for: .normal)
+    }
+    
+    func dehighlightEraserButton() {
+        eraserButton.setImage(UIImage(named: "EraserButton"), for: .normal)
+    }
+    
 }

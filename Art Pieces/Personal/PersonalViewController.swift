@@ -79,19 +79,20 @@ class PersonalViewController: UIViewController {
     }
     
     private func loadLocalUser() {
-        let portrait = getPersonalPortrait()
         if AccountManager.defaultManager.isUserExist() {
             localUser = AccountManager.defaultManager.currentUser
+            let portrait = getPersonalPortrait()
             userNameLabel.text = localUser!.name
             largePortraitImageView.image = portrait
         } else {
+            let portrait = getPersonalPortrait()
             userNameLabel.text = "Login / Register"
             largePortraitImageView.image = portrait
         }
     }
     
     private func loadProjects() {
-        let creatorPortrait = getPersonalPortrait()
+        let creatorPortrait = getPersonalPortrait(useGrayPortrait: true)
         let lectures = DataManager.defaultManager.getAllLectures()
         let artworks = DataManager.defaultManager.getAllArtworks()
         for lecture in lectures {
@@ -110,14 +111,14 @@ class PersonalViewController: UIViewController {
         }
     }
     
-    private func getPersonalPortrait() -> UIImage {
+    private func getPersonalPortrait(useGrayPortrait: Bool = false) -> UIImage {
         var portrait: UIImage!
         if localUser == nil {
-            portrait = UIImage(named: "WhiteQuestionMark")
+            portrait = UIImage(named: (useGrayPortrait ? "" : "White") + "QuestionMark")
         } else if localUser!.portraitPath != nil && localUser!.portraitPath?.count != 0 {
             portrait = DataManager.defaultManager.getImage(path: localUser!.portraitPath!)
         } else {
-            portrait = UIImage(named: "WhiteUser")
+            portrait = UIImage(named: (useGrayPortrait ? "" : "White") + "User")
         }
         return portrait
     }
