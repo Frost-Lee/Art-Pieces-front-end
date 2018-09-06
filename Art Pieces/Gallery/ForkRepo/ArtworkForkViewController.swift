@@ -8,9 +8,7 @@
 
 import UIKit
 
-class ArtworkForkViewController: UIViewController {
-    
-    @IBOutlet weak var closeButton: UIButton!
+class ArtworkForkViewController: APFormSheetViewController {
     
     var pickArtworkView: PickArtworkView!
     var addArtworkDescriptionView: AddArtworkDescriptionView!
@@ -40,15 +38,11 @@ class ArtworkForkViewController: UIViewController {
                 20, width: viewFrame.width, height: viewFrame.height - 20)
         }
     }
-
-    @IBAction func closeButtonTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-    }
     
     private func setupPickArtworkView() {
         let nib = UINib(nibName: "PickArtworkView", bundle: Bundle.main)
         pickArtworkView = nib.instantiate(withOwner: self,
-            options: nil).first as? PickArtworkView
+                                          options: nil).first as? PickArtworkView
         self.view.insertSubview(pickArtworkView, belowSubview: closeButton)
         pickArtworkView.delegate = self
         let lectures = DataManager.defaultManager.getAllArtboards()
@@ -62,7 +56,7 @@ class ArtworkForkViewController: UIViewController {
     private func setupAddArtworkDescriptionView() {
         let nib = UINib(nibName: "AddArtworkDescriptionView", bundle: Bundle.main)
         addArtworkDescriptionView = nib.instantiate(withOwner: self,
-            options: nil).first as? AddArtworkDescriptionView
+                                                    options: nil).first as? AddArtworkDescriptionView
         self.view.insertSubview(addArtworkDescriptionView, belowSubview: closeButton)
         addArtworkDescriptionView.delegate = self
     }
@@ -75,7 +69,7 @@ extension ArtworkForkViewController: PickArtworkDelegate {
         isAddingDescriptions = true
         UIView.animate(withDuration: 0.2, delay: 0, options:
             UIView.AnimationOptions.curveLinear, animations: {
-            self.viewWillLayoutSubviews()
+                self.viewWillLayoutSubviews()
         }, completion: nil)
     }
     

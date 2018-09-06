@@ -8,12 +8,10 @@
 
 import UIKit
 
-class NewRepoViewController: UIViewController {
-    
-    @IBOutlet weak var closeButton: UIButton!
+class NewRepoViewController: APFormSheetViewController {
     
     var newRepoView: NewRepoView!
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNewRepoView()
@@ -24,10 +22,6 @@ class NewRepoViewController: UIViewController {
         super.viewWillLayoutSubviews()
         newRepoView.frame = CGRect(x: 0, y: 20, width: self.view.frame.width,
                                    height: self.view.frame.height - 20)
-    }
-    
-    @IBAction func closeButtonTapped(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
     }
     
     private func launchImagePicker() {
@@ -74,14 +68,14 @@ extension NewRepoViewController: NewRepoDelegate {
         let keyPhoto = newRepoView.keyPhoto!
         APWebService.defaultManager.uploadArtwork(creatorEmail: user.email, creatorPassword:
             user.password, title: title, description: description, keyPhoto:
-            keyPhoto, belongingRepo: nil, selfID: newArtworkID) {
-                APWebService.defaultManager.createRepo(creatorEmail: user.email, creatorPassword:
-                    user.password, title: title, description: description, selfID: newRepoID,
-                                   keyArtworkID: newArtworkID) {
-//                    DataManager.defaultManager.saveArtwork(title: title, description:
-//                        description, keyPhoto: keyPhoto, uuid: newArtworkID)
-                    self.dismiss(animated: true, completion: nil)
-                }
+        keyPhoto, belongingRepo: nil, selfID: newArtworkID) {
+            APWebService.defaultManager.createRepo(creatorEmail: user.email, creatorPassword:
+                user.password, title: title, description: description, selfID: newRepoID,
+                               keyArtworkID: newArtworkID) {
+                                //                    DataManager.defaultManager.saveArtwork(title: title, description:
+                                //                        description, keyPhoto: keyPhoto, uuid: newArtworkID)
+                                self.dismiss(animated: true, completion: nil)
+            }
         }
     }
 }

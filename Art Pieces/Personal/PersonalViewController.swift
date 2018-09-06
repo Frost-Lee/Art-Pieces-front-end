@@ -16,7 +16,7 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var starNumberLabel: UILabel!
     @IBOutlet weak var personalCollectionView: UICollectionView! {
         didSet {
-            personalCollectionView.register(UINib(nibName: "GalleryCollectionViewCell",
+            personalCollectionView.register(UINib(nibName: "ArtworkPreviewCollectionViewCell",
                 bundle: Bundle.main), forCellWithReuseIdentifier: "personalCollectionViewCell")
         }
     }
@@ -28,7 +28,7 @@ class PersonalViewController: UIViewController {
     
     var addArtworkView: AddArtworkView!
     
-    private var projects: [ProjectPreview] = []
+    private var previews: [ArtworkPreview] = []
     private var localUser: User?
     
     override func viewDidLoad() {
@@ -111,14 +111,14 @@ class PersonalViewController: UIViewController {
 
 extension PersonalViewController: UICollectionViewDelegateFlowLayout, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return projects.count
+        return previews.count
     }
     
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-            "personalCollectionViewCell", for: indexPath) as! GalleryCollectionViewCell
-        cell.project = projects[indexPath.row]
+            "personalCollectionViewCell", for: indexPath) as! ArtworkPreviewCollectionViewCell
+        cell.preview = previews[indexPath.row]
         cell.index = indexPath.row
         cell.delegate = self
         return cell
@@ -133,7 +133,7 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout, UICollecti
 }
 
 
-extension PersonalViewController: GalleryCollectionDelegate {
+extension PersonalViewController: ArtworkPreviewDelegate {
     func moreButtonDidTapped(index: Int) {
     }
 }

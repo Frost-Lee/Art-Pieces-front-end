@@ -10,6 +10,9 @@
 		14706C28FE337856C9FFD0F3 /* Pods_Art_Pieces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08116606DD1E7DF354C012A /* Pods_Art_Pieces.framework */; };
 		3A01A069214159040012C636 /* MyArtboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A067214159030012C636 /* MyArtboard+CoreDataClass.swift */; };
 		3A01A06A214159040012C636 /* MyArtboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A068214159040012C636 /* MyArtboard+CoreDataProperties.swift */; };
+		3A01A06D214161510012C636 /* APFormSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A06C214161510012C636 /* APFormSheetViewController.swift */; };
+		3A01A07121417DAD0012C636 /* NewRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A07021417DAD0012C636 /* NewRepoViewController.swift */; };
+		3A01A07321417E120012C636 /* ArtworkForkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A07221417E120012C636 /* ArtworkForkViewController.swift */; };
 		3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */; };
 		3A0DDF412136662F005DEE82 /* CachedRepo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF372136662E005DEE82 /* CachedRepo+CoreDataProperties.swift */; };
 		3A0DDF422136662F005DEE82 /* CachedLecture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */; };
@@ -20,8 +23,6 @@
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
 		3A18C8952121650E007F63F2 /* LectureLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* LectureLayerView.swift */; };
-		3A192A77213E7DA10079D1BF /* NewRepo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A192A76213E7DA10079D1BF /* NewRepo.storyboard */; };
-		3A192A79213E7DAE0079D1BF /* NewRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A192A78213E7DAE0079D1BF /* NewRepoViewController.swift */; };
 		3A39EEE22123CE5D00E8F881 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */; };
 		3A40439A2109D04100467990 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4043992109D04100467990 /* GalleryView.swift */; };
 		3A40439C2109D04F00467990 /* Gallery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439B2109D04F00467990 /* Gallery.xib */; };
@@ -65,8 +66,8 @@
 		3AC78BBC2139543500045864 /* Personal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC78BBB2139543500045864 /* Personal.storyboard */; };
 		3AC78BBE21395E7D00045864 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC78BBD21395E7D00045864 /* PersonalViewController.swift */; };
 		3ACC14AE2109C095002BCDFF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC14AD2109C095002BCDFF /* MainViewController.swift */; };
-		3AD10484211BD94B006C1039 /* GalleryCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD10482211BD94B006C1039 /* GalleryCollectionViewCell.swift */; };
-		3AD10485211BD94B006C1039 /* GalleryCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD10483211BD94B006C1039 /* GalleryCollectionViewCell.xib */; };
+		3AD10484211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD10482211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.swift */; };
+		3AD10485211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD10483211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.xib */; };
 		3AD1048A211BE086006C1039 /* LectureTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AD10488211BE086006C1039 /* LectureTableViewCell.swift */; };
 		3AD1048B211BE086006C1039 /* LectureTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AD10489211BE086006C1039 /* LectureTableViewCell.xib */; };
 		3ADC3C6421030FF800C31637 /* StepTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6321030FF800C31637 /* StepTitleView.xib */; };
@@ -75,8 +76,6 @@
 		3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6D2103189700C31637 /* SubStepView.swift */; };
 		3ADC3C7021031FA400C31637 /* ArtboardEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6F21031FA400C31637 /* ArtboardEdit.storyboard */; };
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
-		3AF62DCC21380830005104CA /* ArtworkFork.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF62DCB21380830005104CA /* ArtworkFork.storyboard */; };
-		3AF62DCE213813FD005104CA /* ArtworkForkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DCD213813FD005104CA /* ArtworkForkViewController.swift */; };
 		3AF62DD0213814F4005104CA /* PickArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DCF213814F4005104CA /* PickArtworkView.swift */; };
 		3AF62DD221381522005104CA /* AddArtworkDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DD121381522005104CA /* AddArtworkDescriptionView.swift */; };
 		3AF62DD521381601005104CA /* PickArtworkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AF62DD421381601005104CA /* PickArtworkView.xib */; };
@@ -86,6 +85,9 @@
 /* Begin PBXFileReference section */
 		3A01A067214159030012C636 /* MyArtboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtboard+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtboard+CoreDataClass.swift"; sourceTree = "<absolute>"; };
 		3A01A068214159040012C636 /* MyArtboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtboard+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtboard+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		3A01A06C214161510012C636 /* APFormSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APFormSheetViewController.swift; sourceTree = "<group>"; };
+		3A01A07021417DAD0012C636 /* NewRepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRepoViewController.swift; sourceTree = "<group>"; };
+		3A01A07221417E120012C636 /* ArtworkForkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkForkViewController.swift; sourceTree = "<group>"; };
 		3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A0DDF372136662E005DEE82 /* CachedRepo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedRepo+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedRepo+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedLecture+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedLecture+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -96,8 +98,6 @@
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
 		3A18C8942121650E007F63F2 /* LectureLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureLayerView.swift; sourceTree = "<group>"; };
-		3A192A76213E7DA10079D1BF /* NewRepo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = NewRepo.storyboard; sourceTree = "<group>"; };
-		3A192A78213E7DAE0079D1BF /* NewRepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRepoViewController.swift; sourceTree = "<group>"; };
 		3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
 		3A4043992109D04100467990 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		3A40439B2109D04F00467990 /* Gallery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Gallery.xib; sourceTree = "<group>"; };
@@ -143,8 +143,8 @@
 		3AC78BBB2139543500045864 /* Personal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Personal.storyboard; sourceTree = "<group>"; };
 		3AC78BBD21395E7D00045864 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		3ACC14AD2109C095002BCDFF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		3AD10482211BD94B006C1039 /* GalleryCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCollectionViewCell.swift; sourceTree = "<group>"; };
-		3AD10483211BD94B006C1039 /* GalleryCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GalleryCollectionViewCell.xib; sourceTree = "<group>"; };
+		3AD10482211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
+		3AD10483211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ArtworkPreviewCollectionViewCell.xib; sourceTree = "<group>"; };
 		3AD10488211BE086006C1039 /* LectureTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureTableViewCell.swift; sourceTree = "<group>"; };
 		3AD10489211BE086006C1039 /* LectureTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LectureTableViewCell.xib; sourceTree = "<group>"; };
 		3ADC3C6321030FF800C31637 /* StepTitleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = StepTitleView.xib; sourceTree = "<group>"; };
@@ -153,8 +153,6 @@
 		3ADC3C6D2103189700C31637 /* SubStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStepView.swift; sourceTree = "<group>"; };
 		3ADC3C6F21031FA400C31637 /* ArtboardEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtboardEdit.storyboard; sourceTree = "<group>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
-		3AF62DCB21380830005104CA /* ArtworkFork.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtworkFork.storyboard; sourceTree = "<group>"; };
-		3AF62DCD213813FD005104CA /* ArtworkForkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkForkViewController.swift; sourceTree = "<group>"; };
 		3AF62DCF213814F4005104CA /* PickArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickArtworkView.swift; sourceTree = "<group>"; };
 		3AF62DD121381522005104CA /* AddArtworkDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArtworkDescriptionView.swift; sourceTree = "<group>"; };
 		3AF62DD421381601005104CA /* PickArtworkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = PickArtworkView.xib; sourceTree = "<group>"; };
@@ -184,11 +182,22 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		3A01A06B214161060012C636 /* ReusableViews */ = {
+			isa = PBXGroup;
+			children = (
+				3A01A06C214161510012C636 /* APFormSheetViewController.swift */,
+				3ABF6921211C462900709831 /* APTextFieldView.xib */,
+				3ABF691F211C461800709831 /* APTextFieldView.swift */,
+				3AD10483211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.xib */,
+				3AD10482211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.swift */,
+			);
+			path = ReusableViews;
+			sourceTree = "<group>";
+		};
 		3A192A7A213E7DB60079D1BF /* NewRepo */ = {
 			isa = PBXGroup;
 			children = (
-				3A192A76213E7DA10079D1BF /* NewRepo.storyboard */,
-				3A192A78213E7DAE0079D1BF /* NewRepoViewController.swift */,
+				3A01A07021417DAD0012C636 /* NewRepoViewController.swift */,
 				3AAE8862213E81010065FD24 /* NewRepoView.xib */,
 				3AAE8860213E80F50065FD24 /* NewRepoView.swift */,
 			);
@@ -210,8 +219,6 @@
 			children = (
 				3A40439B2109D04F00467990 /* Gallery.xib */,
 				3A4043992109D04100467990 /* GalleryView.swift */,
-				3AD10483211BD94B006C1039 /* GalleryCollectionViewCell.xib */,
-				3AD10482211BD94B006C1039 /* GalleryCollectionViewCell.swift */,
 				3A48E212211DD1D700B34B24 /* ArtworkDetail.storyboard */,
 				3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */,
 				3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */,
@@ -338,6 +345,7 @@
 				3A4043A12109D75000467990 /* Main */,
 				3ABF691A211C447900709831 /* Login */,
 				3A4043982109CCB900467990 /* Gallery */,
+				3A01A06B214161060012C636 /* ReusableViews */,
 				3ACC14B52109CB92002BCDFF /* Lecture */,
 				3A75171021086F8600373189 /* ArtboardEdit */,
 				3AC78BBA2139540800045864 /* Personal */,
@@ -352,8 +360,6 @@
 			children = (
 				3ABF691B211C449300709831 /* Login.storyboard */,
 				3ABF691D211C458C00709831 /* LoginViewController.swift */,
-				3ABF6921211C462900709831 /* APTextFieldView.xib */,
-				3ABF691F211C461800709831 /* APTextFieldView.swift */,
 			);
 			path = Login;
 			sourceTree = "<group>";
@@ -383,8 +389,7 @@
 		3AF62DD32138156B005104CA /* ForkRepo */ = {
 			isa = PBXGroup;
 			children = (
-				3AF62DCB21380830005104CA /* ArtworkFork.storyboard */,
-				3AF62DCD213813FD005104CA /* ArtworkForkViewController.swift */,
+				3A01A07221417E120012C636 /* ArtworkForkViewController.swift */,
 				3AF62DD421381601005104CA /* PickArtworkView.xib */,
 				3AF62DCF213814F4005104CA /* PickArtworkView.swift */,
 				3AF62DD621381A6F005104CA /* AddArtworkDescriptionView.xib */,
@@ -466,16 +471,14 @@
 			files = (
 				3AF62DD521381601005104CA /* PickArtworkView.xib in Resources */,
 				3AAE8863213E81010065FD24 /* NewRepoView.xib in Resources */,
-				3A192A77213E7DA10079D1BF /* NewRepo.storyboard in Resources */,
 				3ADC3C7021031FA400C31637 /* ArtboardEdit.storyboard in Resources */,
-				3AD10485211BD94B006C1039 /* GalleryCollectionViewCell.xib in Resources */,
+				3AD10485211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.xib in Resources */,
 				3ABF691C211C449300709831 /* Login.storyboard in Resources */,
 				3A8C93AE20F895EE005D5BD1 /* LaunchScreen.storyboard in Resources */,
 				3AB2F8DB213849E400152093 /* LocalArtworkCollectionViewCell.xib in Resources */,
 				3A48E213211DD1D700B34B24 /* ArtworkDetail.storyboard in Resources */,
 				3A40439C2109D04F00467990 /* Gallery.xib in Resources */,
 				3AC78BBC2139543500045864 /* Personal.storyboard in Resources */,
-				3AF62DCC21380830005104CA /* ArtworkFork.storyboard in Resources */,
 				3ADC3C6C2103188600C31637 /* SubStepView.xib in Resources */,
 				3A48E211211DD0DC00B34B24 /* LectureDetail.storyboard in Resources */,
 				3AD1048B211BE086006C1039 /* LectureTableViewCell.xib in Resources */,
@@ -547,7 +550,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */,
-				3AD10484211BD94B006C1039 /* GalleryCollectionViewCell.swift in Sources */,
+				3AD10484211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.swift in Sources */,
 				3A0DDF432136662F005DEE82 /* CachedArtwork+CoreDataClass.swift in Sources */,
 				3A01A069214159040012C636 /* MyArtboard+CoreDataClass.swift in Sources */,
 				3AF62DD0213814F4005104CA /* PickArtworkView.swift in Sources */,
@@ -556,7 +559,6 @@
 				3A48E20D211D865C00B34B24 /* ArtworkDetailViewController.swift in Sources */,
 				3AB2F8DA213849E400152093 /* LocalArtworkCollectionViewCell.swift in Sources */,
 				3AC000D421357E3300020952 /* AccountManager.swift in Sources */,
-				3AF62DCE213813FD005104CA /* ArtworkForkViewController.swift in Sources */,
 				3AC78BBE21395E7D00045864 /* PersonalViewController.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtboardView.swift in Sources */,
 				3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */,
@@ -570,8 +572,8 @@
 				3A6B32062104BD7500F2C63E /* MasterNavigationView.swift in Sources */,
 				3A75172221087F8E00373189 /* ToolBarView.swift in Sources */,
 				3A6B32082105789E00F2C63E /* APTheme.swift in Sources */,
-				3A192A79213E7DAE0079D1BF /* NewRepoViewController.swift in Sources */,
 				3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */,
+				3A01A07121417DAD0012C636 /* NewRepoViewController.swift in Sources */,
 				3AAE8861213E80F50065FD24 /* NewRepoView.swift in Sources */,
 				3A94FBE32109F935009BE7E1 /* AddArtworkView.swift in Sources */,
 				3ADC3C6A210312AE00C31637 /* StepTitleView.swift in Sources */,
@@ -587,6 +589,7 @@
 				3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */,
 				3AD1048A211BE086006C1039 /* LectureTableViewCell.swift in Sources */,
 				3AC000D22135631500020952 /* APWebService.swift in Sources */,
+				3A01A07321417E120012C636 /* ArtworkForkViewController.swift in Sources */,
 				3AF62DD221381522005104CA /* AddArtworkDescriptionView.swift in Sources */,
 				3A0DDF4721366630005DEE82 /* CachedRepo+CoreDataClass.swift in Sources */,
 				3A0DDF4621366630005DEE82 /* CachedArtwork+CoreDataProperties.swift in Sources */,
@@ -594,6 +597,7 @@
 				3ABF691E211C458C00709831 /* LoginViewController.swift in Sources */,
 				3A01A06A214159040012C636 /* MyArtboard+CoreDataProperties.swift in Sources */,
 				3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */,
+				3A01A06D214161510012C636 /* APFormSheetViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

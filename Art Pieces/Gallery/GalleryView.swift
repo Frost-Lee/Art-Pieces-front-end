@@ -10,15 +10,6 @@ import UIKit
 import CHTCollectionViewWaterfallLayout
 import MJRefresh
 
-struct ArtworkPreview {
-    var title: String
-    var keyPhoto: UIImage
-    var creatorName: String
-    var creatorPortrait: UIImage?
-    var numberOfForks: Int
-    var numberOfStars: Int
-}
-
 protocol GalleryDelegate: class {
     func galleryItemDidSelected(at index: Int)
 }
@@ -44,8 +35,8 @@ class GalleryView: UIView {
         waterfallLayout.minimumColumnSpacing = 36.0
         waterfallLayout.minimumInteritemSpacing = 60.0
         galleryCollectionView.setCollectionViewLayout(waterfallLayout, animated: false)
-        galleryCollectionView.register(UINib(nibName: "GalleryCollectionViewCell", bundle: Bundle.main),
-                                       forCellWithReuseIdentifier: "galleryCollectionViewCell")
+        galleryCollectionView.register(UINib(nibName: "ArtworkPreviewCollectionViewCell", bundle: Bundle.main),
+                                       forCellWithReuseIdentifier: "artworkPreviewCollectionViewCell")
         galleryCollectionView.reloadData()
     }
     
@@ -96,8 +87,8 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt
         indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "galleryCollectionViewCell",
-                                                      for: indexPath) as! GalleryCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "artworkPreviewCollectionViewCell",
+                                                      for: indexPath) as! ArtworkPreviewCollectionViewCell
         return cell
     }
     

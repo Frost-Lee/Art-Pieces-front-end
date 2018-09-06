@@ -133,10 +133,7 @@ extension MainViewController: MasterNavigationDelegate {
 extension MainViewController: AddArtworkDelegate {
     func importButtonDidTapped(_ sender: UIButton) {
         addArtworkView.deactivate()
-        let storyboard = UIStoryboard(name: "NewRepo", bundle: Bundle.main)
-        let viewController = storyboard.instantiateInitialViewController()!
-        viewController.modalPresentationStyle = .formSheet
-        present(viewController, animated: true, completion: nil)
+        present(NewRepoViewController(), animated: true, completion: nil)
     }
     
     func createButtonDidTapped(_ sender: UIButton) {

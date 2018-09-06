@@ -23,10 +23,7 @@ class ArtworkDetailViewController: UIViewController {
     }
 
     @IBAction func newButtonTapped(_ sender: UIButton) {
-        let storyboard = UIStoryboard(name: "ArtworkFork", bundle: Bundle.main)
-        let viewController = storyboard.instantiateInitialViewController() as! ArtworkForkViewController
-        viewController.modalPresentationStyle = .formSheet
-        self.present(viewController, animated: true, completion: nil)
+        self.present(ArtworkForkViewController(), animated: true, completion: nil)
     }
     
 }
