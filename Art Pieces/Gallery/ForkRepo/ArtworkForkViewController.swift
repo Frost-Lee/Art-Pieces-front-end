@@ -90,6 +90,7 @@ extension ArtworkForkViewController: PickArtworkDelegate {
 
 extension ArtworkForkViewController: AddArtworkDescriptionDelegate {
     func shareButtonTapped() {
+        addArtworkDescriptionView.startAnimating()
         let user = AccountManager.defaultManager.currentUser!
         var keyPhotoPath: String
         var title: String

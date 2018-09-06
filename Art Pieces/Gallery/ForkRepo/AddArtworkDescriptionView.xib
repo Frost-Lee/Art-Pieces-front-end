@@ -72,6 +72,10 @@
                         <constraint firstAttribute="width" secondItem="0Ti-hF-i5W" secondAttribute="height" multiplier="271:203" id="yPK-Q9-YYB"/>
                     </constraints>
                 </imageView>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="ogV-Fw-nlr">
+                    <rect key="frame" x="477" y="663" width="20" height="20"/>
+                    <color key="color" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -84,6 +88,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="OIk-U5-cys" secondAttribute="bottom" constant="20" id="PGB-uo-s2p"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="TnI-7J-d9X" secondAttribute="trailing" constant="20" id="PvR-iH-vNt"/>
                 <constraint firstItem="0Ti-hF-i5W" firstAttribute="top" secondItem="TnI-7J-d9X" secondAttribute="bottom" constant="8" id="Unp-AV-lsD"/>
+                <constraint firstItem="ogV-Fw-nlr" firstAttribute="centerY" secondItem="OIk-U5-cys" secondAttribute="centerY" id="W1A-Y3-xgj"/>
                 <constraint firstItem="xWA-Rw-3tb" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="28" id="Yzc-PM-xhP"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="0Ti-hF-i5W" secondAttribute="trailing" constant="20" id="dRX-Cn-FZb"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="OIk-U5-cys" secondAttribute="trailing" constant="20" id="l7r-2l-XWK"/>
@@ -93,6 +98,7 @@
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="xWA-Rw-3tb" secondAttribute="trailing" constant="28" id="th3-f6-46B"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Fwe-6b-EdS" secondAttribute="trailing" constant="72" id="v7q-7M-oNE"/>
                 <constraint firstItem="Fwe-6b-EdS" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="wwg-0a-HaA"/>
+                <constraint firstItem="ogV-Fw-nlr" firstAttribute="centerX" secondItem="OIk-U5-cys" secondAttribute="centerX" id="zPv-BU-TFm"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
@@ -100,6 +106,8 @@
                 <outlet property="artworkDescriptionTextField" destination="TnI-7J-d9X" id="8gm-wF-WWb"/>
                 <outlet property="artworkKeyPhotoImageView" destination="0Ti-hF-i5W" id="PKi-WK-l7J"/>
                 <outlet property="placeholderLabel" destination="xWA-Rw-3tb" id="6sP-is-LRu"/>
+                <outlet property="shareButton" destination="OIk-U5-cys" id="LWL-yE-CMD"/>
+                <outlet property="spinner" destination="ogV-Fw-nlr" id="U96-08-Lo9"/>
             </connections>
             <point key="canvasLocation" x="80" y="153"/>
         </view>

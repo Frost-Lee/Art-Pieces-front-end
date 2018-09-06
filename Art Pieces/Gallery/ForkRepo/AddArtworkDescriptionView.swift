@@ -21,6 +21,8 @@ class AddArtworkDescriptionView: UIView {
         }
     }
     @IBOutlet weak var placeholderLabel: UILabel!
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     weak var delegate: AddArtworkDescriptionDelegate?
     
@@ -30,6 +32,11 @@ class AddArtworkDescriptionView: UIView {
     
     @IBAction func shareButtonTapped(_ sender: UIButton) {
         delegate?.shareButtonTapped()
+    }
+    
+    func startAnimating() {
+        shareButton.isHidden = true
+        spinner.startAnimating()
     }
     
 }
