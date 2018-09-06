@@ -8,25 +8,25 @@
 
 import UIKit
 
-class LectureLayerView: UIView {
+class ArtboardLayerView: UIView {
     
-    var lectureLayer: Layer!
+    var artboardLayer: Layer!
     var eraseBufferStroke: Stroke?
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.backgroundColor = UIColor.clear
-        lectureLayer = Layer()
+        artboardLayer = Layer()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.backgroundColor = UIColor.clear
-        lectureLayer = Layer()
+        artboardLayer = Layer()
     }
     
     override func draw(_ rect: CGRect) {
-        for stroke in lectureLayer.strokes {
+        for stroke in artboardLayer.strokes {
             render(stroke: stroke)
         }
         render(stroke: eraseBufferStroke)
@@ -34,7 +34,7 @@ class LectureLayerView: UIView {
     
     func mergeEraseStroke() {
         if let eraseStroke = eraseBufferStroke {
-            lectureLayer.add(stroke: eraseStroke)
+            artboardLayer.add(stroke: eraseStroke)
             eraseBufferStroke = nil
         }
     }

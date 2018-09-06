@@ -92,23 +92,6 @@ class PersonalViewController: UIViewController {
     }
     
     private func loadProjects() {
-        let creatorPortrait = getPersonalPortrait(useGrayPortrait: true)
-        let lectures = DataManager.defaultManager.getAllLectures()
-        let artworks = DataManager.defaultManager.getAllArtworks()
-        for lecture in lectures {
-            let lectureKeyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
-            let project = ProjectPreview(isLecture: true, uuid: lecture.uuid!, keyPhoto: lectureKeyPhoto, title: lecture.title!,
-                                  creatorName: localUser?.name ?? "Login", creatorPortrait: creatorPortrait,
-                                  numberOfForks: 0, numberOfStars: 0)
-            projects.append(project)
-        }
-        for artwork in artworks {
-            let artworkKeyPhoto = DataManager.defaultManager.getImage(path: artwork.keyPhotoPath!)
-            let project = ProjectPreview(isLecture: false, uuid: artwork.uuid!, keyPhoto: artworkKeyPhoto, title: artwork.title!,
-                                  creatorName: localUser?.name ?? "Login", creatorPortrait: creatorPortrait,
-                                  numberOfForks: 0, numberOfStars: 0)
-            projects.append(project)
-        }
     }
     
     private func getPersonalPortrait(useGrayPortrait: Bool = false) -> UIImage {
@@ -152,21 +135,5 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout, UICollecti
 
 extension PersonalViewController: GalleryCollectionDelegate {
     func moreButtonDidTapped(index: Int) {
-        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
-        let deletion = UIAlertAction(title: "Delete", style: .destructive) { action in
-            if self.projects[index].isLecture {
-                DataManager.defaultManager.removeLecture(uuid: self.projects[index].uuid)
-            } else {
-                DataManager.defaultManager.removeArtwork(uuid: self.projects[index].uuid)
-            }
-            self.projects.remove(at: index)
-            self.personalCollectionView.reloadData()
-        }
-        alert.addAction(deletion)
-        let anchor = personalCollectionView.cellForItem(at: IndexPath(row: index, section: 0))
-            as! GalleryCollectionViewCell
-        alert.popoverPresentationController?.sourceView = anchor.moreButton
-        alert.popoverPresentationController?.sourceRect = anchor.moreButton.bounds
-        present(alert, animated: true, completion: nil)
     }
 }

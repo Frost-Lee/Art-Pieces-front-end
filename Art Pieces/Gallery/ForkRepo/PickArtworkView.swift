@@ -110,8 +110,8 @@ extension PickArtworkView: UIImagePickerControllerDelegate, UINavigationControll
         info: [UIImagePickerController.InfoKey : Any]) {
         let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
         let newArtworkID = UUID()
-        DataManager.defaultManager.saveArtwork(title: "New Artwork", description: nil, keyPhoto:
-            selectedImage!, uuid: newArtworkID)
+//        DataManager.defaultManager.saveArtwork(title: "New Artwork", description: nil, keyPhoto:
+//            selectedImage!, uuid: newArtworkID)
         selectedProject = (false, newArtworkID)
         nextButtonTapped(nextButton)
     }

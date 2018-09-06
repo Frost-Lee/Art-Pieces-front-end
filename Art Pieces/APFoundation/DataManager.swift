@@ -17,96 +17,53 @@ class DataManager {
     
     static let defaultManager = DataManager()
     
-    func saveArtwork(title: String, description: String?, keyPhoto: UIImage, uuid: UUID) {
-        DispatchQueue.main.async {
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            let context = appDelegate.persistentContainer.viewContext
-            let entity = NSEntityDescription.entity(forEntityName: "MyArtwork", in: context)
-            let newArtwork = MyArtwork(entity: entity!, insertInto: context)
-            newArtwork.title = title
-            newArtwork.artworkDescription = description
-            newArtwork.timestamp = Date() as NSDate
-            newArtwork.keyPhotoPath = self.saveImage(photo: keyPhoto, isCachedPhoto: false)
-            newArtwork.uuid = uuid
-            try! context.save()
-        }
-    }
-    
-    func saveLecture(title: String, description: String?, content: Data,
-                     previewPhoto: UIImage, stepPreviewPhotos: [UIImage]) {
+    func saveArtboard(keyPhoto: UIImage, stepPreviewPhotoArray: [UIImage], content: Data,
+                      email: String, title: String, description: String) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "MyLecture", in: context)
-        let newLecture = MyLecture(entity: entity!, insertInto: context)
-        newLecture.title = title
-        newLecture.lectureDescription = description ?? ""
-        newLecture.content = content as NSData
-        newLecture.numberOfSteps = Int32(stepPreviewPhotos.count)
-        newLecture.uuid = UUID()
-        newLecture.timestamp = Date() as NSDate
-        newLecture.previewPhotoPath = saveImage(photo: previewPhoto, isCachedPhoto: false)
-        var stepPreviewPhotoPath: String = ""
-        for photo in stepPreviewPhotos {
-            stepPreviewPhotoPath += saveImage(photo: photo, isCachedPhoto: false) + ";"
+        let entity = NSEntityDescription.entity(forEntityName: "MyArtboard", in: context)
+        let newArtboard = MyArtboard(entity: entity!, insertInto: context)
+        var previewPhotoArrayPath = ""
+        for image in stepPreviewPhotoArray {
+            previewPhotoArrayPath += (saveImage(photo: image, isCachedPhoto: false) + ";")
         }
-        newLecture.stepPreviewPhotoPathArray = stepPreviewPhotoPath
+        newArtboard.keyPhotoPath = saveImage(photo: keyPhoto, isCachedPhoto: false)
+        newArtboard.stepPreviewPhotoPath = previewPhotoArrayPath
+        newArtboard.content = content as NSData
+        newArtboard.creatorEmail = email
+        newArtboard.title = title
+        newArtboard.boardDescription = description
+        newArtboard.timestamp = Date() as NSDate
+        newArtboard.uuid = UUID()
         try! context.save()
     }
     
-    func removeArtwork(uuid: UUID) {
+    func getArtboard(uuid: UUID) -> MyArtboard? {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtwork")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtboard")
         fetchRequest.predicate = NSPredicate(format: "uuid=\"\(uuid)\"")
-        let objectSet = try! context.fetch(fetchRequest) as! [NSManagedObject]
-        for object in objectSet {
+        let fetchedArtboards = try! context.fetch(fetchRequest) as! [MyArtboard]
+        return fetchedArtboards.first
+    }
+    
+    func getAllArtboards() -> [MyArtboard] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtboard")
+        let fetchedArtboards = try! context.fetch(fetchRequest) as! [MyArtboard]
+        return fetchedArtboards
+    }
+    
+    func removeArtboard(uuid: UUID) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtboard")
+        fetchRequest.predicate = NSPredicate(format: "uuid=\"\(uuid)\"")
+        let objects = try! context.fetch(fetchRequest) as! [NSManagedObject]
+        for object in objects {
             context.delete(object)
         }
-    }
-    
-    func removeLecture(uuid: UUID) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyLecture")
-        fetchRequest.predicate = NSPredicate(format: "uuid=\"\(uuid)\"")
-        let objectSet = try! context.fetch(fetchRequest) as! [NSManagedObject]
-        for object in objectSet {
-            context.delete(object)
-        }
-    }
-    
-    func getAllArtworks() -> [MyArtwork] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtwork")
-        let fetchedArtworks = try! context.fetch(fetchRequest) as! [MyArtwork]
-        return fetchedArtworks
-    }
-    
-    func getAllLectures() -> [MyLecture] {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyLecture")
-        let fetchedLectures = try! context.fetch(fetchRequest) as! [MyLecture]
-        return fetchedLectures
-    }
-    
-    func getArtwork(uuid: UUID) -> MyArtwork? {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtwork")
-        fetchRequest.predicate = NSPredicate(format: "uuid=\(uuid)")
-        let fetchedArtworks = try! context.fetch(fetchRequest) as! [MyArtwork]
-        return fetchedArtworks.first
-    }
-    
-    func getLecture(uuid: UUID) -> MyLecture? {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchedRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyLecture")
-        fetchedRequest.predicate = NSPredicate(format: "uuid=\(uuid)")
-        let fetchedLectures = try! context.fetch(fetchedRequest) as! [MyLecture]
-        return fetchedLectures.first
     }
     
     func saveImage(photo: UIImage, isCachedPhoto: Bool) -> String {

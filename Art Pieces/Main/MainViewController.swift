@@ -141,7 +141,7 @@ extension MainViewController: AddArtworkDelegate {
     
     func createButtonDidTapped(_ sender: UIButton) {
         addArtworkView.deactivate()
-        performSegue(withIdentifier: "showLectureEditViewController", sender: nil)
+        performSegue(withIdentifier: "showArtboardEditViewController", sender: nil)
     }
 }
 

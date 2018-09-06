@@ -78,8 +78,8 @@ extension NewRepoViewController: NewRepoDelegate {
                 APWebService.defaultManager.createRepo(creatorEmail: user.email, creatorPassword:
                     user.password, title: title, description: description, selfID: newRepoID,
                                    keyArtworkID: newArtworkID) {
-                    DataManager.defaultManager.saveArtwork(title: title, description:
-                        description, keyPhoto: keyPhoto, uuid: newArtworkID)
+//                    DataManager.defaultManager.saveArtwork(title: title, description:
+//                        description, keyPhoto: keyPhoto, uuid: newArtworkID)
                     self.dismiss(animated: true, completion: nil)
                 }
         }

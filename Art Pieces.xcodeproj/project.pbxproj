@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		14706C28FE337856C9FFD0F3 /* Pods_Art_Pieces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08116606DD1E7DF354C012A /* Pods_Art_Pieces.framework */; };
+		3A01A069214159040012C636 /* MyArtboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A067214159030012C636 /* MyArtboard+CoreDataClass.swift */; };
+		3A01A06A214159040012C636 /* MyArtboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A068214159040012C636 /* MyArtboard+CoreDataProperties.swift */; };
 		3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */; };
 		3A0DDF412136662F005DEE82 /* CachedRepo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF372136662E005DEE82 /* CachedRepo+CoreDataProperties.swift */; };
 		3A0DDF422136662F005DEE82 /* CachedLecture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */; };
@@ -46,7 +48,7 @@
 		3A94FBE12109F8F1009BE7E1 /* AddArtworkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A94FBE02109F8F1009BE7E1 /* AddArtworkView.xib */; };
 		3A94FBE32109F935009BE7E1 /* AddArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94FBE22109F935009BE7E1 /* AddArtworkView.swift */; };
 		3AA2BAA12136C02900C8AB4C /* HeadWalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2BAA02136C02900C8AB4C /* HeadWalkThroughViewController.swift */; };
-		3AA7BBC221041BE0004E20CE /* LectureEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */; };
+		3AA7BBC221041BE0004E20CE /* ArtboardEditViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC121041BE0004E20CE /* ArtboardEditViewController.swift */; };
 		3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */; };
 		3AAE8861213E80F50065FD24 /* NewRepoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AAE8860213E80F50065FD24 /* NewRepoView.swift */; };
 		3AAE8863213E81010065FD24 /* NewRepoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3AAE8862213E81010065FD24 /* NewRepoView.xib */; };
@@ -58,12 +60,8 @@
 		3ABF6922211C462900709831 /* APTextFieldView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ABF6921211C462900709831 /* APTextFieldView.xib */; };
 		3AC000D22135631500020952 /* APWebService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC000D12135631500020952 /* APWebService.swift */; };
 		3AC000D421357E3300020952 /* AccountManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC000D321357E3300020952 /* AccountManager.swift */; };
-		3AC06AC020FB670600AA0138 /* LectureEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06ABF20FB670600AA0138 /* LectureEditView.swift */; };
+		3AC06AC020FB670600AA0138 /* ArtboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06ABF20FB670600AA0138 /* ArtboardView.swift */; };
 		3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */; };
-		3AC78BAE2139291300045864 /* MyArtwork+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC78BAA2139291300045864 /* MyArtwork+CoreDataClass.swift */; };
-		3AC78BAF2139291300045864 /* MyArtwork+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC78BAB2139291300045864 /* MyArtwork+CoreDataProperties.swift */; };
-		3AC78BB82139433600045864 /* MyLecture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC78BB62139433500045864 /* MyLecture+CoreDataClass.swift */; };
-		3AC78BB92139433600045864 /* MyLecture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC78BB72139433500045864 /* MyLecture+CoreDataProperties.swift */; };
 		3AC78BBC2139543500045864 /* Personal.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AC78BBB2139543500045864 /* Personal.storyboard */; };
 		3AC78BBE21395E7D00045864 /* PersonalViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AC78BBD21395E7D00045864 /* PersonalViewController.swift */; };
 		3ACC14AE2109C095002BCDFF /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ACC14AD2109C095002BCDFF /* MainViewController.swift */; };
@@ -75,7 +73,7 @@
 		3ADC3C6A210312AE00C31637 /* StepTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC3C69210312AE00C31637 /* StepTitleView.swift */; };
 		3ADC3C6C2103188600C31637 /* SubStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6B2103188600C31637 /* SubStepView.xib */; };
 		3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6D2103189700C31637 /* SubStepView.swift */; };
-		3ADC3C7021031FA400C31637 /* LectureEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6F21031FA400C31637 /* LectureEdit.storyboard */; };
+		3ADC3C7021031FA400C31637 /* ArtboardEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6F21031FA400C31637 /* ArtboardEdit.storyboard */; };
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
 		3AF62DCC21380830005104CA /* ArtworkFork.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3AF62DCB21380830005104CA /* ArtworkFork.storyboard */; };
 		3AF62DCE213813FD005104CA /* ArtworkForkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DCD213813FD005104CA /* ArtworkForkViewController.swift */; };
@@ -86,6 +84,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A01A067214159030012C636 /* MyArtboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtboard+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtboard+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		3A01A068214159040012C636 /* MyArtboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtboard+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtboard+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A0DDF372136662E005DEE82 /* CachedRepo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedRepo+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedRepo+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedLecture+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedLecture+CoreDataClass.swift"; sourceTree = "<absolute>"; };
@@ -126,7 +126,7 @@
 		3A94FBE02109F8F1009BE7E1 /* AddArtworkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddArtworkView.xib; sourceTree = "<group>"; };
 		3A94FBE22109F935009BE7E1 /* AddArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArtworkView.swift; sourceTree = "<group>"; };
 		3AA2BAA02136C02900C8AB4C /* HeadWalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadWalkThroughViewController.swift; sourceTree = "<group>"; };
-		3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureEditViewController.swift; sourceTree = "<group>"; };
+		3AA7BBC121041BE0004E20CE /* ArtboardEditViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardEditViewController.swift; sourceTree = "<group>"; };
 		3AA7BBC521041C15004E20CE /* StepTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTableViewCell.swift; sourceTree = "<group>"; };
 		3AAE8860213E80F50065FD24 /* NewRepoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRepoView.swift; sourceTree = "<group>"; };
 		3AAE8862213E81010065FD24 /* NewRepoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NewRepoView.xib; sourceTree = "<group>"; };
@@ -138,12 +138,8 @@
 		3ABF6921211C462900709831 /* APTextFieldView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = APTextFieldView.xib; sourceTree = "<group>"; };
 		3AC000D12135631500020952 /* APWebService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APWebService.swift; sourceTree = "<group>"; };
 		3AC000D321357E3300020952 /* AccountManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountManager.swift; sourceTree = "<group>"; };
-		3AC06ABF20FB670600AA0138 /* LectureEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureEditView.swift; sourceTree = "<group>"; };
+		3AC06ABF20FB670600AA0138 /* ArtboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardView.swift; sourceTree = "<group>"; };
 		3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleStrokeView.swift; sourceTree = "<group>"; };
-		3AC78BAA2139291300045864 /* MyArtwork+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtwork+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtwork+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		3AC78BAB2139291300045864 /* MyArtwork+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtwork+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtwork+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		3AC78BB62139433500045864 /* MyLecture+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyLecture+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyLecture+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		3AC78BB72139433500045864 /* MyLecture+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyLecture+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyLecture+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3AC78BBB2139543500045864 /* Personal.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Personal.storyboard; sourceTree = "<group>"; };
 		3AC78BBD21395E7D00045864 /* PersonalViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonalViewController.swift; sourceTree = "<group>"; };
 		3ACC14AD2109C095002BCDFF /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
@@ -155,7 +151,7 @@
 		3ADC3C69210312AE00C31637 /* StepTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepTitleView.swift; sourceTree = "<group>"; };
 		3ADC3C6B2103188600C31637 /* SubStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubStepView.xib; sourceTree = "<group>"; };
 		3ADC3C6D2103189700C31637 /* SubStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStepView.swift; sourceTree = "<group>"; };
-		3ADC3C6F21031FA400C31637 /* LectureEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = LectureEdit.storyboard; sourceTree = "<group>"; };
+		3ADC3C6F21031FA400C31637 /* ArtboardEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtboardEdit.storyboard; sourceTree = "<group>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AF62DCB21380830005104CA /* ArtworkFork.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtworkFork.storyboard; sourceTree = "<group>"; };
 		3AF62DCD213813FD005104CA /* ArtworkForkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkForkViewController.swift; sourceTree = "<group>"; };
@@ -243,10 +239,8 @@
 			children = (
 				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
 				3A64AA5721359984000B36E0 /* LocalDataModel.xcdatamodeld */,
-				3AC78BB62139433500045864 /* MyLecture+CoreDataClass.swift */,
-				3AC78BB72139433500045864 /* MyLecture+CoreDataProperties.swift */,
-				3AC78BAA2139291300045864 /* MyArtwork+CoreDataClass.swift */,
-				3AC78BAB2139291300045864 /* MyArtwork+CoreDataProperties.swift */,
+				3A01A067214159030012C636 /* MyArtboard+CoreDataClass.swift */,
+				3A01A068214159040012C636 /* MyArtboard+CoreDataProperties.swift */,
 				3A0DDF3D2136662F005DEE82 /* CachedRepo+CoreDataClass.swift */,
 				3A0DDF372136662E005DEE82 /* CachedRepo+CoreDataProperties.swift */,
 				3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */,
@@ -271,15 +265,15 @@
 			path = APFoundation;
 			sourceTree = "<group>";
 		};
-		3A75171021086F8600373189 /* LectureEdit */ = {
+		3A75171021086F8600373189 /* ArtboardEdit */ = {
 			isa = PBXGroup;
 			children = (
-				3ADC3C6F21031FA400C31637 /* LectureEdit.storyboard */,
-				3AA7BBC121041BE0004E20CE /* LectureEditViewController.swift */,
+				3ADC3C6F21031FA400C31637 /* ArtboardEdit.storyboard */,
+				3AA7BBC121041BE0004E20CE /* ArtboardEditViewController.swift */,
 				3A75171221087BE300373189 /* StepTableView */,
 				3A75171121087BAB00373189 /* ToolBar */,
 			);
-			path = LectureEdit;
+			path = ArtboardEdit;
 			sourceTree = "<group>";
 		};
 		3A75171121087BAB00373189 /* ToolBar */ = {
@@ -305,15 +299,15 @@
 			path = StepTableView;
 			sourceTree = "<group>";
 		};
-		3A79F4C720FEF2FC00896C0D /* LectureEditView */ = {
+		3A79F4C720FEF2FC00896C0D /* ArtboardView */ = {
 			isa = PBXGroup;
 			children = (
-				3AC06ABF20FB670600AA0138 /* LectureEditView.swift */,
+				3AC06ABF20FB670600AA0138 /* ArtboardView.swift */,
 				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
 				3A18C8942121650E007F63F2 /* LectureLayerView.swift */,
 				3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */,
 			);
-			path = LectureEditView;
+			path = ArtboardView;
 			sourceTree = "<group>";
 		};
 		3A8C939720F895EC005D5BD1 = {
@@ -345,9 +339,9 @@
 				3ABF691A211C447900709831 /* Login */,
 				3A4043982109CCB900467990 /* Gallery */,
 				3ACC14B52109CB92002BCDFF /* Lecture */,
-				3A75171021086F8600373189 /* LectureEdit */,
+				3A75171021086F8600373189 /* ArtboardEdit */,
 				3AC78BBA2139540800045864 /* Personal */,
-				3A79F4C720FEF2FC00896C0D /* LectureEditView */,
+				3A79F4C720FEF2FC00896C0D /* ArtboardView */,
 				3A75170F21086F1000373189 /* APFoundation */,
 			);
 			path = "Art Pieces";
@@ -473,7 +467,7 @@
 				3AF62DD521381601005104CA /* PickArtworkView.xib in Resources */,
 				3AAE8863213E81010065FD24 /* NewRepoView.xib in Resources */,
 				3A192A77213E7DA10079D1BF /* NewRepo.storyboard in Resources */,
-				3ADC3C7021031FA400C31637 /* LectureEdit.storyboard in Resources */,
+				3ADC3C7021031FA400C31637 /* ArtboardEdit.storyboard in Resources */,
 				3AD10485211BD94B006C1039 /* GalleryCollectionViewCell.xib in Resources */,
 				3ABF691C211C449300709831 /* Login.storyboard in Resources */,
 				3A8C93AE20F895EE005D5BD1 /* LaunchScreen.storyboard in Resources */,
@@ -555,6 +549,7 @@
 				3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */,
 				3AD10484211BD94B006C1039 /* GalleryCollectionViewCell.swift in Sources */,
 				3A0DDF432136662F005DEE82 /* CachedArtwork+CoreDataClass.swift in Sources */,
+				3A01A069214159040012C636 /* MyArtboard+CoreDataClass.swift in Sources */,
 				3AF62DD0213814F4005104CA /* PickArtworkView.swift in Sources */,
 				3ACC14AE2109C095002BCDFF /* MainViewController.swift in Sources */,
 				3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */,
@@ -563,14 +558,12 @@
 				3AC000D421357E3300020952 /* AccountManager.swift in Sources */,
 				3AF62DCE213813FD005104CA /* ArtworkForkViewController.swift in Sources */,
 				3AC78BBE21395E7D00045864 /* PersonalViewController.swift in Sources */,
-				3AC06AC020FB670600AA0138 /* LectureEditView.swift in Sources */,
+				3AC06AC020FB670600AA0138 /* ArtboardView.swift in Sources */,
 				3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */,
 				3A18C8952121650E007F63F2 /* LectureLayerView.swift in Sources */,
-				3AC78BB92139433600045864 /* MyLecture+CoreDataProperties.swift in Sources */,
 				3A64AA5921359984000B36E0 /* LocalDataModel.xcdatamodeld in Sources */,
 				3A0DDF422136662F005DEE82 /* CachedLecture+CoreDataClass.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
-				3AC78BAE2139291300045864 /* MyArtwork+CoreDataClass.swift in Sources */,
 				3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */,
 				3A40439A2109D04100467990 /* GalleryView.swift in Sources */,
 				3A4043A02109D07400467990 /* LectureView.swift in Sources */,
@@ -582,16 +575,14 @@
 				3AAE8861213E80F50065FD24 /* NewRepoView.swift in Sources */,
 				3A94FBE32109F935009BE7E1 /* AddArtworkView.swift in Sources */,
 				3ADC3C6A210312AE00C31637 /* StepTitleView.swift in Sources */,
-				3AA7BBC221041BE0004E20CE /* LectureEditViewController.swift in Sources */,
+				3AA7BBC221041BE0004E20CE /* ArtboardEditViewController.swift in Sources */,
 				3A0DDF412136662F005DEE82 /* CachedRepo+CoreDataProperties.swift in Sources */,
 				3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */,
 				3A0DDF4421366630005DEE82 /* CachedLecture+CoreDataProperties.swift in Sources */,
-				3AC78BB82139433600045864 /* MyLecture+CoreDataClass.swift in Sources */,
 				3AA2BAA12136C02900C8AB4C /* HeadWalkThroughViewController.swift in Sources */,
 				3A48E20F211D866A00B34B24 /* LectureDetailViewController.swift in Sources */,
 				3A0EFB432108663000547E23 /* Extensions.swift in Sources */,
 				3A7D060E213659A900890926 /* DataManager.swift in Sources */,
-				3AC78BAF2139291300045864 /* MyArtwork+CoreDataProperties.swift in Sources */,
 				3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */,
 				3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */,
 				3AD1048A211BE086006C1039 /* LectureTableViewCell.swift in Sources */,
@@ -601,6 +592,7 @@
 				3A0DDF4621366630005DEE82 /* CachedArtwork+CoreDataProperties.swift in Sources */,
 				3ABF6920211C461800709831 /* APTextFieldView.swift in Sources */,
 				3ABF691E211C458C00709831 /* LoginViewController.swift in Sources */,
+				3A01A06A214159040012C636 /* MyArtboard+CoreDataProperties.swift in Sources */,
 				3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -752,7 +744,10 @@
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;
@@ -769,7 +764,10 @@
 				DEVELOPMENT_TEAM = 4C47ZVS5JD;
 				INFOPLIST_FILE = "Art Pieces/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.HyperTeam.Art-Pieces";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.2;

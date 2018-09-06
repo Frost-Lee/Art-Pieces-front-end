@@ -219,7 +219,7 @@ struct Step: Codable {
 
 
 
-struct LectureGuide: Codable {
+struct ArtboardGuide: Codable {
     var steps: [Step] = []
     
     mutating func add(step: Step) {
@@ -248,17 +248,13 @@ struct LectureGuide: Codable {
 }
 
 
-/**
- * Artwork is the top level of stroage, each Artwork correspond to a painting, an Artwork is consisted of
- * multiple stroke layers
- */
-struct Lecture: Codable {
+struct Artboard: Codable {
     var identifier: String
     var layers: [Layer]
-    var guide: LectureGuide?
+    var guide: ArtboardGuide?
     var initialSize: CGSize
     
-    init(layers: [Layer], size: CGSize, identifier: String = "new artwork", guide: LectureGuide? = nil) {
+    init(layers: [Layer], size: CGSize, identifier: String = "new artboard", guide: ArtboardGuide? = nil) {
         self.layers = layers
         initialSize = size
         self.identifier = identifier

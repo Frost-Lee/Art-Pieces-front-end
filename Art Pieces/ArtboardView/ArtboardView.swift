@@ -1,27 +1,27 @@
 //
-//  ArtworkView.swift
+//  ArtboardView.swift
 //  Art Pieces
 //
 //  Created by 李灿晨 on 2018/7/15.
 //  Copyright © 2018 李灿晨. All rights reserved.
 //
 //  Abstract:
-//  The LectureEditView is the view that is used for the user to draw on, StrokeGestureRecognizer is used so that
+//  The ArtboardView is the view that is used for the user to draw on, StrokeGestureRecognizer is used so that
 //  user's interaction with the screen would be recorded.
 
 import UIKit
 
-protocol LectureEditViewDelegate: class {
-    func artworkGuideDidUpdated(_ guide: LectureGuide)
+protocol ArtboardDelegate: class {
+    func artboardGuideDidUpdated(_ guide: ArtboardGuide)
 }
 
-class LectureEditView: UIView, UIGestureRecognizerDelegate {
+class ArtboardView: UIView, UIGestureRecognizerDelegate {
     
-    weak var delegate: LectureEditViewDelegate?
+    weak var delegate: ArtboardDelegate?
     
     var strokeGestureRecognizer: StrokeGestureRecognizer!
     var singleStrokeView: SingleStrokeView!
-    var artworkLayerViews: [LectureLayerView] = []
+    var artboardLayerViews: [ArtboardLayerView] = []
     var currentStroke: Stroke? {
         get {
             return singleStrokeView.stroke
@@ -30,9 +30,9 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
-    var guide: LectureGuide = LectureGuide() {
+    var guide: ArtboardGuide = ArtboardGuide() {
         didSet {
-            delegate?.artworkGuideDidUpdated(guide)
+            delegate?.artboardGuideDidUpdated(guide)
         }
     }
     var stepPreviewPhotoArray: [UIImage] = []
@@ -63,8 +63,8 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
     override func draw(_ rect: CGRect) {
         UIColor.white.set()
         UIRectFill(rect)
-        for artworkLayerView in artworkLayerViews {
-            artworkLayerView.setNeedsDisplay()
+        for artboardLayerView in artboardLayerViews {
+            artboardLayerView.setNeedsDisplay()
         }
     }
     
@@ -80,9 +80,9 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
                     mergeActiveStroke()
                 }
             } else {
-                artworkLayerViews[activeLayerIndex].eraseBufferStroke = updatedStroke
+                artboardLayerViews[activeLayerIndex].eraseBufferStroke = updatedStroke
                 if strokeGestureRecognizer.state == .ended {
-                    artworkLayerViews[activeLayerIndex].mergeEraseStroke()
+                    artboardLayerViews[activeLayerIndex].mergeEraseStroke()
                 }
                 setNeedsDisplay()
             }
@@ -90,17 +90,17 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
     }
     
     func createLayer() {
-        let newLayerView = LectureLayerView(frame: self.bounds)
-        artworkLayerViews.append(newLayerView)
-        switchLayer(to: artworkLayerViews.count - 1)
+        let newLayerView = ArtboardLayerView(frame: self.bounds)
+        artboardLayerViews.append(newLayerView)
+        switchLayer(to: artboardLayerViews.count - 1)
         self.addSubview(newLayerView)
     }
     
     func switchLayer(to index: Int) {
-        guard index >= 0 && index < artworkLayerViews.count else {return}
+        guard index >= 0 && index < artboardLayerViews.count else {return}
         singleStrokeView.removeFromSuperview()
         activeLayerIndex = index
-        self.insertSubview(singleStrokeView, aboveSubview: artworkLayerViews[activeLayerIndex])
+        self.insertSubview(singleStrokeView, aboveSubview: artboardLayerViews[activeLayerIndex])
     }
     
     func addAnotherStep() {
@@ -115,7 +115,7 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
     func adjustAccordingTo(step: Int, subStep: Int) {
         let relatedSubStep = guide.steps[step].subSteps[subStep]
         for (layerIndex, strokeIndex) in relatedSubStep {
-            artworkLayerViews[layerIndex].lectureLayer.strokes[strokeIndex].renderMechanism =
+            artboardLayerViews[layerIndex].artboardLayer.strokes[strokeIndex].renderMechanism =
                 relatedSubStep.renderMechanism
         }
         setNeedsDisplay()
@@ -123,14 +123,14 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
     
     func export() -> Data {
         var layers: [Layer] = []
-        for view in artworkLayerViews {
-            layers.append(view.lectureLayer)
+        for view in artboardLayerViews {
+            layers.append(view.artboardLayer)
         }
-        var newLecture = Lecture(layers: layers, size: self.frame.size)
+        var newArtboard = Artboard(layers: layers, size: self.frame.size)
         if guide.steps.count != 0 {
-            newLecture.guide = guide
+            newArtboard.guide = guide
         }
-        let data = try! JSONEncoder().encode(newLecture)
+        let data = try! JSONEncoder().encode(newArtboard)
         return data
     }
     
@@ -158,7 +158,7 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
     
     private func mergeActiveStroke() {
         if let newStroke = singleStrokeView.stroke {
-            artworkLayerViews[activeLayerIndex].lectureLayer.add(stroke: newStroke)
+            artboardLayerViews[activeLayerIndex].artboardLayer.add(stroke: newStroke)
             singleStrokeView.stroke = nil
         }
         setNeedsDisplay()
@@ -192,11 +192,11 @@ class LectureEditView: UIView, UIGestureRecognizerDelegate {
     
     private func appendStrokeChangeToGuideLog() {
         if isRecordingForLecture && guide.steps.count != 0 {
-            if !(guide.recordStroke(at: activeLayerIndex, index: artworkLayerViews[activeLayerIndex]
-                .lectureLayer.strokes.count - 1)) {
+            if !(guide.recordStroke(at: activeLayerIndex, index: artboardLayerViews[activeLayerIndex]
+                .artboardLayer.strokes.count - 1)) {
                 writeGuideLog(from: nil, to: currentRenderMechanism)
-                guide.recordStroke(at: activeLayerIndex, index: artworkLayerViews[activeLayerIndex]
-                    .lectureLayer.strokes.count - 1)
+                guide.recordStroke(at: activeLayerIndex, index: artboardLayerViews[activeLayerIndex]
+                    .artboardLayer.strokes.count - 1)
             }
         }
     }

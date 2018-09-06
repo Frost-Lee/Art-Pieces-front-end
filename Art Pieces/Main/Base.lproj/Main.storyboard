@@ -37,7 +37,7 @@
                     <navigationItem key="navigationItem" id="Vqu-hh-f9Y"/>
                     <connections>
                         <outlet property="masterNavigationView" destination="9jb-XI-Tr2" id="407-62-Spi"/>
-                        <segue destination="T9S-AX-Fzz" kind="show" identifier="showLectureEditViewController" id="54u-BJ-MnZ"/>
+                        <segue destination="T9S-AX-Fzz" kind="show" identifier="showArtboardEditViewController" id="54u-BJ-MnZ"/>
                         <segue destination="Gj0-1f-68B" kind="show" identifier="showArtworkDetail" id="IqA-M9-PLz"/>
                         <segue destination="n5Q-dQ-fDA" kind="show" identifier="showLectureDetail" id="O1s-Cs-Hab"/>
                         <segue destination="Y7z-AR-Hi8" kind="show" identifier="showPersonal" id="ddg-jI-ZFz"/>
@@ -55,10 +55,10 @@
             </objects>
             <point key="canvasLocation" x="-201" y="2000"/>
         </scene>
-        <!--LectureEdit-->
+        <!--ArtboardEdit-->
         <scene sceneID="AWW-V3-lsH">
             <objects>
-                <viewControllerPlaceholder storyboardName="LectureEdit" id="T9S-AX-Fzz" sceneMemberID="viewController"/>
+                <viewControllerPlaceholder storyboardName="ArtboardEdit" id="T9S-AX-Fzz" sceneMemberID="viewController"/>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YQu-aG-4TQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="34" y="2000"/>

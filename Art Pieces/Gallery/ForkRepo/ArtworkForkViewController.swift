@@ -51,9 +51,9 @@ class ArtworkForkViewController: UIViewController {
             options: nil).first as? PickArtworkView
         self.view.insertSubview(pickArtworkView, belowSubview: closeButton)
         pickArtworkView.delegate = self
-        let lectures = DataManager.defaultManager.getAllLectures()
+        let lectures = DataManager.defaultManager.getAllArtboards()
         for lecture in lectures {
-            let keyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
+            let keyPhoto = DataManager.defaultManager.getImage(path: lecture.keyPhotoPath!)
             let forkPreview = ForkPreview(uuid: lecture.uuid!, title: lecture.title!, keyPhoto: keyPhoto)
             pickArtworkView.forkPreviews.append(forkPreview)
         }
@@ -90,23 +90,6 @@ extension ArtworkForkViewController: PickArtworkDelegate {
 
 extension ArtworkForkViewController: AddArtworkDescriptionDelegate {
     func shareButtonTapped() {
-        addArtworkDescriptionView.startAnimating()
-        let user = AccountManager.defaultManager.currentUser!
-        var keyPhotoPath: String
-        var title: String
-        let id = pickArtworkView.selectedProject!.1
-        if pickArtworkView.selectedProject!.0 {
-            let lecture = DataManager.defaultManager.getLecture(uuid: id)!
-            keyPhotoPath = lecture.previewPhotoPath!
-            title = lecture.title!
-        } else {
-            keyPhotoPath = DataManager.defaultManager.getArtwork(uuid: id)!.keyPhotoPath!
-            title = "New Artwork"
-        }
-        APWebService.defaultManager.uploadArtwork(creatorEmail: user.email, creatorPassword:
-            user.password, title: title, description: addArtworkDescriptionView.artworkDescription,
-                           keyPhoto: DataManager.defaultManager.getImage(path: keyPhotoPath),
-                           belongingRepo: currentRepoID, selfID: id, completion: nil)
         dismiss(animated: true, completion: nil)
     }
 }
