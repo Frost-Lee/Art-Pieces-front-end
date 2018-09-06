@@ -83,6 +83,6 @@ struct User {
 #### Others
 - [ ] Accessibility (Voice Over, etc.)
 - [ ] Environment checks (Is network available, is allowed to view system album, etc.)
-
+- [ ] Multi-language support (Chinese, most importantly)
 
 
