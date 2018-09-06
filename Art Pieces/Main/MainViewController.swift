@@ -133,7 +133,7 @@ extension MainViewController: MasterNavigationDelegate {
 extension MainViewController: AddArtworkDelegate {
     func importButtonDidTapped(_ sender: UIButton) {
         addArtworkView.deactivate()
-        present(NewRepoViewController(), animated: true, completion: nil)
+        present(NewRepositoryViewController(), animated: true, completion: nil)
     }
     
     func createButtonDidTapped(_ sender: UIButton) {

@@ -1,5 +1,5 @@
 //
-//  NewRepoViewController.swift
+//  NewRepositoryViewController.swift
 //  Art Pieces
 //
 //  Created by 李灿晨 on 2018/9/4.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class NewRepoViewController: APFormSheetViewController {
+class NewRepositoryViewController: APFormSheetViewController {
     
     var newRepoView: NewRepoView!
     
@@ -42,7 +42,7 @@ class NewRepoViewController: APFormSheetViewController {
 }
 
 
-extension NewRepoViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension NewRepositoryViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
         picker.dismiss(animated: true, completion: nil)
         dismiss(animated: true, completion: nil)
@@ -51,13 +51,13 @@ extension NewRepoViewController: UIImagePickerControllerDelegate, UINavigationCo
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
         info: [UIImagePickerController.InfoKey : Any]) {
         let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        newRepoView.keyPhoto = selectedImage
+         newRepoView.keyPhoto = selectedImage
         picker.dismiss(animated: true, completion: nil)
     }
 }
 
 
-extension NewRepoViewController: NewRepoDelegate {
+extension NewRepositoryViewController: NewRepoDelegate {
     func shareButtonDidTapped() {
         newRepoView.beginAnimatingSpinner()
         let user = AccountManager.defaultManager.currentUser!
