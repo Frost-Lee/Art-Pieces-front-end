@@ -8,7 +8,13 @@
 
 import UIKit
 
+protocol GalleryCollectionDelegate: class {
+    func moreButtonDidTapped(index: Int)
+}
+
 struct ProjectPreview {
+    var isLecture: Bool
+    var uuid: UUID
     var keyPhoto: UIImage
     var title: String
     var creatorName: String
@@ -30,6 +36,9 @@ class GalleryCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var branchNumberLabel: UILabel!
     @IBOutlet weak var starNumberLabel: UILabel!
     @IBOutlet weak var starButton: UIButton!
+    @IBOutlet weak var moreButton: UIButton!
+    
+    weak var delegate: GalleryCollectionDelegate?
     
     var index: Int = 0
     
@@ -44,7 +53,8 @@ class GalleryCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @IBAction func cellSelectionButtonTapped(_ sender: UIButton) {
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
+        delegate?.moreButtonDidTapped(index: index)
     }
     
     @IBAction func starButtonTapped(_ sender: UIButton) {

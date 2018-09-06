@@ -17,10 +17,6 @@ class DataManager {
     
     static let defaultManager = DataManager()
     
-    func generateUUID() -> UUID {
-        return UUID()
-    }
-    
     func saveArtwork(title: String, description: String?, keyPhoto: UIImage, uuid: UUID) {
         DispatchQueue.main.async {
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
@@ -55,6 +51,28 @@ class DataManager {
         }
         newLecture.stepPreviewPhotoPathArray = stepPreviewPhotoPath
         try! context.save()
+    }
+    
+    func removeArtwork(uuid: UUID) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtwork")
+        fetchRequest.predicate = NSPredicate(format: "uuid=\"\(uuid)\"")
+        let objectSet = try! context.fetch(fetchRequest) as! [NSManagedObject]
+        for object in objectSet {
+            context.delete(object)
+        }
+    }
+    
+    func removeLecture(uuid: UUID) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyLecture")
+        fetchRequest.predicate = NSPredicate(format: "uuid=\"\(uuid)\"")
+        let objectSet = try! context.fetch(fetchRequest) as! [NSManagedObject]
+        for object in objectSet {
+            context.delete(object)
+        }
     }
     
     func getAllArtworks() -> [MyArtwork] {

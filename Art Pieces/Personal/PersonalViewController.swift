@@ -97,14 +97,14 @@ class PersonalViewController: UIViewController {
         let artworks = DataManager.defaultManager.getAllArtworks()
         for lecture in lectures {
             let lectureKeyPhoto = DataManager.defaultManager.getImage(path: lecture.previewPhotoPath!)
-            let project = ProjectPreview(keyPhoto: lectureKeyPhoto, title: lecture.title!,
+            let project = ProjectPreview(isLecture: true, uuid: lecture.uuid!, keyPhoto: lectureKeyPhoto, title: lecture.title!,
                                   creatorName: localUser?.name ?? "Login", creatorPortrait: creatorPortrait,
                                   numberOfForks: 0, numberOfStars: 0)
             projects.append(project)
         }
         for artwork in artworks {
             let artworkKeyPhoto = DataManager.defaultManager.getImage(path: artwork.keyPhotoPath!)
-            let project = ProjectPreview(keyPhoto: artworkKeyPhoto, title: artwork.title!,
+            let project = ProjectPreview(isLecture: false, uuid: artwork.uuid!, keyPhoto: artworkKeyPhoto, title: artwork.title!,
                                   creatorName: localUser?.name ?? "Login", creatorPortrait: creatorPortrait,
                                   numberOfForks: 0, numberOfStars: 0)
             projects.append(project)
@@ -137,6 +137,7 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout, UICollecti
             "personalCollectionViewCell", for: indexPath) as! GalleryCollectionViewCell
         cell.project = projects[indexPath.row]
         cell.index = indexPath.row
+        cell.delegate = self
         return cell
     }
     
@@ -145,5 +146,27 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout, UICollecti
         let width = (UIScreen.main.bounds.width - 20 * 2 - 36 * 2) / 3
         let height = width / 0.967
         return CGSize(width: width, height: height)
+    }
+}
+
+
+extension PersonalViewController: GalleryCollectionDelegate {
+    func moreButtonDidTapped(index: Int) {
+        let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let deletion = UIAlertAction(title: "Delete", style: .destructive) { action in
+            if self.projects[index].isLecture {
+                DataManager.defaultManager.removeLecture(uuid: self.projects[index].uuid)
+            } else {
+                DataManager.defaultManager.removeArtwork(uuid: self.projects[index].uuid)
+            }
+            self.projects.remove(at: index)
+            self.personalCollectionView.reloadData()
+        }
+        alert.addAction(deletion)
+        let anchor = personalCollectionView.cellForItem(at: IndexPath(row: index, section: 0))
+            as! GalleryCollectionViewCell
+        alert.popoverPresentationController?.sourceView = anchor.moreButton
+        alert.popoverPresentationController?.sourceRect = anchor.moreButton.bounds
+        present(alert, animated: true, completion: nil)
     }
 }

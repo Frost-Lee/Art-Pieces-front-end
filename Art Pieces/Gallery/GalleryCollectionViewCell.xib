@@ -85,7 +85,7 @@
                                 <state key="normal" image="Branch"/>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Monalisa Collection" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5dh-T1-Lw1">
-                                <rect key="frame" x="0.0" y="233" width="295" height="24"/>
+                                <rect key="frame" x="0.0" y="233" width="241" height="24"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="24" id="9xc-Li-OkB"/>
                                 </constraints>
@@ -93,6 +93,20 @@
                                 <color key="textColor" red="0.19215686274509802" green="0.2196078431372549" blue="0.23921568627450979" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7lb-qt-tMw">
+                                <rect key="frame" x="257" y="229" width="30" height="33"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="33" id="S2i-dJ-zce"/>
+                                    <constraint firstAttribute="width" constant="30" id="l0F-02-DQF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <state key="normal" title="···">
+                                    <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="moreButtonTapped:" destination="gTV-IL-0wX" eventType="touchUpInside" id="H5g-4b-gXp"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
@@ -103,11 +117,13 @@
                             <constraint firstItem="533-Oa-sQb" firstAttribute="leading" secondItem="y6J-KI-n89" secondAttribute="trailing" constant="8" id="8XV-PK-nK4"/>
                             <constraint firstItem="huo-cW-9qL" firstAttribute="leading" secondItem="kw8-mA-O4l" secondAttribute="leading" id="9bK-Kf-dCV"/>
                             <constraint firstItem="y6J-KI-n89" firstAttribute="leading" secondItem="peo-T2-7R1" secondAttribute="trailing" constant="16" id="Cf3-uu-xgS"/>
-                            <constraint firstAttribute="trailing" secondItem="5dh-T1-Lw1" secondAttribute="trailing" id="DfV-OJ-zEV"/>
+                            <constraint firstItem="mNv-qF-LHs" firstAttribute="top" secondItem="7lb-qt-tMw" secondAttribute="bottom" constant="18" id="EzG-In-WFF"/>
                             <constraint firstItem="FmY-2Y-QTo" firstAttribute="leading" secondItem="533-Oa-sQb" secondAttribute="trailing" constant="8" id="HUc-aA-tpj"/>
                             <constraint firstItem="5dh-T1-Lw1" firstAttribute="leading" secondItem="kw8-mA-O4l" secondAttribute="leading" id="KyL-mg-FUV"/>
                             <constraint firstItem="peo-T2-7R1" firstAttribute="leading" secondItem="huo-cW-9qL" secondAttribute="trailing" constant="8" id="LMg-t6-Nc2"/>
                             <constraint firstAttribute="bottom" secondItem="huo-cW-9qL" secondAttribute="bottom" id="PYM-Mz-BUd"/>
+                            <constraint firstItem="7lb-qt-tMw" firstAttribute="leading" secondItem="5dh-T1-Lw1" secondAttribute="trailing" constant="16" id="WBh-lQ-Bc2"/>
+                            <constraint firstAttribute="trailing" secondItem="7lb-qt-tMw" secondAttribute="trailing" constant="8" id="ZCE-cp-HMc"/>
                             <constraint firstItem="Fgb-Ul-VS8" firstAttribute="leading" secondItem="kw8-mA-O4l" secondAttribute="leading" id="avr-mT-vaw"/>
                             <constraint firstAttribute="bottom" secondItem="mNv-qF-LHs" secondAttribute="bottom" constant="8" id="bhl-Pt-q9N"/>
                             <constraint firstAttribute="bottom" secondItem="FmY-2Y-QTo" secondAttribute="bottom" constant="5" id="dWB-DF-fWJ"/>
@@ -129,6 +145,7 @@
             <size key="customSize" width="357" height="304"/>
             <connections>
                 <outlet property="branchNumberLabel" destination="533-Oa-sQb" id="q1D-Xy-zav"/>
+                <outlet property="moreButton" destination="7lb-qt-tMw" id="KL0-Gk-i2H"/>
                 <outlet property="repositoryStarterNameLabel" destination="peo-T2-7R1" id="tYd-Ua-Cq9"/>
                 <outlet property="repositoryStarterPortraitImageView" destination="huo-cW-9qL" id="W3v-uS-SMh"/>
                 <outlet property="repositoryTitleImageView" destination="Fgb-Ul-VS8" id="irr-WI-qaN"/>
@@ -136,7 +153,7 @@
                 <outlet property="starButton" destination="FmY-2Y-QTo" id="BE7-sb-DM5"/>
                 <outlet property="starNumberLabel" destination="mNv-qF-LHs" id="Glm-Mk-9ID"/>
             </connections>
-            <point key="canvasLocation" x="46.5" y="181"/>
+            <point key="canvasLocation" x="46.5" y="180.5"/>
         </collectionViewCell>
     </objects>
     <resources>
