@@ -32,17 +32,39 @@ class GalleryView: UIView {
     let dataManager = DataManager.defaultManager
     
     private var previews: [ArtworkPreview] = []
-    private var keyPhotoDictionary: [UUID : UIImage?] = [:] {
+    private var keyPhotoDictionary: [UUID : String?] = [:] {
         didSet {
+            var indicesToUpdate: [IndexPath] = []
+            for key in keyPhotoDictionary.keys {
+                if oldValue[key] == nil {
+                    for i in 0 ..< previews.count {
+                        if previews[i].uuid == key {
+                            indicesToUpdate.append(IndexPath(row: i, section: 0))
+                            break
+                        }
+                    }
+                }
+            }
             DispatchQueue.main.async {
-                self.galleryCollectionView.reloadData()
+                self.galleryCollectionView.reloadItems(at: indicesToUpdate)
             }
         }
     }
-    private var portraitDictionary: [UUID : UIImage?] = [:] {
+    private var portraitDictionary: [UUID : String?] = [:] {
         didSet {
+            var indicesToUpdate: [IndexPath] = []
+            for key in portraitDictionary.keys {
+                if oldValue[key] == nil {
+                    for i in 0 ..< previews.count {
+                        if previews[i].uuid == key {
+                            indicesToUpdate.append(IndexPath(row: i, section: 0))
+                            break
+                        }
+                    }
+                }
+            }
             DispatchQueue.main.async {
-                self.galleryCollectionView.reloadData()
+                self.galleryCollectionView.reloadItems(at: indicesToUpdate)
             }
         }
     }
@@ -95,7 +117,9 @@ class GalleryView: UIView {
                 self.registerImageLoad(previews: filteredPreviews)
                 self.cachePreviewData(previews: filteredPreviews)
                 DispatchQueue.main.async {
-                    self.galleryCollectionView.reloadData()
+                    if filteredPreviews.count != 0 {
+                        self.galleryCollectionView.reloadData()
+                    }
                     self.galleryCollectionView.mj_header.endRefreshing()
                 }
         }
@@ -112,7 +136,9 @@ class GalleryView: UIView {
                 self.registerImageLoad(previews: filteredPreviews)
                 self.cachePreviewData(previews: filteredPreviews)
                 DispatchQueue.main.async {
-                    self.galleryCollectionView.reloadData()
+                    if filteredPreviews.count != 0 {
+                        self.galleryCollectionView.reloadData()
+                    }
                     self.galleryCollectionView.mj_footer.endRefreshing()
                 }
         }
@@ -121,10 +147,12 @@ class GalleryView: UIView {
     private func registerImageLoad(previews: [ArtworkPreview]) {
         for preview in previews {
             webManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
-                self.keyPhotoDictionary.updateValue(image, forKey: preview.uuid)
+                self.keyPhotoDictionary.updateValue(self.dataManager.saveImage(photo:
+                    image, isCachedPhoto: true), forKey: preview.uuid)
             }
             webManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
-                self.keyPhotoDictionary.updateValue(image, forKey: preview.uuid)
+                self.keyPhotoDictionary.updateValue(self.dataManager.saveImage(photo:
+                    image, isCachedPhoto: true), forKey: preview.uuid)
             }
         }
     }
@@ -183,8 +211,14 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "artworkPreviewCollectionViewCell",
                                                       for: indexPath) as! ArtworkPreviewCollectionViewCell
         cell.preview = previews[indexPath.row]
-        cell.keyPhoto = keyPhotoDictionary[previews[indexPath.row].uuid] as? UIImage
-        cell.portraitPhoto = portraitDictionary[previews[indexPath.row].uuid] as? UIImage
+        if keyPhotoDictionary[previews[indexPath.row].uuid] != nil {
+            let image = dataManager.getImage(path: keyPhotoDictionary[previews[indexPath.row].uuid]!!)
+            cell.keyPhoto = image
+        }
+        if portraitDictionary[previews[indexPath.row].uuid] != nil {
+            let image = dataManager.getImage(path: portraitDictionary[previews[indexPath.row].uuid]!!)
+            cell.portraitPhoto = image
+        }
         cell.repositoryTitleImageView.image = UIImage(named: "GalleryPlaceHolderImage")
         cell.delegate = self
         return cell
