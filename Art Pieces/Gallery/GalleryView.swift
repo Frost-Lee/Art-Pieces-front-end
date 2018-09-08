@@ -11,7 +11,7 @@ import CHTCollectionViewWaterfallLayout
 import MJRefresh
 
 protocol GalleryDelegate: class {
-    func galleryItemDidSelected(at index: Int)
+    func galleryItemDidSelected(preview: ArtworkPreview, keyPhoto: UIImage?, portrait: UIImage?)
 }
 
 class GalleryView: UIView {
@@ -231,7 +231,18 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        delegate?.galleryItemDidSelected(at: indexPath.row)
+        let preview = previews[indexPath.row]
+        var keyPhoto: UIImage?
+        var portrait: UIImage?
+        let keyPhotoPath = keyPhotoDictionary[preview.uuid]
+        let portraitPath = portraitDictionary[preview.uuid]
+        if keyPhotoPath != nil {
+            keyPhoto = dataManager.getImage(path: keyPhotoPath!!)
+        }
+        if portraitPath != nil {
+            portrait = dataManager.getImage(path: portraitPath!!)
+        }
+        delegate?.galleryItemDidSelected(preview: preview, keyPhoto: keyPhoto, portrait: portrait)
     }
 }
 

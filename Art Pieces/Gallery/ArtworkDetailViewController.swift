@@ -10,6 +10,11 @@ import UIKit
 
 class ArtworkDetailViewController: UIViewController {
 
+    @IBOutlet weak var repositoryNameLabel: UILabel!
+    @IBOutlet weak var creatorNameLabel: UILabel!
+    @IBOutlet weak var creatorPortraitImageView: UIImageView!
+    @IBOutlet weak var forkNumberLabel: UILabel!
+    @IBOutlet weak var starNumberLabel: UILabel!
     @IBOutlet weak var repositoryTitleImageView: UIImageView! {
         didSet {
             repositoryTitleImageView.clipsToBounds = true
@@ -17,13 +22,58 @@ class ArtworkDetailViewController: UIViewController {
     }
     @IBOutlet weak var branchCollectionView: UICollectionView!
     
+    let webManager = APWebService.defaultManager
+    
+    var preview: ArtworkPreview!
+    
+    var keyPhoto: UIImage?
+    var creatorPortrait: UIImage?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController?.navigationBar.tintColor = .lightGray
+        initializeCachedFields()
+        beginFetchingKeyPhoto()
+        beginFetchingPortraitPhoto()
     }
 
     @IBAction func newButtonTapped(_ sender: UIButton) {
         self.present(ArtworkForkViewController(), animated: true, completion: nil)
+    }
+    
+    private func initializeCachedFields() {
+        repositoryNameLabel.text = preview.title
+        creatorNameLabel.text = preview.creatorName
+        forkNumberLabel.text = String(preview.numberOfForks)
+        starNumberLabel.text = String(preview.numberOfStars)
+    }
+    
+    private func beginFetchingKeyPhoto() {
+        if keyPhoto != nil {
+            repositoryTitleImageView.image = keyPhoto
+        } else {
+            webManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
+                self.keyPhoto = image
+                DispatchQueue.main.async {
+                    self.repositoryTitleImageView.image = image
+                }
+            }
+        }
+    }
+    
+    private func beginFetchingPortraitPhoto() {
+        if creatorPortrait != nil {
+            creatorPortraitImageView.image = creatorPortrait
+        } else if preview.creatorPortraitPath == nil {
+            creatorPortraitImageView.image = UIImage(named: "User")
+        } else {
+            webManager.fetchPhoto(url: URL(string: preview.creatorPortraitPath!)!) { image in
+                self.creatorPortrait = image
+                DispatchQueue.main.async {
+                    self.creatorPortraitImageView.image = image
+                }
+            }
+        }
     }
     
 }

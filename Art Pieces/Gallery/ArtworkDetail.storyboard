@@ -237,7 +237,12 @@
                     </view>
                     <connections>
                         <outlet property="branchCollectionView" destination="nQs-E3-BY3" id="Itm-3L-tTk"/>
+                        <outlet property="creatorNameLabel" destination="6By-rS-ZP1" id="UAc-iT-KAD"/>
+                        <outlet property="creatorPortraitImageView" destination="Z7s-2H-ZHe" id="2gn-ZT-7eJ"/>
+                        <outlet property="forkNumberLabel" destination="aKv-zO-JXa" id="l5u-Lv-NKx"/>
+                        <outlet property="repositoryNameLabel" destination="zVx-Sn-uaD" id="wvD-4Q-QYy"/>
                         <outlet property="repositoryTitleImageView" destination="Zxd-qN-DBA" id="n2l-84-RP5"/>
+                        <outlet property="starNumberLabel" destination="ogj-uS-uIG" id="bEO-Vx-uhq"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kMt-gK-5cI" userLabel="First Responder" sceneMemberID="firstResponder"/>

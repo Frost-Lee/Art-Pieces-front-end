@@ -54,6 +54,18 @@ class MainViewController: UIViewController {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        super.prepare(for: segue, sender: sender)
+        if segue.identifier == "showArtworkDetail" {
+            let destination = segue.destination as! ArtworkDetailViewController
+            let initializer = sender as! (ArtworkPreview, UIImage?, UIImage?)
+            destination.preview = initializer.0
+            destination.keyPhoto = initializer.1
+            destination.creatorPortrait = initializer.2
+        }
+        
+    }
+    
     private func setupMasterNavigationView() {
         self.navigationController?.navigationBar.tintColor = UIColor.lightGray
         let masterNavigationNib = UINib(nibName: "MasterNavigationView", bundle: nil)
@@ -165,15 +177,19 @@ extension MainViewController: AddArtworkDelegate {
 
 
 extension MainViewController: GalleryDelegate {
+    func galleryItemDidSelected(preview: ArtworkPreview, keyPhoto: UIImage?, portrait: UIImage?) {
+        performSegue(withIdentifier: "showArtworkDetail", sender: (preview, keyPhoto, portrait))
+    }
+    
     func galleryItemDidSelected(at index: Int) {
-        self.performSegue(withIdentifier: "showArtworkDetail", sender: nil)
+        performSegue(withIdentifier: "showArtworkDetail", sender: nil)
     }
 }
 
 
 extension MainViewController: LectureDelegate {
     func lectureItemDidSelected(at index: Int) {
-        self.performSegue(withIdentifier: "showLectureDetail", sender: nil)
+        performSegue(withIdentifier: "showLectureDetail", sender: nil)
     }
 }
 
