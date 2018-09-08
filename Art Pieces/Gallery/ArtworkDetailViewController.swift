@@ -38,7 +38,9 @@ class ArtworkDetailViewController: UIViewController {
     }
 
     @IBAction func newButtonTapped(_ sender: UIButton) {
-        self.present(ArtworkForkViewController(), animated: true, completion: nil)
+        let viewController = ArtworkForkViewController()
+        viewController.currentRepoID = preview.uuid
+        present(viewController, animated: true, completion: nil)
     }
     
     private func initializeCachedFields() {

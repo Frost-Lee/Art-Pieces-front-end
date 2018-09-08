@@ -196,9 +196,14 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
         } else {
             width = (collectionView.frame.width - 36 * 2) / 3
         }
-        let cell = galleryCollectionView.cellForItem(at: indexPath) as? ArtworkPreviewCollectionViewCell
-        let size = cell?.repositoryTitleImageView.image?.size
-        let ratio = (size?.width ?? 4.0) / (size?.height ?? 3.0)
+        let imagePath = keyPhotoDictionary[previews[indexPath.row].uuid]
+        var ratio: CGFloat
+        if imagePath == nil {
+            ratio = 4.0 / 3.0
+        } else {
+            let image = dataManager.getImage(path: imagePath!!)
+            ratio = image.size.width / image.size.height
+        }
         return CGSize(width: width, height: width / ratio + 85)
     }
     
