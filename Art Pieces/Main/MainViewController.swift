@@ -148,8 +148,13 @@ extension MainViewController: MasterNavigationDelegate {
 
 extension MainViewController: AddArtworkDelegate {
     func importButtonDidTapped(_ sender: UIButton) {
-        addArtworkView.deactivate()
-        present(NewRepositoryViewController(), animated: true, completion: nil)
+        if AccountManager.defaultManager.isUserExist() {
+            addArtworkView.deactivate()
+            present(NewRepositoryViewController(), animated: true, completion: nil)
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+            present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
+        }
     }
     
     func createButtonDidTapped(_ sender: UIButton) {

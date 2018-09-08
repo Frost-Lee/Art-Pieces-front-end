@@ -185,6 +185,7 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
         cell.preview = previews[indexPath.row]
         cell.keyPhoto = keyPhotoDictionary[previews[indexPath.row].uuid] as? UIImage
         cell.portraitPhoto = portraitDictionary[previews[indexPath.row].uuid] as? UIImage
+        cell.repositoryTitleImageView.image = UIImage(named: "GalleryPlaceHolderImage")
         cell.delegate = self
         return cell
     }
