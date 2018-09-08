@@ -10,20 +10,11 @@ import UIKit
 
 protocol ArtworkPreviewDelegate: class {
     func moreButtonDidTapped(index: Int)
-}
-
-struct ArtworkPreview {
-    var uuid: UUID
-    var keyPhotoPath: String
-    var title: String
-    var creatorName: String
-    var creatorPortraitPath: String
-    var numberOfForks: Int
-    var numberOfStars: Int
+    func relayoutCollectionView()
 }
 
 class ArtworkPreviewCollectionViewCell: UICollectionViewCell {
-
+    
     @IBOutlet weak var repositoryTitleImageView: UIImageView! {
         didSet {
             repositoryTitleImageView.clipsToBounds = true
@@ -43,12 +34,27 @@ class ArtworkPreviewCollectionViewCell: UICollectionViewCell {
     
     var preview: ArtworkPreview! {
         didSet {
-            repositoryTitleImageView.image = DataManager.defaultManager.getImage(path: preview.keyPhotoPath)
             repositoryTitleLabel.text = preview.title
-            repositoryStarterPortraitImageView.image = DataManager.defaultManager.getImage(path: preview.creatorPortraitPath)
             repositoryStarterNameLabel.text = preview.creatorName
             branchNumberLabel.text = String(preview.numberOfForks)
             starNumberLabel.text = String(preview.numberOfStars)
+            APWebService.defaultManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
+                DispatchQueue.main.async {
+                    self.repositoryTitleImageView.image = image
+                    self.delegate?.relayoutCollectionView()
+                }
+            }
+            if let portrait = preview.creatorPortraitPath {
+                APWebService.defaultManager.fetchPhoto(url: URL(string: portrait)!) { image in
+                    DispatchQueue.main.async {
+                        self.repositoryStarterPortraitImageView.image = image
+                        self.delegate?.relayoutCollectionView()
+                    }
+                }
+            } else {
+                self.repositoryStarterPortraitImageView.image = UIImage(named: "User")
+                delegate?.relayoutCollectionView()
+            }
         }
     }
     

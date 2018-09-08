@@ -23,11 +23,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="295" height="305"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="GalleryPlaceHolderImage" translatesAutoresizingMaskIntoConstraints="NO" id="Fgb-Ul-VS8">
-                                <rect key="frame" x="0.0" y="0.0" width="295" height="221.5"/>
+                                <rect key="frame" x="0.0" y="0.0" width="295" height="221"/>
                                 <color key="backgroundColor" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" secondItem="Fgb-Ul-VS8" secondAttribute="height" multiplier="4 : 3" id="O1c-y6-rOx"/>
-                                </constraints>
                             </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="huo-cW-9qL">
                                 <rect key="frame" x="0.0" y="272" width="33" height="33"/>
@@ -129,6 +126,7 @@
                             <constraint firstAttribute="bottom" secondItem="FmY-2Y-QTo" secondAttribute="bottom" constant="5" id="dWB-DF-fWJ"/>
                             <constraint firstAttribute="trailing" secondItem="mNv-qF-LHs" secondAttribute="trailing" constant="8" id="eII-Yg-P0T"/>
                             <constraint firstAttribute="bottom" secondItem="533-Oa-sQb" secondAttribute="bottom" constant="8" id="fww-Gq-d1h"/>
+                            <constraint firstItem="7lb-qt-tMw" firstAttribute="top" secondItem="Fgb-Ul-VS8" secondAttribute="bottom" constant="8" id="pv0-B5-lbH"/>
                             <constraint firstItem="Fgb-Ul-VS8" firstAttribute="top" secondItem="kw8-mA-O4l" secondAttribute="top" id="vnk-ex-JQ0"/>
                             <constraint firstItem="mNv-qF-LHs" firstAttribute="leading" secondItem="FmY-2Y-QTo" secondAttribute="trailing" constant="8" id="x9P-fy-A9T"/>
                         </constraints>

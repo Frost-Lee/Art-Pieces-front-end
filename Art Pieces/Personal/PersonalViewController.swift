@@ -134,6 +134,10 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout, UICollecti
 
 
 extension PersonalViewController: ArtworkPreviewDelegate {
+    func relayoutCollectionView() {
+        
+    }
+    
     func moreButtonDidTapped(index: Int) {
     }
 }

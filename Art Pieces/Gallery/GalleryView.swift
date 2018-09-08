@@ -25,6 +25,8 @@ class GalleryView: UIView {
     
     weak var delegate: GalleryDelegate?
     
+    private var previews: [ArtworkPreview] = []
+    
     private func setupFlowLayoutProperties() {
         let waterfallLayout = CHTCollectionViewWaterfallLayout()
         if UIScreen.main.bounds.width < 1024 {
@@ -59,7 +61,15 @@ class GalleryView: UIView {
     }
     
     private func reloadCollectionViewData() {
-        galleryCollectionView.mj_header.endRefreshing()
+        APWebService.defaultManager.getRepoPreviewFeed(email: AccountManager.defaultManager
+            .currentUser?.email) { previews in
+                DispatchQueue.main.async {
+                    self.previews = previews
+                    self.galleryCollectionView.reloadData()
+                    self.galleryCollectionView.mj_header.endRefreshing()
+                }
+        }
+        
     }
     
     private func keepLoadCollectionViewData() {
@@ -78,26 +88,43 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
         } else {
             width = (collectionView.frame.width - 36 * 2) / 3
         }
-        return CGSize(width: width, height: width / 0.967)
+        let cell = galleryCollectionView.cellForItem(at: indexPath) as? ArtworkPreviewCollectionViewCell
+        let size = cell?.repositoryTitleImageView.image?.size
+        let ratio = (size?.width ?? 4.0) / (size?.height ?? 3.0)
+        return CGSize(width: width, height: width / ratio + 85)
     }
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 30
+        return previews.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt
         indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "artworkPreviewCollectionViewCell",
                                                       for: indexPath) as! ArtworkPreviewCollectionViewCell
+        cell.preview = previews[indexPath.row]
+        cell.delegate = self
         return cell
     }
     
-    func collectionView (_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout,
-                         insetForSectionAtIndex section: Int) -> UIEdgeInsets {
+    func collectionView (_ collectionView: UICollectionView, layout
+        collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex
+        section: Int) -> UIEdgeInsets {
         return UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.galleryItemDidSelected(at: indexPath.row)
+    }
+}
+
+
+extension GalleryView: ArtworkPreviewDelegate {
+    func moreButtonDidTapped(index: Int) {
+        
+    }
+    
+    func relayoutCollectionView() {
+        galleryCollectionView.collectionViewLayout.invalidateLayout()
     }
 }

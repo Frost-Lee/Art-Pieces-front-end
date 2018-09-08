@@ -19,6 +19,9 @@ class APWebService {
     
     static let backEndURL = URL(string: "https://artpieces.cn/api")!
     static let resourceServerURL = URL(string: "http://95.179.143.156:4001/upload")!
+    var now: TimeInterval {
+        return Date().timeIntervalSince1970 * 1000
+    }
     
     static let defaultManager = APWebService()
     
@@ -54,13 +57,11 @@ class APWebService {
                     insertWork(id: "\(selfID)", creator: "\(creatorEmail)",
                         password: "\(creatorPassword)", title: "\(title)",
                         \(descriptionParameter) keyPhoto: "\(urlPath)",
-                        \(belongingRepoParameter) timestamp: \(Date().timeIntervalSince1970 * 1000))
+                        \(belongingRepoParameter) timestamp: \(self.now))
                 }
                 """
-                print(query)
                 request.httpBody = self.constructRequestBody(with: query)
                 let task = URLSession.shared.dataTask(with: request) { data, response, error in
-                    print(String(data: data!, encoding: .utf8) ?? "No Response")
                     completion?()
                 }
                 task.resume()
@@ -81,18 +82,47 @@ class APWebService {
         """
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            print(String(data: data!, encoding: .utf8) ?? "No Response")
             completion?()
         }
         task.resume()
     }
     
-    func getArtworkFeed(email: String, timestamp: Date, completion: () -> Void) {
-        
-    }
-    
-    func extendArtworkFeed(email: String, timestamp: Date, completion: () -> Void) {
-        
+    func getRepoPreviewFeed(email: String? = nil, completion: (([ArtworkPreview]) -> Void)? = nil) {
+        let userParameter = getOptionalParameter(field: "user", value: email, quotation: true)
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            query GetRepoFeed {
+                getRepoFeed(\(userParameter) timestamp: 429) {
+                    title
+                    id
+                    keyArtwork {
+                        keyPhoto
+                    }
+                    starter {
+                        name
+                        portrait
+                    }
+                    numberOfStars
+                    numberOfArtworks
+                }
+            }
+        """
+        print(query)
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            let json = try! JSON(data: data!)
+            guard let repoArray = json["data"]["getRepoFeed"].array else {
+                completion?([])
+                return
+            }
+            var previews: [ArtworkPreview] = []
+            for repo in repoArray {
+                let newPreview = ArtworkPreview(json: repo)
+                previews.append(newPreview)
+            }
+            completion?(previews)
+        }
+        task.resume()
     }
     
     func createRepo(creatorEmail: String, creatorPassword: String, title: String,
@@ -102,16 +132,14 @@ class APWebService {
                                                         quotation: true)
         var request = getRequest(httpMethod: "POST")
         let query = """
-        mutation InsertRepo {
-            insertRepo(id: "\(selfID)", title: "\(title)", \(descriptionParameter)
-                       keyArtwork: "\(keyArtworkID)", starter: "\(creatorEmail)",
-                       password: "\(creatorPassword)", timestamp: \(Date().timeIntervalSince1970 * 1000))
-        }
+            mutation InsertRepo {
+                insertRepo(id: "\(selfID)", title: "\(title)", \(descriptionParameter)
+                           keyArtwork: "\(keyArtworkID)", starter: "\(creatorEmail)",
+                           password: "\(creatorPassword)", timestamp: \(Date().timeIntervalSince1970 * 1000))
+            }
         """
         request.httpBody = constructRequestBody(with: query)
-        print(query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            print(String(data: data!, encoding: .utf8) ?? "No Response")
             completion?()
         }
         task.resume()
@@ -164,7 +192,7 @@ class APWebService {
     
     @discardableResult
     func fetchPhoto(url: URL, completion: ((UIImage) -> Void)? = nil) -> UIImage? {
-        if completion != nil {
+        if completion == nil {
             let data = try! Data(contentsOf: url)
             return UIImage(data: data)!
         } else {
