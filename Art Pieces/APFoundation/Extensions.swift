@@ -9,6 +9,7 @@
 import UIKit
 import CoreGraphics
 import ChromaColorPicker
+import SwiftyJSON
 
 func delay(for seconds: Double, block: @escaping ()->()) {
     DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + seconds, execute: block)
@@ -96,5 +97,31 @@ extension UIAlertController {
         let action = UIAlertAction(title: "OK", style: .cancel, handler: nil)
         alertController.addAction(action)
         return alertController
+    }
+}
+
+
+extension JSON {
+    public var date: Date? {
+        get {
+            if let str = self.string {
+                return JSON.jsonDateFormatter.date(from: str)
+            }
+            return nil
+        }
+    }
+    
+    private static let jsonDateFormatter: DateFormatter = {
+        let fmt = DateFormatter()
+        fmt.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        fmt.timeZone = TimeZone(secondsFromGMT: 0)
+        return fmt
+    }()
+}
+
+
+extension Date {
+    var secondsSince1970: TimeInterval {
+        return self.timeIntervalSince1970 * 1000
     }
 }

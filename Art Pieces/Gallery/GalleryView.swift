@@ -20,6 +20,8 @@ class GalleryView: UIView {
         didSet {
             setupRefreshProperties()
             setupFlowLayoutProperties()
+            galleryCollectionView.mj_header.beginRefreshing()
+            reloadCollectionViewData()
         }
     }
     
@@ -63,17 +65,25 @@ class GalleryView: UIView {
     private func reloadCollectionViewData() {
         APWebService.defaultManager.getRepoPreviewFeed(email: AccountManager.defaultManager
             .currentUser?.email) { previews in
+                self.previews = (previews + self.previews)
                 DispatchQueue.main.async {
-                    self.previews = previews
                     self.galleryCollectionView.reloadData()
                     self.galleryCollectionView.mj_header.endRefreshing()
                 }
         }
-        
     }
     
     private func keepLoadCollectionViewData() {
-        galleryCollectionView.mj_footer.endRefreshing()
+        guard previews.count != 0 else {return}
+        APWebService.defaultManager.extendRepoPreviewFeed(timestamp:
+            previews.last!.timestamp, email: AccountManager.defaultManager.currentUser?.email) {
+            previews in
+                self.previews += previews
+                DispatchQueue.main.async {
+                    self.galleryCollectionView.reloadData()
+                    self.galleryCollectionView.mj_footer.endRefreshing()
+                }
+        }
     }
     
 }

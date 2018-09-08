@@ -17,6 +17,7 @@ struct ArtworkPreview {
     var creatorPortraitPath: String?
     var numberOfForks: Int
     var numberOfStars: Int
+    var timestamp: Date
     
     init(json: JSON) {
         uuid = UUID(uuidString: json["id"].string!)!
@@ -26,7 +27,8 @@ struct ArtworkPreview {
         creatorPortraitPath = json["starter"]["portrait"].string
         numberOfForks = json["numberOfArtworks"].int!
         numberOfStars = json["numberOfStars"].int!
-        numberOfForks = 0
-        numberOfStars = 0
+        numberOfForks = json["numberOfArtworks"].int!
+        numberOfStars = json["numberOfArtworks"].int!
+        timestamp = json["timestamp"].date!
     }
 }

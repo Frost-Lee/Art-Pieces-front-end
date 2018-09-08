@@ -20,7 +20,7 @@ class APWebService {
     static let backEndURL = URL(string: "https://artpieces.cn/api")!
     static let resourceServerURL = URL(string: "http://95.179.143.156:4001/upload")!
     var now: TimeInterval {
-        return Date().timeIntervalSince1970 * 1000
+        return Date().secondsSince1970
     }
     
     static let defaultManager = APWebService()
@@ -104,21 +104,51 @@ class APWebService {
                     }
                     numberOfStars
                     numberOfArtworks
+                    timestamp
                 }
             }
         """
-        print(query)
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             let json = try! JSON(data: data!)
-            guard let repoArray = json["data"]["getRepoFeed"].array else {
-                completion?([])
-                return
-            }
+            guard let repoArray = json["data"]["getRepoFeed"].array else {completion?([]);return}
             var previews: [ArtworkPreview] = []
             for repo in repoArray {
-                let newPreview = ArtworkPreview(json: repo)
-                previews.append(newPreview)
+                previews.append(ArtworkPreview(json: repo))
+            }
+            completion?(previews)
+        }
+        task.resume()
+    }
+    
+    func extendRepoPreviewFeed(timestamp: Date, email: String? = nil, completion: (([ArtworkPreview]) -> Void)? = nil) {
+        let userParameter = getOptionalParameter(field: "user", value: email, quotation: true)
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            query ExtentRepoFeed {
+                extendRepoFeed(\(userParameter) timestamp: \(timestamp.secondsSince1970) {
+                    title
+                    id
+                    keyArtwork {
+                        keyPhoto
+                    }
+                    starter {
+                        name
+                        portrait
+                    }
+                    numberOfStars
+                    numberOfArtworks
+                    timestamp
+                }
+            }
+        """
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            let json = try! JSON(data: data!)
+            guard let repoArray = json["data"]["extendRepoFeed"].array else {completion?([]);return}
+            var previews: [ArtworkPreview] = []
+            for repo in repoArray {
+                previews.append(ArtworkPreview(json: repo))
             }
             completion?(previews)
         }
@@ -135,7 +165,7 @@ class APWebService {
             mutation InsertRepo {
                 insertRepo(id: "\(selfID)", title: "\(title)", \(descriptionParameter)
                            keyArtwork: "\(keyArtworkID)", starter: "\(creatorEmail)",
-                           password: "\(creatorPassword)", timestamp: \(Date().timeIntervalSince1970 * 1000))
+                           password: "\(creatorPassword)", timestamp: \(self.now))
             }
         """
         request.httpBody = constructRequestBody(with: query)
