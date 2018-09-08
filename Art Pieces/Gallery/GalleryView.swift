@@ -31,6 +31,8 @@ class GalleryView: UIView {
     let webManager = APWebService.defaultManager
     let dataManager = DataManager.defaultManager
     
+    let keyPhotoPlaceHolder = UIImage(named: "GalleryPlaceHolderImage")
+    
     private var previews: [ArtworkPreview] = []
     private var keyPhotoDictionary: [UUID : String?] = [:] {
         didSet {
@@ -215,18 +217,24 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
         indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "artworkPreviewCollectionViewCell",
                                                       for: indexPath) as! ArtworkPreviewCollectionViewCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay
+        cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = cell as! ArtworkPreviewCollectionViewCell
+        cell.delegate = self
         cell.preview = previews[indexPath.row]
         if keyPhotoDictionary[previews[indexPath.row].uuid] != nil {
             let image = dataManager.getImage(path: keyPhotoDictionary[previews[indexPath.row].uuid]!!)
             cell.keyPhoto = image
+        } else {
+            cell.keyPhoto = keyPhotoPlaceHolder
         }
         if portraitDictionary[previews[indexPath.row].uuid] != nil {
             let image = dataManager.getImage(path: portraitDictionary[previews[indexPath.row].uuid]!!)
             cell.portraitPhoto = image
         }
-        cell.repositoryTitleImageView.image = UIImage(named: "GalleryPlaceHolderImage")
-        cell.delegate = self
-        return cell
     }
     
     func collectionView (_ collectionView: UICollectionView, layout

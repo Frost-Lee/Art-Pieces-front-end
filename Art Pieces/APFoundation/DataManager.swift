@@ -102,8 +102,9 @@ class DataManager {
     
     func saveImage(photo: UIImage, isCachedPhoto: Bool) -> String {
         initializeDirectory()
-        let photoIdentifier = UUID().uuidString + ".png"
-        let photoData = photo.pngData()!
+        let photoIdentifier = UUID().uuidString + ".jpeg"
+        let photoData = isCachedPhoto ? photo.jpegData(compressionQuality: 0.2)! :
+            photo.jpegData(compressionQuality: 1)!
         let urlPath = isCachedPhoto ? DataManager.cachedFileHomeDirectory + photoIdentifier :
             DataManager.localFileHomeDirectory + photoIdentifier
         try! photoData.write(to: URL(fileURLWithPath: urlPath))

@@ -126,7 +126,7 @@ class APWebService {
         var request = getRequest(httpMethod: "POST")
         let query = """
             query ExtentRepoFeed {
-                extendRepoFeed(\(userParameter) timestamp: \(timestamp.secondsSince1970) {
+                extendRepoFeed(\(userParameter) timestamp: \(timestamp.secondsSince1970)) {
                     title
                     id
                     keyArtwork {
