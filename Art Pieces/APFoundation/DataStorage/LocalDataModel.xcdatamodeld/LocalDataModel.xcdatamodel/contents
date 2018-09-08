@@ -17,13 +17,14 @@
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
     </entity>
     <entity name="CachedRepo" representedClassName="CachedRepo" syncable="YES">
-        <attribute name="compressedKeyPhotoPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creatorName" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="creatorPortraitPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="keyPhotoPath" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="numberOfBranches" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
         <attribute name="numberOfStars" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="starterName" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES" syncable="YES"/>
-        <attribute name="starterPortraitPath" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO" syncable="YES"/>
         <attribute name="title" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="uuid" optional="YES" attributeType="UUID" usesScalarValueType="NO" syncable="YES"/>
         <relationship name="contains" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="CachedArtwork" inverseName="belongsTo" inverseEntity="CachedArtwork" syncable="YES"/>
     </entity>
     <entity name="MyArtboard" representedClassName="MyArtboard" syncable="YES">
@@ -39,7 +40,7 @@
     <elements>
         <element name="CachedArtwork" positionX="-18" positionY="36" width="128" height="120"/>
         <element name="CachedLecture" positionX="-36" positionY="27" width="128" height="150"/>
-        <element name="CachedRepo" positionX="0" positionY="63" width="128" height="165"/>
+        <element name="CachedRepo" positionX="0" positionY="63" width="128" height="180"/>
         <element name="MyArtboard" positionX="-27" positionY="90" width="128" height="165"/>
     </elements>
 </model>

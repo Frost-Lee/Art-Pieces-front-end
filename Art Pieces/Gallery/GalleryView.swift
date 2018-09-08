@@ -21,13 +21,31 @@ class GalleryView: UIView {
             setupRefreshProperties()
             setupFlowLayoutProperties()
             galleryCollectionView.mj_header.beginRefreshing()
+            loadCachedData()
             reloadCollectionViewData()
         }
     }
     
     weak var delegate: GalleryDelegate?
     
+    let webManager = APWebService.defaultManager
+    let dataManager = DataManager.defaultManager
+    
     private var previews: [ArtworkPreview] = []
+    private var keyPhotoDictionary: [UUID : UIImage?] = [:] {
+        didSet {
+            DispatchQueue.main.async {
+                self.galleryCollectionView.reloadData()
+            }
+        }
+    }
+    private var portraitDictionary: [UUID : UIImage?] = [:] {
+        didSet {
+            DispatchQueue.main.async {
+                self.galleryCollectionView.reloadData()
+            }
+        }
+    }
     
     private func setupFlowLayoutProperties() {
         let waterfallLayout = CHTCollectionViewWaterfallLayout()
@@ -62,10 +80,20 @@ class GalleryView: UIView {
         galleryCollectionView.mj_footer = footer
     }
     
+    private func loadCachedData() {
+        previews = dataManager.getCachedRepoPreviews()
+        galleryCollectionView.reloadData()
+        registerImageLoad(previews: previews)
+    }
+    
     private func reloadCollectionViewData() {
-        APWebService.defaultManager.getRepoPreviewFeed(email: AccountManager.defaultManager
+        webManager.getRepoPreviewFeed(email: AccountManager.defaultManager
             .currentUser?.email) { previews in
-                self.previews = (previews + self.previews)
+                let filteredPreviews = self.getFilteredPreviews(from: previews, baseLine:
+                    self.previews.first, isBefore: false)
+                self.previews = (filteredPreviews + self.previews)
+                self.registerImageLoad(previews: filteredPreviews)
+                self.cachePreviewData(previews: filteredPreviews)
                 DispatchQueue.main.async {
                     self.galleryCollectionView.reloadData()
                     self.galleryCollectionView.mj_header.endRefreshing()
@@ -75,14 +103,56 @@ class GalleryView: UIView {
     
     private func keepLoadCollectionViewData() {
         guard previews.count != 0 else {return}
-        APWebService.defaultManager.extendRepoPreviewFeed(timestamp:
+        webManager.extendRepoPreviewFeed(timestamp:
             previews.last!.timestamp, email: AccountManager.defaultManager.currentUser?.email) {
             previews in
-                self.previews += previews
+                let filteredPreviews = self.getFilteredPreviews(from: previews, baseLine:
+                    self.previews.last, isBefore: true)
+                self.previews += filteredPreviews
+                self.registerImageLoad(previews: filteredPreviews)
+                self.cachePreviewData(previews: filteredPreviews)
                 DispatchQueue.main.async {
                     self.galleryCollectionView.reloadData()
                     self.galleryCollectionView.mj_footer.endRefreshing()
                 }
+        }
+    }
+    
+    private func registerImageLoad(previews: [ArtworkPreview]) {
+        for preview in previews {
+            webManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
+                self.keyPhotoDictionary.updateValue(image, forKey: preview.uuid)
+            }
+            webManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
+                self.keyPhotoDictionary.updateValue(image, forKey: preview.uuid)
+            }
+        }
+    }
+    
+    private func getFilteredPreviews(from previews: [ArtworkPreview],
+                                     baseLine: ArtworkPreview?, isBefore: Bool) -> [ArtworkPreview] {
+        var result: [ArtworkPreview] = []
+        let baseLineDate = baseLine?.timestamp
+        guard baseLineDate != nil else {
+            if isBefore {
+                return []
+            } else {
+                return previews
+            }
+        }
+        for preview in previews {
+            if isBefore && preview.timestamp < baseLineDate! {
+                result.append(preview)
+            } else if !isBefore && preview.timestamp > baseLineDate! {
+                result.append(preview)
+            }
+        }
+        return result
+    }
+    
+    private func cachePreviewData(previews: [ArtworkPreview]) {
+        for preview in previews {
+            self.dataManager.cacheRepoPreview(preview: preview)
         }
     }
     
@@ -113,6 +183,8 @@ extension GalleryView: CHTCollectionViewDelegateWaterfallLayout, UICollectionVie
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "artworkPreviewCollectionViewCell",
                                                       for: indexPath) as! ArtworkPreviewCollectionViewCell
         cell.preview = previews[indexPath.row]
+        cell.keyPhoto = keyPhotoDictionary[previews[indexPath.row].uuid] as? UIImage
+        cell.portraitPhoto = portraitDictionary[previews[indexPath.row].uuid] as? UIImage
         cell.delegate = self
         return cell
     }

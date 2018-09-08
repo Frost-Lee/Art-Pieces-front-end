@@ -60,10 +60,44 @@ class DataManager {
         let context = appDelegate.persistentContainer.viewContext
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtboard")
         fetchRequest.predicate = NSPredicate(format: "uuid=\"\(uuid)\"")
-        let objects = try! context.fetch(fetchRequest) as! [NSManagedObject]
+        let objects = try! context.fetch(fetchRequest) as! [MyArtboard]
         for object in objects {
+            removeItem(path: object.keyPhotoPath)
+            for path in (object.stepPreviewPhotoPath?.components(separatedBy: ";"))! {
+                removeItem(path: path)
+            }
             context.delete(object)
         }
+    }
+    
+    func cacheRepoPreview(preview: ArtworkPreview) {
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "CachedRepo", in: context)
+            let newCachedRepo = CachedRepo(entity: entity!, insertInto: context)
+            newCachedRepo.uuid = preview.uuid
+            newCachedRepo.keyPhotoPath = preview.keyPhotoPath
+            newCachedRepo.title = preview.title
+            newCachedRepo.creatorName = preview.creatorName
+            newCachedRepo.creatorPortraitPath = preview.creatorPortraitPath
+            newCachedRepo.numberOfBranches = Int32(preview.numberOfForks)
+            newCachedRepo.numberOfStars = Int32(preview.numberOfStars)
+            newCachedRepo.timestamp = preview.timestamp as NSDate
+            try! context.save()
+        }
+    }
+    
+    func getCachedRepoPreviews() -> [ArtworkPreview] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CachedRepo")
+        let fetchedRepos = try! context.fetch(fetchRequest) as! [CachedRepo]
+        var previews: [ArtworkPreview] = []
+        for repo in fetchedRepos {
+            previews.append(ArtworkPreview(cachedRepo: repo))
+        }
+        return previews.sorted(by: {$0.timestamp > $1.timestamp})
     }
     
     func saveImage(photo: UIImage, isCachedPhoto: Bool) -> String {

@@ -32,29 +32,33 @@ class ArtworkPreviewCollectionViewCell: UICollectionViewCell {
     
     var index: Int = 0
     
+    var keyPhoto: UIImage? {
+        didSet {
+            if keyPhoto != nil {
+                DispatchQueue.main.async {
+                    self.repositoryTitleImageView.image = self.keyPhoto
+                    self.delegate?.relayoutCollectionView()
+                }
+            }
+        }
+    }
+    var portraitPhoto: UIImage? {
+        didSet {
+            if portraitPhoto != nil {
+                DispatchQueue.main.async {
+                    self.repositoryStarterPortraitImageView.image = self.portraitPhoto
+                }
+            }
+        }
+    }
+    
     var preview: ArtworkPreview! {
         didSet {
             repositoryTitleLabel.text = preview.title
             repositoryStarterNameLabel.text = preview.creatorName
             branchNumberLabel.text = String(preview.numberOfForks)
             starNumberLabel.text = String(preview.numberOfStars)
-            APWebService.defaultManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
-                DispatchQueue.main.async {
-                    self.repositoryTitleImageView.image = image
-                    self.delegate?.relayoutCollectionView()
-                }
-            }
-            if let portrait = preview.creatorPortraitPath {
-                APWebService.defaultManager.fetchPhoto(url: URL(string: portrait)!) { image in
-                    DispatchQueue.main.async {
-                        self.repositoryStarterPortraitImageView.image = image
-                        self.delegate?.relayoutCollectionView()
-                    }
-                }
-            } else {
-                self.repositoryStarterPortraitImageView.image = UIImage(named: "User")
-                delegate?.relayoutCollectionView()
-            }
+            self.repositoryStarterPortraitImageView.image = UIImage(named: "User")
         }
     }
     
@@ -64,15 +68,6 @@ class ArtworkPreviewCollectionViewCell: UICollectionViewCell {
     
     @IBAction func starButtonTapped(_ sender: UIButton) {
         starButton.setImage(UIImage(named: "SelectedStarButton")!, for: UIControl.State.normal)
-    }
-    
-    func setTitleImage(to image: UIImage) {
-        repositoryTitleImageView.image = image
-        let widthHeightRatio = image.size.width / image.size.height
-        let frame = repositoryTitleImageView.frame
-        repositoryTitleImageView.frame = CGRect(x: frame.minX, y: frame.minY, width: frame.width,
-                                                height: frame.width / widthHeightRatio)
-        setNeedsLayout()
     }
     
 }

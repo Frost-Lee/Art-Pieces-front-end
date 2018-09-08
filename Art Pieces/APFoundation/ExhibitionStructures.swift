@@ -27,8 +27,17 @@ struct ArtworkPreview {
         creatorPortraitPath = json["starter"]["portrait"].string
         numberOfForks = json["numberOfArtworks"].int!
         numberOfStars = json["numberOfStars"].int!
-        numberOfForks = json["numberOfArtworks"].int!
-        numberOfStars = json["numberOfArtworks"].int!
         timestamp = json["timestamp"].date!
+    }
+    
+    init(cachedRepo: CachedRepo) {
+        uuid = cachedRepo.uuid!
+        keyPhotoPath = cachedRepo.keyPhotoPath!
+        title = cachedRepo.title!
+        creatorName = cachedRepo.creatorName!
+        creatorPortraitPath = cachedRepo.creatorPortraitPath
+        numberOfForks = Int(cachedRepo.numberOfBranches)
+        numberOfStars = Int(cachedRepo.numberOfStars)
+        timestamp = cachedRepo.timestamp! as Date
     }
 }

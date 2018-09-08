@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import BWWalkthrough
 
 class MainViewController: UIViewController {
     
@@ -21,6 +22,11 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        if isFirstLaunch() {
+            delay(for: 0.1) {
+                self.introduceMyself()
+            }
+        }
         setupMasterNavigationView()
         setupGalleryView()
         setupLectureView()
@@ -95,6 +101,16 @@ class MainViewController: UIViewController {
         lectureView.frame = onSightLockFrame
         galleryView.frame = offSightLockFrame
     }
+    
+    private func isFirstLaunch() -> Bool {
+        if  UserDefaults.standard.bool(forKey: "everLaunched") == false {
+            UserDefaults.standard.set(true, forKey: "everLaunched")
+            UserDefaults.standard.set(true, forKey: "firstLaunch")
+        } else {
+            UserDefaults.standard.set(false, forKey: "firstLaunch")
+        }
+        return UserDefaults.standard.bool(forKey: "firstLaunch")
+    }
 
 }
 
@@ -153,5 +169,30 @@ extension MainViewController: GalleryDelegate {
 extension MainViewController: LectureDelegate {
     func lectureItemDidSelected(at index: Int) {
         self.performSegue(withIdentifier: "showLectureDetail", sender: nil)
+    }
+}
+
+
+extension MainViewController: BWWalkthroughViewControllerDelegate {
+    func walkthroughCloseButtonPressed() {
+        dismiss(animated: true, completion: nil)
+    }
+    
+    private func introduceMyself() {
+        let walkThroughStoryboard = UIStoryboard(name: "WalkThrough", bundle: Bundle.main)
+        let walkThrough = walkThroughStoryboard.instantiateInitialViewController()
+            as! BWWalkthroughViewController
+        let page_1 = walkThroughStoryboard.instantiateViewController(withIdentifier: "IntroducePage1")
+        let page_2 = walkThroughStoryboard.instantiateViewController(withIdentifier: "IntroducePage2")
+        let page_3 = walkThroughStoryboard.instantiateViewController(withIdentifier: "IntroducePage3")
+        let page_login = UIStoryboard(name: "Login", bundle: Bundle.main)
+            .instantiateInitialViewController() as! LoginViewController
+        page_login.showCancelButton = false
+        walkThrough.delegate = self
+        walkThrough.add(viewController: page_1)
+        walkThrough.add(viewController: page_2)
+        walkThrough.add(viewController: page_3)
+        walkThrough.add(viewController: page_login)
+        present(walkThrough, animated: true)
     }
 }
