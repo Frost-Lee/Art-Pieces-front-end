@@ -31,10 +31,11 @@ class AddArtworkDescriptionView: UIView {
     }
     
     @IBAction func shareButtonTapped(_ sender: UIButton) {
+        startAnimating()
         delegate?.shareButtonTapped()
     }
     
-    func startAnimating() {
+    private func startAnimating() {
         shareButton.isHidden = true
         spinner.startAnimating()
     }

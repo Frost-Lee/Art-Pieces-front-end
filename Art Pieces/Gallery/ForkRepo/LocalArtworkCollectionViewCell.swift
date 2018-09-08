@@ -8,11 +8,7 @@
 
 import UIKit
 
-struct ForkPreview {
-    var uuid: UUID
-    var title: String
-    var keyPhoto: UIImage
-}
+
 
 class LocalArtworkCollectionViewCell: UICollectionViewCell {
 
@@ -27,7 +23,11 @@ class LocalArtworkCollectionViewCell: UICollectionViewCell {
     var forkPreview: ForkPreview? {
         didSet {
             artworkTitleLabel.text = forkPreview?.title
-            localArtworkImageView.image = forkPreview?.keyPhoto
+        }
+    }
+    var keyPhoto: UIImage! {
+        didSet {
+            localArtworkImageView.image = keyPhoto
         }
     }
     

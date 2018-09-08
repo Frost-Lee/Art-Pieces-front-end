@@ -30,8 +30,10 @@ class PickArtworkView: UIView {
     
     var forkPreviews: [ForkPreview] = []
     
-    var selectedIndex: Int?
-    var selectedProject: (Bool, UUID)? {
+    let dataManager = DataManager.defaultManager
+    let webService = APWebService.defaultManager
+    
+    var selectedProject: (UUID, UIImage)? {
         didSet {
             if selectedProject != nil {
                 nextButton.isEnabled = true
@@ -40,6 +42,7 @@ class PickArtworkView: UIView {
             }
         }
     }
+    private var selectedIndex: Int?
     
     @IBAction func nextButtonTapped(_ sender: UIButton) {
         delegate?.nextButtonDidTapped()
@@ -65,11 +68,17 @@ extension PickArtworkView: UICollectionViewDelegateFlowLayout, UICollectionViewD
         indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
             "localArtworkCollectionViewCell", for: indexPath) as! LocalArtworkCollectionViewCell
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay
+        cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = cell as! LocalArtworkCollectionViewCell
         cell.forkPreview = forkPreviews[indexPath.row]
         if indexPath.row == selectedIndex {
             cell.setSelected()
         }
-        return cell
+        cell.keyPhoto = dataManager.getImage(path: forkPreviews[indexPath.row].keyPhotoPath)
     }
     
     func collectionView(_ collectionView: UICollectionView, layout
@@ -94,7 +103,8 @@ extension PickArtworkView: UICollectionViewDelegateFlowLayout, UICollectionViewD
         } else {
             selectedIndex = indexPath.row
             cell.setSelected()
-            selectedProject = (true, forkPreviews[indexPath.row].uuid)
+            selectedProject = (forkPreviews[indexPath.row].uuid,
+                               dataManager.getImage(path: forkPreviews[indexPath.row].keyPhotoPath))
         }
         delegate?.artworkSelectionDidChanged()
     }
@@ -109,10 +119,11 @@ extension PickArtworkView: UIImagePickerControllerDelegate, UINavigationControll
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
         info: [UIImagePickerController.InfoKey : Any]) {
         let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
-        let newArtworkID = UUID()
-//        DataManager.defaultManager.saveArtwork(title: "New Artwork", description: nil, keyPhoto:
-//            selectedImage!, uuid: newArtworkID)
-        selectedProject = (false, newArtworkID)
-        nextButtonTapped(nextButton)
+        selectedProject = (UUID(), selectedImage!)
+        picker.dismiss(animated: true) {
+            DispatchQueue.main.async {
+                self.nextButtonTapped(self.nextButton)
+            }
+        }
     }
 }

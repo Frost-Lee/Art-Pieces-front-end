@@ -17,6 +17,8 @@ class ArtworkForkViewController: APFormSheetViewController {
     
     var currentRepoID: UUID!
     
+    var webService = APWebService.defaultManager
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupPickArtworkView()
@@ -45,11 +47,9 @@ class ArtworkForkViewController: APFormSheetViewController {
                                           options: nil).first as? PickArtworkView
         self.view.insertSubview(pickArtworkView, belowSubview: closeButton)
         pickArtworkView.delegate = self
-        let lectures = DataManager.defaultManager.getAllArtboards()
-        for lecture in lectures {
-            let keyPhoto = DataManager.defaultManager.getImage(path: lecture.keyPhotoPath!)
-            let forkPreview = ForkPreview(uuid: lecture.uuid!, title: lecture.title!, keyPhoto: keyPhoto)
-            pickArtworkView.forkPreviews.append(forkPreview)
+        let artboards = DataManager.defaultManager.getAllArtboards()
+        for artboard in artboards {
+            pickArtworkView.forkPreviews.append(ForkPreview(artboard: artboard))
         }
     }
     
@@ -84,6 +84,15 @@ extension ArtworkForkViewController: PickArtworkDelegate {
 
 extension ArtworkForkViewController: AddArtworkDescriptionDelegate {
     func shareButtonTapped() {
-        dismiss(animated: true, completion: nil)
+        let user = AccountManager.defaultManager.currentUser!
+        let selectedWork = pickArtworkView.selectedProject!
+        webService.uploadArtwork(creatorEmail: user.email, creatorPassword: user.password,
+                                 title: "New Artwork", description:
+            addArtworkDescriptionView.artworkDescription, keyPhoto:
+            selectedWork.1, belongingRepo: selectedWork.0, selfID: currentRepoID) {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
+        }
     }
 }

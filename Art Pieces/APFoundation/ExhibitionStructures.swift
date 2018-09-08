@@ -41,3 +41,16 @@ struct ArtworkPreview {
         timestamp = cachedRepo.timestamp! as Date
     }
 }
+
+
+struct ForkPreview {
+    var uuid: UUID
+    var title: String
+    var keyPhotoPath: String
+    
+    init(artboard: MyArtboard) {
+        uuid = artboard.uuid!
+        title = artboard.title!
+        keyPhotoPath = artboard.keyPhotoPath!
+    }
+}

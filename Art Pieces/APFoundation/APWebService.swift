@@ -48,7 +48,8 @@ class APWebService {
                        completion: (() -> Void)?) {
         let descriptionParameter = getOptionalParameter(field: "description", value: description,
                                                         quotation: true)
-        let belongingRepoParameter = getOptionalParameter(field: "belongingRepo", value: belongingRepo)
+        let belongingRepoParameter = getOptionalParameter(field: "belongingRepo", value: belongingRepo,
+                                                          quotation: true)
         sendFile(url: APWebService.resourceServerURL, fileName: "NewRepo.jpeg", data:
             keyPhoto.jpegData(compressionQuality: 0.2)!) { urlPath, compressedURLPath in
                 var request = self.getRequest(httpMethod: "POST")
