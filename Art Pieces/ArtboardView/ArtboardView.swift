@@ -89,6 +89,20 @@ class ArtboardView: UIView, UIGestureRecognizerDelegate {
         }
     }
     
+    func setupArtboard(with data: Data) {
+        let artboard = try! JSONDecoder().decode(Artboard.self, from: data)
+        for i in 0 ..< artboard.layers.count - 1 {
+            artboardLayerViews[i].artboardLayer = artboard.layers[i]
+            createLayer()
+        }
+        artboardLayerViews.last?.artboardLayer = artboard.layers.last
+        if artboard.guide != nil {
+            guide = artboard.guide!
+        }
+        delegate?.artboardGuideDidUpdated(guide)
+        setNeedsDisplay()
+    }
+    
     func createLayer() {
         let newLayerView = ArtboardLayerView(frame: self.bounds)
         artboardLayerViews.append(newLayerView)

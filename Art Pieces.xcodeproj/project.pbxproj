@@ -21,7 +21,7 @@
 		3A0DDF4621366630005DEE82 /* CachedArtwork+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF3C2136662F005DEE82 /* CachedArtwork+CoreDataProperties.swift */; };
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
-		3A18C8952121650E007F63F2 /* LectureLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* LectureLayerView.swift */; };
+		3A18C8952121650E007F63F2 /* ArtboardLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* ArtboardLayerView.swift */; };
 		3A39EEE22123CE5D00E8F881 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */; };
 		3A40439A2109D04100467990 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4043992109D04100467990 /* GalleryView.swift */; };
 		3A40439C2109D04F00467990 /* Gallery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439B2109D04F00467990 /* Gallery.xib */; };
@@ -97,7 +97,7 @@
 		3A0DDF3C2136662F005DEE82 /* CachedArtwork+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedArtwork+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedArtwork+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
-		3A18C8942121650E007F63F2 /* LectureLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LectureLayerView.swift; sourceTree = "<group>"; };
+		3A18C8942121650E007F63F2 /* ArtboardLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardLayerView.swift; sourceTree = "<group>"; };
 		3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
 		3A4043992109D04100467990 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		3A40439B2109D04F00467990 /* Gallery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Gallery.xib; sourceTree = "<group>"; };
@@ -314,7 +314,7 @@
 			children = (
 				3AC06ABF20FB670600AA0138 /* ArtboardView.swift */,
 				3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */,
-				3A18C8942121650E007F63F2 /* LectureLayerView.swift */,
+				3A18C8942121650E007F63F2 /* ArtboardLayerView.swift */,
 				3AC06AC120FB6A8C00AA0138 /* SingleStrokeView.swift */,
 			);
 			path = ArtboardView;
@@ -566,7 +566,7 @@
 				3AC78BBE21395E7D00045864 /* PersonalViewController.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtboardView.swift in Sources */,
 				3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */,
-				3A18C8952121650E007F63F2 /* LectureLayerView.swift in Sources */,
+				3A18C8952121650E007F63F2 /* ArtboardLayerView.swift in Sources */,
 				3A64AA5921359984000B36E0 /* LocalDataModel.xcdatamodeld in Sources */,
 				3A0DDF422136662F005DEE82 /* CachedLecture+CoreDataClass.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
