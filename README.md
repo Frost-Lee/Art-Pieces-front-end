@@ -80,7 +80,7 @@ struct User {
 #### Data Structure Redesign
 - [x] Only use `Artboard` in local storage
 - [ ] PersonalViewController should present online Artworks instead of local ones
-- [ ] Create another space for local `Artboard`
+- [x] Create another space for local `Artboard`
 - [ ] Maybe .xib files could be used in a more elegant way
 
 #### Others
