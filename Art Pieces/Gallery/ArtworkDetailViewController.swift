@@ -23,8 +23,30 @@ class ArtworkDetailViewController: UIViewController {
     @IBOutlet weak var branchCollectionView: UICollectionView!
     
     let webManager = APWebService.defaultManager
+    let dataManager = DataManager.defaultManager
+    
+    let branchCollectionViewPlaceHolder = UIImage(named: "LecturePlaceHolderImage")
     
     var preview: ArtworkPreview!
+    var branchPreviews: [BranchPreview] = []
+    var keyPhotoDictionary: [UUID : String?] = [:] {
+        didSet {
+            var indicesToUpdate: [IndexPath] = []
+            for key in keyPhotoDictionary.keys {
+                if oldValue[key] == nil {
+                    for i in 0 ..< branchPreviews.count {
+                        if branchPreviews[i].uuid == key {
+                            indicesToUpdate.append(IndexPath(row: i, section: 0))
+                            break
+                        }
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self.branchCollectionView.reloadItems(at: indicesToUpdate)
+            }
+        }
+    }
     
     var keyPhoto: UIImage?
     var creatorPortrait: UIImage?
@@ -34,6 +56,7 @@ class ArtworkDetailViewController: UIViewController {
         self.navigationController?.navigationBar.tintColor = .lightGray
         initializeCachedFields()
         beginFetchingKeyPhoto()
+        beginFetchingBranches()
         beginFetchingPortraitPhoto()
     }
 
@@ -79,20 +102,45 @@ class ArtworkDetailViewController: UIViewController {
         }
     }
     
+    private func beginFetchingBranches() {
+        webManager.getRepoArtworks(repoID: preview.uuid) { branches in
+            self.branchPreviews = branches
+            for branch in branches {
+                self.webManager.fetchPhoto(url: URL(string: branch.keyPhotoPath)!) { image in
+                    self.keyPhotoDictionary[branch.uuid] =
+                        self.dataManager.saveImage(photo: image, isCachedPhoto: true)
+                }
+            }
+            DispatchQueue.main.async {
+                self.branchCollectionView.reloadData()
+            }
+        }
+    }
+    
 }
 
 
 extension ArtworkDetailViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return branchPreviews.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt
         indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "branchCollectionViewCell",
                                                       for: indexPath) as! BranchCollectionViewCell
-        cell.branchKeyPhoto.image = UIImage(named: "LecturePlaceHolderImage")
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay
+        cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = cell as! BranchCollectionViewCell
+        if keyPhotoDictionary[branchPreviews[indexPath.row].uuid] != nil {
+            let image = dataManager.getImage(path: keyPhotoDictionary[branchPreviews[indexPath.row].uuid]!!)
+            cell.branchKeyPhoto.image = image
+        } else {
+            cell.branchKeyPhoto.image = branchCollectionViewPlaceHolder
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, layout

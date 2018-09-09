@@ -122,7 +122,8 @@ class APWebService {
         task.resume()
     }
     
-    func extendRepoPreviewFeed(timestamp: Date, email: String? = nil, completion: (([ArtworkPreview]) -> Void)? = nil) {
+    func extendRepoPreviewFeed(timestamp: Date, email: String? = nil,
+                               completion: (([ArtworkPreview]) -> Void)? = nil) {
         let userParameter = getOptionalParameter(field: "user", value: email, quotation: true)
         var request = getRequest(httpMethod: "POST")
         let query = """
@@ -150,6 +151,35 @@ class APWebService {
             var previews: [ArtworkPreview] = []
             for repo in repoArray {
                 previews.append(ArtworkPreview(json: repo))
+            }
+            completion?(previews)
+        }
+        task.resume()
+    }
+    
+    func getRepoArtworks(repoID: UUID, completion: (([BranchPreview]) -> Void)?) {
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            query GetRepo {
+                getRepo(id: "\(repoID)") {
+                    artworks {
+                        id
+                        title
+                        timestamp
+                        keyPhoto
+                    }
+                }
+            }
+        """
+        print(query)
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            let json = try! JSON(data: data!)
+            print(String(data: data!, encoding: .utf8))
+            guard let branchArray = json["data"]["getRepo"]["artworks"].array else {completion?([]);return}
+            var previews: [BranchPreview] = []
+            for branch in branchArray {
+                previews.append(BranchPreview(json: branch))
             }
             completion?(previews)
         }

@@ -54,3 +54,18 @@ struct ForkPreview {
         keyPhotoPath = artboard.keyPhotoPath!
     }
 }
+
+
+struct BranchPreview {
+    var uuid: UUID
+    var title: String
+    var timestamp: Date
+    var keyPhotoPath: String
+    
+    init(json: JSON) {
+        uuid = UUID(uuidString: json["id"].string!)!
+        title = json["title"].string!
+        timestamp = json["timestamp"].date!
+        keyPhotoPath = json["keyPhoto"].string!
+    }
+}
