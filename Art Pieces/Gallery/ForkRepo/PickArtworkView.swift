@@ -24,14 +24,21 @@ class PickArtworkView: UIView {
             localArtworkCollectionView.reloadData()
         }
     }
+    @IBOutlet weak var repoNameLabel: UILabel!
     @IBOutlet weak var nextButton: UIButton!
     
     weak var delegate: PickArtworkDelegate?
     
-    var forkPreviews: [ForkPreview] = []
-    
     let dataManager = DataManager.defaultManager
     let webService = APWebService.defaultManager
+    
+    var forkPreviews: [ForkPreview] = []
+    
+    var repoName: String! {
+        didSet {
+            repoNameLabel.text = repoName
+        }
+    }
     
     var selectedProject: (UUID, UIImage)? {
         didSet {

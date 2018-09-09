@@ -16,6 +16,7 @@ class ArtworkForkViewController: APFormSheetViewController {
     var isAddingDescriptions: Bool = false
     
     var currentRepoID: UUID!
+    var currentRepoName: String!
     
     var webService = APWebService.defaultManager
     
@@ -51,12 +52,14 @@ class ArtworkForkViewController: APFormSheetViewController {
         for artboard in artboards {
             pickArtworkView.forkPreviews.append(ForkPreview(artboard: artboard))
         }
+        pickArtworkView.repoName = currentRepoName
     }
     
     private func setupAddArtworkDescriptionView() {
         let nib = UINib(nibName: "AddArtworkDescriptionView", bundle: Bundle.main)
         addArtworkDescriptionView = nib.instantiate(withOwner: self,
                                                     options: nil).first as? AddArtworkDescriptionView
+        addArtworkDescriptionView.repoName = currentRepoName
         self.view.insertSubview(addArtworkDescriptionView, belowSubview: closeButton)
         addArtworkDescriptionView.delegate = self
     }
@@ -67,6 +70,7 @@ class ArtworkForkViewController: APFormSheetViewController {
 extension ArtworkForkViewController: PickArtworkDelegate {
     func nextButtonDidTapped() {
         isAddingDescriptions = true
+        addArtworkDescriptionView.artworkKeyPhotoImageView.image = pickArtworkView.selectedProject?.1
         UIView.animate(withDuration: 0.2, delay: 0, options:
             UIView.AnimationOptions.curveLinear, animations: {
                 self.viewWillLayoutSubviews()
@@ -87,9 +91,9 @@ extension ArtworkForkViewController: AddArtworkDescriptionDelegate {
         let user = AccountManager.defaultManager.currentUser!
         let selectedWork = pickArtworkView.selectedProject!
         webService.uploadArtwork(creatorEmail: user.email, creatorPassword: user.password,
-                                 title: "New Artwork", description:
+                                 title: addArtworkDescriptionView.artworkTitle, description:
             addArtworkDescriptionView.artworkDescription, keyPhoto:
-            selectedWork.1, belongingRepo: selectedWork.0, selfID: currentRepoID) {
+            selectedWork.1, belongingRepo: currentRepoID, selfID: selectedWork.0) {
                 DispatchQueue.main.async {
                     self.dismiss(animated: true, completion: nil)
                 }

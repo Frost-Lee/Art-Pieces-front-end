@@ -20,14 +20,38 @@ class AddArtworkDescriptionView: UIView {
             artworkDescriptionTextField.layer.cornerRadius = 5
         }
     }
+    @IBOutlet weak var artworkNameTextField: UITextField! {
+        didSet {
+            artworkNameTextField.layer.cornerRadius = 5
+        }
+    }
+    @IBOutlet weak var repoNameLabel: UILabel!
     @IBOutlet weak var placeholderLabel: UILabel!
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     weak var delegate: AddArtworkDescriptionDelegate?
     
+    var artworkTitle: String {
+        return artworkNameTextField.text!
+    }
+    
     var artworkDescription: String {
         return artworkDescriptionTextField.text
+    }
+    
+    var repoName: String! {
+        didSet {
+            repoNameLabel.text = repoName
+        }
+    }
+    
+    @IBAction func titleTextFieldChanged(_ sender: UITextField) {
+        if artworkNameTextField.text?.count != 0 {
+            shareButton.isEnabled = true
+        } else {
+            shareButton.isEnabled = false
+        }
     }
     
     @IBAction func shareButtonTapped(_ sender: UIButton) {
