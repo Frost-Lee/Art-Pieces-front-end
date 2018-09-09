@@ -171,11 +171,9 @@ class APWebService {
                 }
             }
         """
-        print(query)
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             let json = try! JSON(data: data!)
-            print(String(data: data!, encoding: .utf8))
             guard let branchArray = json["data"]["getRepo"]["artworks"].array else {completion?([]);return}
             var previews: [BranchPreview] = []
             for branch in branchArray {
