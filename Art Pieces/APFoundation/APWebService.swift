@@ -70,7 +70,7 @@ class APWebService {
     }
     
     func uploadLecture(creatorEmail: String, creatorPassword: String, title: String,
-                       description: String, content: String, selfID: UUID,
+                       description: String, content: NSData, selfID: UUID,
                        completion: (() -> Void)?) {
         let descriptionParameter = getOptionalParameter(field: "description", value: description,
                                                         quotation: true)
@@ -78,7 +78,8 @@ class APWebService {
         let query = """
             mutation InsertLect {
                 insertLect(id: "\(selfID)", title: "\(title)", \(descriptionParameter)
-                           steps: "\(content)", selfID: "\(selfID)"
+                steps: "\(String(data: content as Data, encoding: .utf8)!.replacingOccurrences(of: "\"", with: "\\\""))",
+                creator: "\(creatorEmail)", password: "\(creatorPassword)", timestamp: \(self.now))
             }
         """
         request.httpBody = constructRequestBody(with: query)

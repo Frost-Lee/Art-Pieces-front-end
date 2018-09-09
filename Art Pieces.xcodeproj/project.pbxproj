@@ -78,6 +78,9 @@
 		3ADC3C6C2103188600C31637 /* SubStepView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6B2103188600C31637 /* SubStepView.xib */; };
 		3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6D2103189700C31637 /* SubStepView.swift */; };
 		3ADC3C7021031FA400C31637 /* ArtboardEdit.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC3C6F21031FA400C31637 /* ArtboardEdit.storyboard */; };
+		3ADC5A8421456DF9005AA485 /* LecturePublish.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC5A8321456DF9005AA485 /* LecturePublish.xib */; };
+		3ADC5A8621456E0C005AA485 /* LecturePublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC5A8521456E0C005AA485 /* LecturePublishView.swift */; };
+		3ADC5A8821457A5E005AA485 /* LecturePublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC5A8721457A5E005AA485 /* LecturePublishViewController.swift */; };
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
 		3AF62DD0213814F4005104CA /* PickArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DCF213814F4005104CA /* PickArtworkView.swift */; };
 		3AF62DD221381522005104CA /* AddArtworkDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DD121381522005104CA /* AddArtworkDescriptionView.swift */; };
@@ -158,6 +161,9 @@
 		3ADC3C6B2103188600C31637 /* SubStepView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SubStepView.xib; sourceTree = "<group>"; };
 		3ADC3C6D2103189700C31637 /* SubStepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubStepView.swift; sourceTree = "<group>"; };
 		3ADC3C6F21031FA400C31637 /* ArtboardEdit.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ArtboardEdit.storyboard; sourceTree = "<group>"; };
+		3ADC5A8321456DF9005AA485 /* LecturePublish.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LecturePublish.xib; sourceTree = "<group>"; };
+		3ADC5A8521456E0C005AA485 /* LecturePublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturePublishView.swift; sourceTree = "<group>"; };
+		3ADC5A8721457A5E005AA485 /* LecturePublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturePublishViewController.swift; sourceTree = "<group>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AF62DCF213814F4005104CA /* PickArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickArtworkView.swift; sourceTree = "<group>"; };
 		3AF62DD121381522005104CA /* AddArtworkDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArtworkDescriptionView.swift; sourceTree = "<group>"; };
@@ -378,6 +384,9 @@
 				3AC78BBD21395E7D00045864 /* PersonalViewController.swift */,
 				3A8A59B5214553CC00091532 /* ArtboardsGalleryViewController.swift */,
 				3A8A59B72145553C00091532 /* ArtboardPreviewCollectionViewCell.swift */,
+				3ADC5A8721457A5E005AA485 /* LecturePublishViewController.swift */,
+				3ADC5A8321456DF9005AA485 /* LecturePublish.xib */,
+				3ADC5A8521456E0C005AA485 /* LecturePublishView.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -491,6 +500,7 @@
 				3ADC3C6C2103188600C31637 /* SubStepView.xib in Resources */,
 				3A48E211211DD0DC00B34B24 /* LectureDetail.storyboard in Resources */,
 				3AD1048B211BE086006C1039 /* LectureTableViewCell.xib in Resources */,
+				3ADC5A8421456DF9005AA485 /* LecturePublish.xib in Resources */,
 				3A6B32042104BD3A00F2C63E /* MasterNavigationView.xib in Resources */,
 				3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */,
 				3A40439E2109D06800467990 /* Lecture.xib in Resources */,
@@ -562,6 +572,7 @@
 				3A8D11FE21437D6700A6CF0F /* CachedRepo+CoreDataProperties.swift in Sources */,
 				3A8A59B82145553C00091532 /* ArtboardPreviewCollectionViewCell.swift in Sources */,
 				3AD10484211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.swift in Sources */,
+				3ADC5A8621456E0C005AA485 /* LecturePublishView.swift in Sources */,
 				3A8A59B6214553CC00091532 /* ArtboardsGalleryViewController.swift in Sources */,
 				3A0DDF432136662F005DEE82 /* CachedArtwork+CoreDataClass.swift in Sources */,
 				3A8A59B32145384800091532 /* MyArtboard+CoreDataProperties.swift in Sources */,
@@ -580,6 +591,7 @@
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
 				3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */,
 				3A40439A2109D04100467990 /* GalleryView.swift in Sources */,
+				3ADC5A8821457A5E005AA485 /* LecturePublishViewController.swift in Sources */,
 				3A4043A02109D07400467990 /* LectureView.swift in Sources */,
 				3A6B32062104BD7500F2C63E /* MasterNavigationView.swift in Sources */,
 				3A75172221087F8E00373189 /* ToolBarView.swift in Sources */,

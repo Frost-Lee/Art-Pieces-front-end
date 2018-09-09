@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14295.6" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="ipad9_7" orientation="landscape">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14270.1"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="LecturePublishView" customModule="Art_Pieces" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="582" height="708"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="New Lecture" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="baC-Ry-S2J">
+                    <rect key="frame" x="20" y="20" width="542" height="43"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="43" id="uBY-g1-WPJ"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="36"/>
+                    <color key="textColor" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="HDl-xM-VfT">
+                    <rect key="frame" x="412" y="658" width="150" height="30"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="6W7-fC-rAg"/>
+                        <constraint firstAttribute="width" constant="150" id="XN1-5z-mBo"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
+                    <state key="normal" title="Share">
+                        <color key="titleColor" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="disabled">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="shareButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="7WS-pg-wRa"/>
+                    </connections>
+                </button>
+                <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="t5S-JH-lgj">
+                    <rect key="frame" x="477" y="663" width="20" height="20"/>
+                    <color key="color" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                </activityIndicatorView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YeV-Ym-XfL">
+                    <rect key="frame" x="20" y="243.5" width="542" height="406.5"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="YeV-Ym-XfL" secondAttribute="height" multiplier="4:3" id="rcd-j4-RbY"/>
+                    </constraints>
+                </imageView>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Give the lecture a name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s5w-nv-vCf">
+                    <rect key="frame" x="20" y="71" width="542" height="30"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="30" id="TR9-7e-KRU"/>
+                    </constraints>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
+                    <textInputTraits key="textInputTraits"/>
+                    <connections>
+                        <action selector="titleTextFieldChanged:" destination="iN0-l3-epB" eventType="editingChanged" id="5io-oR-osS"/>
+                    </connections>
+                </textField>
+                <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="ggL-nS-B7C">
+                    <rect key="frame" x="20" y="109" width="542" height="126.5"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                    <connections>
+                        <outlet property="delegate" destination="iN0-l3-epB" id="H3C-JT-7Nf"/>
+                    </connections>
+                </textView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Say something about your lecture ..." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xgl-wB-MOV">
+                    <rect key="frame" x="28" y="116" width="526" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="21" id="zWr-w0-YcB"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="ggL-nS-B7C" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="18c-ZW-qSk"/>
+                <constraint firstItem="t5S-JH-lgj" firstAttribute="centerY" secondItem="HDl-xM-VfT" secondAttribute="centerY" id="2Hg-Mv-jhu"/>
+                <constraint firstItem="s5w-nv-vCf" firstAttribute="top" secondItem="baC-Ry-S2J" secondAttribute="bottom" constant="8" id="5xB-tf-KVQ"/>
+                <constraint firstItem="HDl-xM-VfT" firstAttribute="top" secondItem="YeV-Ym-XfL" secondAttribute="bottom" constant="8" id="9su-ah-7B9"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="baC-Ry-S2J" secondAttribute="trailing" constant="20" id="GUx-PN-kgi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="HDl-xM-VfT" secondAttribute="bottom" constant="20" id="I82-8I-IUE"/>
+                <constraint firstItem="s5w-nv-vCf" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="JYM-Nt-qLB"/>
+                <constraint firstItem="YeV-Ym-XfL" firstAttribute="top" secondItem="ggL-nS-B7C" secondAttribute="bottom" constant="8" id="MMP-XN-ZDI"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="HDl-xM-VfT" secondAttribute="trailing" constant="20" id="WxT-Wm-ygV"/>
+                <constraint firstItem="Xgl-wB-MOV" firstAttribute="top" secondItem="s5w-nv-vCf" secondAttribute="bottom" constant="15" id="XGx-7Y-sGA"/>
+                <constraint firstItem="baC-Ry-S2J" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="Yjc-fR-hGS"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="s5w-nv-vCf" secondAttribute="trailing" constant="20" id="ctq-Va-Qgg"/>
+                <constraint firstItem="Xgl-wB-MOV" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="28" id="diM-Qv-Wib"/>
+                <constraint firstItem="ggL-nS-B7C" firstAttribute="top" secondItem="s5w-nv-vCf" secondAttribute="bottom" constant="8" id="ewq-Be-AeL"/>
+                <constraint firstItem="t5S-JH-lgj" firstAttribute="centerX" secondItem="HDl-xM-VfT" secondAttribute="centerX" id="hTQ-RW-CkR"/>
+                <constraint firstItem="YeV-Ym-XfL" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="20" id="pXJ-pF-X9i"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="YeV-Ym-XfL" secondAttribute="trailing" constant="20" id="tcC-YD-u6O"/>
+                <constraint firstItem="baC-Ry-S2J" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="ttY-d9-QEi"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Xgl-wB-MOV" secondAttribute="trailing" constant="28" id="xQ5-Tw-9ee"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="ggL-nS-B7C" secondAttribute="trailing" constant="20" id="xqa-wR-oe8"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="lectureDescriptionTextView" destination="ggL-nS-B7C" id="FYA-S6-VtI"/>
+                <outlet property="lectureKeyphotoImageView" destination="YeV-Ym-XfL" id="Tiv-Wv-kHU"/>
+                <outlet property="lectureTitleTextField" destination="s5w-nv-vCf" id="pcQ-I0-J5Y"/>
+                <outlet property="placeholderLabel" destination="Xgl-wB-MOV" id="IKK-5b-Pft"/>
+                <outlet property="shareButton" destination="HDl-xM-VfT" id="rge-t4-Qcw"/>
+                <outlet property="spinner" destination="t5S-JH-lgj" id="VaE-dw-GhO"/>
+            </connections>
+        </view>
+    </objects>
+</document>

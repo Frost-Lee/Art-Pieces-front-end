@@ -255,7 +255,7 @@
                                                     <rect key="frame" x="20" y="241.5" width="249" height="39.5"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                                    <textInputTraits key="textInputTraits"/>
+                                                    <textInputTraits key="textInputTraits" returnKeyType="done"/>
                                                     <connections>
                                                         <action selector="artboardNameBeginEditting:" destination="EBR-Sg-p62" eventType="editingDidEnd" id="IWx-v0-Fq8"/>
                                                         <action selector="artboardNameEditted:" destination="EBR-Sg-p62" eventType="editingDidEnd" id="IFw-ds-vGi"/>
@@ -355,7 +355,7 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="t52-Wx-XyP" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1338.8671875" y="19.53125"/>
+            <point key="canvasLocation" x="1294" y="20"/>
         </scene>
     </scenes>
     <resources>

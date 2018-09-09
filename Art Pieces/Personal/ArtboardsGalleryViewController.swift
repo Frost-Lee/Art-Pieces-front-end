@@ -90,6 +90,12 @@ extension ArtboardsGalleryViewController: ArtboardPreviewDelegate {
             self.artboards = self.dataManager.getAllArtboards()
             self.artboardsCollectionView.reloadData()
         }
+        let uploadAction = UIAlertAction(title: "Upload as Lecture", style: .default) { action in
+            let viewController = LecturePublishViewController()
+            viewController.artboard = self.artboards[index]
+            self.present(viewController, animated: true, completion: nil)
+        }
+        alert.addAction(uploadAction)
         alert.addAction(deleteAction)
         alert.popoverPresentationController?.sourceRect = sender.bounds
         alert.popoverPresentationController?.sourceView = sender
