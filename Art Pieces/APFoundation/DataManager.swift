@@ -18,24 +18,51 @@ class DataManager {
     static let defaultManager = DataManager()
     
     func saveArtboard(keyPhoto: UIImage, stepPreviewPhotoArray: [UIImage], content: Data,
-                      email: String, title: String, description: String) {
+                      email: String, title: String, description: String, selfID: UUID) {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
-        let entity = NSEntityDescription.entity(forEntityName: "MyArtboard", in: context)
-        let newArtboard = MyArtboard(entity: entity!, insertInto: context)
         var previewPhotoArrayPath = ""
         for image in stepPreviewPhotoArray {
             previewPhotoArrayPath += (saveImage(photo: image, isCachedPhoto: false) + ";")
         }
-        newArtboard.keyPhotoPath = saveImage(photo: keyPhoto, isCachedPhoto: false)
-        newArtboard.stepPreviewPhotoPath = previewPhotoArrayPath
-        newArtboard.content = content as NSData
-        newArtboard.creatorEmail = email
-        newArtboard.title = title
-        newArtboard.boardDescription = description
-        newArtboard.timestamp = Date() as NSDate
-        newArtboard.uuid = UUID()
+        if (getArtboard(uuid: selfID) != nil) {
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtboard")
+            fetchRequest.predicate = NSPredicate(format: "uuid=\"\(selfID)\"")
+            if let fetchedResults = try! context.fetch(fetchRequest) as? [MyArtboard] {
+                let result = fetchedResults.first!
+                removeItem(path: result.keyPhotoPath!)
+                for path in result.stepPreviewPhotoPath!.components(separatedBy: ";") {
+                    removeItem(path: path)
+                }
+                result.keyPhotoPath = saveImage(photo: keyPhoto, isCachedPhoto: false)
+                result.stepPreviewPhotoPath = previewPhotoArrayPath
+                result.content = content as NSData
+            }
+        } else {
+            let entity = NSEntityDescription.entity(forEntityName: "MyArtboard", in: context)
+            let newArtboard = MyArtboard(entity: entity!, insertInto: context)
+
+            newArtboard.keyPhotoPath = saveImage(photo: keyPhoto, isCachedPhoto: false)
+            newArtboard.stepPreviewPhotoPath = previewPhotoArrayPath
+            newArtboard.content = content as NSData
+            newArtboard.creatorEmail = email
+            newArtboard.title = title
+            newArtboard.boardDescription = description
+            newArtboard.timestamp = Date() as NSDate
+            newArtboard.uuid = selfID
+        }
         try! context.save()
+    }
+    
+    func updateArtboard(title: String, uuid: UUID) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtboard")
+        fetchRequest.predicate = NSPredicate(format: "uuid=\"\(uuid)\"")
+        if let fetchedResults = try! context.fetch(fetchRequest) as? [MyArtboard] {
+            fetchedResults.first?.title = title
+            try! context.save()
+        }
     }
     
     func getArtboard(uuid: UUID) -> MyArtboard? {

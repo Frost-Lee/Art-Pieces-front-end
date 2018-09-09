@@ -18,14 +18,15 @@ class ArtboardEditViewController: UIViewController {
     @IBOutlet weak var artboardView: ArtboardView!
     @IBOutlet weak var toolBarView: ToolBarView!
     
-    var selectedSteps: Set<Int> = []
-    
     var artboardGuide: ArtboardGuide = ArtboardGuide() {
         didSet {
             stepTableView.reloadData()
         }
     }
     
+    var artboard: MyArtboard?
+    
+    private var selectedSteps: Set<Int> = []
     private var isEraserSelected: Bool = false
     private var previousRenderMechanism: RenderMechanism?
     
@@ -48,6 +49,9 @@ class ArtboardEditViewController: UIViewController {
         self.view.addSubview(toolBarView)
         stepTableView.register(StepTableViewCell.self, forCellReuseIdentifier: "stepTableViewCell")
         stepTableView.reloadData()
+        if artboard != nil {
+            artboardView.setupArtboard(with: artboard!.content! as Data)
+        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,7 +80,7 @@ class ArtboardEditViewController: UIViewController {
             DataManager.defaultManager.saveArtboard(keyPhoto: artboardView.viewImage()!, stepPreviewPhotoArray:
                 artboardView.stepPreviewPhotoArray, content: artboardView.export(), email:
                 AccountManager.defaultManager.currentUser?.email ?? "", title:
-                "New Artboard", description: "")
+                "New Artboard", description: "", selfID: artboard?.uuid ?? UUID())
         }
     }
     

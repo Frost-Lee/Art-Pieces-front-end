@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		14706C28FE337856C9FFD0F3 /* Pods_Art_Pieces.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F08116606DD1E7DF354C012A /* Pods_Art_Pieces.framework */; };
-		3A01A069214159040012C636 /* MyArtboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A067214159030012C636 /* MyArtboard+CoreDataClass.swift */; };
-		3A01A06A214159040012C636 /* MyArtboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A068214159040012C636 /* MyArtboard+CoreDataProperties.swift */; };
 		3A01A06D214161510012C636 /* APFormSheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A06C214161510012C636 /* APFormSheetViewController.swift */; };
 		3A01A07121417DAD0012C636 /* NewRepoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A07021417DAD0012C636 /* NewRepoViewController.swift */; };
 		3A01A07321417E120012C636 /* ArtworkForkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A07221417E120012C636 /* ArtworkForkViewController.swift */; };
@@ -40,6 +38,10 @@
 		3A75172221087F8E00373189 /* ToolBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75172121087F8E00373189 /* ToolBarView.swift */; };
 		3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A75172321087FB800373189 /* ToolPickerTableViewController.swift */; };
 		3A7D060E213659A900890926 /* DataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A7D060D213659A900890926 /* DataManager.swift */; };
+		3A8A59B32145384800091532 /* MyArtboard+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A59B12145384800091532 /* MyArtboard+CoreDataProperties.swift */; };
+		3A8A59B42145384800091532 /* MyArtboard+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A59B22145384800091532 /* MyArtboard+CoreDataClass.swift */; };
+		3A8A59B6214553CC00091532 /* ArtboardsGalleryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A59B5214553CC00091532 /* ArtboardsGalleryViewController.swift */; };
+		3A8A59B82145553C00091532 /* ArtboardPreviewCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8A59B72145553C00091532 /* ArtboardPreviewCollectionViewCell.swift */; };
 		3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */; };
 		3A8C93A920F895EC005D5BD1 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93A720F895EC005D5BD1 /* Main.storyboard */; };
 		3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */; };
@@ -84,8 +86,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3A01A067214159030012C636 /* MyArtboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtboard+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtboard+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		3A01A068214159040012C636 /* MyArtboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtboard+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtboard+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3A01A06C214161510012C636 /* APFormSheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APFormSheetViewController.swift; sourceTree = "<group>"; };
 		3A01A07021417DAD0012C636 /* NewRepoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewRepoViewController.swift; sourceTree = "<group>"; };
 		3A01A07221417E120012C636 /* ArtworkForkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkForkViewController.swift; sourceTree = "<group>"; };
@@ -116,6 +116,10 @@
 		3A75172121087F8E00373189 /* ToolBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ToolBarView.swift; sourceTree = "<group>"; };
 		3A75172321087FB800373189 /* ToolPickerTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolPickerTableViewController.swift; sourceTree = "<group>"; };
 		3A7D060D213659A900890926 /* DataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataManager.swift; sourceTree = "<group>"; };
+		3A8A59B12145384800091532 /* MyArtboard+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtboard+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtboard+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		3A8A59B22145384800091532 /* MyArtboard+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "MyArtboard+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/MyArtboard+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		3A8A59B5214553CC00091532 /* ArtboardsGalleryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardsGalleryViewController.swift; sourceTree = "<group>"; };
+		3A8A59B72145553C00091532 /* ArtboardPreviewCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardPreviewCollectionViewCell.swift; sourceTree = "<group>"; };
 		3A8C93A020F895EC005D5BD1 /* Art Pieces.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Art Pieces.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3A8C93A320F895EC005D5BD1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3A8C93A820F895EC005D5BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -248,8 +252,8 @@
 			children = (
 				3A8C93B520F89658005D5BD1 /* StorageProperties.swift */,
 				3A64AA5721359984000B36E0 /* LocalDataModel.xcdatamodeld */,
-				3A01A067214159030012C636 /* MyArtboard+CoreDataClass.swift */,
-				3A01A068214159040012C636 /* MyArtboard+CoreDataProperties.swift */,
+				3A8A59B22145384800091532 /* MyArtboard+CoreDataClass.swift */,
+				3A8A59B12145384800091532 /* MyArtboard+CoreDataProperties.swift */,
 				3A8D11FB21437D6600A6CF0F /* CachedRepo+CoreDataClass.swift */,
 				3A8D11FC21437D6700A6CF0F /* CachedRepo+CoreDataProperties.swift */,
 				3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */,
@@ -372,6 +376,8 @@
 			children = (
 				3AC78BBB2139543500045864 /* Personal.storyboard */,
 				3AC78BBD21395E7D00045864 /* PersonalViewController.swift */,
+				3A8A59B5214553CC00091532 /* ArtboardsGalleryViewController.swift */,
+				3A8A59B72145553C00091532 /* ArtboardPreviewCollectionViewCell.swift */,
 			);
 			path = Personal;
 			sourceTree = "<group>";
@@ -554,9 +560,11 @@
 			files = (
 				3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */,
 				3A8D11FE21437D6700A6CF0F /* CachedRepo+CoreDataProperties.swift in Sources */,
+				3A8A59B82145553C00091532 /* ArtboardPreviewCollectionViewCell.swift in Sources */,
 				3AD10484211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.swift in Sources */,
+				3A8A59B6214553CC00091532 /* ArtboardsGalleryViewController.swift in Sources */,
 				3A0DDF432136662F005DEE82 /* CachedArtwork+CoreDataClass.swift in Sources */,
-				3A01A069214159040012C636 /* MyArtboard+CoreDataClass.swift in Sources */,
+				3A8A59B32145384800091532 /* MyArtboard+CoreDataProperties.swift in Sources */,
 				3AF62DD0213814F4005104CA /* PickArtworkView.swift in Sources */,
 				3ACC14AE2109C095002BCDFF /* MainViewController.swift in Sources */,
 				3AA7BBC621041C15004E20CE /* StepTableViewCell.swift in Sources */,
@@ -578,6 +586,7 @@
 				3A6B32082105789E00F2C63E /* APTheme.swift in Sources */,
 				3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */,
 				3A01A07121417DAD0012C636 /* NewRepoViewController.swift in Sources */,
+				3A8A59B42145384800091532 /* MyArtboard+CoreDataClass.swift in Sources */,
 				3AAE8861213E80F50065FD24 /* NewRepoView.swift in Sources */,
 				3A94FBE32109F935009BE7E1 /* AddArtworkView.swift in Sources */,
 				3ADC3C6A210312AE00C31637 /* StepTitleView.swift in Sources */,
@@ -599,7 +608,6 @@
 				3A0DDF4621366630005DEE82 /* CachedArtwork+CoreDataProperties.swift in Sources */,
 				3ABF6920211C461800709831 /* APTextFieldView.swift in Sources */,
 				3ABF691E211C458C00709831 /* LoginViewController.swift in Sources */,
-				3A01A06A214159040012C636 /* MyArtboard+CoreDataProperties.swift in Sources */,
 				3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */,
 				3A01A06D214161510012C636 /* APFormSheetViewController.swift in Sources */,
 			);

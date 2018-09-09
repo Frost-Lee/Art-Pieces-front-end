@@ -250,13 +250,15 @@ class APWebService {
     }
     
     @discardableResult
-    func fetchPhoto(url: URL, completion: ((UIImage) -> Void)? = nil) -> UIImage? {
+    func fetchPhoto(url: URL, completion: ((UIImage?) -> Void)? = nil) -> UIImage? {
         if completion == nil {
             let data = try! Data(contentsOf: url)
             return UIImage(data: data)!
         } else {
             let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                completion!(UIImage(data: data!)!)
+                if let data = data {
+                    completion?(UIImage(data: data))
+                }
             }
             task.resume()
             return nil

@@ -107,8 +107,10 @@ class ArtworkDetailViewController: UIViewController {
             self.branchPreviews = branches
             for branch in branches {
                 self.webManager.fetchPhoto(url: URL(string: branch.keyPhotoPath)!) { image in
-                    self.keyPhotoDictionary[branch.uuid] =
-                        self.dataManager.saveImage(photo: image, isCachedPhoto: true)
+                    if let image = image {
+                        self.keyPhotoDictionary[branch.uuid] =
+                            self.dataManager.saveImage(photo: image, isCachedPhoto: true)
+                    }
                 }
             }
             DispatchQueue.main.async {

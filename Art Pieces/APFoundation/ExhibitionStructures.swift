@@ -40,6 +40,7 @@ struct ArtworkPreview {
         numberOfStars = Int(cachedRepo.numberOfStars)
         timestamp = cachedRepo.timestamp! as Date
     }
+    
 }
 
 
@@ -69,3 +70,4 @@ struct BranchPreview {
         keyPhotoPath = json["keyPhoto"].string!
     }
 }
+

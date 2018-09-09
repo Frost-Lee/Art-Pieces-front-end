@@ -13,7 +13,6 @@ class PersonalViewController: UIViewController {
     @IBOutlet weak var largePortraitImageView: UIImageView!
     @IBOutlet weak var userNameLabel: UILabel!
     @IBOutlet weak var userDescriptionLabel: UILabel!
-    @IBOutlet weak var starNumberLabel: UILabel!
     @IBOutlet weak var personalCollectionView: UICollectionView! {
         didSet {
             personalCollectionView.register(UINib(nibName: "ArtworkPreviewCollectionViewCell",
@@ -25,11 +24,36 @@ class PersonalViewController: UIViewController {
             userBackgroundImageView.clipsToBounds = true
         }
     }
+    @IBOutlet weak var artworksButton: UIButton!
+    @IBOutlet weak var favoritesButton: UIButton!
     
     var addArtworkView: AddArtworkView!
     
     private var previews: [ArtworkPreview] = []
     private var localUser: User?
+    
+    private var collectionViewSelection: Int = 0 {
+        didSet {
+            if collectionViewSelection != oldValue {
+                previews.removeAll()
+                artworksButton.setTitleColor(.lightGray, for: .normal)
+                favoritesButton.setTitleColor(.lightGray, for: .normal)
+                switch collectionViewSelection {
+                case 0:
+                    artworksButton.setTitleColor(.black, for: .normal)
+                case 1:
+                    favoritesButton.setTitleColor(.black, for: .normal)
+                default:
+                    break
+                }
+                loadProjects() {
+                    DispatchQueue.main.async {
+                        self.personalCollectionView.reloadData()
+                    }
+                }
+            }
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -65,10 +89,12 @@ class PersonalViewController: UIViewController {
     @IBAction func settingButtonTapped(_ sender: UIButton) {
     }
     
-    @IBAction func projectsButtonTapped(_ sender: UIButton) {
+    @IBAction func artworksButtonTapped(_ sender: UIButton) {
+        collectionViewSelection = 0
     }
     
     @IBAction func favoritesButtonTapped(_ sender: UIButton) {
+        collectionViewSelection = 1
     }
     
     private func setupAddArtworkView() {
@@ -91,7 +117,17 @@ class PersonalViewController: UIViewController {
         }
     }
     
-    private func loadProjects() {
+    private func loadProjects(completion: (() -> Void)? = nil) {
+        switch collectionViewSelection {
+        case 0:
+            loadArtworks(completion: completion)
+        default:
+            break
+        }
+    }
+    
+    private func loadArtworks(completion: (() -> Void)? = nil) {
+        
     }
     
     private func getPersonalPortrait(useGrayPortrait: Bool = false) -> UIImage {
@@ -117,11 +153,16 @@ extension PersonalViewController: UICollectionViewDelegateFlowLayout, UICollecti
     func collectionView(_ collectionView: UICollectionView,
                         cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier:
-            "personalCollectionViewCell", for: indexPath) as! ArtworkPreviewCollectionViewCell
+            "personalCollectionViewCell", for: indexPath)
+        return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, willDisplay
+        cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        let cell = cell as! ArtworkPreviewCollectionViewCell
         cell.preview = previews[indexPath.row]
         cell.index = indexPath.row
         cell.delegate = self
-        return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout

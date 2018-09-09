@@ -149,12 +149,16 @@ class GalleryView: UIView {
     private func registerImageLoad(previews: [ArtworkPreview]) {
         for preview in previews {
             webManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
-                self.keyPhotoDictionary.updateValue(self.dataManager.saveImage(photo:
-                    image, isCachedPhoto: true), forKey: preview.uuid)
+                if let image = image {
+                    self.keyPhotoDictionary.updateValue(self.dataManager.saveImage(photo:
+                        image, isCachedPhoto: true), forKey: preview.uuid)
+                }
             }
             webManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
-                self.keyPhotoDictionary.updateValue(self.dataManager.saveImage(photo:
-                    image, isCachedPhoto: true), forKey: preview.uuid)
+                if let image = image {
+                    self.keyPhotoDictionary.updateValue(self.dataManager.saveImage(photo:
+                        image, isCachedPhoto: true), forKey: preview.uuid)
+                }
             }
         }
     }

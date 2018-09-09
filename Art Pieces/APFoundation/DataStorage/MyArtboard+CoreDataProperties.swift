@@ -2,7 +2,7 @@
 //  MyArtboard+CoreDataProperties.swift
 //  
 //
-//  Created by 李灿晨 on 2018/9/6.
+//  Created by 李灿晨 on 2018/9/9.
 //
 //
 
@@ -18,11 +18,13 @@ extension MyArtboard {
 
     @NSManaged public var boardDescription: String?
     @NSManaged public var content: NSData?
+    @NSManaged public var creatorEmail: String?
     @NSManaged public var keyPhotoPath: String?
     @NSManaged public var stepPreviewPhotoPath: String?
     @NSManaged public var timestamp: NSDate?
     @NSManaged public var title: String?
-    @NSManaged public var creatorEmail: String?
     @NSManaged public var uuid: UUID?
+    @NSManaged public var numberOfStars: Int32
+    @NSManaged public var numberOfForks: Int32
 
 }
