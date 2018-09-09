@@ -11,6 +11,7 @@ import UIKit
 protocol ArtboardPreviewDelegate: class {
     func artboardNameDidChanged(at index: Int, to name: String)
     func artboardNameBeginEditting(at index: Int)
+    func moreButtonDidTapped(at index: Int, sender: UIButton)
 }
 
 class ArtboardPreviewCollectionViewCell: UICollectionViewCell {
@@ -24,6 +25,7 @@ class ArtboardPreviewCollectionViewCell: UICollectionViewCell {
     }
     @IBOutlet weak var artboardNameTextField: UITextField!
     @IBOutlet weak var titleTextField: UITextField!
+    @IBOutlet weak var moreButton: UIButton!
     
     weak var delegate: ArtboardPreviewDelegate?
     
@@ -44,4 +46,9 @@ class ArtboardPreviewCollectionViewCell: UICollectionViewCell {
     @IBAction func artboardNameBeginEditting(_ sender: UITextField) {
         delegate?.artboardNameBeginEditting(at: index)
     }
+    
+    @IBAction func moreButtonTapped(_ sender: UIButton) {
+        delegate?.moreButtonDidTapped(at: index, sender: sender)
+    }
+    
 }

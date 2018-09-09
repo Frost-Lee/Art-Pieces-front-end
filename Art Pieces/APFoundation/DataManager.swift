@@ -65,6 +65,17 @@ class DataManager {
         }
     }
     
+    func removeArtboard(uuid: UUID) {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtboard")
+        fetchRequest.predicate = NSPredicate(format: "uuid=\"\(uuid)\"")
+        if let fetchedResults = try! context.fetch(fetchRequest) as? [MyArtboard] {
+            context.delete(fetchedResults.first!)
+            try! context.save()
+        }
+    }
+    
     func getArtboard(uuid: UUID) -> MyArtboard? {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         let context = appDelegate.persistentContainer.viewContext
@@ -80,21 +91,6 @@ class DataManager {
         let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtboard")
         let fetchedArtboards = try! context.fetch(fetchRequest) as! [MyArtboard]
         return fetchedArtboards
-    }
-    
-    func removeArtboard(uuid: UUID) {
-        let appDelegate = UIApplication.shared.delegate as! AppDelegate
-        let context = appDelegate.persistentContainer.viewContext
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "MyArtboard")
-        fetchRequest.predicate = NSPredicate(format: "uuid=\"\(uuid)\"")
-        let objects = try! context.fetch(fetchRequest) as! [MyArtboard]
-        for object in objects {
-            removeItem(path: object.keyPhotoPath)
-            for path in (object.stepPreviewPhotoPath?.components(separatedBy: ";"))! {
-                removeItem(path: path)
-            }
-            context.delete(object)
-        }
     }
     
     func cacheRepoPreview(preview: ArtworkPreview) {

@@ -246,16 +246,13 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="K1T-Fa-Wrh">
-                                                    <rect key="frame" x="5" y="5" width="305" height="229"/>
+                                                    <rect key="frame" x="6" y="6" width="303" height="227.5"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="K1T-Fa-Wrh" secondAttribute="height" multiplier="4:3" id="cCw-yb-nfU"/>
+                                                        <constraint firstAttribute="width" secondItem="K1T-Fa-Wrh" secondAttribute="height" multiplier="305:229" id="QhI-y4-caX"/>
                                                     </constraints>
                                                 </imageView>
-                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Artboard" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vNE-tM-moS">
-                                                    <rect key="frame" x="12" y="243" width="291" height="30"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="30" id="w2c-gJ-xqI"/>
-                                                    </constraints>
+                                                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Artboard" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="vNE-tM-moS">
+                                                    <rect key="frame" x="20" y="241.5" width="249" height="39.5"/>
                                                     <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                                     <textInputTraits key="textInputTraits"/>
@@ -264,20 +261,38 @@
                                                         <action selector="artboardNameEditted:" destination="EBR-Sg-p62" eventType="editingDidEnd" id="IFw-ds-vGi"/>
                                                     </connections>
                                                 </textField>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="k0z-WZ-bgr">
+                                                    <rect key="frame" x="277" y="243" width="30" height="30"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="30" id="DOf-Np-vFz"/>
+                                                        <constraint firstAttribute="width" constant="30" id="fzF-Qz-VEh"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                    <state key="normal" title="···">
+                                                        <color key="titleColor" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="moreButtonTapped:" destination="EBR-Sg-p62" eventType="touchUpInside" id="fX9-o5-LoV"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                         </view>
                                         <constraints>
-                                            <constraint firstAttribute="trailing" secondItem="K1T-Fa-Wrh" secondAttribute="trailing" constant="5" id="3xh-aW-sSG"/>
-                                            <constraint firstAttribute="bottom" secondItem="vNE-tM-moS" secondAttribute="bottom" constant="8" id="8xU-sZ-Jcx"/>
-                                            <constraint firstAttribute="trailing" secondItem="vNE-tM-moS" secondAttribute="trailing" constant="12" id="V80-So-3CY"/>
-                                            <constraint firstItem="vNE-tM-moS" firstAttribute="leading" secondItem="EBR-Sg-p62" secondAttribute="leading" constant="12" id="dyg-ct-aKF"/>
-                                            <constraint firstItem="K1T-Fa-Wrh" firstAttribute="top" secondItem="EBR-Sg-p62" secondAttribute="top" constant="5" id="fNl-uH-ouy"/>
-                                            <constraint firstItem="K1T-Fa-Wrh" firstAttribute="leading" secondItem="EBR-Sg-p62" secondAttribute="leading" constant="5" id="ybI-0w-2Fd"/>
+                                            <constraint firstItem="vNE-tM-moS" firstAttribute="bottom" secondItem="EBR-Sg-p62" secondAttribute="bottomMargin" constant="8" id="0yK-et-mxo"/>
+                                            <constraint firstItem="vNE-tM-moS" firstAttribute="leading" secondItem="EBR-Sg-p62" secondAttribute="leadingMargin" constant="12" id="FaH-4w-WhR"/>
+                                            <constraint firstItem="K1T-Fa-Wrh" firstAttribute="leading" secondItem="EBR-Sg-p62" secondAttribute="leading" constant="6" id="Fwd-Qh-Rfx"/>
+                                            <constraint firstItem="k0z-WZ-bgr" firstAttribute="leading" secondItem="vNE-tM-moS" secondAttribute="trailing" constant="8" id="TJB-zb-IfR"/>
+                                            <constraint firstAttribute="trailing" secondItem="k0z-WZ-bgr" secondAttribute="trailing" constant="8" id="ZMz-Z0-bch"/>
+                                            <constraint firstItem="K1T-Fa-Wrh" firstAttribute="top" secondItem="EBR-Sg-p62" secondAttribute="top" constant="6" id="n95-wY-31K"/>
+                                            <constraint firstAttribute="trailing" secondItem="K1T-Fa-Wrh" secondAttribute="trailing" constant="6" id="pIY-JJ-rQ1"/>
+                                            <constraint firstItem="vNE-tM-moS" firstAttribute="top" secondItem="K1T-Fa-Wrh" secondAttribute="bottom" constant="8" id="viq-0V-FPW"/>
+                                            <constraint firstAttribute="bottom" secondItem="k0z-WZ-bgr" secondAttribute="bottom" constant="8" id="wKI-il-KxD"/>
                                         </constraints>
                                         <size key="customSize" width="315" height="281"/>
                                         <connections>
                                             <outlet property="artboardNameTextField" destination="vNE-tM-moS" id="ft5-nz-3KZ"/>
                                             <outlet property="keyImageView" destination="K1T-Fa-Wrh" id="aNY-sf-o1d"/>
+                                            <outlet property="moreButton" destination="k0z-WZ-bgr" id="HbA-VX-1gW"/>
                                             <outlet property="titleTextField" destination="vNE-tM-moS" id="dtp-fP-DXL"/>
                                         </connections>
                                     </collectionViewCell>
@@ -290,10 +305,10 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="luA-07-6En" firstAttribute="top" secondItem="Qcj-9s-buh" secondAttribute="top" constant="70" id="5jZ-Gw-D5G"/>
-                            <constraint firstItem="luA-07-6En" firstAttribute="leading" secondItem="njl-pE-4LA" secondAttribute="leading" constant="20" id="CG0-8k-pBA"/>
-                            <constraint firstItem="luA-07-6En" firstAttribute="bottom" secondItem="njl-pE-4LA" secondAttribute="bottom" id="VaX-zb-Bxw"/>
-                            <constraint firstItem="njl-pE-4LA" firstAttribute="trailing" secondItem="luA-07-6En" secondAttribute="trailing" constant="20" id="WkC-CW-i6u"/>
+                            <constraint firstItem="luA-07-6En" firstAttribute="leading" secondItem="njl-pE-4LA" secondAttribute="leading" constant="20" id="Oue-CA-raI"/>
+                            <constraint firstItem="luA-07-6En" firstAttribute="bottom" secondItem="njl-pE-4LA" secondAttribute="bottom" id="dCm-ZM-hlT"/>
+                            <constraint firstItem="luA-07-6En" firstAttribute="top" secondItem="njl-pE-4LA" secondAttribute="top" id="hgj-yK-0tT"/>
+                            <constraint firstItem="njl-pE-4LA" firstAttribute="trailing" secondItem="luA-07-6En" secondAttribute="trailing" constant="20" id="mbg-Ef-UhQ"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="njl-pE-4LA"/>
                     </view>

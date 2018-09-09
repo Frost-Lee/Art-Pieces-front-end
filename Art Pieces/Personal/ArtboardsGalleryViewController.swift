@@ -81,4 +81,18 @@ extension ArtboardsGalleryViewController: ArtboardPreviewDelegate {
     func artboardNameBeginEditting(at index: Int) {
         // Prevent from overlying
     }
+    
+    func moreButtonDidTapped(at index: Int, sender: UIButton) {
+        let alert = UIAlertController(title: "About Artboard", message: nil, preferredStyle: .actionSheet)
+        let deleteAction = UIAlertAction(title: "Remove", style: .destructive) { action in
+            self.dataManager.removeArtboard(uuid: self.artboards[index].uuid!)
+            self.artboards.removeAll()
+            self.artboards = self.dataManager.getAllArtboards()
+            self.artboardsCollectionView.reloadData()
+        }
+        alert.addAction(deleteAction)
+        alert.popoverPresentationController?.sourceRect = sender.bounds
+        alert.popoverPresentationController?.sourceView = sender
+        present(alert, animated: true, completion: nil)
+    }
 }
