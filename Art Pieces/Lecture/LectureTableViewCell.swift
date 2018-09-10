@@ -8,6 +8,10 @@
 
 import UIKit
 
+protocol LectureTableViewCellDelegate: class {
+    func downloadButtonTapped(at index: Int)
+}
+
 class LectureTableViewCell: UITableViewCell {
     
     @IBOutlet weak var borderView: UIView! {
@@ -32,6 +36,35 @@ class LectureTableViewCell: UITableViewCell {
     @IBOutlet weak var downloadButton: UIButton! {
         didSet {
             downloadButton.layer.cornerRadius = 15
+        }
+    }
+    
+    weak var delegate: LectureTableViewCellDelegate?
+    
+    var index: Int!
+    
+    var lecturePreview: LecturePreview? {
+        didSet {
+            if lecturePreview != nil {
+                lectureTitleLabel.text = lecturePreview!.title
+                lectureStepNumberLabel.text = String(lecturePreview!.numberOfSteps)
+                starNumberLabel.text = String(lecturePreview!.numberOfStars)
+                lectureStarterNameLabel.text = lecturePreview!.creatorName
+            }
+        }
+    }
+    var keyPhoto: UIImage? {
+        didSet {
+            DispatchQueue.main.async {
+                self.lectureTitleImageView.image = self.keyPhoto
+            }
+        }
+    }
+    var portraitPhoto: UIImage? {
+        didSet {
+            DispatchQueue.main.async {
+                self.lectureStarterPortraitImageView.image = self.portraitPhoto
+            }
         }
     }
     

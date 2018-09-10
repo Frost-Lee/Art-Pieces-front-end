@@ -190,7 +190,7 @@ class LectureView: UIView {
 
 extension LectureView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return previews.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -198,8 +198,32 @@ extension LectureView: UITableViewDataSource, UITableViewDelegate {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let cell = cell as! LectureTableViewCell
+        cell.index = indexPath.row
+        cell.delegate = self
+        cell.lecturePreview = previews[indexPath.row]
+        if keyPhotoDictionary[previews[indexPath.row].uuid] != nil {
+            let image = dataManager.getImage(path: keyPhotoDictionary[previews[indexPath.row].uuid]!!)
+            cell.keyPhoto = image
+        } else {
+            cell.keyPhoto = keyPhotoPlaceHolder
+        }
+        if portraitDictionary[previews[indexPath.row].uuid] != nil {
+            let image = dataManager.getImage(path: portraitDictionary[previews[indexPath.row].uuid]!!)
+            cell.portraitPhoto = image
+        }
+    }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         delegate?.lectureItemDidSelected(at: indexPath.row)
+    }
+}
+
+
+extension LectureView: LectureTableViewCellDelegate {
+    func downloadButtonTapped(at index: Int) {
+        // Download action
     }
 }
