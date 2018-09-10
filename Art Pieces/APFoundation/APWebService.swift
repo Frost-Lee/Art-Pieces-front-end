@@ -158,6 +158,63 @@ class APWebService {
         task.resume()
     }
     
+    func getLecturePreviewFeed(email: String? = nil, completion: (([LecturePreview]) -> Void)? = nil) {
+        let userParameter = getOptionalParameter(field: "user", value: email, quotation: true)
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            query GetLectFeed {
+                getLectFeed(\(userParameter) timestamp: 429)) {
+                    id
+                    title
+                    keyPhoto
+                    creator {
+                        email
+                        name
+                    }
+                    numberOfStars
+                    numberOfSteps
+                    timestamp
+                }
+            }
+        """
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            let json = try! JSON(data: data!)
+            var previews: [LecturePreview] = []
+            completion?(previews)
+        }
+        task.resume()
+    }
+    
+    func extendLecturePreviewFeed(timestamp: Date, email: String? = nil,
+                                  completion: (([LecturePreview]) -> Void)? = nil) {
+        let userParameter = getOptionalParameter(field: "user", value: email, quotation: true)
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            query ExtendLectFeed {
+                extendLectFeed(\(userParameter) timestamp: \(timestamp.secondsSince1970)) {
+                    id
+                    title
+                    keyPhoto
+                    creator {
+                        email
+                        name
+                    }
+                    numberOfStars
+                    numberOfSteps
+                    timestamp
+                }
+            }
+        """
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            let json = try! JSON(data: data!)
+            var previews: [LecturePreview] = []
+            completion?(previews)
+        }
+        task.resume()
+    }
+    
     func getRepoArtworks(repoID: UUID, completion: (([BranchPreview]) -> Void)?) {
         var request = getRequest(httpMethod: "POST")
         let query = """

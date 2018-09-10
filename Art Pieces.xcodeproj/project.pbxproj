@@ -13,10 +13,6 @@
 		3A01A07321417E120012C636 /* ArtworkForkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A07221417E120012C636 /* ArtworkForkViewController.swift */; };
 		3A01A0752142A6FF0012C636 /* ExhibitionStructures.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A01A0742142A6FF0012C636 /* ExhibitionStructures.swift */; };
 		3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */; };
-		3A0DDF422136662F005DEE82 /* CachedLecture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */; };
-		3A0DDF432136662F005DEE82 /* CachedArtwork+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF392136662F005DEE82 /* CachedArtwork+CoreDataClass.swift */; };
-		3A0DDF4421366630005DEE82 /* CachedLecture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF3A2136662F005DEE82 /* CachedLecture+CoreDataProperties.swift */; };
-		3A0DDF4621366630005DEE82 /* CachedArtwork+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0DDF3C2136662F005DEE82 /* CachedArtwork+CoreDataProperties.swift */; };
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
 		3A18C8952121650E007F63F2 /* ArtboardLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* ArtboardLayerView.swift */; };
@@ -47,8 +43,6 @@
 		3A8C93AB20F895EE005D5BD1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AA20F895EE005D5BD1 /* Assets.xcassets */; };
 		3A8C93AE20F895EE005D5BD1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A8C93AC20F895EE005D5BD1 /* LaunchScreen.storyboard */; };
 		3A8C93B620F89658005D5BD1 /* StorageProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8C93B520F89658005D5BD1 /* StorageProperties.swift */; };
-		3A8D11FD21437D6700A6CF0F /* CachedRepo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D11FB21437D6600A6CF0F /* CachedRepo+CoreDataClass.swift */; };
-		3A8D11FE21437D6700A6CF0F /* CachedRepo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A8D11FC21437D6700A6CF0F /* CachedRepo+CoreDataProperties.swift */; };
 		3A94FBE12109F8F1009BE7E1 /* AddArtworkView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A94FBE02109F8F1009BE7E1 /* AddArtworkView.xib */; };
 		3A94FBE32109F935009BE7E1 /* AddArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A94FBE22109F935009BE7E1 /* AddArtworkView.swift */; };
 		3AA2BAA12136C02900C8AB4C /* HeadWalkThroughViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AA2BAA02136C02900C8AB4C /* HeadWalkThroughViewController.swift */; };
@@ -81,6 +75,10 @@
 		3ADC5A8421456DF9005AA485 /* LecturePublish.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3ADC5A8321456DF9005AA485 /* LecturePublish.xib */; };
 		3ADC5A8621456E0C005AA485 /* LecturePublishView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC5A8521456E0C005AA485 /* LecturePublishView.swift */; };
 		3ADC5A8821457A5E005AA485 /* LecturePublishViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC5A8721457A5E005AA485 /* LecturePublishViewController.swift */; };
+		3ADC5A8B214605CF005AA485 /* CachedRepo+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC5A89214605CF005AA485 /* CachedRepo+CoreDataProperties.swift */; };
+		3ADC5A8C214605CF005AA485 /* CachedRepo+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC5A8A214605CF005AA485 /* CachedRepo+CoreDataClass.swift */; };
+		3ADC5A9B21461450005AA485 /* CachedLecture+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC5A992146144F005AA485 /* CachedLecture+CoreDataClass.swift */; };
+		3ADC5A9C21461450005AA485 /* CachedLecture+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3ADC5A9A2146144F005AA485 /* CachedLecture+CoreDataProperties.swift */; };
 		3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */; };
 		3AF62DD0213814F4005104CA /* PickArtworkView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DCF213814F4005104CA /* PickArtworkView.swift */; };
 		3AF62DD221381522005104CA /* AddArtworkDescriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3AF62DD121381522005104CA /* AddArtworkDescriptionView.swift */; };
@@ -94,10 +92,6 @@
 		3A01A07221417E120012C636 /* ArtworkForkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtworkForkViewController.swift; sourceTree = "<group>"; };
 		3A01A0742142A6FF0012C636 /* ExhibitionStructures.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExhibitionStructures.swift; sourceTree = "<group>"; };
 		3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BranchCollectionViewCell.swift; sourceTree = "<group>"; };
-		3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedLecture+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedLecture+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		3A0DDF392136662F005DEE82 /* CachedArtwork+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedArtwork+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedArtwork+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		3A0DDF3A2136662F005DEE82 /* CachedLecture+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedLecture+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedLecture+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
-		3A0DDF3C2136662F005DEE82 /* CachedArtwork+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedArtwork+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedArtwork+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
 		3A18C8942121650E007F63F2 /* ArtboardLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardLayerView.swift; sourceTree = "<group>"; };
@@ -130,8 +124,6 @@
 		3A8C93AD20F895EE005D5BD1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3A8C93AF20F895EE005D5BD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3A8C93B520F89658005D5BD1 /* StorageProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageProperties.swift; sourceTree = "<group>"; };
-		3A8D11FB21437D6600A6CF0F /* CachedRepo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedRepo+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedRepo+CoreDataClass.swift"; sourceTree = "<absolute>"; };
-		3A8D11FC21437D6700A6CF0F /* CachedRepo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedRepo+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedRepo+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3A94FBE02109F8F1009BE7E1 /* AddArtworkView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddArtworkView.xib; sourceTree = "<group>"; };
 		3A94FBE22109F935009BE7E1 /* AddArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArtworkView.swift; sourceTree = "<group>"; };
 		3AA2BAA02136C02900C8AB4C /* HeadWalkThroughViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeadWalkThroughViewController.swift; sourceTree = "<group>"; };
@@ -164,6 +156,10 @@
 		3ADC5A8321456DF9005AA485 /* LecturePublish.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LecturePublish.xib; sourceTree = "<group>"; };
 		3ADC5A8521456E0C005AA485 /* LecturePublishView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturePublishView.swift; sourceTree = "<group>"; };
 		3ADC5A8721457A5E005AA485 /* LecturePublishViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LecturePublishViewController.swift; sourceTree = "<group>"; };
+		3ADC5A89214605CF005AA485 /* CachedRepo+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedRepo+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedRepo+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
+		3ADC5A8A214605CF005AA485 /* CachedRepo+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedRepo+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedRepo+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		3ADC5A992146144F005AA485 /* CachedLecture+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedLecture+CoreDataClass.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedLecture+CoreDataClass.swift"; sourceTree = "<absolute>"; };
+		3ADC5A9A2146144F005AA485 /* CachedLecture+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "CachedLecture+CoreDataProperties.swift"; path = "/Users/licanchen/Desktop/Art Pieces/Art Pieces/APFoundation/DataStorage/CachedLecture+CoreDataProperties.swift"; sourceTree = "<absolute>"; };
 		3AE3EBDD20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StrokeGestureRecognizer.swift; sourceTree = "<group>"; };
 		3AF62DCF213814F4005104CA /* PickArtworkView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickArtworkView.swift; sourceTree = "<group>"; };
 		3AF62DD121381522005104CA /* AddArtworkDescriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddArtworkDescriptionView.swift; sourceTree = "<group>"; };
@@ -260,12 +256,10 @@
 				3A64AA5721359984000B36E0 /* LocalDataModel.xcdatamodeld */,
 				3A8A59B22145384800091532 /* MyArtboard+CoreDataClass.swift */,
 				3A8A59B12145384800091532 /* MyArtboard+CoreDataProperties.swift */,
-				3A8D11FB21437D6600A6CF0F /* CachedRepo+CoreDataClass.swift */,
-				3A8D11FC21437D6700A6CF0F /* CachedRepo+CoreDataProperties.swift */,
-				3A0DDF382136662F005DEE82 /* CachedLecture+CoreDataClass.swift */,
-				3A0DDF3A2136662F005DEE82 /* CachedLecture+CoreDataProperties.swift */,
-				3A0DDF392136662F005DEE82 /* CachedArtwork+CoreDataClass.swift */,
-				3A0DDF3C2136662F005DEE82 /* CachedArtwork+CoreDataProperties.swift */,
+				3ADC5A8A214605CF005AA485 /* CachedRepo+CoreDataClass.swift */,
+				3ADC5A89214605CF005AA485 /* CachedRepo+CoreDataProperties.swift */,
+				3ADC5A992146144F005AA485 /* CachedLecture+CoreDataClass.swift */,
+				3ADC5A9A2146144F005AA485 /* CachedLecture+CoreDataProperties.swift */,
 			);
 			path = DataStorage;
 			sourceTree = "<group>";
@@ -358,8 +352,8 @@
 				3A4043A12109D75000467990 /* Main */,
 				3ABF691A211C447900709831 /* Login */,
 				3A4043982109CCB900467990 /* Gallery */,
-				3A01A06B214161060012C636 /* ReusableViews */,
 				3ACC14B52109CB92002BCDFF /* Lecture */,
+				3A01A06B214161060012C636 /* ReusableViews */,
 				3A75171021086F8600373189 /* ArtboardEdit */,
 				3AC78BBA2139540800045864 /* Personal */,
 				3A79F4C720FEF2FC00896C0D /* ArtboardView */,
@@ -569,12 +563,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				3A8C93A420F895EC005D5BD1 /* AppDelegate.swift in Sources */,
-				3A8D11FE21437D6700A6CF0F /* CachedRepo+CoreDataProperties.swift in Sources */,
 				3A8A59B82145553C00091532 /* ArtboardPreviewCollectionViewCell.swift in Sources */,
 				3AD10484211BD94B006C1039 /* ArtworkPreviewCollectionViewCell.swift in Sources */,
 				3ADC5A8621456E0C005AA485 /* LecturePublishView.swift in Sources */,
 				3A8A59B6214553CC00091532 /* ArtboardsGalleryViewController.swift in Sources */,
-				3A0DDF432136662F005DEE82 /* CachedArtwork+CoreDataClass.swift in Sources */,
 				3A8A59B32145384800091532 /* MyArtboard+CoreDataProperties.swift in Sources */,
 				3AF62DD0213814F4005104CA /* PickArtworkView.swift in Sources */,
 				3ACC14AE2109C095002BCDFF /* MainViewController.swift in Sources */,
@@ -584,13 +576,14 @@
 				3AC000D421357E3300020952 /* AccountManager.swift in Sources */,
 				3AC78BBE21395E7D00045864 /* PersonalViewController.swift in Sources */,
 				3AC06AC020FB670600AA0138 /* ArtboardView.swift in Sources */,
+				3ADC5A9B21461450005AA485 /* CachedLecture+CoreDataClass.swift in Sources */,
 				3A02A657212288BA000C59B5 /* BranchCollectionViewCell.swift in Sources */,
 				3A18C8952121650E007F63F2 /* ArtboardLayerView.swift in Sources */,
 				3A64AA5921359984000B36E0 /* LocalDataModel.xcdatamodeld in Sources */,
-				3A0DDF422136662F005DEE82 /* CachedLecture+CoreDataClass.swift in Sources */,
 				3A56CA8720F9F0B10076FD51 /* RenderMechanism.swift in Sources */,
 				3A75172421087FB800373189 /* ToolPickerTableViewController.swift in Sources */,
 				3A40439A2109D04100467990 /* GalleryView.swift in Sources */,
+				3ADC5A8B214605CF005AA485 /* CachedRepo+CoreDataProperties.swift in Sources */,
 				3ADC5A8821457A5E005AA485 /* LecturePublishViewController.swift in Sources */,
 				3A4043A02109D07400467990 /* LectureView.swift in Sources */,
 				3A6B32062104BD7500F2C63E /* MasterNavigationView.swift in Sources */,
@@ -604,7 +597,8 @@
 				3ADC3C6A210312AE00C31637 /* StepTitleView.swift in Sources */,
 				3AA7BBC221041BE0004E20CE /* ArtboardEditViewController.swift in Sources */,
 				3ADC3C6E2103189700C31637 /* SubStepView.swift in Sources */,
-				3A0DDF4421366630005DEE82 /* CachedLecture+CoreDataProperties.swift in Sources */,
+				3ADC5A8C214605CF005AA485 /* CachedRepo+CoreDataClass.swift in Sources */,
+				3ADC5A9C21461450005AA485 /* CachedLecture+CoreDataProperties.swift in Sources */,
 				3A01A0752142A6FF0012C636 /* ExhibitionStructures.swift in Sources */,
 				3AA2BAA12136C02900C8AB4C /* HeadWalkThroughViewController.swift in Sources */,
 				3A48E20F211D866A00B34B24 /* LectureDetailViewController.swift in Sources */,
@@ -612,12 +606,10 @@
 				3A7D060E213659A900890926 /* DataManager.swift in Sources */,
 				3AC06AC220FB6A8C00AA0138 /* SingleStrokeView.swift in Sources */,
 				3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */,
-				3A8D11FD21437D6700A6CF0F /* CachedRepo+CoreDataClass.swift in Sources */,
 				3AD1048A211BE086006C1039 /* LectureTableViewCell.swift in Sources */,
 				3AC000D22135631500020952 /* APWebService.swift in Sources */,
 				3A01A07321417E120012C636 /* ArtworkForkViewController.swift in Sources */,
 				3AF62DD221381522005104CA /* AddArtworkDescriptionView.swift in Sources */,
-				3A0DDF4621366630005DEE82 /* CachedArtwork+CoreDataProperties.swift in Sources */,
 				3ABF6920211C461800709831 /* APTextFieldView.swift in Sources */,
 				3ABF691E211C458C00709831 /* LoginViewController.swift in Sources */,
 				3AE3EBDE20F9BE1A00788BF1 /* StrokeGestureRecognizer.swift in Sources */,

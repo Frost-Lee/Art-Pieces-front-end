@@ -40,7 +40,33 @@ struct ArtworkPreview {
         numberOfStars = Int(cachedRepo.numberOfStars)
         timestamp = cachedRepo.timestamp! as Date
     }
+}
+
+
+struct LecturePreview {
+    var uuid: UUID
+    var title: String
+    var keyPhotoPath: String
+    var creatorName: String
+    var creatorPortraitPath: String?
+    var numberOfStars: Int
+    var numberOfSteps: Int
+    var timestamp: Date
     
+//    init(json: JSON) {
+//        
+//    }
+    
+    init(cachedLecture: CachedLecture) {
+        uuid = cachedLecture.uuid!
+        title = cachedLecture.title!
+        keyPhotoPath = cachedLecture.keyPhotoPath!
+        creatorName = cachedLecture.creatorName!
+        creatorPortraitPath = cachedLecture.creatorPortraitPath
+        numberOfStars = Int(cachedLecture.numberOfStars)
+        numberOfSteps = Int(cachedLecture.numberOfSteps)
+        timestamp = cachedLecture.timestamp! as Date
+    }
 }
 
 
