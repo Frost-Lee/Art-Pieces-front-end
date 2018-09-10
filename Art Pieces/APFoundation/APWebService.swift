@@ -325,6 +325,7 @@ class APWebService {
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
+                print(String(data: data, encoding: .utf8))
                 let json = try! JSON(data: data)
                 let name = json["data"]["getUser"]["name"].string!
                 let signature = json["data"]["getUser"]["signature"].string ?? ""
