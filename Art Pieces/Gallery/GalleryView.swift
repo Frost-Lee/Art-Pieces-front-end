@@ -20,9 +20,9 @@ class GalleryView: UIView {
         didSet {
             setupRefreshProperties()
             setupFlowLayoutProperties()
-            galleryCollectionView.mj_header.beginRefreshing()
             loadCachedData()
             reloadCollectionViewData()
+            galleryCollectionView.mj_header.beginRefreshing()
         }
     }
     
@@ -115,7 +115,14 @@ class GalleryView: UIView {
             .currentUser?.email) { previews in
                 let filteredPreviews = self.getFilteredPreviews(from: previews, baseLine:
                     self.previews.first, isBefore: false)
-                self.previews = (filteredPreviews + self.previews)
+                if !self.previews.isEmpty && previews.last!.timestamp > self.previews.first!.timestamp {
+                    self.keyPhotoDictionary.removeAll()
+                    self.portraitDictionary.removeAll()
+                    self.previews = filteredPreviews
+                    self.dataManager.cleanRepoPreviewCache()
+                } else {
+                    self.previews = filteredPreviews + self.previews
+                }
                 self.registerImageLoad(previews: filteredPreviews)
                 self.cachePreviewData(previews: filteredPreviews)
                 DispatchQueue.main.async {
@@ -128,7 +135,7 @@ class GalleryView: UIView {
     }
     
     private func keepLoadCollectionViewData() {
-        guard previews.count != 0 else {return}
+        guard previews.count != 0 else {galleryCollectionView.mj_footer.endRefreshing();return}
         webManager.extendRepoPreviewFeed(timestamp:
             previews.last!.timestamp, email: AccountManager.defaultManager.currentUser?.email) {
             previews in
@@ -154,10 +161,12 @@ class GalleryView: UIView {
                         image, isCachedPhoto: true), forKey: preview.uuid)
                 }
             }
-            webManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
-                if let image = image {
-                    self.keyPhotoDictionary.updateValue(self.dataManager.saveImage(photo:
-                        image, isCachedPhoto: true), forKey: preview.uuid)
+            if let portraitPath = preview.creatorPortraitPath {
+                webManager.fetchPhoto(url: URL(string: portraitPath)!) { image in
+                    if let image = image {
+                        self.portraitDictionary.updateValue(self.dataManager.saveImage(photo:
+                            image, isCachedPhoto: true), forKey: preview.uuid)
+                    }
                 }
             }
         }

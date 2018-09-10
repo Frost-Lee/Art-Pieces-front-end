@@ -42,11 +42,12 @@ extension LecturePublishViewController: LecturePublishDelegate {
     func shareButtonDidTapped() {
         let user = AccountManager.defaultManager.currentUser!
         webService.uploadLecture(creatorEmail: user.email, creatorPassword: user.password, title:
-        lecturePublishView.title, description: lecturePublishView.lectureDescription, content:
-        artboard.content!, selfID: artboard.uuid!) {
-            DispatchQueue.main.async {
-                self.dismiss(animated: true, completion: nil)
-            }
+            lecturePublishView.title, description: lecturePublishView.lectureDescription,
+            keyPhoto: lecturePublishView.lectureKeyphotoImageView.image!, content:
+            artboard.content!, selfID: artboard.uuid!) {
+                DispatchQueue.main.async {
+                    self.dismiss(animated: true, completion: nil)
+                }
         }
     }
 }

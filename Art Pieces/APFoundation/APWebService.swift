@@ -70,23 +70,27 @@ class APWebService {
     }
     
     func uploadLecture(creatorEmail: String, creatorPassword: String, title: String,
-                       description: String, content: NSData, selfID: UUID,
+                       description: String, keyPhoto: UIImage, content: NSData, selfID: UUID,
                        completion: (() -> Void)?) {
         let descriptionParameter = getOptionalParameter(field: "description", value: description,
                                                         quotation: true)
-        var request = getRequest(httpMethod: "POST")
-        let query = """
-            mutation InsertLect {
-                insertLect(id: "\(selfID)", title: "\(title)", \(descriptionParameter)
-                steps: "\(String(data: content as Data, encoding: .utf8)!.replacingOccurrences(of: "\"", with: "\\\""))",
-                creator: "\(creatorEmail)", password: "\(creatorPassword)", timestamp: \(self.now))
-            }
-        """
-        request.httpBody = constructRequestBody(with: query)
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            completion?()
+        sendFile(url: APWebService.resourceServerURL, fileName: "NewLecture.jpeg", data:
+            keyPhoto.jpegData(compressionQuality: 0.2)!) { urlPath, compressedURLPath in
+                var request = self.getRequest(httpMethod: "POST")
+                let query = """
+                mutation InsertLect {
+                    insertLect(id: "\(selfID)", title: "\(title)", \(descriptionParameter)
+                        steps: "\(String(data: content as Data, encoding: .utf8)!.replacingOccurrences(of: "\"", with: "\\\""))",
+                        creator: "\(creatorEmail)", password: "\(creatorPassword)", timestamp: \(self.now),
+                        keyPhoto: "\(urlPath)")
+                }
+                """
+                request.httpBody = self.constructRequestBody(with: query)
+                let task = URLSession.shared.dataTask(with: request) { data, response, error in
+                    completion?()
+                }
+                task.resume()
         }
-        task.resume()
     }
     
     func getRepoPreviewFeed(email: String? = nil, completion: (([ArtworkPreview]) -> Void)? = nil) {

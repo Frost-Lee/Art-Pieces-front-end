@@ -123,6 +123,48 @@ class DataManager {
         return previews.sorted(by: {$0.timestamp > $1.timestamp})
     }
     
+    func cleanRepoPreviewCache() {
+        DispatchQueue.main.async {
+            self.cleanEntity(entityName: "CachedRepo")
+        }
+    }
+    
+    func cacheLecturePreview(preview: LecturePreview) {
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let entity = NSEntityDescription.entity(forEntityName: "CachedLecture", in: context)
+            let newCachedLecture = CachedLecture(entity: entity!, insertInto: context)
+            newCachedLecture.uuid = preview.uuid
+            newCachedLecture.creatorName = preview.creatorName
+            newCachedLecture.creatorPortraitPath = preview.creatorPortraitPath
+            newCachedLecture.keyPhotoPath = preview.keyPhotoPath
+            newCachedLecture.numberOfStars = Int32(preview.numberOfStars)
+            newCachedLecture.numberOfSteps = Int32(preview.numberOfSteps)
+            newCachedLecture.timestamp = preview.timestamp as NSDate
+            newCachedLecture.title = preview.title
+            newCachedLecture.uuid = preview.uuid
+        }
+    }
+    
+    func getCachedLecturePreviews() -> [LecturePreview] {
+        let appDelegate = UIApplication.shared.delegate as! AppDelegate
+        let context = appDelegate.persistentContainer.viewContext
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "CachedLecture")
+        let fetchedLectures = try! context.fetch(fetchRequest) as! [CachedLecture]
+        var previews: [LecturePreview] = []
+        for lecture in fetchedLectures {
+            previews.append(LecturePreview(cachedLecture: lecture))
+        }
+        return previews.sorted(by: {$0.timestamp > $1.timestamp})
+    }
+    
+    func cleanLecturePreviewCache() {
+        DispatchQueue.main.async {
+            self.cleanEntity(entityName: "CachedLecture")
+        }
+    }
+    
     func saveImage(photo: UIImage, isCachedPhoto: Bool) -> String {
         initializeDirectory()
         let photoIdentifier = UUID().uuidString + ".jpeg"
@@ -142,6 +184,19 @@ class DataManager {
     func removeItem(path: String?) {
         guard path != nil && path?.count != 0 else {return}
         try? FileManager.default.removeItem(atPath: path!)
+    }
+    
+    private func cleanEntity(entityName: String) {
+        DispatchQueue.main.async {
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            let context = appDelegate.persistentContainer.viewContext
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: entityName)
+            let fetchedCaches = try! context.fetch(fetchRequest) as! [CachedRepo]
+            for repo in fetchedCaches {
+                context.delete(repo)
+            }
+            try! context.save()
+        }
     }
     
     private func initializeDirectory() {

@@ -21,11 +21,62 @@ class LectureView: UIView {
                                       forCellReuseIdentifier: "lectureTableViewCell")
             lectureTableView.contentInset = UIEdgeInsets(top: 16, left: 0, bottom: 16, right: 0)
             setupRefreshProperties()
-            lectureTableView.reloadData()
+            loadCachedData()
+            reloadTableViewData()
+            lectureTableView.mj_header.beginRefreshing()
         }
     }
     
     weak var delegate: LectureDelegate?
+    
+    let webManager = APWebService.defaultManager
+    let dataManager = DataManager.defaultManager
+    
+    let keyPhotoPlaceHolder = UIImage(named: "GalleryPlaceHolderImage")
+    
+    private var previews: [LecturePreview] = []
+    private var keyPhotoDictionary: [UUID : String?] = [:] {
+        didSet {
+            var indicesToUpdate: [IndexPath] = []
+            for key in keyPhotoDictionary.keys {
+                if oldValue[key] == nil {
+                    for i in 0 ..< previews.count {
+                        if previews[i].uuid == key {
+                            indicesToUpdate.append(IndexPath(row: i, section: 0))
+                            break
+                        }
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self.lectureTableView.reloadRows(at: indicesToUpdate, with: .fade)
+            }
+        }
+    }
+    private var portraitDictionary: [UUID : String?] = [:] {
+        didSet {
+            var indicesToUpdate: [IndexPath] = []
+            for key in portraitDictionary.keys {
+                if oldValue[key] == nil {
+                    for i in 0 ..< previews.count {
+                        if previews[i].uuid == key {
+                            indicesToUpdate.append(IndexPath(row: i, section: 0))
+                            break
+                        }
+                    }
+                }
+            }
+            DispatchQueue.main.async {
+                self.lectureTableView.reloadRows(at: indicesToUpdate, with: .fade)
+            }
+        }
+    }
+    
+    private func loadCachedData() {
+        previews = dataManager.getCachedLecturePreviews()
+        lectureTableView.reloadData()
+        registerImageLoad(previews: previews)
+    }
     
     private func setupRefreshProperties() {
         let header = MJRefreshNormalHeader() {
@@ -46,11 +97,92 @@ class LectureView: UIView {
     }
     
     private func reloadTableViewData() {
-        lectureTableView.mj_header.endRefreshing()
+        webManager.getLecturePreviewFeed(email: AccountManager.defaultManager
+            .currentUser?.email) { previews in
+                let filteredPreviews = self.getFilteredPreviews(from: previews, baseLine:
+                    self.previews.first, isBefore: false)
+                if !self.previews.isEmpty && previews.last!.timestamp > self.previews.first!.timestamp {
+                    self.keyPhotoDictionary.removeAll()
+                    self.portraitDictionary.removeAll()
+                    self.previews = filteredPreviews
+                    self.dataManager.cleanLecturePreviewCache()
+                } else {
+                    self.previews = filteredPreviews + self.previews
+                }
+                self.registerImageLoad(previews: filteredPreviews)
+                self.cachePreviewData(previews: filteredPreviews)
+                DispatchQueue.main.async {
+                    if filteredPreviews.count != 0 {
+                        self.lectureTableView.reloadData()
+                    }
+                    self.lectureTableView.mj_header.endRefreshing()
+                }
+        }
     }
     
     private func keepLoadTableViewData() {
         lectureTableView.mj_footer.endRefreshing()
+        guard previews.count != 0 else {lectureTableView.mj_footer.endRefreshing();return}
+        webManager.extendLecturePreviewFeed(timestamp: previews.last!.timestamp, email: AccountManager
+            .defaultManager.currentUser?.email) { previews in
+                let filteredPreviews = self.getFilteredPreviews(from: previews, baseLine:
+                    self.previews.last, isBefore: true)
+                self.previews += filteredPreviews
+                self.registerImageLoad(previews: filteredPreviews)
+                self.cachePreviewData(previews: filteredPreviews)
+                DispatchQueue.main.async {
+                    if filteredPreviews.count != 0 {
+                        self.lectureTableView.reloadData()
+                    }
+                    self.lectureTableView.mj_footer.endRefreshing()
+                }
+        }
+    }
+    
+    private func registerImageLoad(previews: [LecturePreview]) {
+        for preview in previews {
+            webManager.fetchPhoto(url: URL(string: preview.keyPhotoPath)!) { image in
+                if let image = image {
+                    self.keyPhotoDictionary.updateValue(self.dataManager.saveImage(photo:
+                        image, isCachedPhoto: true), forKey: preview.uuid)
+                }
+            }
+            if let portraitPath = preview.creatorPortraitPath {
+                webManager.fetchPhoto(url: URL(string: portraitPath)!) { image in
+                    if let image = image {
+                        self.portraitDictionary.updateValue(self.dataManager.saveImage(photo:
+                            image, isCachedPhoto: true), forKey: preview.uuid)
+                    }
+                }
+            }
+        }
+    }
+    
+    private func getFilteredPreviews(from previews: [LecturePreview],
+                                     baseLine: LecturePreview?, isBefore: Bool) -> [LecturePreview] {
+        var result: [LecturePreview] = []
+        let baseLineDate = baseLine?.timestamp
+        guard baseLineDate != nil else {
+            if isBefore {
+                return []
+            } else {
+                return previews
+            }
+        }
+        for preview in previews {
+            if isBefore && preview.timestamp < baseLineDate! {
+                result.append(preview)
+            } else if !isBefore && preview.timestamp > baseLineDate! {
+                result.append(preview)
+            }
+        }
+        return result
+    }
+    
+    private func cachePreviewData(previews: [LecturePreview]) {
+        for preview in previews {
+            self.dataManager.cacheLecturePreview(preview: preview)
+        }
     }
     
 }
