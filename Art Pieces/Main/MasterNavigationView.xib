@@ -58,7 +58,7 @@
                         <constraint firstAttribute="height" constant="8" id="9YX-6u-Bs9"/>
                     </constraints>
                 </view>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCI-Za-R4Y">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SCI-Za-R4Y">
                     <rect key="frame" x="772" y="53" width="24" height="22"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="22" id="S4S-TM-AMS"/>
@@ -69,7 +69,7 @@
                         <action selector="notificationButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="8nG-i5-3TW"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2Z-z4-k0H">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b2Z-z4-k0H">
                     <rect key="frame" x="710" y="53" width="24" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="24" id="Fhb-L1-s55"/>
@@ -80,7 +80,7 @@
                         <action selector="settingButtonTapped:" destination="iN0-l3-epB" eventType="touchUpInside" id="0Wt-n9-InA"/>
                     </connections>
                 </button>
-                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rch-OJ-Tda">
+                <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rch-OJ-Tda">
                     <rect key="frame" x="646" y="53" width="24" height="22"/>
                     <constraints>
                         <constraint firstAttribute="width" constant="24" id="6RY-NS-Yf3"/>

@@ -33,8 +33,10 @@ class AccountManager {
     func login(email: String, password: String, isFirstLogin: Bool = false, completion: ((() -> ())?)) {
         if !isFirstLogin {
             APWebService.defaultManager.getUserInfo(email: email) { name, signature, portrait in
-                self.login(email: email, name: name, password: password, signature: signature,
-                           portrait: portrait)
+                if let name = name {
+                    self.login(email: email, name: name, password: password, signature: signature,
+                               portrait: portrait)
+                }
                 completion?()
             }
         } else {

@@ -312,7 +312,7 @@ class APWebService {
         task.resume()
     }
     
-    func getUserInfo(email: String, completion: ((String, String, UIImage?) -> Void)?) {
+    func getUserInfo(email: String, completion: ((String?, String, UIImage?) -> Void)?) {
         var request = getRequest(httpMethod: "POST")
         let query = """
             query GetUserInfo {
@@ -325,9 +325,8 @@ class APWebService {
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let data = data {
-                print(String(data: data, encoding: .utf8))
                 let json = try! JSON(data: data)
-                let name = json["data"]["getUser"]["name"].string!
+                let name = json["data"]["getUser"]["name"].string
                 let signature = json["data"]["getUser"]["signature"].string ?? ""
                 let compressedPortraitPath = json["data"]["getUser"]["compressedPortrait"].string
                 var portrait: UIImage? = nil
