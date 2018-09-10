@@ -34,7 +34,7 @@ class ThicknessSliderViewController: UIViewController {
 
         slider.frame = CGRect(x: 20, y: 0, width: 260, height: 50)
         slider.isContinuous = false
-        slider.addTarget(self, action: #selector(sliderValueDidChanged), for: UIControl.Event.valueChanged)
+        slider.addTarget(self, action: #selector(sliderValueDidChanged), for: .valueChanged)
         self.view.addSubview(slider)
     }
     
