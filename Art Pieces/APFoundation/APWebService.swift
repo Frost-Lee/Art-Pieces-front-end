@@ -29,7 +29,8 @@ class APWebService {
         var request = self.getRequest(httpMethod: "POST")
         let query = """
         mutation InsertUser {
-            insertUser(email: "\(email)", name: "\(email)", password: "\(password)")
+            insertUser(email: "\(email.secured())", name: "\(email.secured())",
+                password: "\(password.secured())")
         }
         """
         request.httpBody = self.constructRequestBody(with: query)
@@ -55,9 +56,9 @@ class APWebService {
                 var request = self.getRequest(httpMethod: "POST")
                 let query = """
                 mutation UploadArtwork {
-                    insertWork(id: "\(selfID)", creator: "\(creatorEmail)",
-                        password: "\(creatorPassword)", title: "\(title)",
-                        \(descriptionParameter) keyPhoto: "\(urlPath)",
+                    insertWork(id: "\(selfID)", creator: "\(creatorEmail.secured())",
+                        password: "\(creatorPassword.secured())", title: "\(title.secured())",
+                        \(descriptionParameter.secured()) keyPhoto: "\(urlPath)",
                         \(belongingRepoParameter) timestamp: \(self.now))
                 }
                 """
@@ -79,10 +80,10 @@ class APWebService {
                 var request = self.getRequest(httpMethod: "POST")
                 let query = """
                 mutation InsertLect {
-                    insertLect(id: "\(selfID)", title: "\(title)", \(descriptionParameter)
-                        steps: "\(String(data: content as Data, encoding: .utf8)!.replacingOccurrences(of: "\"", with: "\\\""))",
-                        creator: "\(creatorEmail)", password: "\(creatorPassword)", timestamp: \(self.now),
-                        keyPhoto: "\(urlPath)")
+                    insertLect(id: "\(selfID)", title: "\(title.secured())", \(descriptionParameter)
+                        steps: "\(String(data: content as Data, encoding: .utf8)!.secured())",
+                        creator: "\(creatorEmail.secured())", password: "\(creatorPassword.secured())",
+                        timestamp: \(self.now), keyPhoto: "\(urlPath)")
                 }
                 """
                 request.httpBody = self.constructRequestBody(with: query)
@@ -297,7 +298,7 @@ class APWebService {
         var request = getRequest(httpMethod: "POST")
         let query = """
             query CheckLogin {
-                login(email: "\(email)", password: "\(password)")
+                login(email: "\(email.secured())", password: "\(password.secured())")
             }
         """
         request.httpBody = constructRequestBody(with: query)
@@ -315,7 +316,7 @@ class APWebService {
         var request = getRequest(httpMethod: "POST")
         let query = """
             query GetUserInfo {
-                getUser(email: "\(email)") {
+                getUser(email: "\(email.secured())") {
                     name
                     compressedPortrait
                 }
@@ -359,9 +360,9 @@ class APWebService {
         let tailing = comma ? "," : ""
         if value != nil {
             if quotation {
-                return "\(field): \"\(value!)\"" + tailing
+                return ("\(field): \"\(value!)\"" + tailing).secured()
             } else {
-                return "\(field): \(value!)" + tailing
+                return ("\(field): \(value!)" + tailing).secured()
             }
         } else {
             return ""

@@ -125,3 +125,11 @@ extension Date {
         return self.timeIntervalSince1970 * 1000
     }
 }
+
+
+extension String {
+    func secured() -> String {
+        let temp = self.replacingOccurrences(of: "\\", with: "\\\\")
+        return temp.replacingOccurrences(of: "\"", with: "\\\"")
+    }
+}
