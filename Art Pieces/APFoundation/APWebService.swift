@@ -167,7 +167,7 @@ class APWebService {
         var request = getRequest(httpMethod: "POST")
         let query = """
             query GetLectFeed {
-                getLectFeed(\(userParameter) timestamp: 429)) {
+                getLectFeed(\(userParameter) timestamp: 429) {
                     id
                     title
                     keyPhoto
@@ -184,7 +184,11 @@ class APWebService {
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             let json = try! JSON(data: data!)
+            guard let lectureArray = json["data"]["getLectFeed"].array else {completion?([]);return}
             var previews: [LecturePreview] = []
+            for lecture in lectureArray {
+                previews.append(LecturePreview(json: lecture))
+            }
             completion?(previews)
         }
         task.resume()
@@ -213,8 +217,30 @@ class APWebService {
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             let json = try! JSON(data: data!)
+            guard let lectureArray = json["data"]["extendLectFeed"].array else {completion?([]);return}
             var previews: [LecturePreview] = []
+            for lecture in lectureArray {
+                previews.append(LecturePreview(json: lecture))
+            }
             completion?(previews)
+        }
+        task.resume()
+    }
+    
+    func getLectureContent(uuid: UUID, completion: ((Data) -> Void)?) {
+        var request = getRequest(httpMethod: "POST")
+        let query = """
+            query GetLecture {
+                getLecture(id: "\(uuid)") {
+                    steps
+                }
+            }
+        """
+        request.httpBody = constructRequestBody(with: query)
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            let json = try! JSON(data: data!)
+            let content = try! json["data"]["getLecture"]["steps"].rawData()
+            completion?(content)
         }
         task.resume()
     }

@@ -9,7 +9,7 @@
 import UIKit
 
 protocol LectureTableViewCellDelegate: class {
-    func downloadButtonTapped(at index: Int)
+    func downloadButtonDidTapped(at index: Int)
 }
 
 class LectureTableViewCell: UITableViewCell {
@@ -38,6 +38,7 @@ class LectureTableViewCell: UITableViewCell {
             downloadButton.layer.cornerRadius = 15
         }
     }
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     
     weak var delegate: LectureTableViewCellDelegate?
     
@@ -80,11 +81,20 @@ class LectureTableViewCell: UITableViewCell {
             super.frame = newFrame
         }
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    @IBAction func downloadButtonTapped(_ sender: UIButton) {
+        startAnimating()
+        delegate?.downloadButtonDidTapped(at: index)
+    }
+    
+    func startAnimating() {
+        downloadButton.isHidden = true
+        spinner.startAnimating()
+    }
+    
+    func stopAnimating() {
+        downloadButton.isHidden = false
+        spinner.stopAnimating()
     }
     
 }

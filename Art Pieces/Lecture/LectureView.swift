@@ -11,6 +11,7 @@ import MJRefresh
 
 protocol LectureDelegate: class {
     func lectureItemDidSelected(at index: Int)
+    func lectureItemShouldDownload(with uuid: UUID, sender: LectureTableViewCell)
 }
 
 class LectureView: UIView {
@@ -217,13 +218,15 @@ extension LectureView: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        delegate?.lectureItemDidSelected(at: indexPath.row)
+        // delegate?.lectureItemDidSelected(at: indexPath.row)
     }
 }
 
 
 extension LectureView: LectureTableViewCellDelegate {
-    func downloadButtonTapped(at index: Int) {
-        // Download action
+    func downloadButtonDidTapped(at index: Int) {
+        let sender = lectureTableView.cellForRow(at: IndexPath(row: index, section: 0))
+            as! LectureTableViewCell
+        delegate?.lectureItemShouldDownload(with: previews[index].uuid, sender: sender)
     }
 }

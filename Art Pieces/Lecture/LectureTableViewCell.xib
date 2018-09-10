@@ -57,7 +57,7 @@
                     </label>
                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4UB-y6-igE">
                         <rect key="frame" x="550" y="35" width="65" height="30"/>
-                        <color key="backgroundColor" red="0.51372549019607838" green="0.015686274509803921" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        <color key="backgroundColor" red="0.51372549020000002" green="0.015686274510000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="65" id="cgI-d3-xV5"/>
                             <constraint firstAttribute="height" constant="30" id="tGc-QP-IIa"/>
@@ -65,6 +65,9 @@
                         <state key="normal" title="Free">
                             <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         </state>
+                        <connections>
+                            <action selector="downloadButtonTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="xha-RE-Xo8"/>
+                        </connections>
                     </button>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="d7a-2t-xcP">
                         <rect key="frame" x="333.5" y="147" width="0.0" height="36"/>
@@ -114,6 +117,9 @@
                         <color key="textColor" red="0.60784313729999995" green="0.60784313729999995" blue="0.60784313729999995" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gvY-Ur-g3e">
+                        <rect key="frame" x="572.5" y="40" width="20" height="20"/>
+                    </activityIndicatorView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="4UB-y6-igE" firstAttribute="trailing" secondItem="H2p-sc-9uM" secondAttribute="trailingMargin" constant="-20" id="1MR-lX-Z30"/>
@@ -128,6 +134,7 @@
                     <constraint firstItem="4UB-y6-igE" firstAttribute="leading" secondItem="sBY-zq-39x" secondAttribute="trailing" constant="-22" id="Irx-Ll-qgq"/>
                     <constraint firstItem="3pS-gq-nO5" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="J2M-yc-2ZB"/>
                     <constraint firstItem="qX8-7O-NqM" firstAttribute="leading" secondItem="fed-ng-0Ql" secondAttribute="trailing" constant="22" id="NWf-ZO-n6I"/>
+                    <constraint firstItem="gvY-Ur-g3e" firstAttribute="centerY" secondItem="4UB-y6-igE" secondAttribute="centerY" id="P5d-1e-tfz"/>
                     <constraint firstAttribute="trailingMargin" secondItem="qX8-7O-NqM" secondAttribute="trailing" constant="64" id="Q4w-0Y-Gcu"/>
                     <constraint firstItem="sBY-zq-39x" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="29" id="Whp-WW-lae"/>
                     <constraint firstItem="Ifl-Q3-nQN" firstAttribute="leading" secondItem="i98-9V-ztQ" secondAttribute="trailing" constant="8" id="XM4-FZ-gM0"/>
@@ -137,6 +144,7 @@
                     <constraint firstItem="aB8-eG-TUg" firstAttribute="leading" secondItem="d7a-2t-xcP" secondAttribute="trailing" constant="0.5" id="hwP-Re-szP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="i98-9V-ztQ" secondAttribute="bottom" constant="41" id="iff-fJ-NSa"/>
                     <constraint firstItem="GNL-Gp-7i6" firstAttribute="leading" secondItem="QPI-tU-eFt" secondAttribute="trailing" constant="5" id="imN-oV-Tpz"/>
+                    <constraint firstItem="gvY-Ur-g3e" firstAttribute="centerX" secondItem="4UB-y6-igE" secondAttribute="centerX" id="jLE-qA-90C"/>
                     <constraint firstItem="d7a-2t-xcP" firstAttribute="leading" secondItem="qX8-7O-NqM" secondAttribute="leading" id="jpN-f3-ZKW"/>
                     <constraint firstItem="fed-ng-0Ql" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="kd5-y0-l3Z"/>
                     <constraint firstAttribute="bottomMargin" secondItem="Ifl-Q3-nQN" secondAttribute="bottom" constant="38" id="lBy-C9-H5x"/>
@@ -157,6 +165,7 @@
                 <outlet property="lectureStepNumberLabel" destination="qX8-7O-NqM" id="T6S-5h-Q84"/>
                 <outlet property="lectureTitleImageView" destination="fed-ng-0Ql" id="NkI-JH-Bs2"/>
                 <outlet property="lectureTitleLabel" destination="sBY-zq-39x" id="8xK-9l-sum"/>
+                <outlet property="spinner" destination="gvY-Ur-g3e" id="waj-Kh-oKf"/>
                 <outlet property="starButton" destination="Ifl-Q3-nQN" id="EAQ-sk-wm6"/>
                 <outlet property="starNumberLabel" destination="YFt-C1-1Sy" id="ATU-k5-MYo"/>
                 <outlet property="watchNumberLabel" destination="i98-9V-ztQ" id="OWB-iw-Sbf"/>

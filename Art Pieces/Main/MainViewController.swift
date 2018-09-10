@@ -20,6 +20,9 @@ class MainViewController: UIViewController {
     var onSightLockFrame: CGRect!
     var offSightLockFrame: CGRect!
     
+    let webManager = APWebService.defaultManager
+    let dataManager = DataManager.defaultManager
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         if isFirstLaunch() {
@@ -57,11 +60,23 @@ class MainViewController: UIViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
         if segue.identifier == "showArtworkDetail" {
+            
+        }
+        switch segue.identifier {
+        case "showArtworkDetail":
             let destination = segue.destination as! ArtworkDetailViewController
             let initializer = sender as! (ArtworkPreview, UIImage?, UIImage?)
             destination.preview = initializer.0
             destination.keyPhoto = initializer.1
             destination.creatorPortrait = initializer.2
+        case "showArtboardEditViewController":
+            let destination = segue.destination as! ArtboardEditViewController
+            if let data = sender as? Data {
+                destination.saveArtboardWhenQuit = false
+                destination.contentData = data
+            }
+        default:
+            break
         }
         
     }
@@ -189,7 +204,14 @@ extension MainViewController: GalleryDelegate {
 
 extension MainViewController: LectureDelegate {
     func lectureItemDidSelected(at index: Int) {
-        performSegue(withIdentifier: "showLectureDetail", sender: nil)
+        // performSegue(withIdentifier: "showLectureDetail", sender: nil)
+    }
+    
+    func lectureItemShouldDownload(with uuid: UUID, sender: LectureTableViewCell) {
+        webManager.getLectureContent(uuid: uuid) { data in
+            sender.stopAnimating()
+            self.performSegue(withIdentifier: "showArtboardEditViewController", sender: data)
+        }
     }
 }
 

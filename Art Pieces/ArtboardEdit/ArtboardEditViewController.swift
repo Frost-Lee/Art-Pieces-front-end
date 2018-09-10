@@ -25,6 +25,9 @@ class ArtboardEditViewController: UIViewController {
     }
     
     var artboard: MyArtboard?
+    var contentData: Data?
+    
+    var saveArtboardWhenQuit: Bool = true
     
     private var selectedSteps: Set<Int> = []
     private var isEraserSelected: Bool = false
@@ -51,6 +54,8 @@ class ArtboardEditViewController: UIViewController {
         stepTableView.reloadData()
         if artboard != nil {
             artboardView.setupArtboard(with: artboard!.content! as Data)
+        } else if contentData != nil {
+            artboardView.setupArtboard(with: contentData!)
         }
     }
     
@@ -68,7 +73,9 @@ class ArtboardEditViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         artboardView.stepPreviewPhotoArray.append(artboardView.viewImage()!)
-        saveLecture()
+        if saveArtboardWhenQuit {
+            saveLecture()
+        }
     }
     
     @IBAction func addStepButtonTapped(_ sender: UIButton) {

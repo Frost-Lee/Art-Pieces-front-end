@@ -53,9 +53,16 @@ struct LecturePreview {
     var numberOfSteps: Int
     var timestamp: Date
     
-//    init(json: JSON) {
-//        
-//    }
+    init(json: JSON) {
+        uuid = UUID(uuidString: json["id"].string!)!
+        title = json["title"].string!
+        keyPhotoPath = json["keyPhoto"].string!
+        creatorName = json["creator"]["name"].string!
+        creatorPortraitPath = json["creator"]["portrait"].string
+        numberOfStars = json["numberOfStars"].int!
+        numberOfSteps = json["numberOfSteps"].int!
+        timestamp = json["timestamp"].date!
+    }
     
     init(cachedLecture: CachedLecture) {
         uuid = cachedLecture.uuid!
