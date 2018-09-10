@@ -59,9 +59,6 @@ class MainViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         super.prepare(for: segue, sender: sender)
-        if segue.identifier == "showArtworkDetail" {
-            
-        }
         switch segue.identifier {
         case "showArtworkDetail":
             let destination = segue.destination as! ArtworkDetailViewController
@@ -209,8 +206,10 @@ extension MainViewController: LectureDelegate {
     
     func lectureItemShouldDownload(with uuid: UUID, sender: LectureTableViewCell) {
         webManager.getLectureContent(uuid: uuid) { data in
-            sender.stopAnimating()
-            self.performSegue(withIdentifier: "showArtboardEditViewController", sender: data)
+            DispatchQueue.main.async {
+                sender.stopAnimating()
+                self.performSegue(withIdentifier: "showArtboardEditViewController", sender: data)
+            }
         }
     }
 }

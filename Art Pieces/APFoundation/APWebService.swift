@@ -239,7 +239,8 @@ class APWebService {
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             let json = try! JSON(data: data!)
-            let content = try! json["data"]["getLecture"]["steps"].rawData()
+            let contentString = json["data"]["getLecture"]["steps"].string!
+            let content = try! JSON(parseJSON: contentString).rawData()
             completion?(content)
         }
         task.resume()

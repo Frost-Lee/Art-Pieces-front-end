@@ -144,6 +144,7 @@ class DataManager {
             newCachedLecture.timestamp = preview.timestamp as NSDate
             newCachedLecture.title = preview.title
             newCachedLecture.uuid = preview.uuid
+            try! context.save()
         }
     }
     
