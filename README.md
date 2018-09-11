@@ -23,6 +23,8 @@ ___
 - Use step recorder to record each step you finish the artboard
 - Upload your artboard as lecture to guide new comers
 
+__Contact us at feetback@artpieces.cn for support, or start an issue to report a bug__
+
 [Backend Hyperlink](https://github.com/ZJUGuoShuai/ArtPieces-Back-end)
 
 ## Data Structure
