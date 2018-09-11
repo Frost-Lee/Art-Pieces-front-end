@@ -61,10 +61,15 @@ class ArtworkDetailViewController: UIViewController {
     }
 
     @IBAction func newButtonTapped(_ sender: UIButton) {
-        let viewController = ArtworkForkViewController()
-        viewController.currentRepoID = preview.uuid
-        viewController.currentRepoName = preview.title
-        present(viewController, animated: true, completion: nil)
+        if AccountManager.defaultManager.isUserExist() {
+            let viewController = ArtworkForkViewController()
+            viewController.currentRepoID = preview.uuid
+            viewController.currentRepoName = preview.title
+            present(viewController, animated: true, completion: nil)
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+            present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
+        }
     }
     
     private func initializeCachedFields() {

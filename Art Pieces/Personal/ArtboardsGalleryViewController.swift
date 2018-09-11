@@ -91,9 +91,14 @@ extension ArtboardsGalleryViewController: ArtboardPreviewDelegate {
             self.artboardsCollectionView.reloadData()
         }
         let uploadAction = UIAlertAction(title: "Upload as Lecture", style: .default) { action in
-            let viewController = LecturePublishViewController()
-            viewController.artboard = self.artboards[index]
-            self.present(viewController, animated: true, completion: nil)
+            if AccountManager.defaultManager.isUserExist() {
+                let viewController = LecturePublishViewController()
+                viewController.artboard = self.artboards[index]
+                self.present(viewController, animated: true, completion: nil)
+            } else {
+                let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+                self.present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
+            }
         }
         alert.addAction(uploadAction)
         alert.addAction(deleteAction)
