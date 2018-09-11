@@ -122,7 +122,6 @@ class LectureView: UIView {
     }
     
     private func keepLoadTableViewData() {
-        lectureTableView.mj_footer.endRefreshing()
         guard previews.count != 0 else {lectureTableView.mj_footer.endRefreshing();return}
         webManager.extendLecturePreviewFeed(timestamp: previews.last!.timestamp, email: AccountManager
             .defaultManager.currentUser?.email) { previews in

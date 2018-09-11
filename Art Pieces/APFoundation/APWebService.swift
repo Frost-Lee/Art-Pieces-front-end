@@ -35,10 +35,14 @@ class APWebService {
         """
         request.httpBody = self.constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                let json = try! JSON(data: data)
+            do {
+                guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                let json = try JSON(data: data!)
                 let statusCode = json["data"]["insertUser"]["status"].int
                 completion?(self.translateStatusCode(status: statusCode!))
+            } catch _ as NSError {
+                completion?("Unknown Error")
+                return
             }
         }
         task.resume()
@@ -115,17 +119,21 @@ class APWebService {
                 }
             }
         """
-        print(query)
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            print(String(data: data!, encoding: .utf8))
-            let json = try! JSON(data: data!)
-            guard let repoArray = json["data"]["getRepoFeed"].array else {completion?([]);return}
-            var previews: [ArtworkPreview] = []
-            for repo in repoArray {
-                previews.append(ArtworkPreview(json: repo))
+            do {
+                guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                let json = try JSON(data: data!)
+                guard let repoArray = json["data"]["getRepoFeed"].array else {completion?([]);return}
+                var previews: [ArtworkPreview] = []
+                for repo in repoArray {
+                    previews.append(ArtworkPreview(json: repo))
+                }
+                completion?(previews)
+            } catch _ as NSError {
+                completion?([])
+                return
             }
-            completion?(previews)
         }
         task.resume()
     }
@@ -154,13 +162,19 @@ class APWebService {
         """
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            let json = try! JSON(data: data!)
-            guard let repoArray = json["data"]["extendRepoFeed"].array else {completion?([]);return}
-            var previews: [ArtworkPreview] = []
-            for repo in repoArray {
-                previews.append(ArtworkPreview(json: repo))
+            do {
+                guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                let json = try JSON(data: data!)
+                guard let repoArray = json["data"]["extendRepoFeed"].array else {completion?([]);return}
+                var previews: [ArtworkPreview] = []
+                for repo in repoArray {
+                    previews.append(ArtworkPreview(json: repo))
+                }
+                completion?(previews)
+            } catch _ as NSError {
+                completion?([])
+                return
             }
-            completion?(previews)
         }
         task.resume()
     }
@@ -186,13 +200,19 @@ class APWebService {
         """
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            let json = try! JSON(data: data!)
-            guard let lectureArray = json["data"]["getLectFeed"].array else {completion?([]);return}
-            var previews: [LecturePreview] = []
-            for lecture in lectureArray {
-                previews.append(LecturePreview(json: lecture))
+            do {
+                guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                let json = try JSON(data: data!)
+                guard let lectureArray = json["data"]["getLectFeed"].array else {completion?([]);return}
+                var previews: [LecturePreview] = []
+                for lecture in lectureArray {
+                    previews.append(LecturePreview(json: lecture))
+                }
+                completion?(previews)
+            } catch _ as NSError {
+                completion?([])
+                return
             }
-            completion?(previews)
         }
         task.resume()
     }
@@ -219,18 +239,24 @@ class APWebService {
         """
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            let json = try! JSON(data: data!)
-            guard let lectureArray = json["data"]["extendLectFeed"].array else {completion?([]);return}
-            var previews: [LecturePreview] = []
-            for lecture in lectureArray {
-                previews.append(LecturePreview(json: lecture))
+            do {
+                guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                let json = try JSON(data: data!)
+                guard let lectureArray = json["data"]["extendLectFeed"].array else {completion?([]);return}
+                var previews: [LecturePreview] = []
+                for lecture in lectureArray {
+                    previews.append(LecturePreview(json: lecture))
+                }
+                completion?(previews)
+            } catch _ as NSError {
+                completion?([])
+                return
             }
-            completion?(previews)
         }
         task.resume()
     }
     
-    func getLectureContent(uuid: UUID, completion: ((Data) -> Void)?) {
+    func getLectureContent(uuid: UUID, completion: ((Data?) -> Void)?) {
         var request = getRequest(httpMethod: "POST")
         let query = """
             query GetLecture {
@@ -241,10 +267,16 @@ class APWebService {
         """
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            let json = try! JSON(data: data!)
-            let contentString = json["data"]["getLecture"]["steps"].string!
-            let content = try! JSON(parseJSON: contentString).rawData()
-            completion?(content)
+            do {
+                guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                let json = try JSON(data: data!)
+                let contentString = json["data"]["getLecture"]["steps"].string!
+                let content = try! JSON(parseJSON: contentString).rawData()
+                completion?(content)
+            } catch _ as NSError {
+                completion?(nil)
+                return
+            }
         }
         task.resume()
     }
@@ -265,13 +297,19 @@ class APWebService {
         """
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            let json = try! JSON(data: data!)
-            guard let branchArray = json["data"]["getRepo"]["artworks"].array else {completion?([]);return}
-            var previews: [BranchPreview] = []
-            for branch in branchArray {
-                previews.append(BranchPreview(json: branch))
+            do {
+                guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                let json = try! JSON(data: data!)
+                guard let branchArray = json["data"]["getRepo"]["artworks"].array else {completion?([]);return}
+                var previews: [BranchPreview] = []
+                for branch in branchArray {
+                    previews.append(BranchPreview(json: branch))
+                }
+                completion?(previews)
+            } catch _ as NSError {
+                completion?([])
+                return
             }
-            completion?(previews)
         }
         task.resume()
     }
@@ -305,10 +343,14 @@ class APWebService {
         """
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                let json = try! JSON(data: data)
+            do {
+                guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                let json = try JSON(data: data!)
                 let statusCode = json["data"]["login"]["status"].int
                 completion?(self.translateStatusCode(status: statusCode!))
+            } catch _ as NSError {
+                completion?(nil)
+                return
             }
         }
         task.resume()
@@ -326,8 +368,9 @@ class APWebService {
         """
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let data = data {
-                let json = try! JSON(data: data)
+            do {
+                guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                let json = try JSON(data: data!)
                 let name = json["data"]["getUser"]["name"].string
                 let signature = json["data"]["getUser"]["signature"].string ?? ""
                 let compressedPortraitPath = json["data"]["getUser"]["compressedPortrait"].string
@@ -336,6 +379,9 @@ class APWebService {
                     portrait = self.fetchPhoto(url: URL(string: compressedPortraitPath)!)
                 }
                 completion?(name, signature, portrait)
+            } catch _ as NSError {
+                completion?(nil, "", nil)
+                return
             }
         }
         task.resume()
