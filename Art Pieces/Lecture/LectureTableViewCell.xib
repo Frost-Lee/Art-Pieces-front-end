@@ -32,7 +32,7 @@
                         </constraints>
                     </imageView>
                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="LecturePlaceHolderImage" translatesAutoresizingMaskIntoConstraints="NO" id="fed-ng-0Ql">
-                        <rect key="frame" x="0.0" y="10" width="307" height="211.5"/>
+                        <rect key="frame" x="2" y="10" width="307" height="211.5"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="fed-ng-0Ql" secondAttribute="height" multiplier="311:214" id="Kk9-GJ-egu"/>
                         </constraints>
@@ -105,7 +105,7 @@
                         <rect key="frame" x="484" y="161" width="24" height="22"/>
                         <state key="normal" image="Watch"/>
                     </button>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="60" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i98-9V-ztQ">
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="i98-9V-ztQ">
                         <rect key="frame" x="516" y="163" width="27" height="17"/>
                         <constraints>
                             <constraint firstAttribute="width" constant="27" id="PPN-WF-VRw"/>
@@ -122,9 +122,9 @@
                 <constraints>
                     <constraint firstItem="fed-ng-0Ql" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="1tg-Nd-SmA"/>
                     <constraint firstAttribute="bottom" secondItem="3pS-gq-nO5" secondAttribute="bottom" constant="8" id="6Ja-EL-Vap"/>
-                    <constraint firstItem="aB8-eG-TUg" firstAttribute="leading" secondItem="fed-ng-0Ql" secondAttribute="trailing" constant="24" id="9Ux-eH-HPc"/>
-                    <constraint firstItem="sBY-zq-39x" firstAttribute="leading" secondItem="fed-ng-0Ql" secondAttribute="trailing" constant="24" id="EnL-Vq-wy0"/>
-                    <constraint firstItem="qX8-7O-NqM" firstAttribute="leading" secondItem="fed-ng-0Ql" secondAttribute="trailing" constant="24" id="Fj4-Pv-m1c"/>
+                    <constraint firstItem="aB8-eG-TUg" firstAttribute="leading" secondItem="fed-ng-0Ql" secondAttribute="trailing" constant="22" id="9Ux-eH-HPc"/>
+                    <constraint firstItem="sBY-zq-39x" firstAttribute="leading" secondItem="fed-ng-0Ql" secondAttribute="trailing" constant="22" id="EnL-Vq-wy0"/>
+                    <constraint firstItem="qX8-7O-NqM" firstAttribute="leading" secondItem="fed-ng-0Ql" secondAttribute="trailing" constant="22" id="Fj4-Pv-m1c"/>
                     <constraint firstAttribute="bottomMargin" secondItem="YFt-C1-1Sy" secondAttribute="bottom" constant="41" id="IGu-0z-Jlt"/>
                     <constraint firstItem="i98-9V-ztQ" firstAttribute="leading" secondItem="GNL-Gp-7i6" secondAttribute="trailing" constant="8" id="JSs-CQ-zsp"/>
                     <constraint firstItem="Ifl-Q3-nQN" firstAttribute="leading" secondItem="i98-9V-ztQ" secondAttribute="trailing" constant="8" id="MIx-1N-2Uf"/>
@@ -146,7 +146,7 @@
                     <constraint firstItem="gvY-Ur-g3e" firstAttribute="centerX" secondItem="4UB-y6-igE" secondAttribute="centerX" id="oLb-RG-fqP"/>
                     <constraint firstItem="gvY-Ur-g3e" firstAttribute="centerY" secondItem="4UB-y6-igE" secondAttribute="centerY" id="oTE-pD-IIY"/>
                     <constraint firstAttribute="bottomMargin" secondItem="GNL-Gp-7i6" secondAttribute="bottom" constant="38" id="sbb-6t-Xjk"/>
-                    <constraint firstItem="fed-ng-0Ql" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="taE-s3-3my"/>
+                    <constraint firstItem="fed-ng-0Ql" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="2" id="taE-s3-3my"/>
                     <constraint firstAttribute="bottom" secondItem="fed-ng-0Ql" secondAttribute="bottom" constant="10" id="uar-yK-6XY"/>
                     <constraint firstItem="4UB-y6-igE" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" constant="24" id="wCz-Tv-kSz"/>
                 </constraints>
@@ -169,7 +169,7 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="LecturePlaceHolderImage" width="500" height="681"/>
+        <image name="LecturePlaceHolderImage" width="300" height="400"/>
         <image name="StarButton" width="26" height="25"/>
         <image name="Watch" width="24" height="19"/>
     </resources>

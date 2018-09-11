@@ -115,8 +115,10 @@ class APWebService {
                 }
             }
         """
+        print(query)
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            print(String(data: data!, encoding: .utf8))
             let json = try! JSON(data: data!)
             guard let repoArray = json["data"]["getRepoFeed"].array else {completion?([]);return}
             var previews: [ArtworkPreview] = []

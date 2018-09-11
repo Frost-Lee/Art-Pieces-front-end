@@ -144,10 +144,12 @@ class LoginViewController: BWWalkthroughPageViewController {
         APWebService.defaultManager.checkForLogin(email: email,
             password: password) { errorMessage in
             if let message = errorMessage {
-                let alertController = UIAlertController
-                    .prepareController(title: "Oooooops!", message: message)
-                self.present(alertController, animated: true) {
-                    self.stopRequesting()
+                DispatchQueue.main.async {
+                    let alertController = UIAlertController
+                        .prepareController(title: "Oooooops!", message: message)
+                    self.present(alertController, animated: true) {
+                        self.stopRequesting()
+                    }
                 }
             } else {
                 AccountManager.defaultManager.login(email: email, password: password) {

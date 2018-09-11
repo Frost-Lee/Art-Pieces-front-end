@@ -102,7 +102,7 @@ class LectureView: UIView {
             .currentUser?.email) { previews in
                 let filteredPreviews = self.getFilteredPreviews(from: previews, baseLine:
                     self.previews.first, isBefore: false)
-                if !self.previews.isEmpty && previews.last!.timestamp > self.previews.first!.timestamp {
+                if !self.previews.isEmpty && !previews.isEmpty && previews.last!.timestamp > self.previews.first!.timestamp {
                     self.keyPhotoDictionary.removeAll()
                     self.portraitDictionary.removeAll()
                     self.previews = filteredPreviews
@@ -197,6 +197,10 @@ extension LectureView: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "lectureTableViewCell", for: indexPath)
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 230
     }
     
     func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {

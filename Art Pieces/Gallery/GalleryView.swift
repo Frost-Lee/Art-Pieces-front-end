@@ -115,7 +115,7 @@ class GalleryView: UIView {
             .currentUser?.email) { previews in
                 let filteredPreviews = self.getFilteredPreviews(from: previews, baseLine:
                     self.previews.first, isBefore: false)
-                if !self.previews.isEmpty && previews.last!.timestamp > self.previews.first!.timestamp {
+                if !self.previews.isEmpty && !previews.isEmpty && previews.last!.timestamp > self.previews.first!.timestamp {
                     self.keyPhotoDictionary.removeAll()
                     self.portraitDictionary.removeAll()
                     self.previews = filteredPreviews

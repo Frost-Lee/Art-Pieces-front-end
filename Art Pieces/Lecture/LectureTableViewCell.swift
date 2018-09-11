@@ -48,7 +48,7 @@ class LectureTableViewCell: UITableViewCell {
         didSet {
             if lecturePreview != nil {
                 lectureTitleLabel.text = lecturePreview!.title
-                lectureStepNumberLabel.text = String(lecturePreview!.numberOfSteps)
+                lectureStepNumberLabel.text = String(lecturePreview!.numberOfSteps) + " steps"
                 starNumberLabel.text = String(lecturePreview!.numberOfStars)
                 lectureStarterNameLabel.text = lecturePreview!.creatorName
             }
