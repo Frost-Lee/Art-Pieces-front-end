@@ -85,7 +85,7 @@ import UIKit
     
     // MARK: - Private properties -
     
-    public let scrollview = UIScrollView()
+    open let scrollview = UIScrollView()
     private var controllers = [UIViewController]()
     private var lastViewConstraint: [NSLayoutConstraint]?
     
@@ -109,7 +109,7 @@ import UIKit
         
         // Initialize UI Elements
         
-        pageControl?.addTarget(self, action: #selector(BWWalkthroughViewController.pageControlDidTouch), for: UIControl.Event.touchUpInside)
+        pageControl?.addTarget(self, action: #selector(BWWalkthroughViewController.pageControlDidTouch), for: UIControlEvents.touchUpInside)
         
         // Scrollview
         
@@ -183,8 +183,8 @@ import UIKit
         
         // Make children aware of the parent
         
-        addChild(viewController)
-        viewController.didMove(toParent: self)
+        addChildViewController(viewController)
+        viewController.didMove(toParentViewController: self)
         
         // Setup the viewController view
 

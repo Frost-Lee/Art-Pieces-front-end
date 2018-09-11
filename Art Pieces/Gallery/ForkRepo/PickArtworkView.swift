@@ -124,8 +124,8 @@ extension PickArtworkView: UIImagePickerControllerDelegate, UINavigationControll
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
-        info: [UIImagePickerController.InfoKey : Any]) {
-        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        info: [String : Any]) {
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
         selectedProject = (UUID(), selectedImage!)
         picker.dismiss(animated: true) {
             DispatchQueue.main.async {

@@ -67,7 +67,7 @@ class ArtworkPreviewCollectionViewCell: UICollectionViewCell {
     }
     
     @IBAction func starButtonTapped(_ sender: UIButton) {
-        starButton.setImage(UIImage(named: "SelectedStarButton")!, for: UIControl.State.normal)
+        starButton.setImage(UIImage(named: "SelectedStarButton")!, for: .normal)
     }
     
 }

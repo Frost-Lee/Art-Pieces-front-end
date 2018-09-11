@@ -37,7 +37,7 @@ class HeadWalkThroughViewController: BWWalkthroughPageViewController {
         }
         let deltaHeight = albumImageView!.frame.height - scrollAnimationContainerView.frame.height
         UIView.animate(withDuration: 50, delay: 0, options:
-            UIView.AnimationOptions.curveLinear, animations: {
+            UIViewAnimationOptions.curveLinear, animations: {
                 let yAxisHeight = self.positiveScroll ? -deltaHeight : 0
                 self.albumImageView!.frame = CGRect(x: 0, y: yAxisHeight, width: self.scrollAnimationContainerView.frame.width,
                                                    height: self.albumImageView!.frame.height)

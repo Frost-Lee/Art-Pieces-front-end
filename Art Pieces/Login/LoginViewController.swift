@@ -50,8 +50,7 @@ class LoginViewController: BWWalkthroughPageViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(
-            keyboardPositionWillChange(notification:)), name: UIResponder
-                .keyboardWillChangeFrameNotification, object: nil)
+            keyboardPositionWillChange(notification:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)
         emailTextFieldView.textField.placeholder = "Email Address"
         passwordTextFieldView.textField.placeholder = "Password"
         confirmPasswordTextFieldView.textField.placeholder = "Confirm Password"
@@ -114,13 +113,13 @@ class LoginViewController: BWWalkthroughPageViewController {
     
     @objc func keyboardPositionWillChange(notification: Notification) {
         if let userInfo = notification.userInfo,
-            let value = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
-            let duration = userInfo[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double,
-            let curve = userInfo[UIResponder.keyboardAnimationCurveUserInfoKey] as? UInt {
+            let value = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue,
+            let duration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? Double,
+            let curve = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? UInt {
             let frame = value.cgRectValue
             let intersect = frame.intersects(passwordTextFieldView.frame)
             UIView.animate(withDuration: duration, delay: 0.0, options:
-                UIView.AnimationOptions(rawValue: curve), animations: {
+                UIViewAnimationOptions(rawValue: curve), animations: {
                 if intersect {
                     self.textFieldPlacingConstraint_1 = self.textFieldPlacingConstraint_1
                         .setMultiplier(multiplier: 0.33)
@@ -210,7 +209,7 @@ class LoginViewController: BWWalkthroughPageViewController {
         }
         let deltaHeight = albumImageView!.frame.height - scrollAnimationContainerView.frame.height
         UIView.animate(withDuration: 50, delay: 0, options:
-            UIView.AnimationOptions.curveLinear, animations: {
+            UIViewAnimationOptions.curveLinear, animations: {
                 let yAxisHeight = self.positiveScroll ? -deltaHeight : 0
                 self.albumImageView!.frame = CGRect(x: 0, y: yAxisHeight,
                                                     width: self.scrollAnimationContainerView.frame.width,

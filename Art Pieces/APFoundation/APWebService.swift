@@ -52,7 +52,7 @@ class APWebService {
         let belongingRepoParameter = getOptionalParameter(field: "belongingRepo", value: belongingRepo,
                                                           quotation: true)
         sendFile(url: APWebService.resourceServerURL, fileName: "NewRepo.jpeg", data:
-            keyPhoto.jpegData(compressionQuality: 0.2)!) { urlPath, compressedURLPath in
+            UIImageJPEGRepresentation(keyPhoto, 0.2)!) { urlPath, compressedURLPath in
                 var request = self.getRequest(httpMethod: "POST")
                 let query = """
                 mutation UploadArtwork {
@@ -76,7 +76,7 @@ class APWebService {
         let descriptionParameter = getOptionalParameter(field: "description", value: description,
                                                         quotation: true)
         sendFile(url: APWebService.resourceServerURL, fileName: "NewLecture.jpeg", data:
-            keyPhoto.jpegData(compressionQuality: 0.2)!) { urlPath, compressedURLPath in
+            UIImageJPEGRepresentation(keyPhoto, 0.2)!) { urlPath, compressedURLPath in
                 var request = self.getRequest(httpMethod: "POST")
                 let query = """
                 mutation InsertLect {

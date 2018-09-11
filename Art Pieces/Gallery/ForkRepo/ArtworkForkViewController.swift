@@ -72,7 +72,7 @@ extension ArtworkForkViewController: PickArtworkDelegate {
         isAddingDescriptions = true
         addArtworkDescriptionView.artworkKeyPhotoImageView.image = pickArtworkView.selectedProject?.1
         UIView.animate(withDuration: 0.2, delay: 0, options:
-            UIView.AnimationOptions.curveLinear, animations: {
+            UIViewAnimationOptions.curveLinear, animations: {
                 self.viewWillLayoutSubviews()
         }, completion: nil)
     }

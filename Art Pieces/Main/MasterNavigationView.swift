@@ -97,7 +97,7 @@ class MasterNavigationView: UIView {
         isGallerySelected = true
         if animated {
             UIView.animate(withDuration: 0.2, delay: 0, options:
-                UIView.AnimationOptions.curveEaseInOut, animations: {
+                UIViewAnimationOptions.curveEaseInOut, animations: {
                     self.selectionIndicator.frame = self.galleryLockFrame
             }, completion: nil)
         } else {
@@ -111,7 +111,7 @@ class MasterNavigationView: UIView {
         isGallerySelected = false
         if animated {
             UIView.animate(withDuration: 0.2, delay: 0, options:
-                UIView.AnimationOptions.curveEaseInOut, animations: {
+                UIViewAnimationOptions.curveEaseInOut, animations: {
                     self.selectionIndicator.frame = self.lectureLockFrame
             }, completion: nil)
         } else {

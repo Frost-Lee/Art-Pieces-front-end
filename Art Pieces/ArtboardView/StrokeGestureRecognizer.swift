@@ -10,6 +10,7 @@
 //  data into StrokeSample informations
 
 import UIKit
+import UIKit.UIGestureRecognizerSubclass
 
 class StrokeGestureRecognizer: UIGestureRecognizer {
     
@@ -43,6 +44,7 @@ class StrokeGestureRecognizer: UIGestureRecognizer {
         }
         workingGestureMoved(touches: touches, event: event)
     }
+    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent) {
         if workingGestureMoved(touches: touches, event: event) {

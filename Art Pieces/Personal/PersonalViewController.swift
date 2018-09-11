@@ -57,7 +57,7 @@ class PersonalViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController?.view.sendSubviewToBack((self.navigationController?.navigationBar)!)
+        self.navigationController?.view.sendSubview(toBack: (self.navigationController?.navigationBar)!)
         self.navigationController?.navigationBar.tintColor = .white
         setupAddArtworkView()
         loadLocalUser()
@@ -67,7 +67,7 @@ class PersonalViewController: UIViewController {
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.navigationController?.view.bringSubviewToFront((self.navigationController?.navigationBar)!)
+        self.navigationController?.view.bringSubview(toFront: (self.navigationController?.navigationBar)!)
     }
 
     @IBAction func addButtonTapped(_ sender: UIButton) {

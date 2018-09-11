@@ -47,7 +47,7 @@ struct RenderMechanism: Codable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let colorData = try container.decode(Data.self, forKey: .color)
-        self.color = try NSKeyedUnarchiver.unarchivedObject(ofClass: UIColor.self, from: colorData)
+        self.color = NSKeyedUnarchiver.unarchiveObject(with: colorData) as! UIColor
         self.width = try container.decode(CGFloat.self, forKey: .width)
         self.texture = try container.decode(String.self, forKey: .texture)
         setTexturedColor()
@@ -55,7 +55,7 @@ struct RenderMechanism: Codable {
 
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
-        let colorData = try NSKeyedArchiver.archivedData(withRootObject: color, requiringSecureCoding: true)
+        let colorData = NSKeyedArchiver.archivedData(withRootObject: color)
         try container.encode(colorData, forKey: .color)
         try container.encode(width, forKey: .width)
         try container.encode(texture, forKey: .texture)

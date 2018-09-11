@@ -49,8 +49,8 @@ extension NewRepositoryViewController: UIImagePickerControllerDelegate, UINaviga
     }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo
-        info: [UIImagePickerController.InfoKey : Any]) {
-        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] as? UIImage
+        info: [String: Any]) {
+        let selectedImage = info[UIImagePickerControllerOriginalImage] as? UIImage
          newRepoView.keyPhoto = selectedImage
         picker.dismiss(animated: true, completion: nil)
     }
