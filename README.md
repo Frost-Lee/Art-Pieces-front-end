@@ -18,12 +18,12 @@ ___
 #### Features
 - Create a repository and inspire everyone to create their own artwork under the theme
 - Upload your own artwork to related repository
-- Download Lecture and see how a magnificant artwork is done
+- Download Lecture and see how a magnificent artwork is done
 - Use artboard to draw your own artwork and save it on the device
 - Use step recorder to record each step you finish the artboard
 - Upload your artboard as lecture to guide new comers
 
-__Contact us at feetback@artpieces.cn for support, or start an issue to report a bug__
+__Contact us at feedback@artpieces.cn for support, or start an issue to report a bug__
 
 [Backend Hyperlink](https://github.com/ZJUGuoShuai/ArtPieces-Back-end)
 
