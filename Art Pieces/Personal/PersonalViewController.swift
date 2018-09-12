@@ -80,6 +80,16 @@ class PersonalViewController: UIViewController {
             let viewController = storyboard.instantiateInitialViewController() as! LoginViewController
             viewController.dismissBlock = {self.loadLocalUser()}
             present(viewController, animated: true)
+        } else {
+            let alertController = UIAlertController(title: "Account", message: nil, preferredStyle: .actionSheet)
+            let logoutAction = UIAlertAction(title: "Log out", style: .destructive) { action in
+                AccountManager.defaultManager.logout()
+                self.loadLocalUser()
+            }
+            alertController.popoverPresentationController?.sourceRect = sender.bounds
+            alertController.popoverPresentationController?.sourceView = sender
+            alertController.addAction(logoutAction)
+            present(alertController, animated: true, completion: nil)
         }
     }
     
@@ -132,7 +142,7 @@ class PersonalViewController: UIViewController {
     
     private func getPersonalPortrait(useGrayPortrait: Bool = false) -> UIImage {
         var portrait: UIImage!
-        if localUser == nil {
+        if !AccountManager.defaultManager.isUserExist() {
             portrait = UIImage(named: (useGrayPortrait ? "" : "White") + "QuestionMark")
         } else if localUser!.portraitPath != nil && localUser!.portraitPath?.count != 0 {
             portrait = DataManager.defaultManager.getImage(path: localUser!.portraitPath!)

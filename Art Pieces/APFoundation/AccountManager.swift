@@ -45,6 +45,16 @@ class AccountManager {
         }
     }
     
+    func logout() {
+        currentUser = nil
+        DataManager.defaultManager.removeItem(path: currentUser?.portraitPath)
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "name")
+        UserDefaults.standard.removeObject(forKey: "password")
+        UserDefaults.standard.removeObject(forKey: "signature")
+        UserDefaults.standard.removeObject(forKey: "portrait")
+    }
+    
     private func login(email: String, name: String, password: String,
                        signature: String, portrait: UIImage?) {
         DataManager.defaultManager.removeItem(path: currentUser?.portraitPath)

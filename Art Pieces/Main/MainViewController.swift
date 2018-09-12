@@ -205,11 +205,16 @@ extension MainViewController: LectureDelegate {
     }
     
     func lectureItemShouldDownload(with uuid: UUID, sender: LectureTableViewCell) {
-        webManager.getLectureContent(uuid: uuid) { data in
-            DispatchQueue.main.async {
-                sender.stopAnimating()
-                self.performSegue(withIdentifier: "showArtboardEditViewController", sender: data)
+        if AccountManager.defaultManager.isUserExist() {
+            webManager.getLectureContent(uuid: uuid) { data in
+                DispatchQueue.main.async {
+                    sender.stopAnimating()
+                    self.performSegue(withIdentifier: "showArtboardEditViewController", sender: data)
+                }
             }
+        } else {
+            let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
+            present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
         }
     }
 }
