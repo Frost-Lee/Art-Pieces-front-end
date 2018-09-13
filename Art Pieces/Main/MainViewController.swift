@@ -214,7 +214,9 @@ extension MainViewController: LectureDelegate {
             }
         } else {
             let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
-            present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
+            present(storyboard.instantiateInitialViewController()!, animated: true) {
+                sender.stopAnimating()
+            }
         }
     }
 }

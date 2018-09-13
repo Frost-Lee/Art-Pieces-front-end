@@ -51,7 +51,7 @@ class APWebService {
     func uploadArtwork(creatorEmail: String, creatorPassword: String, title: String,
                        description: String?, keyPhoto: UIImage, belongingRepo: UUID?, selfID: UUID,
                        completion: (() -> Void)?) {
-        let descriptionParameter = getOptionalParameter(field: "description", value: description,
+        let descriptionParameter = getOptionalParameter(field: "description", value: description?.secured(),
                                                         quotation: true)
         let belongingRepoParameter = getOptionalParameter(field: "belongingRepo", value: belongingRepo,
                                                           quotation: true)
@@ -62,7 +62,7 @@ class APWebService {
                 mutation UploadArtwork {
                     insertWork(id: "\(selfID)", creator: "\(creatorEmail.secured())",
                         password: "\(creatorPassword.secured())", title: "\(title.secured())",
-                        \(descriptionParameter.secured()) keyPhoto: "\(urlPath)",
+                        \(descriptionParameter) keyPhoto: "\(urlPath)",
                         \(belongingRepoParameter) timestamp: \(self.now))
                 }
                 """
@@ -77,7 +77,7 @@ class APWebService {
     func uploadLecture(creatorEmail: String, creatorPassword: String, title: String,
                        description: String, keyPhoto: UIImage, content: NSData, selfID: UUID,
                        completion: (() -> Void)?) {
-        let descriptionParameter = getOptionalParameter(field: "description", value: description,
+        let descriptionParameter = getOptionalParameter(field: "description", value: description.secured(),
                                                         quotation: true)
         sendFile(url: APWebService.resourceServerURL, fileName: "NewLecture.jpeg", data:
             UIImageJPEGRepresentation(keyPhoto, 0.2)!) { urlPath, compressedURLPath in
@@ -99,7 +99,7 @@ class APWebService {
     }
     
     func getRepoPreviewFeed(email: String? = nil, completion: (([ArtworkPreview]) -> Void)? = nil) {
-        let userParameter = getOptionalParameter(field: "user", value: email, quotation: true)
+        let userParameter = getOptionalParameter(field: "user", value: email?.secured(), quotation: true)
         var request = getRequest(httpMethod: "POST")
         let query = """
             query GetRepoFeed {
@@ -140,7 +140,7 @@ class APWebService {
     
     func extendRepoPreviewFeed(timestamp: Date, email: String? = nil,
                                completion: (([ArtworkPreview]) -> Void)? = nil) {
-        let userParameter = getOptionalParameter(field: "user", value: email, quotation: true)
+        let userParameter = getOptionalParameter(field: "user", value: email?.secured(), quotation: true)
         var request = getRequest(httpMethod: "POST")
         let query = """
             query ExtentRepoFeed {
@@ -180,7 +180,7 @@ class APWebService {
     }
     
     func getLecturePreviewFeed(email: String? = nil, completion: (([LecturePreview]) -> Void)? = nil) {
-        let userParameter = getOptionalParameter(field: "user", value: email, quotation: true)
+        let userParameter = getOptionalParameter(field: "user", value: email?.secured(), quotation: true)
         var request = getRequest(httpMethod: "POST")
         let query = """
             query GetLectFeed {
@@ -219,7 +219,7 @@ class APWebService {
     
     func extendLecturePreviewFeed(timestamp: Date, email: String? = nil,
                                   completion: (([LecturePreview]) -> Void)? = nil) {
-        let userParameter = getOptionalParameter(field: "user", value: email, quotation: true)
+        let userParameter = getOptionalParameter(field: "user", value: email?.secured(), quotation: true)
         var request = getRequest(httpMethod: "POST")
         let query = """
             query ExtendLectFeed {
@@ -317,7 +317,7 @@ class APWebService {
     func createRepo(creatorEmail: String, creatorPassword: String, title: String,
                     description: String?, selfID: UUID, keyArtworkID: UUID,
                     completion: (() -> Void)?) {
-        let descriptionParameter = getOptionalParameter(field: "description", value: description,
+        let descriptionParameter = getOptionalParameter(field: "description", value: description?.secured(),
                                                         quotation: true)
         var request = getRequest(httpMethod: "POST")
         let query = """
@@ -408,9 +408,9 @@ class APWebService {
         let tailing = comma ? "," : ""
         if value != nil {
             if quotation {
-                return ("\(field): \"\(value!)\"" + tailing).secured()
+                return ("\(field): \"\(value!)\"" + tailing)
             } else {
-                return ("\(field): \(value!)" + tailing).secured()
+                return ("\(field): \(value!)" + tailing)
             }
         } else {
             return ""

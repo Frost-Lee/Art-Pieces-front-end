@@ -19,6 +19,10 @@ class ArtboardsGalleryViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         artboards = dataManager.getAllArtboards()
+        let collectionViewController = UICollectionViewController(collectionViewLayout:
+            UICollectionViewFlowLayout())
+        collectionViewController.collectionView = artboardsCollectionView
+        self.addChildViewController(collectionViewController)
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {

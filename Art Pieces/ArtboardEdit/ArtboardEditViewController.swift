@@ -57,6 +57,9 @@ class ArtboardEditViewController: UIViewController {
         } else if contentData != nil {
             artboardView.setupArtboard(with: contentData!)
         }
+        let tableViewController = UITableViewController(style: .plain)
+        tableViewController.tableView = stepTableView
+        addChildViewController(tableViewController)
     }
     
     override func viewWillAppear(_ animated: Bool) {
