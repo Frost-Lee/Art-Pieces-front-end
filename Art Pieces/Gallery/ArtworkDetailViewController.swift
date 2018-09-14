@@ -58,6 +58,24 @@ class ArtworkDetailViewController: UIViewController {
         beginFetchingKeyPhoto()
         beginFetchingBranches()
         beginFetchingPortraitPhoto()
+        repositoryTitleImageView.addGestureRecognizer(UIGestureRecognizer(target: self, action:
+            #selector(keyImageViewTapped)))
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "showKeyPhoto":
+            if sender != nil {
+                let destination = segue.destination as! KeyPhotoViewController
+                if sender is UIImage {
+                    destination.keyPhotoImageView.image = sender as? UIImage
+                } else {
+                    destination.keyPhotoImageView.image = DataManager.defaultManager.getImage(path: sender as! String)
+                }
+            }
+        default:
+            break
+        }
     }
 
     @IBAction func newButtonTapped(_ sender: UIButton) {
@@ -70,6 +88,10 @@ class ArtworkDetailViewController: UIViewController {
             let storyboard = UIStoryboard(name: "Login", bundle: Bundle.main)
             present(storyboard.instantiateInitialViewController()!, animated: true, completion: nil)
         }
+    }
+    
+    @objc private func keyImageViewTapped() {
+        performSegue(withIdentifier: "showKeyPhoto", sender: repositoryTitleImageView.image)
     }
     
     private func initializeCachedFields() {
@@ -142,6 +164,8 @@ extension ArtworkDetailViewController: UICollectionViewDataSource, UICollectionV
     func collectionView(_ collectionView: UICollectionView, willDisplay
         cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         let cell = cell as! BranchCollectionViewCell
+        cell.index = indexPath.row
+        cell.delegate = self
         if keyPhotoDictionary[branchPreviews[indexPath.row].uuid] != nil {
             let image = dataManager.getImage(path: keyPhotoDictionary[branchPreviews[indexPath.row].uuid]!!)
             cell.branchKeyPhoto.image = image
@@ -155,4 +179,13 @@ extension ArtworkDetailViewController: UICollectionViewDataSource, UICollectionV
         return CGSize(width: collectionView.frame.width / 2.0, height: collectionView.frame.height / 2.0)
     }
 }
+
+
+extension ArtworkDetailViewController: BranchCollectionViewDelegate {
+    func branchDetailShouldShow(index: Int) {
+        performSegue(withIdentifier: "showKeyPhoto", sender: keyPhotoDictionary[branchPreviews[index].uuid] ?? nil)
+    }
+}
+
+
 

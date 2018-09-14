@@ -119,10 +119,12 @@ class APWebService {
                 }
             }
         """
+        print(query)
         request.httpBody = constructRequestBody(with: query)
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             do {
                 guard data != nil else {throw NSError(domain: "WebManager", code: -1, userInfo: nil)}
+                print(String(data: data!, encoding: .utf8))
                 let json = try JSON(data: data!)
                 guard let repoArray = json["data"]["getRepoFeed"].array else {completion?([]);return}
                 var previews: [ArtworkPreview] = []

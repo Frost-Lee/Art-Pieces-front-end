@@ -16,6 +16,7 @@
 		3A0EFB432108663000547E23 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A0EFB422108663000547E23 /* Extensions.swift */; };
 		3A166D092109A25D00E2DE16 /* ThicknessSliderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */; };
 		3A18C8952121650E007F63F2 /* ArtboardLayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A18C8942121650E007F63F2 /* ArtboardLayerView.swift */; };
+		3A1DC741214BF7A7001F4F8E /* KeyPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A1DC740214BF7A7001F4F8E /* KeyPhotoViewController.swift */; };
 		3A39EEE22123CE5D00E8F881 /* WalkThrough.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */; };
 		3A40439A2109D04100467990 /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3A4043992109D04100467990 /* GalleryView.swift */; };
 		3A40439C2109D04F00467990 /* Gallery.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3A40439B2109D04F00467990 /* Gallery.xib */; };
@@ -95,6 +96,7 @@
 		3A0EFB422108663000547E23 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3A166D082109A25D00E2DE16 /* ThicknessSliderViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThicknessSliderViewController.swift; sourceTree = "<group>"; };
 		3A18C8942121650E007F63F2 /* ArtboardLayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtboardLayerView.swift; sourceTree = "<group>"; };
+		3A1DC740214BF7A7001F4F8E /* KeyPhotoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyPhotoViewController.swift; sourceTree = "<group>"; };
 		3A39EEE12123CE5D00E8F881 /* WalkThrough.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = WalkThrough.storyboard; sourceTree = "<group>"; };
 		3A4043992109D04100467990 /* GalleryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
 		3A40439B2109D04F00467990 /* Gallery.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = Gallery.xib; sourceTree = "<group>"; };
@@ -229,6 +231,7 @@
 				3A4043992109D04100467990 /* GalleryView.swift */,
 				3A48E212211DD1D700B34B24 /* ArtworkDetail.storyboard */,
 				3A48E20C211D865C00B34B24 /* ArtworkDetailViewController.swift */,
+				3A1DC740214BF7A7001F4F8E /* KeyPhotoViewController.swift */,
 				3A02A656212288BA000C59B5 /* BranchCollectionViewCell.swift */,
 				3AF62DD32138156B005104CA /* ForkRepo */,
 			);
@@ -609,6 +612,7 @@
 				3AD1048A211BE086006C1039 /* LectureTableViewCell.swift in Sources */,
 				3AC000D22135631500020952 /* APWebService.swift in Sources */,
 				3A01A07321417E120012C636 /* ArtworkForkViewController.swift in Sources */,
+				3A1DC741214BF7A7001F4F8E /* KeyPhotoViewController.swift in Sources */,
 				3AF62DD221381522005104CA /* AddArtworkDescriptionView.swift in Sources */,
 				3ABF6920211C461800709831 /* APTextFieldView.swift in Sources */,
 				3ABF691E211C458C00709831 /* LoginViewController.swift in Sources */,
